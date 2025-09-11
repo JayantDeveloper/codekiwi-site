@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String    @id @default(cuid())
+  email       String    @unique
+  name        String?
+  image       String?
+  givenName   String?
+  familyName  String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  settings    Settings?
+}
+
+model Settings {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  theme          String   @default("system")
+  editorFontSize Int      @default(14)
+  lockDefault    Boolean  @default(false)
+  slidesPerPage  Int      @default(1)
+  json           Json     @default("{}")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
