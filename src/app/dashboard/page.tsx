@@ -1,4 +1,4 @@
-import { auth } from "../../auth";
+import { getServerSession } from "@/auth";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,48 +25,15 @@ function initials(name?: string | null, email?: string | null) {
 }
 
 export default async function DashboardPage() {
-  const session = await auth();
+  const session = await getServerSession();
   if (!session?.user) redirect("/signin");
 
-  // Example static data (replace with your real “presentations” later)
-  const presentations = [
-    {
-      id: "1",
-      title: "Introduction to JavaScript",
-      lastModified: "2 days ago",
-      thumbnail: "/placeholder.svg?height=150&width=250",
-    },
-    {
-      id: "2",
-      title: "Python Basics",
-      lastModified: "1 week ago",
-      thumbnail: "/placeholder.svg?height=150&width=250",
-    },
-    {
-      id: "3",
-      title: "HTML & CSS Fundamentals",
-      lastModified: "3 days ago",
-      thumbnail: "/placeholder.svg?height=150&width=250",
-    },
-    {
-      id: "4",
-      title: "Data Structures",
-      lastModified: "Yesterday",
-      thumbnail: "/placeholder.svg?height=150&width=250",
-    },
-    {
-      id: "5",
-      title: "Algorithms Workshop",
-      lastModified: "4 days ago",
-      thumbnail: "/placeholder.svg?height=150&width=250",
-    },
-    {
-      id: "6",
-      title: "React for Beginners",
-      lastModified: "2 weeks ago",
-      thumbnail: "/placeholder.svg?height=150&width=250",
-    },
-  ];
+  const presentations: Array<{
+    id: string;
+    title: string;
+    lastModified: string;
+    thumbnail: string;
+  }> = [];
 
   return (
     <SidebarProvider>
@@ -75,7 +42,7 @@ export default async function DashboardPage() {
         <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-[#d6c49f]/30 bg-white px-4">
           <h1 className="text-xl font-semibold text-[#6b8f2b]">Dashboard</h1>
           <div className="flex items-center gap-4">
-            <Link href="/launch-session" target="_blank">
+            <Link href="/launch-session">
               <Button className="flex items-center gap-2 bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white shadow-md">
                 <Plus className="h-4 w-4" />
                 Launch Session
@@ -98,10 +65,10 @@ export default async function DashboardPage() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="border-[#d6c49f]/30">
                 <DropdownMenuItem asChild>
-                  <Link href="/settings">Account</Link>
+                  <Link href="/dashboard/settings">Account</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/settings">Settings</Link>
+                  <Link href="/dashboard/settings">Settings</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <form action={signOutAction}>
@@ -132,52 +99,83 @@ export default async function DashboardPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {presentations.map((p) => (
-              <div
-                key={p.id}
-                className="group overflow-hidden rounded-xl border border-[#d6c49f]/30 bg-white shadow-sm transition-all hover:shadow-md"
-              >
-                <div className="aspect-video overflow-hidden bg-[#cfc6b8]/10">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={p.thumbnail || "/placeholder.svg"}
-                    alt={p.title}
-                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                  />
+            {presentations.length === 0 ? (
+              <div className="col-span-full flex flex-col items-center justify-center py-12 text-center">
+                <div className="rounded-full bg-[#a8d05f]/20 p-6 mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-[#6b8f2b]"
+                  >
+                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                    <path d="M7 7h10" />
+                    <path d="M7 12h10" />
+                    <path d="M7 17h10" />
+                  </svg>
                 </div>
-                <div className="p-4">
-                  <h3 className="font-medium text-[#6b8f2b]">{p.title}</h3>
-                  <p className="text-sm text-[#6b8f2b]/70">
-                    Modified {p.lastModified}
-                  </p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-[#d6c49f]/30 text-[#6b8f2b] hover:bg-[#a8d05f]/10 bg-transparent"
-                    >
-                      Edit
-                    </Button>
-                    <Link href="/launch-session" target="_blank">
+                <h3 className="text-xl font-semibold text-[#6b8f2b] mb-2">
+                  No presentations yet
+                </h3>
+                <p className="text-[#6b8f2b]/70 mb-6 max-w-md">
+                  Get started by launching your first coding session with Google
+                  Slides
+                </p>
+                <Link href="/launch-session" target="_blank">
+                  <Button className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white">
+                    <Plus className="h-4 w-4 mr-2" />
+                    Launch Your First Session
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              presentations.map((p) => (
+                <div
+                  key={p.id}
+                  className="group overflow-hidden rounded-xl border border-[#d6c49f]/30 bg-white shadow-sm transition-all hover:shadow-md"
+                >
+                  <div className="aspect-video overflow-hidden bg-[#cfc6b8]/10">
+                    <img
+                      src={p.thumbnail || "/placeholder.svg"}
+                      alt={p.title}
+                      className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-medium text-[#6b8f2b]">{p.title}</h3>
+                    <p className="text-sm text-[#6b8f2b]/70">
+                      Modified {p.lastModified}
+                    </p>
+                    <div className="mt-4 flex items-center justify-between">
                       <Button
+                        variant="outline"
                         size="sm"
-                        className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white"
+                        className="border-[#d6c49f]/30 text-[#6b8f2b] hover:bg-[#a8d05f]/10 bg-transparent"
                       >
-                        Launch
+                        Edit
                       </Button>
-                    </Link>
+                      <Link href="/launch-session" target="_blank">
+                        <Button
+                          size="sm"
+                          className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white"
+                        >
+                          Launch
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </main>
       </SidebarInset>
     </SidebarProvider>
   );
 }
-
-/**
- * Tiny server action to sign out.
- * Create file: src/lib/signout.ts
- */

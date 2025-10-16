@@ -3,8 +3,9 @@ import { useState } from "react";
 import type React from "react";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import { signIn } from "next-auth/react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,17 +19,44 @@ export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+
+  const handleGoogleSignIn = async () => {
+    setIsLoading(true);
+    try {
+      await signIn("google", { callbackUrl });
+    } catch (err) {
+      setError("Failed to sign in with Google");
+      setIsLoading(false);
+    }
+  };
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // TODO: replace with real email/password sign-in
-    setTimeout(() => {
-      if (email && password) router.push("/dashboard");
+    setError("");
+
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (result?.error) {
+        setError("Invalid email or password");
+        setIsLoading(false);
+      } else {
+        router.push(callbackUrl);
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
       setIsLoading(false);
-    }, 1200);
+    }
   };
 
   return (
@@ -50,17 +78,21 @@ export default function SignInPage() {
               <p className="mt-2 text-sm text-[#6b8f2b]/70">Welcome back! Please sign in to your account.</p>
             </div>
 
+            {error && (
+              <div className="rounded-lg bg-red-50 p-3 text-sm text-red-800">
+                {error}
+              </div>
+            )}
+
             {!showEmailForm ? (
               <div className="space-y-4">
                 <Button
-                  asChild
+                  onClick={handleGoogleSignIn}
+                  disabled={isLoading}
                   className="w-full bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white shadow-md"
                 >
-                  {/* NextAuth v4/v5-compatible param name */}
-                  <a href="/api/auth/signin/google?callbackUrl=/dashboard">
-                    <GoogleIcon />
-                    Sign in with Google
-                  </a>
+                  <GoogleIcon />
+                  Sign in with Google
                 </Button>
 
                 <div className="relative">
@@ -77,7 +109,7 @@ export default function SignInPage() {
                   variant="outline"
                   className="w-full border-[#6b8f2b] text-[#6b8f2b] hover:bg-[#a8d05f]/10 bg-transparent"
                 >
-                  Sign in with CodeKiwi Account
+                  Sign in with Email
                 </Button>
               </div>
             ) : (
@@ -136,7 +168,10 @@ export default function SignInPage() {
                   <Button
                     type="button"
                     variant="ghost"
-                    onClick={() => setShowEmailForm(false)}
+                    onClick={() => {
+                      setShowEmailForm(false);
+                      setError("");
+                    }}
                     className="text-sm text-[#6b8f2b] hover:text-[#6b8f2b]/80"
                   >
                     ← Back to sign-in options

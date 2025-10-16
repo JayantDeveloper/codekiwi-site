@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LayoutDashboard, Settings, Presentation } from "lucide-react";
 
 import {
@@ -12,24 +15,23 @@ import {
 } from "@/components/ui/sidebar";
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
   const menuItems = [
     {
       title: "Dashboard",
       icon: LayoutDashboard,
       href: "/dashboard",
-      isActive: true,
     },
     {
       title: "Sessions",
       icon: Presentation,
       href: "/dashboard/sessions",
-      isActive: false,
     },
     {
       title: "Settings",
       icon: Settings,
       href: "/dashboard/settings",
-      isActive: false,
     },
   ];
 
@@ -45,20 +47,23 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent className="px-3">
         <SidebarMenu>
-          {menuItems.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton
-                asChild
-                isActive={item.isActive}
-                className="text-[#6b8f2b] hover:bg-[#a8d05f]/10 hover:text-[#6b8f2b] data-[active=true]:bg-[#a8d05f]/20 data-[active=true]:text-[#6b8f2b]"
-              >
-                <Link href={item.href}>
-                  <item.icon className="h-4 w-4" />
-                  <span>{item.title}</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
+          {menuItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton
+                  asChild
+                  isActive={isActive}
+                  className="text-[#6b8f2b] hover:bg-[#a8d05f]/10 hover:text-[#6b8f2b] data-[active=true]:bg-[#a8d05f]/20 data-[active=true]:text-[#6b8f2b]"
+                >
+                  <Link href={item.href}>
+                    <item.icon className="h-4 w-4" />
+                    <span>{item.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            );
+          })}
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="px-3">

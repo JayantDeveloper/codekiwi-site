@@ -11,9 +11,11 @@ model User {
   id          String    @id @default(cuid())
   email       String    @unique
   name        String?
+  password    String?   // Add this for credentials sign-in
   image       String?
   givenName   String?
   familyName  String?
+  school      String?   // Add this for optional school/institution
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   settings    Settings?

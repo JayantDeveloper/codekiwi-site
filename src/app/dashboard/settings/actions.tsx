@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "@/auth";
+import { getServerSession } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import type { Prisma } from "@prisma/client";
 import { revalidatePath } from "next/cache";
@@ -19,7 +19,7 @@ function mergeJson(
 }
 
 export async function loadMeAndSettings() {
-  const session = await auth();
+  const session = await getServerSession();
   if (!session?.user?.email) return null;
 
   return prisma.user.findUnique({
@@ -29,7 +29,7 @@ export async function loadMeAndSettings() {
 }
 
 export async function updateProfile(formData: FormData): Promise<void> {
-  const session = await auth();
+  const session = await getServerSession();
   if (!session?.user?.id) throw new Error("Unauthorized");
 
   const name = (formData.get("name") as string | null) ?? null;
@@ -40,7 +40,6 @@ export async function updateProfile(formData: FormData): Promise<void> {
     data: { name },
   });
 
-  // 🔧 Merge school into existing JSON (don’t overwrite)
   const existing = await prisma.settings.findUnique({
     where: { userId: session.user.id },
     select: { json: true },
@@ -57,12 +56,12 @@ export async function updateProfile(formData: FormData): Promise<void> {
 }
 
 export async function updateSettings(formData: FormData): Promise<void> {
-  const session = await auth();
+  const session = await getServerSession();
   if (!session?.user?.id) throw new Error("Unauthorized");
 
   const theme = (formData.get("theme") as string) || "system";
   const editorFontSize = Number(formData.get("editorFontSize") ?? 14);
-  const lockDefault = formData.get("lockDefault") === "on"; // from checkbox below
+  const lockDefault = formData.get("lockDefault") === "on";
   const slidesPerPage = Number(formData.get("slidesPerPage") ?? 1);
 
   await prisma.settings.upsert({

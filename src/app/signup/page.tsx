@@ -3,7 +3,9 @@ import { useState } from "react";
 import type React from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import { signIn } from "next-auth/react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,20 +26,75 @@ export default function SignUpPage() {
     agreeToTerms: false,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const router = useRouter();
+
+  const handleGoogleSignUp = async () => {
+    setIsLoading(true);
+    try {
+      await signIn("google", { callbackUrl: "/dashboard" });
+    } catch (err) {
+      setError("Failed to sign up with Google");
+      setIsLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords don't match!");
+      setError("Passwords don't match!");
       return;
     }
     if (!formData.agreeToTerms) {
-      alert("Please agree to the terms and conditions");
+      setError("Please agree to the terms and conditions");
       return;
     }
+    if (formData.password.length < 8) {
+      setError("Password must be at least 8 characters");
+      return;
+    }
+
     setIsLoading(true);
-    // TODO: Replace with real sign-up flow
-    setTimeout(() => setIsLoading(false), 1000);
+
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          school: formData.school,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Failed to create account");
+        setIsLoading(false);
+        return;
+      }
+
+      const result = await signIn("credentials", {
+        redirect: false,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (result?.error) {
+        setError("Account created, but sign-in failed. Please try signing in.");
+        setIsLoading(false);
+      } else {
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string | boolean) =>
@@ -46,7 +103,6 @@ export default function SignUpPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-[#a8d05f]/5 to-white p-4">
       <div className="w-full max-w-md space-y-8">
-        {/* Logo */}
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="text-3xl font-bold text-[#6b8f2b]">CodeKiwi</span>
@@ -54,7 +110,6 @@ export default function SignUpPage() {
           </Link>
         </div>
 
-        {/* Card */}
         <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 shadow-lg">
           <div className="space-y-6">
             <div className="text-center">
@@ -66,16 +121,20 @@ export default function SignUpPage() {
               </p>
             </div>
 
+            {error && (
+              <div className="rounded-lg bg-red-50 p-3 text-sm text-red-800">
+                {error}
+              </div>
+            )}
+
             <div className="space-y-4">
               <Button
-                asChild
+                onClick={handleGoogleSignUp}
+                disabled={isLoading}
                 className="w-full bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white shadow-md"
               >
-                {/* NextAuth v4/v5-compatible param name */}
-                <a href="/api/auth/signin/google?callbackUrl=/dashboard">
-                  <GoogleIcon />
-                  Sign up with Google
-                </a>
+                <GoogleIcon />
+                Sign up with Google
               </Button>
 
               <div className="relative">
@@ -87,7 +146,6 @@ export default function SignUpPage() {
                 </div>
               </div>
 
-              {/* Email sign-up form */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-[#6b8f2b]">
@@ -143,12 +201,13 @@ export default function SignUpPage() {
                     <Input
                       id="password"
                       type={showPassword ? "text" : "password"}
-                      placeholder="Create a password"
+                      placeholder="Create a password (min. 8 characters)"
                       value={formData.password}
                       onChange={(e) =>
                         handleInputChange("password", e.target.value)
                       }
                       required
+                      minLength={8}
                       className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b] pr-10"
                     />
                     <Button
@@ -255,7 +314,6 @@ export default function SignUpPage() {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="text-center text-xs text-[#6b8f2b]/50">
           <p>© 2024 CodeKiwi. All rights reserved.</p>
         </div>
