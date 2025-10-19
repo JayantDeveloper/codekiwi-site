@@ -9,15 +9,15 @@ import GoogleIcon from "@/components/GoogleIcon";
 
 export default function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-white via-[#f8faf5] to-white overscroll-none">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#1a1a1a] via-[#a8d05f]/10 to-[#1a1a1a] overscroll-none">
       <header className="w-full bg-gradient-to-r from-[#6b8f2b] via-[#7da332] to-[#8fb73a] sticky top-0 z-50 shadow-lg backdrop-blur-sm bg-opacity-95">
         <div className="flex h-16 items-center py-4 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto w-full">
           <div className="flex flex-1 items-center gap-2">
             <span className="text-2xl font-bold text-white">CodeKiwi</span>
-            <Image 
-              src="https://www.codekiwi.app/codekiwilogo.png" 
-              alt="CodeKiwi Logo" 
-              width={32} 
+            <Image
+              src="https://www.codekiwi.app/codekiwilogo.png"
+              alt="CodeKiwi Logo"
+              width={32}
               height={32}
               className="object-contain"
             />
@@ -55,36 +55,45 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-20 md:py-28">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#a8d05f]/10 via-white to-[#6b8f2b]/5"></div>
-          
+        {/* Hero Section - Metallic Black Background */}
+        <section className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-[#0d0d0d] via-[#1a1a1a] to-[#0d0d0d]">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-[#a8d05f]/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#6b8f2b]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '700ms' }}></div>
+            <div className="absolute top-20 left-10 w-72 h-72 bg-[#a8d05f]/30 rounded-full blur-3xl animate-pulse"></div>
+            <div
+              className="absolute bottom-20 right-10 w-96 h-96 bg-[#6b8f2b]/30 rounded-full blur-3xl animate-pulse"
+              style={{ animationDelay: "700ms" }}
+            ></div>
+            <div
+              className="absolute top-1/2 left-1/2 w-80 h-80 bg-[#8fb73a]/25 rounded-full blur-3xl animate-pulse"
+              style={{ animationDelay: "1400ms" }}
+            ></div>
           </div>
 
           <div className="relative z-10 flex flex-col items-center justify-center space-y-8 text-center px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
             <div className="space-y-6 max-w-4xl">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#a8d05f]/20 border border-[#6b8f2b]/20 mb-4 animate-fade-in">
-                <Zap className="w-4 h-4 text-[#6b8f2b]" />
-                <span className="text-sm font-medium text-[#6b8f2b]">Live Interactive Coding</span>
-              </div>
-              
-              <h1 className="text-5xl font-bold tracking-tight text-[#6b8f2b] sm:text-6xl md:text-7xl leading-tight animate-fade-in" style={{ animationDelay: '100ms' }}>
+              <h1
+                className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl leading-tight animate-fade-in"
+                style={{ animationDelay: "100ms" }}
+              >
                 Teach coding with slides —{" "}
-                <span className="bg-gradient-to-r from-[#6b8f2b] to-[#a8d05f] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#a8d05f] to-[#6b8f2b] bg-clip-text text-transparent">
                   live and interactive
                 </span>
               </h1>
-              <p className="mx-auto max-w-[700px] text-lg text-[#6b8f2b]/70 md:text-xl leading-relaxed animate-fade-in" style={{ animationDelay: '200ms' }}>
+              <p
+                className="mx-auto max-w-[700px] text-lg text-[#a8d05f] md:text-xl leading-relaxed animate-fade-in font-medium"
+                style={{ animationDelay: "200ms" }}
+              >
                 Sync Google Slides with a live code editor. Monitor student
                 progress in real-time and make coding lessons engaging.
               </p>
             </div>
-            
-            <div className="flex flex-col gap-4 sm:flex-row animate-fade-in" style={{ animationDelay: '300ms' }}>
+
+            <div
+              className="flex flex-col gap-4 sm:flex-row animate-fade-in"
+              style={{ animationDelay: "300ms" }}
+            >
               <Button
                 asChild
                 size="lg"
@@ -99,18 +108,21 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-[#6b8f2b] text-[#6b8f2b] hover:bg-[#6b8f2b] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 bg-white text-base px-8"
+                  className="border-2 border-[#a8d05f] text-[#a8d05f] hover:bg-[#a8d05f] hover:text-[#1a1a1a] shadow-md hover:shadow-lg transition-all duration-300 bg-transparent text-base px-8"
                 >
                   Create Account
                 </Button>
               </Link>
             </div>
 
-            <p className="text-sm text-[#6b8f2b]/60 animate-fade-in" style={{ animationDelay: '400ms' }}>
+            <p
+              className="text-sm text-[#a8d05f] animate-fade-in font-medium"
+              style={{ animationDelay: "400ms" }}
+            >
               Already have an account?{" "}
               <Link
                 href="/signin"
-                className="font-medium text-[#6b8f2b] hover:underline transition-colors"
+                className="font-bold text-white hover:text-[#a8d05f] transition-colors hover:underline"
               >
                 Sign in here
               </Link>
@@ -118,36 +130,33 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Animated Demo Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-[#f8faf5]">
+        {/* Animated Demo Section - Light Green Background */}
+        <section className="py-20 bg-gradient-to-b from-[#a8d05f]/15 via-[#a8d05f]/10 to-[#a8d05f]/15">
           <div className="px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#a8d05f]/20 border border-[#6b8f2b]/20 mb-4">
-                <Play className="w-4 h-4 text-[#6b8f2b]" />
-                <span className="text-sm font-medium text-[#6b8f2b]">See It In Action</span>
-              </div>
-              <h2 className="text-4xl font-bold tracking-tight text-[#6b8f2b] sm:text-5xl mb-4">
+              <h2 className="text-4xl font-bold tracking-tight text-[#1a1a1a] sm:text-5xl mb-4">
                 The Student Experience
               </h2>
-              <p className="text-lg text-[#6b8f2b]/70 max-w-2xl mx-auto">
-                Watch how students interact with slides and code side-by-side in real-time
+              <p className="text-lg text-[#1a1a1a]/80 max-w-2xl mx-auto font-medium">
+                Watch how students interact with slides and code side-by-side in
+                real-time
               </p>
             </div>
 
             {/* Demo Container */}
             <div className="relative max-w-6xl mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#6b8f2b]/20 to-[#a8d05f]/20 blur-3xl transform scale-105"></div>
-              
-              <div className="relative bg-white rounded-2xl shadow-2xl border border-[#d6c49f]/30 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a]/40 to-[#6b8f2b]/40 blur-3xl transform scale-105"></div>
+
+              <div className="relative bg-[#1a1a1a] rounded-2xl shadow-2xl border-2 border-[#a8d05f]/50 overflow-hidden">
                 {/* Browser Chrome */}
-                <div className="bg-gradient-to-r from-gray-100 to-gray-50 px-4 py-3 border-b border-gray-200 flex items-center gap-2">
+                <div className="bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] px-4 py-3 border-b border-[#a8d05f] flex items-center gap-2">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-400"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                     <div className="w-3 h-3 rounded-full bg-green-400"></div>
                   </div>
                   <div className="flex-1 flex justify-center">
-                    <div className="bg-white px-4 py-1 rounded-md text-xs text-gray-500 border border-gray-200 max-w-xs truncate">
+                    <div className="bg-white px-4 py-1 rounded-md text-xs text-[#6b8f2b] font-medium border border-[#a8d05f] max-w-xs truncate">
                       codekiwi.app/session/live-demo
                     </div>
                   </div>
@@ -156,163 +165,155 @@ export default function LandingPage() {
                 {/* Split View Demo */}
                 <div className="grid md:grid-cols-2 gap-0 min-h-[500px]">
                   {/* Slides Panel */}
-                  <div className="bg-gradient-to-br from-[#6b8f2b]/5 to-[#a8d05f]/5 p-6 md:p-8 border-r border-gray-200">
-                    <div className="bg-white rounded-lg shadow-lg p-6 h-full animate-slide-in-left">
+                  <div className="bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/15 p-6 md:p-8 border-r-2 border-[#a8d05f]/30">
+                    <div className="bg-white rounded-lg shadow-lg p-6 h-full animate-slide-in-left border-2 border-[#a8d05f]/30">
                       <div className="space-y-4">
                         <div className="flex items-center gap-2 mb-6">
                           <div className="w-2 h-2 rounded-full bg-[#6b8f2b] animate-pulse"></div>
-                          <span className="text-xs font-medium text-[#6b8f2b]">LIVE PRESENTATION</span>
+                          <span className="text-xs font-medium text-[#6b8f2b]">
+                            LIVE PRESENTATION
+                          </span>
                         </div>
-                        
-                        <h3 className="text-2xl font-bold text-[#6b8f2b] mb-4">Introduction to Variables</h3>
-                        
+
+                        <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">
+                          Introduction to Variables
+                        </h3>
+
                         <div className="space-y-3">
-                          <div className="flex items-start gap-3 animate-fade-in" style={{ animationDelay: '500ms' }}>
-                            <div className="w-6 h-6 rounded-full bg-[#a8d05f]/20 flex items-center justify-center flex-shrink-0">
-                              <span className="text-xs font-bold text-[#6b8f2b]">1</span>
+                          <div
+                            className="flex items-start gap-3 animate-fade-in"
+                            style={{ animationDelay: "500ms" }}
+                          >
+                            <div className="w-6 h-6 rounded-full bg-[#6b8f2b] flex items-center justify-center flex-shrink-0">
+                              <span className="text-xs font-bold text-white">
+                                1
+                              </span>
                             </div>
-                            <p className="text-sm text-gray-700">Variables store data values</p>
+                            <p className="text-sm text-gray-700">
+                              Variables store data values
+                            </p>
                           </div>
-                          
-                          <div className="flex items-start gap-3 animate-fade-in" style={{ animationDelay: '700ms' }}>
-                            <div className="w-6 h-6 rounded-full bg-[#a8d05f]/20 flex items-center justify-center flex-shrink-0">
-                              <span className="text-xs font-bold text-[#6b8f2b]">2</span>
+
+                          <div
+                            className="flex items-start gap-3 animate-fade-in"
+                            style={{ animationDelay: "700ms" }}
+                          >
+                            <div className="w-6 h-6 rounded-full bg-[#6b8f2b] flex items-center justify-center flex-shrink-0">
+                              <span className="text-xs font-bold text-white">
+                                2
+                              </span>
                             </div>
-                            <p className="text-sm text-gray-700">Use <code className="bg-gray-100 px-2 py-0.5 rounded text-xs font-mono">let</code> to declare variables</p>
+                            <p className="text-sm text-gray-700">
+                              Use{" "}
+                              <code className="bg-[#a8d05f]/30 px-2 py-0.5 rounded text-xs font-mono text-[#1a1a1a] font-medium">
+                                let
+                              </code>{" "}
+                              to declare variables
+                            </p>
                           </div>
-                          
-                          <div className="flex items-start gap-3 animate-fade-in" style={{ animationDelay: '900ms' }}>
-                            <div className="w-6 h-6 rounded-full bg-[#a8d05f]/20 flex items-center justify-center flex-shrink-0">
-                              <span className="text-xs font-bold text-[#6b8f2b]">3</span>
+
+                          <div
+                            className="flex items-start gap-3 animate-fade-in"
+                            style={{ animationDelay: "900ms" }}
+                          >
+                            <div className="w-6 h-6 rounded-full bg-[#6b8f2b] flex items-center justify-center flex-shrink-0">
+                              <span className="text-xs font-bold text-white">
+                                3
+                              </span>
                             </div>
-                            <p className="text-sm text-gray-700">Try it yourself! →</p>
+                            <p className="text-sm text-gray-700">
+                              Try the example on the right →
+                            </p>
                           </div>
                         </div>
 
-                        <div className="mt-8 p-4 bg-[#a8d05f]/10 rounded-lg border border-[#6b8f2b]/20 animate-fade-in" style={{ animationDelay: '1100ms' }}>
-                          <p className="text-xs font-medium text-[#6b8f2b] mb-2">📝 Exercise:</p>
-                          <p className="text-sm text-gray-700">Create a variable called <code className="bg-white px-2 py-0.5 rounded text-xs font-mono">name</code> and assign it your name</p>
-                        </div>
-
-                        <div className="mt-4 flex items-center gap-2 text-xs text-gray-500 animate-fade-in" style={{ animationDelay: '1300ms' }}>
-                          <div className="flex -space-x-2">
-                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 border-2 border-white"></div>
-                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-white"></div>
-                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white"></div>
-                            <div className="w-6 h-6 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-[10px] font-medium">+21</div>
-                          </div>
-                          <span>24 students viewing</span>
+                        <div className="mt-8 p-4 bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 rounded-lg border-2 border-[#a8d05f]/50">
+                          <p className="text-xs font-semibold text-[#6b8f2b] mb-2">
+                            💡 TIP
+                          </p>
+                          <p className="text-xs text-gray-700">
+                            Variables can be updated with new values anytime!
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Code Editor Panel */}
-                  <div className="bg-[#1e1e1e] p-6 md:p-8">
-                    <div className="h-full flex flex-col animate-slide-in-right">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-2">
-                          <Code2 className="w-4 h-4 text-[#a8d05f]" />
-                          <span className="text-xs font-medium text-gray-400">CODE EDITOR</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                          <span className="text-xs text-gray-400">Connected</span>
+                  <div className="bg-[#0d0d0d] p-6 md:p-8">
+                    <div className="bg-[#1e1e1e] rounded-lg shadow-lg h-full flex flex-col animate-slide-in-right border-2 border-[#a8d05f]/30">
+                      {/* Editor Header */}
+                      <div className="bg-gradient-to-r from-[#2a2a2a] to-[#1a1a1a] px-4 py-2 rounded-t-lg flex items-center justify-between border-b-2 border-[#a8d05f]/50">
+                        <span className="text-xs font-medium text-[#a8d05f]">
+                          script.js
+                        </span>
+                        <div className="flex gap-1">
+                          <div className="w-2 h-2 rounded-full bg-[#a8d05f]"></div>
+                          <div className="w-2 h-2 rounded-full bg-[#a8d05f]"></div>
+                          <div className="w-2 h-2 rounded-full bg-[#a8d05f]"></div>
                         </div>
                       </div>
-                      
-                      <div className="flex-1 bg-[#252526] rounded-lg p-4 font-mono text-sm overflow-hidden">
+
+                      {/* Code Content */}
+                      <div className="flex-1 p-4 font-mono text-sm overflow-auto">
                         <div className="space-y-2">
-                          <div className="flex">
-                            <span className="text-gray-500 w-8 select-none">1</span>
-                            <span className="text-gray-500">// Create your variable here</span>
+                          <div className="typing-animation">
+                            <span className="text-[#569cd6]">let</span>
+                            <span className="text-[#9cdcfe]"> studentName</span>
+                            <span className="text-white"> = </span>
+                            <span className="text-[#ce9178]">"Alex"</span>
+                            <span className="text-white">;</span>
                           </div>
-                          <div className="flex">
-                            <span className="text-gray-500 w-8 select-none">2</span>
-                            <span className="typing-animation inline-block">
-                              <span className="text-[#569cd6]">let</span>
-                              <span className="text-gray-300"> name </span>
-                              <span className="text-[#d4d4d4]">=</span>
-                              <span className="text-[#ce9178]"> "Alex"</span>
-                              <span className="text-gray-300">;</span>
-                            </span>
+
+                          <div className="typing-animation-delayed">
+                            <span className="text-[#569cd6]">let</span>
+                            <span className="text-[#9cdcfe]"> grade</span>
+                            <span className="text-white"> = </span>
+                            <span className="text-[#b5cea8]">95</span>
+                            <span className="text-white">;</span>
                           </div>
-                          <div className="flex">
-                            <span className="text-gray-500 w-8 select-none">3</span>
-                            <span className="text-gray-400"></span>
-                          </div>
-                          <div className="flex">
-                            <span className="text-gray-500 w-8 select-none">4</span>
-                            <span className="text-gray-500">// Print the variable</span>
-                          </div>
-                          <div className="flex typing-animation-delayed">
-                            <span className="text-gray-500 w-8 select-none">5</span>
-                            <span>
-                              <span className="text-[#dcdcaa]">console</span>
-                              <span className="text-gray-300">.</span>
-                              <span className="text-[#dcdcaa]">log</span>
-                              <span className="text-gray-300">(name);</span>
-                            </span>
-                          </div>
-                        </div>
-                        
-                        <div className="mt-6 pt-4 border-t border-gray-700 typing-animation-delayed-2">
-                          <div className="text-xs text-gray-500 mb-2">OUTPUT:</div>
-                          <div className="text-[#a8d05f] flex items-center gap-2">
-                            <span>→</span>
-                            <span className="animate-fade-in">Alex</span>
+
+                          <div className="typing-animation-delayed-2">
+                            <span className="text-[#dcdcaa]">console</span>
+                            <span className="text-white">.</span>
+                            <span className="text-[#dcdcaa]">log</span>
+                            <span className="text-white">(studentName);</span>
                           </div>
                         </div>
                       </div>
 
-                      <div className="mt-4 flex items-center justify-between p-3 bg-[#252526] rounded-lg">
-                        <div className="flex items-center gap-2">
-                          <Users className="w-4 h-4 text-[#a8d05f]" />
-                          <span className="text-xs text-gray-400">Real-time sync active</span>
+                      {/* Console Output */}
+                      <div className="bg-[#0d0d0d] px-4 py-3 rounded-b-lg border-t-2 border-[#a8d05f]/30">
+                        <div className="text-xs font-medium text-[#a8d05f] mb-1">
+                          Console Output:
                         </div>
-                        <Button size="sm" className="bg-gradient-to-r from-[#a8d05f] to-[#8fb73a] hover:from-[#8fb73a] hover:to-[#7da332] text-white text-xs h-8 px-4 transition-all duration-300">
-                          <Play className="w-3 h-3 mr-1" />
-                          Run Code
-                        </Button>
+                        <div className="text-sm font-mono text-[#a8d05f]">
+                          {">"} Alex
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div className="text-center mt-12 space-y-4">
-              <p className="text-sm text-[#6b8f2b]/70">Students code along with your presentation in perfect sync</p>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-2 border-[#6b8f2b] text-[#6b8f2b] hover:bg-[#6b8f2b] hover:text-white transition-all duration-300"
-              >
-                <Link href="/signup">
-                  Start Teaching Today
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
           </div>
         </section>
 
-        {/* How It Works Section */}
-        <section className="py-20 bg-gradient-to-b from-[#f8faf5] to-white">
-          <div className="space-y-12 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
-            <div className="text-center">
-              <h2 className="text-4xl font-bold tracking-tight text-[#6b8f2b] sm:text-5xl mb-4">
-                How it works
+        {/* Features Section - Metallic Black Background */}
+        <section className="py-20 bg-gradient-to-b from-[#0d0d0d] via-[#1a1a1a] to-[#0d0d0d]">
+          <div className="px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-4">
+                Teaching Made Simple
               </h2>
-              <p className="mx-auto mt-4 max-w-[700px] text-lg text-[#6b8f2b]/70">
-                Three simple steps to transform your coding lessons
+              <p className="text-lg text-[#a8d05f] max-w-2xl mx-auto font-medium">
+                Three easy steps to transform your coding lessons
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="group flex flex-col items-center space-y-4 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-2xl hover:border-[#a8d05f]/50 transition-all duration-300 hover:-translate-y-2">
-                <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 group-hover:scale-110 transition-transform duration-300">
+
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="group flex flex-col items-center space-y-4 rounded-2xl border-2 border-[#a8d05f] bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] p-8 shadow-lg hover:shadow-2xl hover:border-[#6b8f2b] hover:bg-gradient-to-br hover:from-[#2a2a2a] hover:to-[#1a1a1a] transition-all duration-300 hover:-translate-y-2">
+                <div className="rounded-2xl bg-gradient-to-br from-[#6b8f2b] to-[#8fb73a] p-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -323,22 +324,24 @@ export default function LandingPage() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-8 w-8 text-[#6b8f2b]"
+                    className="h-8 w-8 text-white"
                   >
-                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
-                    <path d="M13 2v7h7" />
+                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                    <path d="M10 9H8" />
+                    <path d="M16 13H8" />
+                    <path d="M16 17H8" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-[#6b8f2b]">
-                  Create Slides
-                </h3>
-                <p className="text-center text-[#6b8f2b]/70 leading-relaxed">
-                  Design your lessons in Google Slides with coding exercises and examples
+                <h3 className="text-2xl font-bold text-white">Sync Slides</h3>
+                <p className="text-center text-[#a8d05f] leading-relaxed font-medium">
+                  Connect your Google Slides presentation with CodeKiwi in
+                  seconds
                 </p>
               </div>
-              
-              <div className="group flex flex-col items-center space-y-4 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-2xl hover:border-[#a8d05f]/50 transition-all duration-300 hover:-translate-y-2">
-                <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 group-hover:scale-110 transition-transform duration-300">
+
+              <div className="group flex flex-col items-center space-y-4 rounded-2xl border-2 border-[#a8d05f] bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] p-8 shadow-lg hover:shadow-2xl hover:border-[#6b8f2b] hover:bg-gradient-to-br hover:from-[#2a2a2a] hover:to-[#1a1a1a] transition-all duration-300 hover:-translate-y-2">
+                <div className="rounded-2xl bg-gradient-to-br from-[#6b8f2b] to-[#8fb73a] p-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -349,7 +352,7 @@ export default function LandingPage() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-8 w-8 text-[#6b8f2b]"
+                    className="h-8 w-8 text-white"
                   >
                     <rect width="18" height="18" x="3" y="3" rx="2" />
                     <path d="M7 7h10" />
@@ -357,16 +360,17 @@ export default function LandingPage() {
                     <path d="M7 17h10" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-[#6b8f2b]">
+                <h3 className="text-2xl font-bold text-white">
                   Launch Session
                 </h3>
-                <p className="text-center text-[#6b8f2b]/70 leading-relaxed">
-                  Share a link and start an interactive coding session with your class instantly
+                <p className="text-center text-[#a8d05f] leading-relaxed font-medium">
+                  Share a link and start an interactive coding session with your
+                  class instantly
                 </p>
               </div>
-              
-              <div className="group flex flex-col items-center space-y-4 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-2xl hover:border-[#a8d05f]/50 transition-all duration-300 hover:-translate-y-2">
-                <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 group-hover:scale-110 transition-transform duration-300">
+
+              <div className="group flex flex-col items-center space-y-4 rounded-2xl border-2 border-[#a8d05f] bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] p-8 shadow-lg hover:shadow-2xl hover:border-[#6b8f2b] hover:bg-gradient-to-br hover:from-[#2a2a2a] hover:to-[#1a1a1a] transition-all duration-300 hover:-translate-y-2">
+                <div className="rounded-2xl bg-gradient-to-br from-[#6b8f2b] to-[#8fb73a] p-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -377,21 +381,22 @@ export default function LandingPage() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-8 w-8 text-[#6b8f2b]"
+                    className="h-8 w-8 text-white"
                   >
                     <path d="M12 20h9" />
                     <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-[#6b8f2b]">
+                <h3 className="text-2xl font-bold text-white">
                   Monitor Progress
                 </h3>
-                <p className="text-center text-[#6b8f2b]/70 leading-relaxed">
-                  See every student's code in real-time and provide instant, personalized feedback
+                <p className="text-center text-[#a8d05f] leading-relaxed font-medium">
+                  See every student's code in real-time and provide instant,
+                  personalized feedback
                 </p>
               </div>
             </div>
-            
+
             <div className="flex justify-center pt-8">
               <Button
                 asChild
@@ -408,37 +413,37 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="border-t border-[#d6c49f]/30 py-12 bg-gradient-to-b from-white to-[#f8faf5]">
+      <footer className="border-t-2 border-[#6b8f2b] py-12 bg-gradient-to-b from-[#6b8f2b] via-[#7da332] to-[#8fb73a]">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row px-4 sm:px-8 md:px-12 max-w-7xl mx-auto w-full">
           <div className="flex items-center gap-2">
-            <span className="text-xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-            <Image 
-              src="https://www.codekiwi.app/codekiwilogo.png" 
-              alt="CodeKiwi Logo" 
-              width={28} 
+            <span className="text-xl font-bold text-white">CodeKiwi</span>
+            <Image
+              src="https://www.codekiwi.app/codekiwilogo.png"
+              alt="CodeKiwi Logo"
+              width={28}
               height={28}
               className="object-contain"
             />
           </div>
-          <p className="text-sm text-[#6b8f2b]/70">
+          <p className="text-sm text-white/90 font-medium">
             © 2024 CodeKiwi. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
               href="/terms#acceptable-use"
-              className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors hover:underline"
+              className="text-sm text-white/90 hover:text-white transition-colors hover:underline font-medium"
             >
               Terms
             </Link>
             <Link
               href="/privacy#data-collection"
-              className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors hover:underline"
+              className="text-sm text-white/90 hover:text-white transition-colors hover:underline font-medium"
             >
               Privacy
             </Link>
             <Link
               href="mailto:support@codekiwi.tech"
-              className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors hover:underline"
+              className="text-sm text-white/90 hover:text-white transition-colors hover:underline font-medium"
             >
               Contact
             </Link>
@@ -496,7 +501,8 @@ export default function LandingPage() {
           display: inline-block;
           overflow: hidden;
           white-space: nowrap;
-          animation: typing 2s steps(40) 0.5s forwards, blink 0.75s step-end infinite;
+          animation: typing 2s steps(40) 0.5s forwards,
+            blink 0.75s step-end infinite;
           opacity: 0;
           max-width: 0;
         }
@@ -526,7 +532,8 @@ export default function LandingPage() {
         }
 
         @keyframes blink {
-          from, to {
+          from,
+          to {
             border-right-color: transparent;
           }
           50% {

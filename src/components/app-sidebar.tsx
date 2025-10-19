@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { LayoutDashboard, Settings, Presentation } from "lucide-react";
 
@@ -36,12 +37,18 @@ export function AppSidebar() {
   ];
 
   return (
-    <Sidebar className="border-r border-[#d6c49f]/30 bg-white">
-      <SidebarHeader className="h-16 border-b border-[#d6c49f]/30">
+    <Sidebar className="border-r-2 border-[#a8d05f]/30 bg-gradient-to-b from-[#6b8f2b] via-[#7da332] to-[#a8d05f] [&_[data-sidebar=sidebar]]:bg-transparent">
+      <SidebarHeader className="h-16 border-b-2 border-[#a8d05f]/30">
         <div className="flex h-full items-center px-4">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-            <span className="text-xl">🥝</span>
+            <span className="text-xl font-bold text-white">CodeKiwi</span>
+            <Image 
+              src="https://www.codekiwi.app/codekiwilogo.png" 
+              alt="CodeKiwi Logo" 
+              width={32} 
+              height={32}
+              className="object-contain"
+            />
           </Link>
         </div>
       </SidebarHeader>
@@ -54,7 +61,7 @@ export function AppSidebar() {
                 <SidebarMenuButton
                   asChild
                   isActive={isActive}
-                  className="text-[#6b8f2b] hover:bg-[#a8d05f]/10 hover:text-[#6b8f2b] data-[active=true]:bg-[#a8d05f]/20 data-[active=true]:text-[#6b8f2b]"
+                  className="text-white hover:bg-white/20 hover:text-white data-[active=true]:bg-white/30 data-[active=true]:text-white"
                 >
                   <Link href={item.href}>
                     <item.icon className="h-4 w-4" />
@@ -66,8 +73,8 @@ export function AppSidebar() {
           })}
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter className="px-3">
-        <div className="p-4 text-xs text-[#6b8f2b]/70">
+      <SidebarFooter className="px-3 border-t-2 border-[#a8d05f]/30">
+        <div className="p-4 text-xs text-white/70">
           <p>© 2024 CodeKiwi</p>
         </div>
       </SidebarFooter>
