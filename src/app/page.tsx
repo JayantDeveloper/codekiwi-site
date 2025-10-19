@@ -1,13 +1,57 @@
+/* eslint-disable */
 "use client";
 
 import Link from "next/link";
 import { ArrowRight, Code2, Users, Zap, Play } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import GoogleIcon from "@/components/GoogleIcon";
 
 export default function LandingPage() {
+  // Scroll animation state
+  const [isVisible, setIsVisible] = useState({
+    demo: false,
+    features: false,
+  });
+
+  const demoRef = useRef(null);
+  const featuresRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.2, // Trigger when 20% of element is visible
+      rootMargin: "0px",
+    };
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement; // Cast to HTMLElement
+          if (target.id === "demo-section") {
+            setIsVisible((prev) => ({ ...prev, demo: true }));
+          } else if (target.id === "features-section") {
+            setIsVisible((prev) => ({ ...prev, features: true }));
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    if (demoRef.current) observer.observe(demoRef.current);
+    if (featuresRef.current) observer.observe(featuresRef.current);
+
+    return () => {
+      if (demoRef.current) observer.unobserve(demoRef.current);
+      if (featuresRef.current) observer.unobserve(featuresRef.current);
+    };
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#1a1a1a] via-[#a8d05f]/10 to-[#1a1a1a] overscroll-none">
       <header className="w-full bg-gradient-to-r from-[#6b8f2b] via-[#7da332] to-[#8fb73a] sticky top-0 z-50 shadow-lg backdrop-blur-sm bg-opacity-95">
@@ -131,7 +175,11 @@ export default function LandingPage() {
         </section>
 
         {/* Animated Demo Section - Light Green Background */}
-        <section className="py-20 bg-gradient-to-b from-[#a8d05f]/15 via-[#a8d05f]/10 to-[#a8d05f]/15">
+        <section
+          id="demo-section"
+          ref={demoRef}
+          className="py-20 bg-gradient-to-b from-[#daf0c0] via-[#e8f5d8] to-[#daf0c0]"
+        >
           <div className="px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold tracking-tight text-[#1a1a1a] sm:text-5xl mb-4">
@@ -162,176 +210,293 @@ export default function LandingPage() {
                   </div>
                 </div>
 
-                {/* Split View Demo */}
-                <div className="grid md:grid-cols-2 gap-0 min-h-[500px]">
-                  {/* Slides Panel */}
-                  <div className="bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/15 p-6 md:p-8 border-r-2 border-[#a8d05f]/30">
-                    <div className="bg-white rounded-lg shadow-lg p-6 h-full animate-slide-in-left border-2 border-[#a8d05f]/30">
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-2 mb-6">
-                          <div className="w-2 h-2 rounded-full bg-[#6b8f2b] animate-pulse"></div>
-                          <span className="text-xs font-medium text-[#6b8f2b]">
-                            LIVE PRESENTATION
+                {/* Split View Content */}
+                <div className="grid md:grid-cols-2 divide-x divide-[#a8d05f]/30">
+                  {/* Left Side - Google Slides */}
+                  <div className="p-6 bg-white min-h-[500px] flex flex-col">
+                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-200">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 rounded-full bg-[#6b8f2b]"></div>
+                        <div className="w-2 h-2 rounded-full bg-[#8fb73a]"></div>
+                        <div className="w-2 h-2 rounded-full bg-[#a8d05f]"></div>
+                      </div>
+                      <span className="text-xs text-gray-600 font-medium">
+                        Google Slides
+                      </span>
+                    </div>
+
+                    <div
+                      className={`flex-1 flex flex-col justify-center transition-all duration-1000 ${
+                        isVisible.demo
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 -translate-x-8"
+                      }`}
+                    >
+                      <div className="space-y-6 p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-inner">
+                        <div>
+                          <h3 className="text-2xl font-bold text-[#1a1a1a] mb-2">
+                            Python Functions
+                          </h3>
+                          <div className="w-16 h-1 bg-gradient-to-r from-[#6b8f2b] to-[#a8d05f] rounded-full"></div>
+                        </div>
+                        <div className="space-y-4">
+                          <div className="flex items-start gap-3">
+                            <div className="min-w-[28px] h-7 rounded-full bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] flex items-center justify-center text-white text-xs font-bold shadow-md">
+                              1
+                            </div>
+                            <p className="text-sm text-gray-700 leading-relaxed pt-1">
+                              Functions are reusable blocks of code
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <div className="min-w-[28px] h-7 rounded-full bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] flex items-center justify-center text-white text-xs font-bold shadow-md">
+                              2
+                            </div>
+                            <p className="text-sm text-gray-700 leading-relaxed pt-1">
+                              Use{" "}
+                              <code className="px-2 py-0.5 bg-gray-200 rounded text-[#6b8f2b] font-mono text-xs">
+                                def
+                              </code>{" "}
+                              keyword to define
+                            </p>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <div className="min-w-[28px] h-7 rounded-full bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] flex items-center justify-center text-white text-xs font-bold shadow-md">
+                              3
+                            </div>
+                            <p className="text-sm text-gray-700 leading-relaxed pt-1">
+                              Parameters go inside parentheses
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Tip Box */}
+                        <div className="bg-[#daf0c0] border-l-4 border-[#6b8f2b] p-4 rounded-r-lg shadow-sm">
+                          <div className="flex items-start gap-2">
+                            <svg
+                              className="w-5 h-5 text-[#6b8f2b] flex-shrink-0 mt-0.5"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            <div>
+                              <p className="text-xs font-bold text-[#6b8f2b] mb-1">
+                                💡 Tip
+                              </p>
+                              <p className="text-xs text-gray-700 leading-relaxed">
+                                Try creating a function that takes your name and
+                                prints a personalized message!
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Code Editor with VSCode styling */}
+                  <div className="bg-[#1e1e1e] min-h-[500px] flex flex-col">
+                    {/* Editor Header */}
+                    <div className="flex items-center gap-2 px-4 py-2 bg-[#252526] border-b border-[#3e3e42]">
+                      <div className="flex items-center gap-2 px-3 py-1 bg-[#1e1e1e] rounded-t">
+                        <svg
+                          className="w-4 h-4 text-[#3b82f6]"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                        </svg>
+                        <span className="text-xs text-gray-300 font-medium">
+                          main.py
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Code Editor Content - 70% */}
+                    <div className="flex-[7] p-4 font-mono text-sm overflow-hidden">
+                      <div className="space-y-1">
+                        {/* Line 1 */}
+                        <div className="flex">
+                          <span className="inline-block w-10 text-right pr-4 text-gray-600 select-none">
+                            1
+                          </span>
+                          <span
+                            className={`code-line ${
+                              isVisible.demo ? "typing-line-1" : ""
+                            }`}
+                          >
+                            <span className="text-[#c586c0]">def</span>
+                            <span className="text-[#dcdcaa]"> greet</span>
+                            <span className="text-gray-300">(</span>
+                            <span className="text-[#9cdcfe]">name</span>
+                            <span className="text-gray-300">):</span>
                           </span>
                         </div>
 
-                        <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">
-                          Introduction to Variables
-                        </h3>
-
-                        <div className="space-y-3">
-                          <div
-                            className="flex items-start gap-3 animate-fade-in"
-                            style={{ animationDelay: "500ms" }}
+                        {/* Line 2 */}
+                        <div className="flex">
+                          <span className="inline-block w-10 text-right pr-4 text-gray-600 select-none">
+                            2
+                          </span>
+                          <span
+                            className={`code-line ${
+                              isVisible.demo ? "typing-line-2" : ""
+                            }`}
                           >
-                            <div className="w-6 h-6 rounded-full bg-[#6b8f2b] flex items-center justify-center flex-shrink-0">
-                              <span className="text-xs font-bold text-white">
-                                1
-                              </span>
-                            </div>
-                            <p className="text-sm text-gray-700">
-                              Variables store data values
-                            </p>
-                          </div>
-
-                          <div
-                            className="flex items-start gap-3 animate-fade-in"
-                            style={{ animationDelay: "700ms" }}
-                          >
-                            <div className="w-6 h-6 rounded-full bg-[#6b8f2b] flex items-center justify-center flex-shrink-0">
-                              <span className="text-xs font-bold text-white">
-                                2
-                              </span>
-                            </div>
-                            <p className="text-sm text-gray-700">
-                              Use{" "}
-                              <code className="bg-[#a8d05f]/30 px-2 py-0.5 rounded text-xs font-mono text-[#1a1a1a] font-medium">
-                                let
-                              </code>{" "}
-                              to declare variables
-                            </p>
-                          </div>
-
-                          <div
-                            className="flex items-start gap-3 animate-fade-in"
-                            style={{ animationDelay: "900ms" }}
-                          >
-                            <div className="w-6 h-6 rounded-full bg-[#6b8f2b] flex items-center justify-center flex-shrink-0">
-                              <span className="text-xs font-bold text-white">
-                                3
-                              </span>
-                            </div>
-                            <p className="text-sm text-gray-700">
-                              Try the example on the right →
-                            </p>
-                          </div>
+                            <span className="text-gray-300"> </span>
+                            <span className="text-gray-600">
+                              # Prints a greeting message
+                            </span>
+                          </span>
                         </div>
 
-                        <div className="mt-8 p-4 bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 rounded-lg border-2 border-[#a8d05f]/50">
-                          <p className="text-xs font-semibold text-[#6b8f2b] mb-2">
-                            💡 TIP
-                          </p>
-                          <p className="text-xs text-gray-700">
-                            Variables can be updated with new values anytime!
-                          </p>
+                        {/* Line 3 */}
+                        <div className="flex">
+                          <span className="inline-block w-10 text-right pr-4 text-gray-600 select-none">
+                            3
+                          </span>
+                          <span
+                            className={`code-line ${
+                              isVisible.demo ? "typing-line-3" : ""
+                            }`}
+                          >
+                            <span className="text-gray-300"> </span>
+                            <span className="text-[#dcdcaa]">print</span>
+                            <span className="text-gray-300">(</span>
+                            <span className="text-[#ce9178]">
+                              f&quot;Hello,{" "}
+                            </span>
+                            <span className="text-gray-300">{"{"}</span>
+                            <span className="text-[#9cdcfe]">name</span>
+                            <span className="text-gray-300">{"}"}</span>
+                            <span className="text-[#ce9178]">!&quot;</span>
+                            <span className="text-gray-300">)</span>
+                          </span>
+                        </div>
+
+                        {/* Line 4 - Empty */}
+                        <div className="flex">
+                          <span className="inline-block w-10 text-right pr-4 text-gray-600 select-none">
+                            4
+                          </span>
+                          <span
+                            className={`code-line ${
+                              isVisible.demo ? "typing-line-4" : ""
+                            }`}
+                          ></span>
+                        </div>
+
+                        {/* Line 5 */}
+                        <div className="flex">
+                          <span className="inline-block w-10 text-right pr-4 text-gray-600 select-none">
+                            5
+                          </span>
+                          <span
+                            className={`code-line ${
+                              isVisible.demo ? "typing-line-5" : ""
+                            }`}
+                          >
+                            <span className="text-gray-600">
+                              # Call the function
+                            </span>
+                          </span>
+                        </div>
+
+                        {/* Line 6 */}
+                        <div className="flex">
+                          <span className="inline-block w-10 text-right pr-4 text-gray-600 select-none">
+                            6
+                          </span>
+                          <span
+                            className={`code-line ${
+                              isVisible.demo ? "typing-line-6" : ""
+                            }`}
+                          >
+                            <span className="text-[#dcdcaa]">greet</span>
+                            <span className="text-gray-300">(</span>
+                            <span className="text-[#ce9178]">
+                              &quot;Student&quot;
+                            </span>
+                            <span className="text-gray-300">)</span>
+                          </span>
                         </div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* Code Editor Panel */}
-                  <div className="bg-[#0d0d0d] p-6 md:p-8">
-                    <div className="bg-[#1e1e1e] rounded-lg shadow-lg h-full flex flex-col animate-slide-in-right border-2 border-[#a8d05f]/30">
-                      {/* Editor Header */}
-                      <div className="bg-gradient-to-r from-[#2a2a2a] to-[#1a1a1a] px-4 py-2 rounded-t-lg flex items-center justify-between border-b-2 border-[#a8d05f]/50">
-                        <span className="text-xs font-medium text-[#a8d05f]">
-                          script.js
+                      {/* Cursor */}
+                      <div
+                        className={`code-line ${
+                          isVisible.demo ? "typing-cursor" : ""
+                        }`}
+                      >
+                        <span className="inline-block w-10"></span>
+                        <span className="inline-block w-2 h-5 bg-white animate-pulse"></span>
+                      </div>
+                    </div>
+
+                    {/* Output Terminal - 30% */}
+                    <div className="flex-[3] border-t border-[#3e3e42] bg-[#181818] p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Play className="w-3 h-3 text-[#a8d05f]" />
+                        <span className="text-xs text-gray-400 font-medium">
+                          Output
                         </span>
-                        <div className="flex gap-1">
-                          <div className="w-2 h-2 rounded-full bg-[#a8d05f]"></div>
-                          <div className="w-2 h-2 rounded-full bg-[#a8d05f]"></div>
-                          <div className="w-2 h-2 rounded-full bg-[#a8d05f]"></div>
-                        </div>
                       </div>
-
-                      {/* Code Content */}
-                      <div className="flex-1 p-4 font-mono text-sm overflow-auto">
-                        <div className="space-y-2">
-                          <div className="typing-animation">
-                            <span className="text-[#569cd6]">let</span>
-                            <span className="text-[#9cdcfe]"> studentName</span>
-                            <span className="text-white"> = </span>
-                            <span className="text-[#ce9178]">&quot;Alex&quot;</span>
-                            <span className="text-white">;</span>
-                          </div>
-
-                          <div className="typing-animation-delayed">
-                            <span className="text-[#569cd6]">let</span>
-                            <span className="text-[#9cdcfe]"> grade</span>
-                            <span className="text-white"> = </span>
-                            <span className="text-[#b5cea8]">95</span>
-                            <span className="text-white">;</span>
-                          </div>
-
-                          <div className="typing-animation-delayed-2">
-                            <span className="text-[#dcdcaa]">console</span>
-                            <span className="text-white">.</span>
-                            <span className="text-[#dcdcaa]">log</span>
-                            <span className="text-white">(studentName);</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Console Output */}
-                      <div className="bg-[#0d0d0d] px-4 py-3 rounded-b-lg border-t-2 border-[#a8d05f]/30">
-                        <div className="text-xs font-medium text-[#a8d05f] mb-1">
-                          Console Output:
-                        </div>
-                        <div className="text-sm font-mono text-[#a8d05f]">
-                          {">"} Alex
-                        </div>
+                      <div
+                        className={`font-mono text-sm text-[#a8d05f] ${
+                          isVisible.demo ? "typing-output" : "opacity-0"
+                        }`}
+                      >
+                        Hello, Student!
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* Visual Sync Indicator */}
+              <div
+                className={`absolute -bottom-6 left-1/2 -translate-x-1/2 transition-all duration-1000 ${
+                  isVisible.demo
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+              >
+                <div className="bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] px-6 py-2 rounded-full shadow-lg border-2 border-white flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+                  <span className="text-white text-sm font-bold">
+                    Live Sync Active
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section - Metallic Black Background */}
-        <section className="py-20 bg-gradient-to-b from-[#0d0d0d] via-[#1a1a1a] to-[#0d0d0d]">
+        {/* Features Section */}
+        <section
+          id="features-section"
+          ref={featuresRef}
+          className="py-20 bg-gradient-to-b from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a]"
+        >
           <div className="px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-4">
-                Teaching Made Simple
+                Why Teachers Choose CodeKiwi
               </h2>
               <p className="text-lg text-[#a8d05f] max-w-2xl mx-auto font-medium">
-                Three easy steps to transform your coding lessons
+                Everything you need to teach coding effectively in one platform
               </p>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-3">
               <div className="group flex flex-col items-center space-y-4 rounded-2xl border-2 border-[#a8d05f] bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] p-8 shadow-lg hover:shadow-2xl hover:border-[#6b8f2b] hover:bg-gradient-to-br hover:from-[#2a2a2a] hover:to-[#1a1a1a] transition-all duration-300 hover:-translate-y-2">
                 <div className="rounded-2xl bg-gradient-to-br from-[#6b8f2b] to-[#8fb73a] p-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-8 w-8 text-white"
-                  >
-                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                    <path d="M10 9H8" />
-                    <path d="M16 13H8" />
-                    <path d="M16 17H8" />
-                  </svg>
+                  <Code2 className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white">Sync Slides</h3>
                 <p className="text-center text-[#a8d05f] leading-relaxed font-medium">
@@ -442,7 +607,7 @@ export default function LandingPage() {
               Privacy
             </Link>
             <Link
-              href="mailto:support@codekiwi.tech"
+              href="mailto:jaymaheshwari2603@gmail.com"
               className="text-sm text-white/90 hover:text-white transition-colors hover:underline font-medium"
             >
               Contact
@@ -485,6 +650,17 @@ export default function LandingPage() {
           }
         }
 
+        @keyframes typing {
+          from {
+            opacity: 1; /* changed from 0 to 1 */
+            max-width: 0;
+          }
+          to {
+            opacity: 1;
+            max-width: 100%;
+          }
+        }
+
         .animate-fade-in {
           animation: fade-in 0.8s ease-out forwards;
         }
@@ -497,48 +673,46 @@ export default function LandingPage() {
           animation: slide-in-right 0.8s ease-out forwards;
         }
 
-        .typing-animation {
+        .code-line {
           display: inline-block;
           overflow: hidden;
           white-space: nowrap;
-          animation: typing 2s steps(40) 0.5s forwards,
-            blink 0.75s step-end infinite;
-          opacity: 0;
+          opacity: 1; /* changed from 0 to 1 */
           max-width: 0;
         }
 
-        .typing-animation-delayed {
-          animation: typing 1.5s steps(30) 2.5s forwards;
+        .typing-line-1 {
+          animation: typing 3.5s steps(30) 0.3s forwards; /* was 2.0s */
+        }
+
+        .typing-line-2 {
+          animation: typing 2s steps(30) 1.1s forwards; /* was 2.0s */
+        }
+
+        .typing-line-3 {
+          animation: typing 3s steps(40) 1.9s forwards; /* was 1.5s */
+        }
+
+        .typing-line-4 {
+          animation: typing 3.5s steps(5) 2.9s forwards; /* was 2.0s */
+        }
+
+        .typing-line-5 {
+          animation: typing 2s steps(30) 3.2s forwards; /* was 2.0s */
+        }
+
+        .typing-line-6 {
+          animation: typing 3.5s steps(30) 4s forwards; /* was 2.0s */
+        }
+
+        .typing-cursor {
+          animation: fade-in 0.3s ease-out 4.8s forwards;
           opacity: 0;
-          max-width: 0;
-          overflow: hidden;
-          white-space: nowrap;
         }
 
-        .typing-animation-delayed-2 {
-          animation: fade-in 0.8s ease-out 4s forwards;
+        .typing-output {
+          animation: fade-in 0.5s ease-out 5.2s forwards;
           opacity: 0;
-        }
-
-        @keyframes typing {
-          from {
-            max-width: 0;
-            opacity: 1;
-          }
-          to {
-            max-width: 100%;
-            opacity: 1;
-          }
-        }
-
-        @keyframes blink {
-          from,
-          to {
-            border-right-color: transparent;
-          }
-          50% {
-            border-right-color: #a8d05f;
-          }
         }
       `}</style>
     </div>

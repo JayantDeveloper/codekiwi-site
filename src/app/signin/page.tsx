@@ -4,6 +4,7 @@ import type React from "react";
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 
@@ -60,13 +61,19 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-[#a8d05f]/5 to-white p-4">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-white via-[#a8d05f]/40 to-[#a8d05f] p-4">
       <div className="w-full max-w-md space-y-8">
         {/* Logo */}
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="text-3xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-            <span className="text-3xl">🥝</span>
+            <Image
+              src="https://www.codekiwi.app/codekiwilogo.png"
+              alt="CodeKiwi Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
           </Link>
         </div>
 
@@ -74,8 +81,12 @@ export default function SignInPage() {
         <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 shadow-lg">
           <div className="space-y-6">
             <div className="text-center">
-              <h1 className="text-2xl font-bold text-[#6b8f2b]">Sign in to CodeKiwi</h1>
-              <p className="mt-2 text-sm text-[#6b8f2b]/70">Welcome back! Please sign in to your account.</p>
+              <h1 className="text-2xl font-bold text-[#6b8f2b]">
+                Sign in to CodeKiwi
+              </h1>
+              <p className="mt-2 text-sm text-[#6b8f2b]/70">
+                Welcome back! Please sign in to your account.
+              </p>
             </div>
 
             {error && (
@@ -115,7 +126,9 @@ export default function SignInPage() {
             ) : (
               <form onSubmit={handleEmailSignIn} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-[#6b8f2b]">Email</Label>
+                  <Label htmlFor="email" className="text-[#6b8f2b]">
+                    Email
+                  </Label>
                   <Input
                     id="email"
                     type="email"
@@ -128,7 +141,9 @@ export default function SignInPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-[#6b8f2b]">Password</Label>
+                  <Label htmlFor="password" className="text-[#6b8f2b]">
+                    Password
+                  </Label>
                   <div className="relative">
                     <Input
                       id="password"
@@ -146,18 +161,29 @@ export default function SignInPage() {
                       className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <EyeOff className="h-4 w-4 text-[#6b8f2b]/70" /> : <Eye className="h-4 w-4 text-[#6b8f2b]/70" />}
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4 text-[#6b8f2b]/70" />
+                      ) : (
+                        <Eye className="h-4 w-4 text-[#6b8f2b]/70" />
+                      )}
                     </Button>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Link href="/forgot-password" className="text-sm text-[#6b8f2b] hover:text-[#6b8f2b]/80 hover:underline">
+                  <Link
+                    href="/forgot-password"
+                    className="text-sm text-[#6b8f2b] hover:text-[#6b8f2b]/80 hover:underline"
+                  >
                     Forgot password?
                   </Link>
                 </div>
 
-                <Button type="submit" disabled={isLoading} className="w-full bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white">
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white"
+                >
                   {isLoading ? (
                     <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
                   ) : null}
@@ -183,7 +209,10 @@ export default function SignInPage() {
             <div className="text-center">
               <p className="text-sm text-[#6b8f2b]/70">
                 Don&apos;t have an account?{" "}
-                <Link href="/signup" className="font-medium text-[#6b8f2b] hover:text-[#6b8f2b]/80 hover:underline">
+                <Link
+                  href="/signup"
+                  className="font-medium text-[#6b8f2b] hover:text-[#6b8f2b]/80 hover:underline"
+                >
                   Sign up
                 </Link>
               </p>
@@ -192,7 +221,7 @@ export default function SignInPage() {
         </div>
 
         {/* Footer */}
-        <div className="text-center text-xs text-[#6b8f2b]/50">
+        <div className="text-center text-xs text-white">
           <p>© 2024 CodeKiwi. All rights reserved.</p>
         </div>
       </div>

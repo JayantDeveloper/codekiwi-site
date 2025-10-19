@@ -4,6 +4,7 @@ import type React from "react";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 
@@ -101,12 +102,18 @@ export default function SignUpPage() {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-[#a8d05f]/5 to-white p-4">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-white via-[#a8d05f]/40 to-[#a8d05f] p-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="text-3xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-            <span className="text-3xl">🥝</span>
+            <Image
+              src="https://www.codekiwi.app/codekiwilogo.png"
+              alt="CodeKiwi Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
           </Link>
         </div>
 
@@ -314,7 +321,7 @@ export default function SignUpPage() {
           </div>
         </div>
 
-        <div className="text-center text-xs text-[#6b8f2b]/50">
+        <div className="text-center text-xs text-white">
           <p>© 2024 CodeKiwi. All rights reserved.</p>
         </div>
       </div>
