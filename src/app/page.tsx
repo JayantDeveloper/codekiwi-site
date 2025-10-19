@@ -261,7 +261,7 @@ export default function LandingPage() {
                             <span className="text-[#569cd6]">let</span>
                             <span className="text-[#9cdcfe]"> studentName</span>
                             <span className="text-white"> = </span>
-                            <span className="text-[#ce9178]">"Alex"</span>
+                            <span className="text-[#ce9178]">&quot;Alex&quot;</span>
                             <span className="text-white">;</span>
                           </div>
 
@@ -391,7 +391,7 @@ export default function LandingPage() {
                   Monitor Progress
                 </h3>
                 <p className="text-center text-[#a8d05f] leading-relaxed font-medium">
-                  See every student's code in real-time and provide instant,
+                  See every student&#39;s code in real-time and provide instant,
                   personalized feedback
                 </p>
               </div>
