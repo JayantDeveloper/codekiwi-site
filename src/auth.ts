@@ -1,7 +1,4 @@
-import NextAuth, {
-  type NextAuthOptions,
-  type DefaultSession,
-} from "next-auth";
+import NextAuth, { type NextAuthOptions, type DefaultSession } from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
@@ -50,7 +47,7 @@ export const authOptions: NextAuthOptions = {
             "email",
             "profile",
             "https://www.googleapis.com/auth/presentations",
-            "https://www.googleapis.com/auth/drive",  // Changed from drive.file to drive
+            "https://www.googleapis.com/auth/drive", // Changed from drive.file to drive
           ].join(" "),
           access_type: "offline",
           prompt: "consent",
@@ -158,6 +155,13 @@ export const authOptions: NextAuthOptions = {
       session.provider = token.provider ?? undefined;
       session.accessToken = token.accessToken ?? undefined;
       return session;
+    },
+
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      else if (new URL(url).origin === baseUrl) return url;
+      // Otherwise redirect to launch-session
+      return `${baseUrl}/launch-session`;
     },
   },
 
