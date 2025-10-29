@@ -178,7 +178,7 @@ export default function PrivacyPage() {
                 <li><strong>Server logs:</strong> Retained for up to 90 days for troubleshooting</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
-                You can request deletion of your account and associated data by contacting me at jaymaheshwari@gmail.com.
+                You can request deletion of your account and associated data by contacting me at jaymaheshwari2603@gmail.com.
               </p>
             </section>
 
@@ -195,7 +195,7 @@ export default function PrivacyPage() {
                 <li><strong>Revoke permissions:</strong> Disconnect Google access at any time through your Google Account settings</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
-                To exercise these rights, contact me at jaymaheshwari@gmail.com.
+                To exercise these rights, contact me at jaymaheshwari2603@gmail.com.
               </p>
             </section>
 
@@ -213,7 +213,7 @@ export default function PrivacyPage() {
               </p>
               <div className="rounded-lg bg-[#a8d05f]/10 p-6">
                 <p className="text-[#6b8f2b] font-semibold mb-2">Jay Maheshwari</p>
-                <p className="text-[#6b8f2b]/80 mb-1">Email: <a href="mailto:jaymaheshwari@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari@gmail.com</a></p>
+                <p className="text-[#6b8f2b]/80 mb-1">Email: <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a></p>
                 <p className="text-[#6b8f2b]/80 text-sm mt-3">Creator and maintainer of CodeKiwi</p>
               </div>
             </section>
@@ -255,7 +255,7 @@ export default function PrivacyPage() {
               <Link href="/privacy" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
                 Privacy
               </Link>
-              <Link href="mailto:jaymaheshwari@gmail.com" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
+              <Link href="mailto:jaymaheshwari2603@gmail.com" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
                 Contact
               </Link>
             </div>
