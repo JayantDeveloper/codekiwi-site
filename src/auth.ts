@@ -14,6 +14,7 @@ declare module "next-auth" {
     };
     provider?: string;
     accessToken?: string;
+    error?: string;
   }
 }
 
@@ -24,6 +25,9 @@ declare module "next-auth/jwt" {
     givenName?: string | null;
     familyName?: string | null;
     accessToken?: string;
+    refreshToken?: string;
+    accessTokenExpires?: number;
+    error?: string;
   }
 }
 
@@ -34,6 +38,35 @@ type GoogleProfile = {
   given_name?: string;
   family_name?: string;
 };
+
+async function refreshAccessToken(token: JWT): Promise<JWT> {
+  try {
+    const response = await fetch("https://oauth2.googleapis.com/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        client_id: process.env.GOOGLE_CLIENT_ID!,
+        client_secret: process.env.GOOGLE_CLIENT_SECRET!,
+        grant_type: "refresh_token",
+        refresh_token: token.refreshToken!,
+      }),
+    });
+
+    const refreshed = await response.json();
+    if (!response.ok) throw refreshed;
+
+    return {
+      ...token,
+      accessToken: refreshed.access_token,
+      accessTokenExpires: Date.now() + refreshed.expires_in * 1000,
+      refreshToken: refreshed.refresh_token ?? token.refreshToken,
+      error: undefined,
+    };
+  } catch (error) {
+    console.error("Failed to refresh Google access token:", error);
+    return { ...token, error: "RefreshAccessTokenError" };
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -134,11 +167,14 @@ export const authOptions: NextAuthOptions = {
     },
 
     async jwt({ token, account, user }) {
-      if (account?.provider) token.provider = account.provider;
-
-      // Store the access token when user signs in with Google
-      if (account?.access_token) {
+      // Initial sign-in: store everything from the account
+      if (account) {
+        token.provider = account.provider;
         token.accessToken = account.access_token;
+        token.refreshToken = account.refresh_token;
+        token.accessTokenExpires = account.expires_at
+          ? account.expires_at * 1000
+          : Date.now() + 3600 * 1000;
       }
 
       if (user) {
@@ -156,6 +192,17 @@ export const authOptions: NextAuthOptions = {
           token.familyName = u.familyName ?? null;
         }
       }
+
+      // Token still valid — return as-is
+      if (Date.now() < (token.accessTokenExpires ?? 0)) {
+        return token;
+      }
+
+      // Access token expired — try to refresh
+      if (token.refreshToken && token.provider === "google") {
+        return refreshAccessToken(token);
+      }
+
       return token;
     },
 
@@ -167,6 +214,7 @@ export const authOptions: NextAuthOptions = {
       }
       session.provider = token.provider ?? undefined;
       session.accessToken = token.accessToken ?? undefined;
+      session.error = token.error ?? undefined;
       return session;
     },
 
