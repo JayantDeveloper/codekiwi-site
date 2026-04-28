@@ -213,16 +213,22 @@ export default function LandingPage() {
                 {/* Split View Content */}
                 <div className="grid md:grid-cols-2 divide-x divide-[#a8d05f]/30">
                   {/* Left Side - Google Slides */}
-                  <div className="p-6 bg-white min-h-[500px] flex flex-col">
-                    <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-200">
-                      <div className="flex gap-1">
-                        <div className="w-2 h-2 rounded-full bg-[#6b8f2b]"></div>
-                        <div className="w-2 h-2 rounded-full bg-[#8fb73a]"></div>
-                        <div className="w-2 h-2 rounded-full bg-[#a8d05f]"></div>
-                      </div>
-                      <span className="text-xs text-gray-600 font-medium">
-                        Google Slides
+                  <div className="bg-[#f1f3f4] min-h-[500px] flex flex-col">
+                    {/* Slides App Toolbar */}
+                    <div className="bg-white border-b border-gray-200 px-3 py-2 flex items-center gap-2">
+                      <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 48 48" fill="none">
+                        <rect x="6" y="6" width="36" height="36" rx="3" fill="#FBBC04"/>
+                        <rect x="12" y="13" width="24" height="22" rx="1" fill="white"/>
+                        <rect x="16" y="17" width="16" height="2" rx="1" fill="#BDC1C6"/>
+                        <rect x="16" y="21" width="16" height="2" rx="1" fill="#BDC1C6"/>
+                        <rect x="16" y="25" width="10" height="2" rx="1" fill="#BDC1C6"/>
+                      </svg>
+                      <span className="text-[11px] text-gray-700 font-medium flex-1 truncate">
+                        Python Lesson
                       </span>
+                      <div className="w-5 h-5 rounded-full bg-[#6b8f2b] flex items-center justify-center text-white text-[9px] font-bold">
+                        T
+                      </div>
                     </div>
 
                     <div
@@ -232,70 +238,77 @@ export default function LandingPage() {
                           : "opacity-0 -translate-x-8"
                       }`}
                     >
-                      <div className="space-y-6 p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-inner">
-                        <div>
-                          <h3 className="text-2xl font-bold text-[#1a1a1a] mb-2">
+                      {/* 16:9 Slide Frame */}
+                      <div className="mx-4 my-2 aspect-video bg-white rounded border border-gray-300 shadow-md overflow-hidden flex flex-col p-4">
+                        <div className={isVisible.demo ? "slide-reveal-0" : "opacity-0"}>
+                          <h3 className="text-base font-bold text-[#1a1a1a] mb-1">
                             Python Functions
                           </h3>
-                          <div className="w-16 h-1 bg-gradient-to-r from-[#6b8f2b] to-[#a8d05f] rounded-full"></div>
+                          <div className="w-10 h-0.5 bg-gradient-to-r from-[#6b8f2b] to-[#a8d05f] rounded-full mb-3"></div>
                         </div>
-                        <div className="space-y-4">
-                          <div className="flex items-start gap-3">
-                            <div className="min-w-[28px] h-7 rounded-full bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] flex items-center justify-center text-white text-xs font-bold shadow-md">
+                        <div className="space-y-2 flex-1">
+                          <div className={`flex items-start gap-2 ${isVisible.demo ? "slide-reveal-1" : "opacity-0"}`}>
+                            <div className="min-w-[18px] h-[18px] rounded-full bg-[#6b8f2b] flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0 mt-0.5">
                               1
                             </div>
-                            <p className="text-sm text-gray-700 leading-relaxed pt-1">
+                            <p className="text-[11px] text-gray-700 leading-relaxed">
                               Functions are reusable blocks of code
                             </p>
                           </div>
-                          <div className="flex items-start gap-3">
-                            <div className="min-w-[28px] h-7 rounded-full bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] flex items-center justify-center text-white text-xs font-bold shadow-md">
+                          <div className={`flex items-start gap-2 ${isVisible.demo ? "slide-reveal-2" : "opacity-0"}`}>
+                            <div className="min-w-[18px] h-[18px] rounded-full bg-[#6b8f2b] flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0 mt-0.5">
                               2
                             </div>
-                            <p className="text-sm text-gray-700 leading-relaxed pt-1">
+                            <p className="text-[11px] text-gray-700 leading-relaxed">
                               Use{" "}
-                              <code className="px-2 py-0.5 bg-gray-200 rounded text-[#6b8f2b] font-mono text-xs">
+                              <code className="px-1 bg-gray-100 rounded font-mono text-[10px] text-[#6b8f2b]">
                                 def
                               </code>{" "}
                               keyword to define
                             </p>
                           </div>
-                          <div className="flex items-start gap-3">
-                            <div className="min-w-[28px] h-7 rounded-full bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] flex items-center justify-center text-white text-xs font-bold shadow-md">
+                          <div className={`flex items-start gap-2 ${isVisible.demo ? "slide-reveal-3" : "opacity-0"}`}>
+                            <div className="min-w-[18px] h-[18px] rounded-full bg-[#6b8f2b] flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0 mt-0.5">
                               3
                             </div>
-                            <p className="text-sm text-gray-700 leading-relaxed pt-1">
+                            <p className="text-[11px] text-gray-700 leading-relaxed">
                               Parameters go inside parentheses
                             </p>
                           </div>
                         </div>
-
                         {/* Tip Box */}
-                        <div className="bg-[#daf0c0] border-l-4 border-[#6b8f2b] p-4 rounded-r-lg shadow-sm">
-                          <div className="flex items-start gap-2">
+                        <div className={`bg-gray-50 border-l-4 border-[#6b8f2b] px-3 py-2 rounded-r mt-2 ${isVisible.demo ? "slide-reveal-4" : "opacity-0"}`}>
+                          <div className="flex items-start gap-1.5">
                             <svg
-                              className="w-5 h-5 text-[#6b8f2b] flex-shrink-0 mt-0.5"
+                              className="w-3 h-3 text-gray-600 flex-shrink-0 mt-0.5"
                               fill="currentColor"
-                              viewBox="0 0 20 20"
+                              viewBox="0 0 24 24"
                             >
-                              <path
-                                fillRule="evenodd"
-                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                clipRule="evenodd"
-                              />
+                              <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" />
                             </svg>
                             <div>
-                              <p className="text-xs font-bold text-[#6b8f2b] mb-1">
-                                💡 Tip
+                              <p className="text-[10px] font-bold text-gray-700 mb-0.5">
+                                Tip
                               </p>
-                              <p className="text-xs text-gray-700 leading-relaxed">
-                                Try creating a function that takes your name and
-                                prints a personalized message!
+                              <p className="text-[10px] text-gray-600 leading-relaxed">
+                                Try creating a function that prints a
+                                personalized message!
                               </p>
                             </div>
                           </div>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Slide Navigation */}
+                    <div className="bg-white border-t border-gray-200 px-4 py-1.5 flex items-center justify-center gap-3">
+                      <svg className="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                      <span className="text-[11px] text-gray-500">3 / 8</span>
+                      <svg className="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
                   </div>
 
@@ -458,21 +471,6 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              {/* Visual Sync Indicator */}
-              <div
-                className={`absolute -bottom-6 left-1/2 -translate-x-1/2 transition-all duration-1000 ${
-                  isVisible.demo
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-              >
-                <div className="bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] px-6 py-2 rounded-full shadow-lg border-2 border-white flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
-                  <span className="text-white text-sm font-bold">
-                    Live Sync Active
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -713,6 +711,33 @@ export default function LandingPage() {
         .typing-output {
           animation: fade-in 0.5s ease-out 5.2s forwards;
           opacity: 0;
+        }
+
+        @keyframes slide-reveal {
+          from {
+            opacity: 0;
+            transform: translateY(5px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .slide-reveal-0 {
+          animation: slide-reveal 0.4s ease-out 0.5s both;
+        }
+        .slide-reveal-1 {
+          animation: slide-reveal 0.35s ease-out 0.9s both;
+        }
+        .slide-reveal-2 {
+          animation: slide-reveal 0.35s ease-out 1.15s both;
+        }
+        .slide-reveal-3 {
+          animation: slide-reveal 0.35s ease-out 1.4s both;
+        }
+        .slide-reveal-4 {
+          animation: slide-reveal 0.35s ease-out 1.7s both;
         }
       `}</style>
     </div>
