@@ -99,23 +99,36 @@ export const authOptions: NextAuthOptions = {
         const gp = (profile ?? {}) as GoogleProfile;
         if (!gp.email) return false;
 
-        await prisma.user.upsert({
-          where: { email: gp.email },
-          create: {
-            email: gp.email,
-            name: gp.name ?? null,
-            image: gp.picture ?? null,
-            givenName: gp.given_name ?? null,
-            familyName: gp.family_name ?? null,
-            settings: { create: {} },
-          },
-          update: {
-            name: gp.name ?? undefined,
-            image: gp.picture ?? undefined,
-            givenName: gp.given_name ?? undefined,
-            familyName: gp.family_name ?? undefined,
-          },
-        });
+        try {
+          const dbUser = await prisma.user.upsert({
+            where: { email: gp.email },
+            create: {
+              email: gp.email,
+              name: gp.name ?? null,
+              image: gp.picture ?? null,
+              givenName: gp.given_name ?? null,
+              familyName: gp.family_name ?? null,
+              settings: { create: {} },
+            },
+            update: {
+              name: gp.name ?? undefined,
+              image: gp.picture ?? undefined,
+              givenName: gp.given_name ?? undefined,
+              familyName: gp.family_name ?? undefined,
+            },
+            select: { id: true },
+          });
+
+          // Ensure settings exist for users who signed up via credentials
+          await prisma.settings.upsert({
+            where: { userId: dbUser.id },
+            create: { userId: dbUser.id },
+            update: {},
+          });
+        } catch (error) {
+          console.error("Google sign-in DB error:", error);
+          return false;
+        }
       }
       return true;
     },
@@ -175,4 +188,3 @@ export async function getServerSession() {
 
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
-export { signOut } from "next-auth/react";
