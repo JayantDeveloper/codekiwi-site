@@ -164,13 +164,6 @@
     background: linear-gradient(to bottom, #1a1a1a, #0d0d0d, #1a1a1a);
   }
   
-  /* Smooth transitions for theme changes */
-  * {
-    transition-property: background-color, border-color, color;
-    transition-duration: 200ms;
-    transition-timing-function: ease-in-out;
-  }
-  
   /* Custom scrollbar for dark theme */
   .dark ::-webkit-scrollbar {
     width: 10px;
