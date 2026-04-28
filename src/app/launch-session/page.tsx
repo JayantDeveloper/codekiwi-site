@@ -118,11 +118,13 @@ export default function LaunchSessionPage() {
     setTemplateLoading(true);
     try {
       const res = await fetch("/api/create-presentation", { method: "POST" });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.details || data.error || "Failed");
+      let data: { presentationUrl?: string; error?: string; details?: string } = {};
+      try { data = await res.json(); } catch { /* empty/non-JSON body */ }
+      if (!res.ok) throw new Error(data.details || data.error || "Failed to create presentation");
       if (data.presentationUrl) window.location.href = data.presentationUrl;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create presentation");
+      setTemplateLoading(false);
       setPageState("error");
     }
   };
@@ -136,8 +138,11 @@ export default function LaunchSessionPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ presentationId: selected.id, title: selected.name }),
       });
-      const data = await res.json();
-      if (!res.ok || !data.sessionCode) throw new Error(data.error || "Failed to start session");
+      let data: { sessionCode?: string; error?: string } = {};
+      try { data = await res.json(); } catch { /* empty/non-JSON body */ }
+      if (!res.ok || !data.sessionCode) {
+        throw new Error(data.error || "Failed to start session. Please try again.");
+      }
       window.location.href = `https://www.codekiwi.app/teacher/${data.sessionCode}`;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to start session");

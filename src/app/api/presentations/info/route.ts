@@ -17,14 +17,19 @@ export async function GET(req: NextRequest) {
   auth.setCredentials({ access_token: session.accessToken });
   const drive = google.drive({ version: "v3", auth });
 
-  const file = await drive.files.get({
-    fileId: id,
-    fields: "name,thumbnailLink,webViewLink",
-  });
-
-  return NextResponse.json({
-    name: file.data.name,
-    thumbnailLink: file.data.thumbnailLink,
-    webViewLink: file.data.webViewLink,
-  });
+  try {
+    const file = await drive.files.get({
+      fileId: id,
+      fields: "name,thumbnailLink,webViewLink",
+    });
+    return NextResponse.json({
+      name: file.data.name,
+      thumbnailLink: file.data.thumbnailLink,
+      webViewLink: file.data.webViewLink,
+    });
+  } catch (e) {
+    const err = e as { message?: string };
+    console.error("Drive file info failed:", err.message);
+    return NextResponse.json({ error: "Failed to fetch file info" }, { status: 500 });
+  }
 }

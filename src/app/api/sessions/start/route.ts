@@ -26,9 +26,7 @@ export async function POST(req: NextRequest) {
       { responseType: "arraybuffer" }
     );
     const raw = exportRes.data;
-    const pdfBuffer = Buffer.isBuffer(raw)
-      ? raw
-      : Buffer.from(raw as ArrayBuffer);
+    const pdfBuffer = Buffer.isBuffer(raw) ? raw : Buffer.from(raw as ArrayBuffer);
     fileBase64 = pdfBuffer.toString("base64");
   } catch (e) {
     const err = e as GaxiosError;
@@ -41,33 +39,48 @@ export async function POST(req: NextRequest) {
 
   const slidesUrl = `https://docs.google.com/presentation/d/${presentationId}/edit`;
 
-  const backendRes = await fetch(
-    `${process.env.CODEKIWI_BACKEND_URL}/api/sessions/upload`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-codekiwi-secret": process.env.CODEKIWI_BACKEND_SECRET!,
-      },
-      body: JSON.stringify({
-        presentationId,
-        title: title || "CodeKiwi Session",
-        notes: [],
-        slidesUrl,
-        fileBase64,
-      }),
-    }
-  );
+  let backendData: { sessionCode?: string; [key: string]: unknown };
+  try {
+    const backendRes = await fetch(
+      `${process.env.CODEKIWI_BACKEND_URL}/api/sessions/upload`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-codekiwi-secret": process.env.CODEKIWI_BACKEND_SECRET!,
+        },
+        body: JSON.stringify({
+          presentationId,
+          title: title || "CodeKiwi Session",
+          notes: [],
+          slidesUrl,
+          fileBase64,
+        }),
+      }
+    );
 
-  const backendData = await backendRes.json();
-  if (!backendRes.ok || !backendData.sessionCode) {
-    console.error("Backend upload failed:", backendData);
+    if (!backendRes.ok) {
+      const text = await backendRes.text();
+      console.error("Backend returned error:", backendRes.status, text);
+      return NextResponse.json({ error: "Failed to create session" }, { status: 500 });
+    }
+
+    backendData = await backendRes.json();
+  } catch (e) {
+    console.error("Backend unreachable:", (e as Error).message);
+    return NextResponse.json(
+      { error: "Session backend is unavailable. Please try again shortly." },
+      { status: 503 }
+    );
+  }
+
+  if (!backendData.sessionCode) {
+    console.error("Backend upload missing sessionCode:", backendData);
     return NextResponse.json({ error: "Failed to create session" }, { status: 500 });
   }
 
-  const sessionCode: string = backendData.sessionCode;
+  const sessionCode = backendData.sessionCode as string;
 
-  // Persist session record so it appears in Past Sessions
   const dbUser = await prisma.user.findUnique({
     where: { email: session.user!.email! },
     select: { id: true },
