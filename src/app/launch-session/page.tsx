@@ -1,124 +1,292 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { FileText, FolderOpen, Play, ChevronLeft } from "lucide-react";
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    gapi: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    google: any;
+  }
+}
+
+type SelectedPresentation = {
+  id: string;
+  name: string;
+  thumbnailLink: string | null;
+  webViewLink: string | null;
+};
+
+type PageState = "choose" | "preview" | "starting" | "error";
 
 export default function LaunchSessionPage() {
+  const { data: session } = useSession();
   const router = useRouter();
-  const [status, setStatus] = useState("Creating your presentation...");
+
+  const [pageState, setPageState] = useState<PageState>("choose");
+  const [selected, setSelected] = useState<SelectedPresentation | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [detailedError, setDetailedError] = useState<string | null>(null);
+  const [templateLoading, setTemplateLoading] = useState(false);
+  const gapiLoadedRef = useRef(false);
 
+  // Preload the Google API script
   useEffect(() => {
-    async function createPresentation() {
-      try {
-        console.log("Starting presentation creation...");
-        
-        // Call the API route to create a new presentation
-        const response = await fetch("/api/create-presentation", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+    if (gapiLoadedRef.current || typeof window === "undefined") return;
+    const script = document.createElement("script");
+    script.src = "https://apis.google.com/js/api.js";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+    gapiLoadedRef.current = true;
+  }, []);
 
-        console.log("Response status:", response.status);
-        
-        const data = await response.json();
-        console.log("Response data:", data);
+  const openDrivePicker = () => {
+    const accessToken = session?.accessToken;
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_PICKER_API_KEY;
+    if (!accessToken || !apiKey) return;
 
-        if (!response.ok) {
-          throw new Error(data.details || data.error || "Failed to create presentation");
-        }
-        
-        if (data.presentationUrl) {
-          setStatus("Redirecting to your presentation...");
-          console.log("Redirecting to:", data.presentationUrl);
-          // Small delay to show the status message
-          setTimeout(() => {
-            window.location.href = data.presentationUrl;
-          }, 500);
-        } else {
-          throw new Error("No presentation URL returned");
-        }
-      } catch (err: unknown) {
-        console.error("Error creating presentation:", err);
-        if (err instanceof Error) {
-          setError(err.message || "Failed to create presentation. Please try again.");
-          setDetailedError(JSON.stringify(err, null, 2));
-        } else {
-          setError("An unknown error occurred. Please try again.");
-          setDetailedError(String(err));
-        }
-      }
+    const initPicker = () => {
+      window.gapi.load("picker", () => {
+        const picker = new window.google.picker.PickerBuilder()
+          .addView(window.google.picker.ViewId.PRESENTATIONS)
+          .setOAuthToken(accessToken)
+          .setDeveloperKey(apiKey)
+          .setCallback(async (data: { action: string; docs?: Array<{ id: string; name: string; thumbnailUrl?: string; url?: string }> }) => {
+            if (data.action !== "picked" || !data.docs?.[0]) return;
+            const doc = data.docs[0];
+            // Fetch richer info (thumbnail) from our API
+            const infoRes = await fetch(`/api/presentations/info?id=${doc.id}`);
+            const info = infoRes.ok ? await infoRes.json() : {};
+            setSelected({
+              id: doc.id,
+              name: doc.name || info.name || "Untitled Presentation",
+              thumbnailLink: info.thumbnailLink || doc.thumbnailUrl || null,
+              webViewLink: info.webViewLink || doc.url || null,
+            });
+            setPageState("preview");
+          })
+          .build();
+        picker.setVisible(true);
+      });
+    };
+
+    if (window.gapi) {
+      initPicker();
+    } else {
+      const script = document.createElement("script");
+      script.src = "https://apis.google.com/js/api.js";
+      script.onload = initPicker;
+      document.head.appendChild(script);
     }
+  };
 
-    createPresentation();
-  }, [router]);
+  const handleTemplateSession = async () => {
+    setTemplateLoading(true);
+    try {
+      const res = await fetch("/api/create-presentation", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.details || data.error || "Failed");
+      if (data.presentationUrl) window.location.href = data.presentationUrl;
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to create presentation");
+      setPageState("error");
+    }
+  };
+
+  const handlePresentLive = async () => {
+    if (!selected) return;
+    setPageState("starting");
+    try {
+      const res = await fetch("/api/sessions/start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ presentationId: selected.id, title: selected.name }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.sessionCode) throw new Error(data.error || "Failed to start session");
+      window.location.href = `https://www.codekiwi.app/teacher/${data.sessionCode}`;
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to start session");
+      setPageState("error");
+    }
+  };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#a8d05f]/10 to-white">
-      <div className="flex flex-col items-center space-y-6 text-center px-4">
-        <div className="flex items-center gap-3">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#a8d05f]/10 to-white px-4">
+      <div className="w-full max-w-2xl">
+        {/* Header */}
+        <div className="flex items-center justify-center gap-3 mb-10">
           <span className="text-3xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-          <Image 
-            src="https://www.codekiwi.app/codekiwilogo.png" 
-            alt="CodeKiwi Logo" 
-            width={40} 
+          <Image
+            src="https://www.codekiwi.app/codekiwilogo.png"
+            alt="CodeKiwi Logo"
+            width={40}
             height={40}
             className="object-contain"
           />
         </div>
 
-        {error ? (
-          <div className="space-y-4 max-w-2xl">
-            <div className="rounded-full bg-red-100 p-4 mx-auto w-fit">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-red-600"
+        {/* Choose state */}
+        {pageState === "choose" && (
+          <div className="space-y-4">
+            <h1 className="text-2xl font-bold text-center text-[#1a1a1a] mb-8">
+              How do you want to start?
+            </h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Template option */}
+              <button
+                onClick={handleTemplateSession}
+                disabled={templateLoading}
+                className="group relative flex flex-col items-center gap-4 rounded-2xl border-2 border-[#a8d05f]/50 bg-white p-8 text-left shadow-sm hover:border-[#6b8f2b] hover:shadow-md transition-all disabled:opacity-60"
               >
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#a8d05f]/20 group-hover:bg-[#a8d05f]/30 transition-colors">
+                  {templateLoading ? (
+                    <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#a8d05f] border-t-[#6b8f2b]" />
+                  ) : (
+                    <FileText className="h-7 w-7 text-[#6b8f2b]" />
+                  )}
+                </div>
+                <div className="text-center">
+                  <p className="text-base font-semibold text-[#1a1a1a]">Use Template</p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    Create a fresh copy of the CodeKiwi starter deck
+                  </p>
+                </div>
+              </button>
+
+              {/* Choose from Drive option */}
+              <button
+                onClick={openDrivePicker}
+                className="group flex flex-col items-center gap-4 rounded-2xl border-2 border-[#a8d05f]/50 bg-white p-8 text-left shadow-sm hover:border-[#6b8f2b] hover:shadow-md transition-all"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#a8d05f]/20 group-hover:bg-[#a8d05f]/30 transition-colors">
+                  <FolderOpen className="h-7 w-7 text-[#6b8f2b]" />
+                </div>
+                <div className="text-center">
+                  <p className="text-base font-semibold text-[#1a1a1a]">Choose from Drive</p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    Pick an existing Google Slides presentation and go live
+                  </p>
+                </div>
+              </button>
+            </div>
+
+            <div className="pt-4 text-center">
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="text-sm text-gray-500 hover:text-[#6b8f2b] transition-colors"
+              >
+                ← Back to Dashboard
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Preview state */}
+        {pageState === "preview" && selected && (
+          <div className="space-y-6">
+            <button
+              onClick={() => setPageState("choose")}
+              className="flex items-center gap-1 text-sm text-gray-500 hover:text-[#6b8f2b] transition-colors"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Choose a different presentation
+            </button>
+
+            <div className="rounded-2xl border border-gray-200 bg-white shadow-md overflow-hidden">
+              {/* Thumbnail */}
+              <div className="relative w-full bg-[#f1f3f4]" style={{ paddingBottom: "56.25%" }}>
+                {selected.thumbnailLink ? (
+                  <img
+                    src={selected.thumbnailLink}
+                    alt={selected.name}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.display = "none";
+                    }}
+                  />
+                ) : null}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg className="h-16 w-16 text-gray-300" viewBox="0 0 48 48" fill="none">
+                    <rect x="6" y="6" width="36" height="36" rx="3" fill="#FBBC04" />
+                    <rect x="12" y="13" width="24" height="22" rx="1" fill="white" />
+                    <rect x="16" y="17" width="16" height="2" rx="1" fill="#BDC1C6" />
+                    <rect x="16" y="21" width="16" height="2" rx="1" fill="#BDC1C6" />
+                    <rect x="16" y="25" width="10" height="2" rx="1" fill="#BDC1C6" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Info + actions */}
+              <div className="p-6">
+                <div className="flex items-start gap-3 mb-6">
+                  <svg className="h-6 w-6 flex-shrink-0 mt-0.5" viewBox="0 0 48 48" fill="none">
+                    <rect x="6" y="6" width="36" height="36" rx="3" fill="#FBBC04" />
+                    <rect x="12" y="13" width="24" height="22" rx="1" fill="white" />
+                    <rect x="16" y="17" width="16" height="2" rx="1" fill="#BDC1C6" />
+                    <rect x="16" y="21" width="16" height="2" rx="1" fill="#BDC1C6" />
+                    <rect x="16" y="25" width="10" height="2" rx="1" fill="#BDC1C6" />
+                  </svg>
+                  <div>
+                    <p className="font-semibold text-[#1a1a1a] text-lg leading-tight">{selected.name}</p>
+                    <p className="text-sm text-gray-500 mt-0.5">Google Slides</p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handlePresentLive}
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white font-semibold py-3 px-6 shadow-md transition-all"
+                >
+                  <Play className="h-4 w-4 fill-white" />
+                  Present Live
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Starting state */}
+        {pageState === "starting" && (
+          <div className="flex flex-col items-center gap-6 text-center">
+            <div className="h-16 w-16 animate-spin rounded-full border-4 border-[#a8d05f]/30 border-t-[#6b8f2b]" />
+            <div>
+              <h1 className="text-2xl font-bold text-[#6b8f2b]">Preparing your session…</h1>
+              <p className="text-[#6b8f2b]/70 mt-1">Exporting slides and setting up your room</p>
+            </div>
+          </div>
+        )}
+
+        {/* Error state */}
+        {pageState === "error" && (
+          <div className="flex flex-col items-center gap-4 text-center">
+            <div className="rounded-full bg-red-100 p-4">
+              <svg className="h-10 w-10 text-red-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="12" x2="12" y1="8" y2="12" />
                 <line x1="12" x2="12.01" y1="16" y2="16" />
               </svg>
             </div>
             <p className="text-lg font-semibold text-red-600">{error}</p>
-            {detailedError && (
-              <details className="text-left">
-                <summary className="cursor-pointer text-sm text-gray-600 hover:text-gray-800">
-                  Show technical details
-                </summary>
-                <pre className="mt-2 p-4 bg-gray-100 rounded text-xs overflow-auto max-h-60">
-                  {detailedError}
-                </pre>
-              </details>
-            )}
-            <button
-              onClick={() => router.push("/dashboard")}
-              className="mt-4 rounded-lg bg-[#6b8f2b] px-6 py-2 text-white hover:bg-[#6b8f2b]/90"
-            >
-              Return to Dashboard
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={() => { setError(null); setPageState("choose"); }}
+                className="rounded-lg border border-gray-200 px-5 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Try Again
+              </button>
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="rounded-lg bg-[#6b8f2b] px-5 py-2 text-sm text-white hover:bg-[#6b8f2b]/90 transition-colors"
+              >
+                Return to Dashboard
+              </button>
+            </div>
           </div>
-        ) : (
-          <>
-            <div className="relative">
-              <div className="h-16 w-16 animate-spin rounded-full border-4 border-[#a8d05f]/30 border-t-[#6b8f2b]"></div>
-            </div>
-            <div className="space-y-2">
-              <h1 className="text-2xl font-bold text-[#6b8f2b]">{status}</h1>
-              <p className="text-[#6b8f2b]/70">This will only take a moment</p>
-            </div>
-          </>
         )}
       </div>
     </div>
