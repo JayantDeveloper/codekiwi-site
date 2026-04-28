@@ -53,7 +53,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#1a1a1a] via-[#a8d05f]/10 to-[#1a1a1a] overscroll-none">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#1a1a1a] via-[#a8d05f]/10 to-[#1a1a1a]">
       <header className="w-full bg-gradient-to-r from-[#6b8f2b] via-[#7da332] to-[#8fb73a] sticky top-0 z-50 shadow-lg backdrop-blur-sm bg-opacity-95">
         <div className="flex h-16 items-center py-4 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto w-full">
           <div className="flex flex-1 items-center gap-2">
@@ -120,9 +120,9 @@ export default function LandingPage() {
                 className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl leading-tight animate-fade-in"
                 style={{ animationDelay: "100ms" }}
               >
-                Teach coding with slides —{" "}
+                Teach coding with{" "}
                 <span className="bg-gradient-to-r from-[#a8d05f] to-[#6b8f2b] bg-clip-text text-transparent">
-                  live and interactive
+                  live, interactive slides
                 </span>
               </h1>
               <p
