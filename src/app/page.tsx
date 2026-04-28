@@ -120,7 +120,7 @@ export default function LandingPage() {
                 className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl leading-tight animate-fade-in"
                 style={{ animationDelay: "100ms" }}
               >
-                Teach Coding with Slides:{" "}
+                Teach Coding with Slides —{" "}
                 <span className="bg-gradient-to-r from-[#a8d05f] to-[#6b8f2b] bg-clip-text text-transparent">
                   Live &amp; Interactive
                 </span>
