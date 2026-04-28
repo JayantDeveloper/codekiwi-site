@@ -132,64 +132,28 @@ export default async function SettingsPage() {
               </form>
             </TabsContent>
 
-            {/* INTEGRATIONS TAB (visual stub; hook up later) */}
+            {/* INTEGRATIONS TAB */}
             <TabsContent value="integrations" className="space-y-6">
               <div className="rounded-xl border border-[#d6c49f]/30 p-6 shadow-sm">
-                <h2 className="mb-4 text-xl font-semibold text-[#6b8f2b]">
-                  Google Integration
-                </h2>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium text-[#6b8f2b]">
-                        Google Slides
-                      </p>
-                      <p className="text-sm text-[#6b8f2b]/70">
-                        Connect to access your Google Slides presentations
-                      </p>
-                    </div>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="border-[#d6c49f]/30 text-[#6b8f2b] hover:bg-[#a8d05f]/10 bg-transparent"
-                    >
-                      Connect
-                    </Button>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium text-[#6b8f2b]">
-                        Google Classroom
-                      </p>
-                      <p className="text-sm text-[#6b8f2b]/70">
-                        Sync with your Google Classroom courses
-                      </p>
-                    </div>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="border-[#d6c49f]/30 text-[#6b8f2b] hover:bg-[#a8d05f]/10 bg-transparent"
-                    >
-                      Connect
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-xl border border-[#d6c49f]/30 p-6 shadow-sm">
-                <h2 className="mb-4 text-xl font-semibold text-[#6b8f2b]">
+                <h2 className="mb-1 text-xl font-semibold text-[#6b8f2b]">
                   Google Slides Add-on
                 </h2>
-                <p className="mb-4 text-[#6b8f2b]/70">
-                  Install the CodeKiwi add-on for Google Slides to mark coding
-                  exercises in your presentations.
+                <p className="mb-4 text-sm text-[#6b8f2b]/70">
+                  Install the CodeKiwi add-on for Google Slides to mark slides
+                  as coding exercises directly inside your presentation.
                 </p>
-                <Button
-                  type="button"
-                  className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white"
+                <a
+                  href="https://workspace.google.com/marketplace"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Install Add-on
-                </Button>
+                  <Button
+                    type="button"
+                    className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white"
+                  >
+                    Install Add-on
+                  </Button>
+                </a>
               </div>
             </TabsContent>
 
