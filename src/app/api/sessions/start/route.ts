@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "@/auth";
 import { google } from "googleapis";
 import { GaxiosError } from "gaxios";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession();
@@ -61,5 +62,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Failed to create session" }, { status: 500 });
   }
 
-  return NextResponse.json({ sessionCode: backendData.sessionCode });
+  const sessionCode: string = backendData.sessionCode;
+
+  // Persist session record so it appears in Past Sessions
+  const dbUser = await prisma.user.findUnique({
+    where: { email: session.user!.email! },
+    select: { id: true },
+  });
+  if (dbUser) {
+    await prisma.session.create({
+      data: {
+        userId: dbUser.id,
+        sessionCode,
+        title: title || "CodeKiwi Session",
+        presentationId: presentationId ?? null,
+      },
+    });
+  }
+
+  return NextResponse.json({ sessionCode });
 }

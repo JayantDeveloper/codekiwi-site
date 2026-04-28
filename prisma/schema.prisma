@@ -19,6 +19,20 @@ model User {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   settings    Settings?
+  sessions    Session[]
+}
+
+model Session {
+  id             String    @id @default(cuid())
+  userId         String
+  sessionCode    String    @unique
+  title          String
+  presentationId String?
+  studentCount   Int       @default(0)
+  createdAt      DateTime  @default(now())
+  endedAt        DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Settings {
