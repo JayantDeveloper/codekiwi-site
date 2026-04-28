@@ -8,12 +8,39 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FileText, FolderOpen, Play, ChevronLeft } from "lucide-react";
 
+interface PickerDoc {
+  id: string;
+  name: string;
+  thumbnailUrl?: string;
+  url?: string;
+}
+
+interface PickerResponse {
+  action: string;
+  docs?: PickerDoc[];
+}
+
+interface PickerBuilderInstance {
+  addView(view: string): PickerBuilderInstance;
+  setOAuthToken(token: string): PickerBuilderInstance;
+  setDeveloperKey(key: string): PickerBuilderInstance;
+  setCallback(fn: (data: PickerResponse) => void): PickerBuilderInstance;
+  build(): { setVisible(v: boolean): void };
+}
+
+interface GooglePickerNs {
+  ViewId: { PRESENTATIONS: string };
+  PickerBuilder: new () => PickerBuilderInstance;
+}
+
+interface GapiInstance {
+  load(lib: string, cb: () => void): void;
+}
+
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gapi: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    google: any;
+    gapi: GapiInstance;
+    google: { picker: GooglePickerNs };
   }
 }
 
@@ -58,7 +85,7 @@ export default function LaunchSessionPage() {
           .addView(window.google.picker.ViewId.PRESENTATIONS)
           .setOAuthToken(accessToken)
           .setDeveloperKey(apiKey)
-          .setCallback(async (data: { action: string; docs?: Array<{ id: string; name: string; thumbnailUrl?: string; url?: string }> }) => {
+          .setCallback(async (data: PickerResponse) => {
             if (data.action !== "picked" || !data.docs?.[0]) return;
             const doc = data.docs[0];
             // Fetch richer info (thumbnail) from our API

@@ -183,3 +183,45 @@
     background: #a8d05f;
   }
 }
+
+/* ── Landing page animations ─────────────────────────────────────────────── */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing {
+  from { opacity: 1; max-width: 0; }
+  to   { opacity: 1; max-width: 100%; }
+}
+
+@keyframes slide-reveal {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in          { animation: fade-in 0.8s ease-out forwards; }
+
+.code-line {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 1;
+  max-width: 0;
+}
+
+.typing-line-1  { animation: typing 3.5s steps(30) 0.3s  forwards; }
+.typing-line-2  { animation: typing 2s   steps(30) 1.1s  forwards; }
+.typing-line-3  { animation: typing 3s   steps(40) 1.9s  forwards; }
+.typing-line-4  { animation: typing 3.5s steps(5)  2.9s  forwards; }
+.typing-line-5  { animation: typing 2s   steps(30) 3.2s  forwards; }
+.typing-line-6  { animation: typing 3.5s steps(30) 4s    forwards; }
+.typing-cursor  { animation: fade-in 0.3s ease-out 4.8s  forwards; opacity: 0; }
+.typing-output  { animation: fade-in 0.5s ease-out 5.2s  forwards; opacity: 0; }
+
+.slide-reveal-0 { animation: slide-reveal 0.4s  ease-out 0.5s  both; }
+.slide-reveal-1 { animation: slide-reveal 0.35s ease-out 0.9s  both; }
+.slide-reveal-2 { animation: slide-reveal 0.35s ease-out 1.15s both; }
+.slide-reveal-3 { animation: slide-reveal 0.35s ease-out 1.4s  both; }
+.slide-reveal-4 { animation: slide-reveal 0.35s ease-out 1.7s  both; }

@@ -129,8 +129,8 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account, profile }) {
       if (account?.provider === "google") {
-        const gp = (profile ?? {}) as GoogleProfile;
-        if (!gp.email) return false;
+        const gp = profile as GoogleProfile | undefined;
+        if (!gp?.email) return false;
 
         try {
           const dbUser = await prisma.user.upsert({
@@ -183,7 +183,7 @@ export const authOptions: NextAuthOptions = {
 
       if (token.email) {
         const u = await prisma.user.findUnique({
-          where: { email: token.email as string },
+          where: { email: token.email },
           select: { id: true, givenName: true, familyName: true },
         });
         if (u) {

@@ -25,7 +25,10 @@ export async function POST(req: NextRequest) {
       { fileId: presentationId, mimeType: "application/pdf" },
       { responseType: "arraybuffer" }
     );
-    const pdfBuffer = Buffer.from(exportRes.data as ArrayBuffer);
+    const raw = exportRes.data;
+    const pdfBuffer = Buffer.isBuffer(raw)
+      ? raw
+      : Buffer.from(raw as ArrayBuffer);
     fileBase64 = pdfBuffer.toString("base64");
   } catch (e) {
     const err = e as GaxiosError;
