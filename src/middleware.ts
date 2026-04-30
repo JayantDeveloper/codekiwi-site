@@ -19,5 +19,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*"], // gate dashboard & its subpages
+  matcher: ["/home/:path*", "/dashboard/:path*"],
 };

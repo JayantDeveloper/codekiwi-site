@@ -212,7 +212,7 @@ export default function LaunchSessionPage() {
 
             <div className="pt-4 text-center">
               <button
-                onClick={() => router.push("/dashboard")}
+                onClick={() => router.push("/home")}
                 className="text-sm text-gray-500 hover:text-[#6b8f2b] transition-colors"
               >
                 ← Back to Dashboard
@@ -314,7 +314,7 @@ export default function LaunchSessionPage() {
                 Try Again
               </button>
               <button
-                onClick={() => router.push("/dashboard")}
+                onClick={() => router.push("/home")}
                 className="rounded-lg bg-[#6b8f2b] px-5 py-2 text-sm text-white hover:bg-[#6b8f2b]/90 transition-colors"
               >
                 Return to Dashboard

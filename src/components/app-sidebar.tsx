@@ -22,17 +22,17 @@ export function AppSidebar() {
     {
       title: "Dashboard",
       icon: LayoutDashboard,
-      href: "/dashboard",
+      href: "/home",
     },
     {
       title: "Sessions",
       icon: Presentation,
-      href: "/dashboard/sessions",
+      href: "/home/sessions",
     },
     {
       title: "Settings",
       icon: Settings,
-      href: "/dashboard/settings",
+      href: "/home/settings",
     },
   ];
 
@@ -40,7 +40,7 @@ export function AppSidebar() {
     <Sidebar className="border-r-2 border-[#a8d05f]/30 bg-gradient-to-b from-[#6b8f2b] via-[#7da332] to-[#a8d05f] [&_[data-sidebar=sidebar]]:bg-transparent">
       <SidebarHeader className="h-16 border-b-2 border-[#a8d05f]/30">
         <div className="flex h-full items-center px-4">
-          <Link href="/dashboard" className="flex items-center gap-2">
+          <Link href="/home" className="flex items-center gap-2">
             <span className="text-xl font-bold text-white">CodeKiwi</span>
             <Image 
               src="https://www.codekiwi.app/codekiwilogo.png" 

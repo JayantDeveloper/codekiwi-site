@@ -7,7 +7,7 @@ type Props = {
 };
 export default function GoogleAuthButton({
   label = "Continue with Google",
-  redirectTo = "/dashboard",
+  redirectTo = "/home",
   className = "",
 }: Props) {
   return (

@@ -1,0 +1,216 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { loadMeAndSettings, updateProfile, updateSettings } from "./actions";
+import type { Prisma } from "@prisma/client";
+
+function getSchoolFromSettings(
+  json: Prisma.JsonValue | null | undefined
+): string {
+  if (json && typeof json === "object" && !Array.isArray(json)) {
+    const obj = json as Prisma.JsonObject;
+    const v = obj["school"];
+    return typeof v === "string" ? v : "";
+  }
+  return "";
+}
+
+export default async function SettingsPage() {
+  const me = await loadMeAndSettings();
+
+  const name = me?.name ?? "";
+  const email = me?.email ?? "";
+  const school = getSchoolFromSettings(me?.settings?.json);
+  const theme = me?.settings?.theme ?? "system";
+  const editorFontSize = me?.settings?.editorFontSize ?? 14;
+  const lockDefault = me?.settings?.lockDefault ?? false;
+  const slidesPerPage = me?.settings?.slidesPerPage ?? 1;
+
+  return (
+    <main className="w-full px-4 sm:px-8 md:px-12 py-6">
+      <Tabs defaultValue="account">
+        <TabsList className="mb-6 bg-[#cfc6b8]/10 border border-[#d6c49f]/30">
+          <TabsTrigger
+            value="account"
+            className="data-[state=active]:bg-white data-[state=active]:text-[#6b8f2b] data-[state=active]:shadow-sm"
+          >
+            Account
+          </TabsTrigger>
+          <TabsTrigger
+            value="integrations"
+            className="data-[state=active]:bg-white data-[state=active]:text-[#6b8f2b] data-[state=active]:shadow-sm"
+          >
+            Integrations
+          </TabsTrigger>
+          <TabsTrigger
+            value="notifications"
+            className="data-[state=active]:bg-white data-[state=active]:text-[#6b8f2b] data-[state=active]:shadow-sm"
+          >
+            Notifications
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="account" className="space-y-6">
+          <form
+            action={updateProfile}
+            className="rounded-xl border border-[#d6c49f]/30 p-6 shadow-sm"
+          >
+            <h2 className="mb-4 text-xl font-semibold text-[#6b8f2b]">
+              Profile Information
+            </h2>
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="flex items-center justify-between rounded-md border border-[#d6c49f]/30 p-3">
+                  <div>
+                    <p className="font-medium text-[#6b8f2b]">
+                      Lock Editors by Default
+                    </p>
+                    <p className="text-sm text-[#6b8f2b]/70">
+                      New sessions start locked
+                    </p>
+                  </div>
+                  <input
+                    id="lockDefault"
+                    name="lockDefault"
+                    type="checkbox"
+                    defaultChecked={lockDefault}
+                    className="h-5 w-5 accent-[#6b8f2b] cursor-pointer"
+                    aria-label="Lock editors by default"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="slidesPerPage" className="text-[#6b8f2b]">
+                    Slides Per Page
+                  </Label>
+                  <Input
+                    id="slidesPerPage"
+                    name="slidesPerPage"
+                    type="number"
+                    defaultValue={slidesPerPage}
+                    className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="school" className="text-[#6b8f2b]">
+                  School/Institution
+                </Label>
+                <Input
+                  id="school"
+                  name="school"
+                  defaultValue={school}
+                  className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                />
+              </div>
+
+              <Button className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white">
+                Save Changes
+              </Button>
+            </div>
+          </form>
+        </TabsContent>
+
+        <TabsContent value="integrations" className="space-y-6">
+          <div className="rounded-xl border border-[#d6c49f]/30 p-6 shadow-sm">
+            <h2 className="mb-1 text-xl font-semibold text-[#6b8f2b]">
+              Google Slides Add-on
+            </h2>
+            <p className="mb-4 text-sm text-[#6b8f2b]/70">
+              Install the CodeKiwi add-on for Google Slides to mark slides as
+              coding exercises directly inside your presentation.
+            </p>
+            <a
+              href="https://workspace.google.com/marketplace"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                type="button"
+                className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white"
+              >
+                Install Add-on
+              </Button>
+            </a>
+          </div>
+        </TabsContent>
+
+        <TabsContent value="notifications" className="space-y-6">
+          <form
+            action={updateSettings}
+            className="rounded-xl border border-[#d6c49f]/30 p-6 shadow-sm space-y-4"
+          >
+            <h2 className="text-xl font-semibold text-[#6b8f2b]">
+              Preferences
+            </h2>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="theme" className="text-[#6b8f2b]">
+                  Theme
+                </Label>
+                <Input
+                  id="theme"
+                  name="theme"
+                  defaultValue={theme}
+                  className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="editorFontSize" className="text-[#6b8f2b]">
+                  Editor Font Size
+                </Label>
+                <Input
+                  id="editorFontSize"
+                  name="editorFontSize"
+                  type="number"
+                  defaultValue={editorFontSize}
+                  className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="flex items-center justify-between rounded-md border border-[#d6c49f]/30 p-3">
+                <div>
+                  <p className="font-medium text-[#6b8f2b]">
+                    Lock Editors by Default
+                  </p>
+                  <p className="text-sm text-[#6b8f2b]/70">
+                    New sessions start locked
+                  </p>
+                </div>
+                <Switch
+                  name="lockDefault"
+                  defaultChecked={lockDefault}
+                  className="data-[state=checked]:bg-[#6b8f2b]"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="slidesPerPage" className="text-[#6b8f2b]">
+                  Slides Per Page
+                </Label>
+                <Input
+                  id="slidesPerPage"
+                  name="slidesPerPage"
+                  type="number"
+                  defaultValue={slidesPerPage}
+                  className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                />
+              </div>
+            </div>
+
+            <Button className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white">
+              Save Settings
+            </Button>
+          </form>
+        </TabsContent>
+      </Tabs>
+    </main>
+  );
+}

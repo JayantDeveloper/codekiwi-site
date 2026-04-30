@@ -68,14 +68,14 @@ export default function FeaturesPage() {
                 </li>
               </ul>
             </div>
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-6 shadow-xl overflow-hidden">
-              {/* TODO: Add screenshot of Google Slides connection interface */}
-              <div className="aspect-video bg-gradient-to-br from-[#a8d05f]/10 to-[#6b8f2b]/5 rounded-lg flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Presentation className="h-16 w-16 text-[#6b8f2b]/30 mx-auto mb-4" />
-                  <p className="text-[#6b8f2b]/50 text-sm">Screenshot: Dashboard showing Google Slides integration</p>
-                </div>
-              </div>
+            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
+              <Image
+                src="/gallery/slides-integration.png"
+                alt="CodeKiwi Google Slides integration"
+                width={800}
+                height={500}
+                className="rounded-lg w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -83,14 +83,14 @@ export default function FeaturesPage() {
         {/* Feature Showcase 2 - Live Code Editor (reversed) */}
         <div className="mb-32">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-6 shadow-xl overflow-hidden">
-              {/* TODO: Add screenshot of student view with split screen */}
-              <div className="aspect-video bg-gradient-to-br from-[#a8d05f]/10 to-[#6b8f2b]/5 rounded-lg flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Code2 className="h-16 w-16 text-[#6b8f2b]/30 mx-auto mb-4" />
-                  <p className="text-[#6b8f2b]/50 text-sm">Screenshot: Student view with slides and code editor</p>
-                </div>
-              </div>
+            <div className="order-2 md:order-1 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
+              <Image
+                src="/gallery/student-view.png"
+                alt="CodeKiwi student split-screen view with slides and code editor"
+                width={800}
+                height={500}
+                className="rounded-lg w-full object-cover"
+              />
             </div>
             <div className="order-1 md:order-2 space-y-6">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit">
@@ -148,14 +148,14 @@ export default function FeaturesPage() {
                 </li>
               </ul>
             </div>
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-6 shadow-xl overflow-hidden">
-              {/* TODO: Add screenshot of teacher monitoring dashboard */}
-              <div className="aspect-video bg-gradient-to-br from-[#a8d05f]/10 to-[#6b8f2b]/5 rounded-lg flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Eye className="h-16 w-16 text-[#6b8f2b]/30 mx-auto mb-4" />
-                  <p className="text-[#6b8f2b]/50 text-sm">Screenshot: Teacher view showing student progress</p>
-                </div>
-              </div>
+            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
+              <Image
+                src="/gallery/teacher-dashboard.png"
+                alt="CodeKiwi teacher dashboard showing real-time student code monitoring"
+                width={800}
+                height={500}
+                className="rounded-lg w-full object-cover"
+              />
             </div>
           </div>
         </div>

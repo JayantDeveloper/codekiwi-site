@@ -34,7 +34,7 @@ export default function SignUpPage() {
   const handleGoogleSignUp = async () => {
     setIsLoading(true);
     try {
-      await signIn("google", { callbackUrl: "/dashboard" });
+      await signIn("google", { callbackUrl: "/home" });
     } catch (err) {
       setError("Failed to sign up with Google");
       setIsLoading(false);
@@ -90,7 +90,7 @@ export default function SignUpPage() {
         setError("Account created, but sign-in failed. Please try signing in.");
         setIsLoading(false);
       } else {
-        router.push("/dashboard");
+        router.push("/home");
       }
     } catch (err) {
       setError("An error occurred. Please try again.");

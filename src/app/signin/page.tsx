@@ -24,7 +24,7 @@ export default function SignInPage() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+  const callbackUrl = searchParams.get("callbackUrl") || "/home";
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
