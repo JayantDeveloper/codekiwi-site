@@ -33,7 +33,7 @@ export default function PrivacyPage() {
           {/* Title */}
           <div className="mb-8 border-b border-[#d6c49f]/30 pb-6">
             <h1 className="text-4xl font-bold text-[#6b8f2b] mb-2">Privacy Policy</h1>
-            <p className="text-sm text-[#6b8f2b]/60">Last updated: October 19, 2024</p>
+            <p className="text-sm text-[#6b8f2b]/60">Last updated: April 30, 2026</p>
           </div>
 
           {/* Introduction */}
@@ -137,16 +137,23 @@ export default function PrivacyPage() {
             <section id="google-services">
               <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">4. Google Services Integration</h2>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
-                When you connect your Google account to CodeKiwi:
+                When you sign in with Google, CodeKiwi requests the following Google API permission:
               </p>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
-                <li>You grant CodeKiwi permission to access your Google Slides and Google Drive</li>
-                <li>CodeKiwi can read presentations you choose to use in sessions</li>
-                <li>CodeKiwi can create copies of template presentations in your Drive (when you create new sessions)</li>
-                <li>You can revoke these permissions at any time via your Google Account settings</li>
+                <li><strong>drive.file</strong> — access only to files you explicitly select via the Google Drive Picker, and files CodeKiwi creates on your behalf (session template copies). CodeKiwi cannot read, list, or modify any other files in your Drive.</li>
               </ul>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+                Specifically, CodeKiwi uses this permission to:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+                <li>Export the presentation you select as a PDF for use in your coding session</li>
+                <li>Create a copy of the CodeKiwi starter template in your Drive when you start a new session from scratch</li>
+              </ul>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+                You can revoke this permission at any time via <a href="https://myaccount.google.com/permissions" className="text-[#6b8f2b] hover:underline" target="_blank" rel="noopener noreferrer">Google Account Permissions</a>.
+              </p>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
-                CodeKiwi's use of information received from Google APIs adheres to <a href="https://developers.google.com/terms/api-services-user-data-policy" className="text-[#6b8f2b] hover:underline" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
+                CodeKiwi's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" className="text-[#6b8f2b] hover:underline" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
               </p>
             </section>
 

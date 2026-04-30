@@ -79,8 +79,7 @@ export const authOptions: NextAuthOptions = {
             "openid",
             "email",
             "profile",
-            "https://www.googleapis.com/auth/presentations",
-            "https://www.googleapis.com/auth/drive", // Changed from drive.file to drive
+            "https://www.googleapis.com/auth/drive.file",
           ].join(" "),
           access_type: "offline",
           prompt: "consent",
