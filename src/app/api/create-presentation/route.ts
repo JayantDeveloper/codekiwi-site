@@ -72,6 +72,12 @@ export async function POST() {
     const titleId = titleShape.objectId;
     const bodyId = bodyShape.objectId;
 
+    // Slide dimensions (default 16:9 Google Slides = 9144000 x 5143500 EMU)
+    const slideW = pres.data.pageSize?.width?.magnitude ?? 9144000;
+    const logoSize = 914400; // 1 inch
+    const logoX = Math.round((slideW - logoSize) / 2);
+    const logoY = 228600; // ~0.25 inch from top
+
     const requests: object[] = [
       // Green background
       {
@@ -139,6 +145,27 @@ export async function POST() {
         },
       },
     ];
+
+    // CodeKiwi logo centered at top
+    requests.push({
+      createImage: {
+        url: "https://www.codekiwi.app/codekiwilogo.png",
+        elementProperties: {
+          pageObjectId: slideId,
+          size: {
+            width: { magnitude: logoSize, unit: "EMU" },
+            height: { magnitude: logoSize, unit: "EMU" },
+          },
+          transform: {
+            scaleX: 1,
+            scaleY: 1,
+            translateX: logoX,
+            translateY: logoY,
+            unit: "EMU",
+          },
+        },
+      },
+    });
 
     // Speaker notes
     if (notesShape?.objectId) {
