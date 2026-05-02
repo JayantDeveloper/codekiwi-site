@@ -3,9 +3,6 @@ import { getServerSession } from "@/auth";
 import { google } from "googleapis";
 import { GaxiosError } from "gaxios";
 
-// Your template presentation ID
-const TEMPLATE_PRESENTATION_ID = "1qrNle2kJBQvIIx92gBQ6qBTGENJ_gtWwx4Xjr19XdL4";
-
 export async function POST() {
   try {
     const session = await getServerSession();
@@ -28,18 +25,19 @@ export async function POST() {
 
     const drive = google.drive({ version: "v3", auth });
 
-    const copiedFile = await drive.files.copy({
-      fileId: TEMPLATE_PRESENTATION_ID,
+    const title = `CodeKiwi Session - ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
+    const createdFile = await drive.files.create({
       requestBody: {
-        name: `CodeKiwi Session - ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`,
+        name: title,
+        mimeType: "application/vnd.google-apps.presentation",
       },
       fields: "id, name, webViewLink",
     });
 
-    const presentationId = copiedFile.data.id;
+    const presentationId = createdFile.data.id;
 
     if (!presentationId) {
-      throw new Error("Failed to copy presentation - no ID returned");
+      throw new Error("Failed to create presentation - no ID returned");
     }
 
     const presentationUrl = `https://docs.google.com/presentation/d/${presentationId}/edit`;
@@ -47,7 +45,7 @@ export async function POST() {
     return NextResponse.json({
       presentationId,
       presentationUrl,
-      title: copiedFile.data.name,
+      title: createdFile.data.name,
     });
   } catch (error) {
     const err = error as GaxiosError;
