@@ -113,7 +113,7 @@ export default function PricingPage() {
             <div className="flex gap-6">
               <Link href="/terms" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">Terms</Link>
               <Link href="/privacy" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">Privacy</Link>
-              <Link href="mailto:jaymaheshwari2603@gmail.com" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">Contact</Link>
+              <Link href="/support" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">Contact</Link>
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ export function LandingFooter() {
             Privacy
           </Link>
           <Link
-            href="mailto:jaymaheshwari2603@gmail.com"
+            href="/support"
             className="text-sm text-white/90 hover:text-white transition-colors hover:underline font-medium"
           >
             Contact
