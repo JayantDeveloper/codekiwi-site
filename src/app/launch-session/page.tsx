@@ -317,13 +317,28 @@ export default function LaunchSessionPage() {
                   </div>
                 </div>
 
-                <button
-                  onClick={handlePresentLive}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white font-semibold py-3 px-6 shadow-md transition-all"
-                >
-                  <Play className="h-4 w-4 fill-white" />
-                  Present Live
-                </button>
+                <div className="flex flex-col gap-3">
+                  <button
+                    onClick={handlePresentLive}
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white font-semibold py-3 px-6 shadow-md transition-all"
+                  >
+                    <Play className="h-4 w-4 fill-white" />
+                    Present Live
+                  </button>
+                  <a
+                    href={selected.webViewLink ?? `https://docs.google.com/presentation/d/${selected.id}/edit`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl border-2 border-[#a8d05f]/60 bg-white hover:border-[#6b8f2b] hover:bg-[#f8faf5] text-[#6b8f2b] font-semibold py-3 px-6 transition-all"
+                  >
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                    Edit in Google Slides
+                  </a>
+                </div>
               </div>
             </div>
           </div>
