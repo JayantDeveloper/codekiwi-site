@@ -1,40 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "@/auth";
-import { google } from "googleapis";
-import { GaxiosError } from "gaxios";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession();
-  if (!session?.accessToken) {
+  if (!session?.user?.email) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const { presentationId, title } = await req.json();
+  const { presentationId, title, fileBase64 } = await req.json();
   if (!presentationId) {
     return NextResponse.json({ error: "Missing presentationId" }, { status: 400 });
   }
-
-  const auth = new google.auth.OAuth2();
-  auth.setCredentials({ access_token: session.accessToken });
-  const drive = google.drive({ version: "v3", auth });
-
-  let fileBase64: string;
-  try {
-    const exportRes = await drive.files.export(
-      { fileId: presentationId, mimeType: "application/pdf" },
-      { responseType: "arraybuffer" }
-    );
-    const raw = exportRes.data;
-    const pdfBuffer = Buffer.isBuffer(raw) ? raw : Buffer.from(raw as ArrayBuffer);
-    fileBase64 = pdfBuffer.toString("base64");
-  } catch (e) {
-    const err = e as GaxiosError;
-    console.error("PDF export failed:", err.message);
-    return NextResponse.json(
-      { error: "Failed to export presentation as PDF", details: err.message },
-      { status: 500 }
-    );
+  if (!fileBase64) {
+    return NextResponse.json({ error: "Missing presentation file data" }, { status: 400 });
   }
 
   const slidesUrl = `https://docs.google.com/presentation/d/${presentationId}/edit`;

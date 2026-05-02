@@ -136,10 +136,37 @@ export default function LaunchSessionPage() {
     if (!selected) return;
     setPageState("starting");
     try {
+      // Export the presentation as PDF client-side using the authorized access token.
+      // drive.file scope grants per-file access via Picker in the browser context;
+      // doing the export here avoids server-side authorization failures.
+      const accessToken = session?.accessToken;
+      if (!accessToken) throw new Error("Not authenticated with Google. Please sign out and sign back in.");
+
+      const exportRes = await fetch(
+        `https://www.googleapis.com/drive/v3/files/${selected.id}/export?mimeType=application%2Fpdf`,
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+      );
+      if (!exportRes.ok) {
+        if (exportRes.status === 403) {
+          throw new Error(
+            "Google Drive permission denied. Please sign out, sign back in, then re-select your presentation."
+          );
+        }
+        throw new Error(`Failed to export presentation (HTTP ${exportRes.status}). Please try again.`);
+      }
+
+      const pdfBuffer = await exportRes.arrayBuffer();
+      const uint8 = new Uint8Array(pdfBuffer);
+      let binary = "";
+      for (let i = 0; i < uint8.length; i += 8192) {
+        binary += String.fromCharCode(...Array.from(uint8.subarray(i, i + 8192)));
+      }
+      const fileBase64 = btoa(binary);
+
       const res = await fetch("/api/sessions/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ presentationId: selected.id, title: selected.name }),
+        body: JSON.stringify({ presentationId: selected.id, title: selected.name, fileBase64 }),
       });
       let data: { sessionCode?: string; error?: string } = {};
       try { data = await res.json(); } catch { /* empty/non-JSON body */ }
