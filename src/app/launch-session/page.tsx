@@ -20,8 +20,13 @@ interface PickerResponse {
   docs?: PickerDoc[];
 }
 
+interface DocsViewInstance {
+  setMimeTypes(types: string): DocsViewInstance;
+  setIncludeFolders(value: boolean): DocsViewInstance;
+}
+
 interface PickerBuilderInstance {
-  addView(view: string): PickerBuilderInstance;
+  addView(view: string | DocsViewInstance): PickerBuilderInstance;
   setOAuthToken(token: string): PickerBuilderInstance;
   setDeveloperKey(key: string): PickerBuilderInstance;
   setCallback(fn: (data: PickerResponse) => void): PickerBuilderInstance;
@@ -31,6 +36,7 @@ interface PickerBuilderInstance {
 interface GooglePickerNs {
   ViewId: { PRESENTATIONS: string };
   PickerBuilder: new () => PickerBuilderInstance;
+  DocsView: new () => DocsViewInstance;
 }
 
 interface GapiInstance {
@@ -62,6 +68,8 @@ export default function LaunchSessionPage() {
   const [error, setError] = useState<string | null>(null);
   const [templateLoading, setTemplateLoading] = useState(false);
   const gapiLoadedRef = useRef(false);
+  // Store the exact token used to open the Picker so export uses the same one
+  const pickerTokenRef = useRef<string | null>(null);
 
   // Preload the Google API script
   useEffect(() => {
@@ -79,10 +87,18 @@ export default function LaunchSessionPage() {
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_PICKER_API_KEY;
     if (!accessToken || !apiKey) return;
 
+    // Capture the token so handlePresentLive uses the exact same one
+    pickerTokenRef.current = accessToken;
+
     const initPicker = () => {
       window.gapi.load("picker", () => {
+        // DocsView with explicit MIME type is the correct way to grant
+        // drive.file per-file authorization for Picker-selected files
+        const view = new window.google.picker.DocsView()
+          .setMimeTypes("application/vnd.google-apps.presentation")
+          .setIncludeFolders(false);
         const picker = new window.google.picker.PickerBuilder()
-          .addView(window.google.picker.ViewId.PRESENTATIONS)
+          .addView(view)
           .setOAuthToken(accessToken)
           .setDeveloperKey(apiKey)
           .setCallback(async (data: PickerResponse) => {
@@ -136,10 +152,9 @@ export default function LaunchSessionPage() {
     if (!selected) return;
     setPageState("starting");
     try {
-      // Export the presentation as PDF client-side using the authorized access token.
-      // drive.file scope grants per-file access via Picker in the browser context;
-      // doing the export here avoids server-side authorization failures.
-      const accessToken = session?.accessToken;
+      // Export using the same token that was passed to the Picker — this is the
+      // token that Drive registered the per-file authorization against.
+      const accessToken = pickerTokenRef.current ?? session?.accessToken;
       if (!accessToken) throw new Error("Not authenticated with Google. Please sign out and sign back in.");
 
       const exportRes = await fetch(

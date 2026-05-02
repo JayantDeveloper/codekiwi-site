@@ -14,13 +14,13 @@ const DARK  = { red: 0.102, green: 0.102, blue: 0.102 }; // #1a1a1a
 const SW = 9144000;
 const SH = 5143500;
 
-// Green header strip
-const HDR_H = 1600000;
+// Green header strip — tall enough for 2-line 32pt title
+const HDR_H = 1900000;
 
 // Logo: centered vertically in header, left-padded
 const LOGO_SZ = 1143000; // 1.25"
 const LOGO_X  = 228600;
-const LOGO_Y  = Math.round((HDR_H - LOGO_SZ) / 2); // ≈ 228600
+const LOGO_Y  = Math.round((HDR_H - LOGO_SZ) / 2); // ≈ 378600
 
 // Header text (to the right of the logo)
 const HDR_TXT_X = LOGO_X + LOGO_SZ + 228600; // ≈ 1600200
@@ -33,14 +33,14 @@ const COL_1_X  = COL_PAD;
 const COL_2_X  = COL_PAD + COL_W;
 const COL_3_X  = COL_PAD + 2 * COL_W;
 
-const STEP_TOP  = HDR_H + 304800;             // just below header
+const STEP_TOP  = HDR_H + 228600;             // just below header
 const CIRC_SZ   = 609600;                     // 0.667" circle
 const CIRC_Y    = STEP_TOP + 228600;
 const circX     = (cx: number) => cx + Math.round((COL_W - CIRC_SZ) / 2);
 
 const TXT_Y     = CIRC_Y + CIRC_SZ + 228600; // below circles
 const TXT_W     = COL_W - 304800;             // 2540000
-const TXT_H     = 1752000;
+const TXT_H     = 1450000;                    // fits within slide with new header height
 const txtX      = (cx: number) => cx + 152400;
 
 // ── helpers ────────────────────────────────────────────────────────────────
@@ -253,7 +253,7 @@ export async function POST() {
     requests.push(align("ck_sub", "START"));
 
     // Header: main headline
-    requests.push(mkTextBox("ck_ttl", sid, HDR_TXT_X, 685800, HDR_TXT_W, 800000));
+    requests.push(mkTextBox("ck_ttl", sid, HDR_TXT_X, 685800, HDR_TXT_W, 1100000));
     requests.push(ins("ck_ttl", "Make your coding lessons interactive!"));
     requests.push(style("ck_ttl", WHITE, 32, true));
     requests.push(align("ck_ttl", "START"));
