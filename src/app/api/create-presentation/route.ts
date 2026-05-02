@@ -40,6 +40,47 @@ export async function POST() {
       throw new Error("Failed to create presentation - no ID returned");
     }
 
+    // Populate the default blank slide with CodeKiwi template content
+    const slidesApi = google.slides({ version: "v1", auth });
+    const pres = await slidesApi.presentations.get({ presentationId });
+    const firstSlide = pres.data.slides?.[0];
+    const titleShape = firstSlide?.pageElements?.find(
+      (el) =>
+        el.shape?.placeholder?.type === "CENTERED_TITLE" ||
+        el.shape?.placeholder?.type === "TITLE"
+    );
+    const bodyShape = firstSlide?.pageElements?.find(
+      (el) =>
+        el.shape?.placeholder?.type === "BODY" ||
+        el.shape?.placeholder?.type === "SUBTITLE"
+    );
+
+    const requests: object[] = [];
+    if (titleShape?.objectId) {
+      requests.push({
+        insertText: {
+          objectId: titleShape.objectId,
+          text: "Welcome to CodeKiwi!",
+          insertionIndex: 0,
+        },
+      });
+    }
+    if (bodyShape?.objectId) {
+      requests.push({
+        insertText: {
+          objectId: bodyShape.objectId,
+          text: 'How to use this template:\n1. Replace this slide with your lesson content\n2. In Speaker Notes, add "Code Question:" at the top to mark a slide as a live coding exercise\n3. Open the CodeKiwi add-on in Google Slides and click Start Lesson',
+          insertionIndex: 0,
+        },
+      });
+    }
+    if (requests.length > 0) {
+      await slidesApi.presentations.batchUpdate({
+        presentationId,
+        requestBody: { requests },
+      });
+    }
+
     const presentationUrl = `https://docs.google.com/presentation/d/${presentationId}/edit`;
 
     return NextResponse.json({

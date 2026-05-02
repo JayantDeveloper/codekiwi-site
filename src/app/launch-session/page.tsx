@@ -121,7 +121,10 @@ export default function LaunchSessionPage() {
       let data: { presentationUrl?: string; error?: string; details?: string } = {};
       try { data = await res.json(); } catch { /* empty/non-JSON body */ }
       if (!res.ok) throw new Error(data.details || data.error || "Failed to create presentation");
-      if (data.presentationUrl) window.location.href = data.presentationUrl;
+      if (data.presentationUrl) {
+        window.open(data.presentationUrl, "_blank");
+        router.push("/home");
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create presentation");
       setTemplateLoading(false);
