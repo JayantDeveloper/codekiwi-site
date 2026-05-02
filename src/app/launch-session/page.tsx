@@ -104,14 +104,27 @@ export default function LaunchSessionPage() {
           .setCallback(async (data: PickerResponse) => {
             if (data.action !== "picked" || !data.docs?.[0]) return;
             const doc = data.docs[0];
-            // Fetch richer info (thumbnail) from our API
-            const infoRes = await fetch(`/api/presentations/info?id=${doc.id}`);
-            const info = infoRes.ok ? await infoRes.json() : {};
+            // Fetch file metadata client-side with the Picker token —
+            // server-side drive.files.get can't access Picker-selected files
+            // due to drive.file scope being tied to the browser OAuth context.
+            let thumbnailLink: string | null = doc.thumbnailUrl ?? null;
+            let webViewLink: string | null = doc.url ?? null;
+            try {
+              const metaRes = await fetch(
+                `https://www.googleapis.com/drive/v3/files/${doc.id}?fields=name%2CthumbnailLink%2CwebViewLink`,
+                { headers: { Authorization: `Bearer ${accessToken}` } }
+              );
+              if (metaRes.ok) {
+                const meta = await metaRes.json();
+                thumbnailLink = meta.thumbnailLink ?? thumbnailLink;
+                webViewLink = meta.webViewLink ?? webViewLink;
+              }
+            } catch { /* fall back to Picker values */ }
             setSelected({
               id: doc.id,
-              name: doc.name || info.name || "Untitled Presentation",
-              thumbnailLink: info.thumbnailLink || doc.thumbnailUrl || null,
-              webViewLink: info.webViewLink || doc.url || null,
+              name: doc.name || "Untitled Presentation",
+              thumbnailLink,
+              webViewLink,
             });
             setPageState("preview");
           })
