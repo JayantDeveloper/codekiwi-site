@@ -1,5 +1,4 @@
 import React from "react";
-import { Play } from "lucide-react";
 
 interface Props {
   isVisible: boolean;
@@ -131,8 +130,12 @@ export const DemoSection = React.forwardRef<HTMLElement, Props>(
 
                 <div className="flex-[3] border-t border-[#3e3e42] bg-[#181818] p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Play className="w-3 h-3 text-[#a8d05f]" />
-                    <span className="text-xs text-gray-400 font-medium">Output</span>
+                    <svg className="w-3.5 h-3.5 text-gray-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="4" />
+                      <polyline points="8 9 13 12 8 15" />
+                      <line x1="13" y1="15" x2="18" y2="15" />
+                    </svg>
+                    <span className="text-xs text-gray-400 font-medium uppercase tracking-wide">Output</span>
                   </div>
                   <div className={`font-mono text-sm text-[#a8d05f] ${isVisible ? "typing-output" : "opacity-0"}`}>
                     Hello, Student!
