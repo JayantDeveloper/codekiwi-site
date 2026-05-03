@@ -1,15 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Plus } from "lucide-react";
 import Link from "next/link";
+import { getServerSession } from "@/auth";
+import { prisma } from "@/lib/prisma";
 
-const presentations: Array<{
-  id: string;
-  title: string;
-  lastModified: string;
-  thumbnail: string;
-}> = [];
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const session = await getServerSession();
+
+  const dbUser = session?.user?.email
+    ? await prisma.user.findUnique({
+        where: { email: session.user.email },
+        select: { id: true },
+      })
+    : null;
+
+  const sessions = dbUser
+    ? await prisma.session.findMany({
+        where: { userId: dbUser.id },
+        orderBy: { createdAt: "desc" },
+      })
+    : [];
+
   return (
     <main className="w-full px-4 sm:px-8 md:px-12 py-6 bg-gradient-to-b from-[#a8d05f]/5 to-[#f8faf5]">
       <div className="mb-6 flex items-center justify-between">
@@ -25,7 +38,7 @@ export default function HomePage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {presentations.length === 0 ? (
+        {sessions.length === 0 ? (
           <div className="col-span-full flex flex-col items-center justify-center py-12 text-center">
             <div className="rounded-full bg-[#6b8f2b] p-6 mb-4 shadow-lg">
               <svg
@@ -50,8 +63,7 @@ export default function HomePage() {
               No presentations yet
             </h3>
             <p className="text-[#6b8f2b]/70 mb-6 max-w-md">
-              Get started by launching your first coding session with Google
-              Slides
+              Get started by launching your first coding session with Google Slides
             </p>
             <Link href="/launch-session" target="_blank">
               <Button className="bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white shadow-lg">
@@ -61,37 +73,69 @@ export default function HomePage() {
             </Link>
           </div>
         ) : (
-          presentations.map((p) => (
+          sessions.map((s) => (
             <div
-              key={p.id}
+              key={s.id}
               className="group overflow-hidden rounded-xl border-2 border-[#a8d05f] bg-white shadow-md transition-all hover:shadow-xl hover:border-[#6b8f2b] hover:-translate-y-1"
             >
-              <div className="aspect-video overflow-hidden bg-[#a8d05f]/10">
-                <img
-                  src={p.thumbnail || "/placeholder.svg"}
-                  alt={p.title}
-                  className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="font-medium text-[#6b8f2b] mb-1">{p.title}</h3>
-                <p className="text-sm text-[#6b8f2b]/70">
-                  Modified {p.lastModified}
-                </p>
-                <div className="mt-4 flex items-center justify-between gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-[#6b8f2b]/30 text-[#6b8f2b] hover:bg-[#a8d05f]/20 bg-white"
+              {/* Thumbnail / icon area */}
+              <div className="aspect-video flex items-center justify-center bg-[#a8d05f]/10 overflow-hidden">
+                {s.presentationId ? (
+                  <a
+                    href={`https://docs.google.com/presentation/d/${s.presentationId}/edit`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-full h-full"
                   >
-                    Edit
-                  </Button>
+                    <svg className="h-16 w-16 opacity-40" viewBox="0 0 48 48" fill="none">
+                      <rect x="6" y="6" width="36" height="36" rx="3" fill="#FBBC04" />
+                      <rect x="12" y="13" width="24" height="22" rx="1" fill="white" />
+                      <rect x="16" y="17" width="16" height="2" rx="1" fill="#BDC1C6" />
+                      <rect x="16" y="21" width="16" height="2" rx="1" fill="#BDC1C6" />
+                      <rect x="16" y="25" width="10" height="2" rx="1" fill="#BDC1C6" />
+                    </svg>
+                  </a>
+                ) : (
+                  <svg className="h-16 w-16 opacity-40" viewBox="0 0 48 48" fill="none">
+                    <rect x="6" y="6" width="36" height="36" rx="3" fill="#FBBC04" />
+                    <rect x="12" y="13" width="24" height="22" rx="1" fill="white" />
+                    <rect x="16" y="17" width="16" height="2" rx="1" fill="#BDC1C6" />
+                    <rect x="16" y="21" width="16" height="2" rx="1" fill="#BDC1C6" />
+                    <rect x="16" y="25" width="10" height="2" rx="1" fill="#BDC1C6" />
+                  </svg>
+                )}
+              </div>
+
+              <div className="p-4">
+                <h3 className="font-semibold text-[#1a1a1a] mb-0.5 truncate">{s.title}</h3>
+                <p className="text-sm text-gray-500 mb-3">
+                  {s.createdAt.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}
+                  {s.studentCount > 0 && ` · ${s.studentCount} student${s.studentCount === 1 ? "" : "s"}`}
+                </p>
+                <div className="flex items-center justify-between gap-2">
+                  {s.presentationId ? (
+                    <a
+                      href={`https://docs.google.com/presentation/d/${s.presentationId}/edit`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-[#6b8f2b]/30 text-[#6b8f2b] hover:bg-[#a8d05f]/20 bg-white"
+                      >
+                        Open Slides
+                      </Button>
+                    </a>
+                  ) : (
+                    <div />
+                  )}
                   <Link href="/launch-session" target="_blank">
                     <Button
                       size="sm"
                       className="bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white"
                     >
-                      Launch
+                      Launch Again
                     </Button>
                   </Link>
                 </div>
