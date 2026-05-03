@@ -6,6 +6,34 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
+async function fetchThumbnails(
+  presentationIds: string[],
+  accessToken: string
+): Promise<Record<string, string>> {
+  const results = await Promise.allSettled(
+    presentationIds.map(async (id) => {
+      const res = await fetch(
+        `https://www.googleapis.com/drive/v3/files/${id}?fields=thumbnailLink`,
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+      );
+      if (!res.ok) return [id, null] as const;
+      const data = await res.json();
+      // Replace the small size token with a larger one
+      const url: string | null = data.thumbnailLink
+        ? (data.thumbnailLink as string).replace(/=s\d+$/, "=s800")
+        : null;
+      return [id, url] as const;
+    })
+  );
+  const map: Record<string, string> = {};
+  for (const r of results) {
+    if (r.status === "fulfilled" && r.value[1]) {
+      map[r.value[0]] = r.value[1];
+    }
+  }
+  return map;
+}
+
 export default async function HomePage() {
   const session = await getServerSession();
 
@@ -22,6 +50,15 @@ export default async function HomePage() {
         orderBy: { createdAt: "desc" },
       })
     : [];
+
+  const accessToken = session?.accessToken as string | undefined;
+  const presentationIds = sessions
+    .map((s) => s.presentationId)
+    .filter((id): id is string => !!id);
+  const thumbnails =
+    accessToken && presentationIds.length > 0
+      ? await fetchThumbnails(presentationIds, accessToken)
+      : {};
 
   return (
     <main className="w-full px-4 sm:px-8 md:px-12 py-6 bg-gradient-to-b from-[#a8d05f]/5 to-[#f8faf5]">
@@ -78,31 +115,25 @@ export default async function HomePage() {
               key={s.id}
               className="group overflow-hidden rounded-xl border-2 border-[#a8d05f] bg-white shadow-md transition-all hover:shadow-xl hover:border-[#6b8f2b] hover:-translate-y-1"
             >
-              {/* Thumbnail / icon area */}
-              <div className="aspect-video flex items-center justify-center bg-[#a8d05f]/10 overflow-hidden">
-                {s.presentationId ? (
-                  <a
-                    href={`https://docs.google.com/presentation/d/${s.presentationId}/edit`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-full h-full"
-                  >
-                    <svg className="h-16 w-16 opacity-40" viewBox="0 0 48 48" fill="none">
+              {/* Thumbnail */}
+              <div className="aspect-video relative overflow-hidden bg-[#f1f3f4]">
+                {s.presentationId && thumbnails[s.presentationId] ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={thumbnails[s.presentationId]}
+                    alt={s.title}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <svg className="h-16 w-16 opacity-30" viewBox="0 0 48 48" fill="none">
                       <rect x="6" y="6" width="36" height="36" rx="3" fill="#FBBC04" />
                       <rect x="12" y="13" width="24" height="22" rx="1" fill="white" />
                       <rect x="16" y="17" width="16" height="2" rx="1" fill="#BDC1C6" />
                       <rect x="16" y="21" width="16" height="2" rx="1" fill="#BDC1C6" />
                       <rect x="16" y="25" width="10" height="2" rx="1" fill="#BDC1C6" />
                     </svg>
-                  </a>
-                ) : (
-                  <svg className="h-16 w-16 opacity-40" viewBox="0 0 48 48" fill="none">
-                    <rect x="6" y="6" width="36" height="36" rx="3" fill="#FBBC04" />
-                    <rect x="12" y="13" width="24" height="22" rx="1" fill="white" />
-                    <rect x="16" y="17" width="16" height="2" rx="1" fill="#BDC1C6" />
-                    <rect x="16" y="21" width="16" height="2" rx="1" fill="#BDC1C6" />
-                    <rect x="16" y="25" width="10" height="2" rx="1" fill="#BDC1C6" />
-                  </svg>
+                  </div>
                 )}
               </div>
 
