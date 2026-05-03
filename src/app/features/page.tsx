@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Presentation, Code2, Users, Zap, Eye, RefreshCw } from "lucide-react";
+import { Presentation, Code2, Users, Zap, Eye, RefreshCw, PencilLine } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Features — CodeKiwi",
@@ -156,6 +156,46 @@ export default function FeaturesPage() {
                 height={500}
                 className="rounded-lg w-full object-cover"
               />
+            </div>
+          </div>
+        </div>
+
+        {/* Feature Showcase 4 - Teacher Edit Student Code (reversed) */}
+        <div className="mb-32">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="order-2 md:order-1 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
+              <Image
+                src="/app-gallery/06-teacher-inspect-student.png"
+                alt="CodeKiwi teacher editing a student's code directly"
+                width={800}
+                height={500}
+                className="rounded-lg w-full object-cover"
+              />
+            </div>
+            <div className="order-1 md:order-2 space-y-6">
+              <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit">
+                <PencilLine className="h-10 w-10 text-[#6b8f2b]" />
+              </div>
+              <h2 className="text-3xl font-bold text-[#6b8f2b]">
+                Live Teacher Assistance
+              </h2>
+              <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
+                Jump directly into any student's editor to fix bugs, leave examples, or guide them through a stuck point—without disrupting the rest of the class.
+              </p>
+              <ul className="space-y-3 text-[#6b8f2b]/70">
+                <li className="flex items-start gap-3">
+                  <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
+                  <span>Edit any student's code directly from the dashboard</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
+                  <span>Changes sync instantly to the student's screen</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
+                  <span>View output alongside their code to diagnose errors</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
