@@ -62,9 +62,15 @@ export default async function SessionsPage() {
                 {session.sessionCode}
               </div>
               <div>
-                <span className="inline-flex rounded-full bg-[#a8d05f]/20 px-2 py-1 text-xs font-medium text-[#6b8f2b]">
-                  Completed
-                </span>
+                {session.endedAt ? (
+                  <span className="inline-flex rounded-full bg-[#a8d05f]/20 px-2 py-1 text-xs font-medium text-[#6b8f2b]">
+                    Completed
+                  </span>
+                ) : (
+                  <span className="inline-flex rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-700">
+                    Active
+                  </span>
+                )}
               </div>
             </div>
           ))}
