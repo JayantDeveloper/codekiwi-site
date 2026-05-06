@@ -146,7 +146,7 @@ export default function PrivacyPage() {
                 Specifically, CodeKiwi uses this permission to:
               </p>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
-                <li>Export the presentation you select as a PDF for use in your coding session</li>
+                <li>Retrieve slide thumbnails from the presentation you select for use in your coding session</li>
                 <li>Create a copy of the CodeKiwi starter template in your Drive when you start a new session from scratch</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">

@@ -23,7 +23,7 @@ const commonFixes = [
   {
     icon: ShieldCheck,
     title: "Grant all requested permissions",
-    description: "CodeKiwi needs access to your Google Slides and Drive. Re-authorize in Extensions if you skipped any permission.",
+    description: "CodeKiwi needs access to your Google Slides presentations. Re-authorize in Extensions if you skipped any permission.",
   },
 ];
 

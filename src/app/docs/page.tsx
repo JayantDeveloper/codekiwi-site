@@ -88,7 +88,7 @@ export default function DocsPage() {
               </ol>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b] mb-4">
                 <p className="text-sm text-[#6b8f2b]/80">
-                  <strong>Why Google sign-in?</strong> CodeKiwi needs read access to your Drive to export your presentation as slides. No files are modified.
+                  <strong>Why Google sign-in?</strong> CodeKiwi uses Google sign-in to access the presentations you select and retrieve slide thumbnails via the Google Slides API. No files are modified.
                 </p>
               </div>
 
@@ -104,22 +104,36 @@ export default function DocsPage() {
             <section id="marking-slides">
               <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Marking Coding Slides</h2>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
-                By default, students see only the slide. To show the live code editor on a specific slide, mark it as a <strong>Code Question</strong> using the slide's Speaker Notes:
+                By default, students see only the slide. To show the live code editor on a specific slide, mark it as a <strong>Code Question</strong>. There are two ways to do this:
               </p>
-              <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-6">
+
+              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Option A — Via the Add-On Sidebar (recommended)</h3>
+              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+                <li className="leading-relaxed">Open your presentation and make sure the <strong>CodeKiwi</strong> sidebar is open</li>
+                <li className="leading-relaxed">Click the slide you want to mark in the slide panel on the left</li>
+                <li className="leading-relaxed">Click <strong>Mark Current Slide</strong> in the <em>Coding Slides</em> section of the sidebar</li>
+                <li className="leading-relaxed">The slide number appears instantly as a green chip in the list</li>
+              </ol>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-2">
+                The <strong>Coding Slides</strong> panel shows all marked slides as compact numbered chips. To remove a slide's coding marker, click the <strong>×</strong> on its chip.
+              </p>
+
+              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Option B — Via Speaker Notes (manual)</h3>
+              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li className="leading-relaxed">Open the slide in Google Slides</li>
                 <li className="leading-relaxed">Open <strong>Speaker Notes</strong> (View → Show Speaker Notes)</li>
                 <li className="leading-relaxed">
-                  At the very top of the notes, type:
+                  At the very top of the notes, type exactly:
                   <div className="mt-2 ml-4 inline-block rounded bg-[#1e1e1e] px-3 py-1.5 font-mono text-sm text-[#a8d05f]">
                     Code Question: Write a function that…
                   </div>
                 </li>
                 <li className="leading-relaxed">The text after the colon becomes the question prompt students see</li>
               </ol>
+
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
                 <p className="text-sm text-[#6b8f2b]/80">
-                  <strong>Tip:</strong> You can mix regular slides and coding slides freely. The editor only appears on slides that start with <code className="font-mono bg-white/60 px-1 rounded">Code Question:</code> in their notes.
+                  <strong>Tip:</strong> Mix regular slides and coding slides freely — the editor only appears on slides marked with <code className="font-mono bg-white/60 px-1 rounded">Code Question:</code>. The marker must be at the very first line of the Speaker Notes and is case-sensitive.
                 </p>
               </div>
             </section>
@@ -139,7 +153,7 @@ export default function DocsPage() {
                   Choose one of two options:
                   <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
                     <li><strong>Use Template</strong> — creates a fresh CodeKiwi starter deck in your Google Drive and opens it for editing</li>
-                    <li><strong>Choose from Drive</strong> — pick an existing Google Slides presentation; CodeKiwi exports it and launches the session immediately</li>
+                    <li><strong>Choose from Drive</strong> — pick an existing Google Slides presentation; CodeKiwi retrieves the slide thumbnails and launches the session immediately</li>
                   </ul>
                 </li>
                 <li className="leading-relaxed">You'll be taken directly to the teacher presentation view at <strong>codekiwi.app</strong></li>
@@ -148,8 +162,10 @@ export default function DocsPage() {
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Option 2 — From the Google Slides Add-On</h3>
               <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-4">
                 <li className="leading-relaxed">Open your Google Slides presentation</li>
-                <li className="leading-relaxed">Go to <strong>Extensions → CodeKiwi → Start Lesson</strong> to open the sidebar</li>
-                <li className="leading-relaxed">Click <strong>Start Lesson</strong> in the sidebar — CodeKiwi exports your slides and generates a session</li>
+                <li className="leading-relaxed">Go to <strong>Extensions → CodeKiwi → Open CodeKiwi Add-On</strong> to open the sidebar</li>
+                <li className="leading-relaxed">Use the <strong>Coding Slides</strong> panel to mark or unmark slides as coding questions right from the sidebar</li>
+                <li className="leading-relaxed">Select a language (Python or JavaScript) from the <strong>Session Language</strong> toggle</li>
+                <li className="leading-relaxed">Click <strong>Start Lesson</strong> — CodeKiwi exports your slides and generates a session</li>
                 <li className="leading-relaxed">A new tab opens with the teacher presentation view</li>
               </ol>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
@@ -296,7 +312,7 @@ export default function DocsPage() {
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">"Google Drive permission denied" when selecting a presentation</h4>
                   <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
                     <li>Sign out of codekiwi.tech, then sign back in with Google</li>
-                    <li>When prompted, approve the Drive read permissions</li>
+                    <li>When prompted, approve the Google Slides permissions</li>
                     <li>Try selecting the presentation again</li>
                   </ul>
                 </div>
@@ -322,8 +338,9 @@ export default function DocsPage() {
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">The code editor isn't showing for students</h4>
                   <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
-                    <li>Check that the slide has <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code> at the top of its Speaker Notes</li>
-                    <li>The prefix is case-insensitive but must be at the very first line of the notes</li>
+                    <li>Check that the slide has <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code> at the very first line of its Speaker Notes</li>
+                    <li>The marker is case-sensitive — it must be typed exactly as <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code></li>
+                    <li>Use the <strong>Coding Slides</strong> panel in the Add-On sidebar to see which slides are currently marked</li>
                   </ul>
                 </div>
 
@@ -332,13 +349,6 @@ export default function DocsPage() {
                   <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
                     <li>Make sure students have fully joined (entered code + name)</li>
                     <li>Refresh the dashboard page</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-[#6b8f2b] mb-2">Clicking "Presentation" from the dashboard takes me to the lobby instead of the slides</h4>
-                  <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
-                    <li>This is fixed in the latest version — make sure you're not using a cached page (hard refresh with Cmd/Ctrl+Shift+R)</li>
                   </ul>
                 </div>
               </div>
