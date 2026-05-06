@@ -165,36 +165,45 @@ export default function LaunchSessionPage() {
     if (!selected) return;
     setPageState("starting");
     try {
-      // Export using the same token that was passed to the Picker — this is the
-      // token that Drive registered the per-file authorization against.
+      // Use the same token that was passed to the Picker for Slides API calls
       const accessToken = pickerTokenRef.current ?? session?.accessToken;
       if (!accessToken) throw new Error("Not authenticated with Google. Please sign out and sign back in.");
 
-      const exportRes = await fetch(
-        `https://www.googleapis.com/drive/v3/files/${selected.id}/export?mimeType=application%2Fpdf`,
+      // Get slide object IDs from the Slides API
+      const presRes = await fetch(
+        `https://slides.googleapis.com/v1/presentations/${selected.id}?fields=slides.objectId`,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
-      if (!exportRes.ok) {
-        if (exportRes.status === 403) {
+      if (!presRes.ok) {
+        if (presRes.status === 403) {
           throw new Error(
-            "Google Drive permission denied. Please sign out, sign back in, then re-select your presentation."
+            "Google permission denied. Please sign out, sign back in, then re-select your presentation."
           );
         }
-        throw new Error(`Failed to export presentation (HTTP ${exportRes.status}). Please try again.`);
+        throw new Error(`Failed to access presentation (HTTP ${presRes.status}). Please try again.`);
       }
+      const presData = await presRes.json();
+      const slideIds: string[] = (presData.slides ?? []).map((s: { objectId: string }) => s.objectId);
+      if (!slideIds.length) throw new Error("Presentation has no slides.");
 
-      const pdfBuffer = await exportRes.arrayBuffer();
-      const uint8 = new Uint8Array(pdfBuffer);
-      let binary = "";
-      for (let i = 0; i < uint8.length; i += 8192) {
-        binary += String.fromCharCode(...Array.from(uint8.subarray(i, i + 8192)));
+      // Fetch thumbnail URL for each slide
+      const thumbnailUrls: string[] = [];
+      for (const objectId of slideIds) {
+        const thumbRes = await fetch(
+          `https://slides.googleapis.com/v1/presentations/${selected.id}/pages/${objectId}/thumbnail?thumbnailProperties.thumbnailSize=LARGE`,
+          { headers: { Authorization: `Bearer ${accessToken}` } }
+        );
+        if (!thumbRes.ok) {
+          throw new Error(`Failed to get slide thumbnail (HTTP ${thumbRes.status}). Please try again.`);
+        }
+        const thumbData = await thumbRes.json();
+        thumbnailUrls.push(thumbData.contentUrl);
       }
-      const fileBase64 = btoa(binary);
 
       const res = await fetch("/api/sessions/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ presentationId: selected.id, title: selected.name, fileBase64 }),
+        body: JSON.stringify({ presentationId: selected.id, title: selected.name, thumbnailUrls }),
       });
       let data: { sessionCode?: string; error?: string } = {};
       try { data = await res.json(); } catch { /* empty/non-JSON body */ }

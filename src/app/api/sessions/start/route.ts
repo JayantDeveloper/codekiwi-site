@@ -8,12 +8,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const { presentationId, title, fileBase64 } = await req.json();
+  const { presentationId, title, thumbnailUrls } = await req.json();
   if (!presentationId) {
     return NextResponse.json({ error: "Missing presentationId" }, { status: 400 });
   }
-  if (!fileBase64) {
-    return NextResponse.json({ error: "Missing presentation file data" }, { status: 400 });
+  if (!Array.isArray(thumbnailUrls) || !thumbnailUrls.length) {
+    return NextResponse.json({ error: "Missing slide thumbnails" }, { status: 400 });
   }
 
   const slidesUrl = `https://docs.google.com/presentation/d/${presentationId}/edit`;
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
           title: title || "CodeKiwi Session",
           notes: [],
           slidesUrl,
-          fileBase64,
+          thumbnailUrls,
         }),
       }
     );
