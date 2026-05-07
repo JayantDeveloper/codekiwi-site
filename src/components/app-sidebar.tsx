@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Settings, Presentation } from "lucide-react";
+import { Settings, Presentation } from "lucide-react";
 
 import {
   Sidebar,
@@ -20,14 +20,9 @@ export function AppSidebar() {
 
   const menuItems = [
     {
-      title: "Dashboard",
-      icon: LayoutDashboard,
-      href: "/home",
-    },
-    {
-      title: "Sessions",
+      title: "My Sessions",
       icon: Presentation,
-      href: "/home/sessions",
+      href: "/home",
     },
     {
       title: "Settings",
