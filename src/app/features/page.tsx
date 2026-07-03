@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Presentation, Code2, Users, Zap, Eye, RefreshCw, PencilLine } from "lucide-react";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Features — CodeKiwi",
@@ -48,7 +49,7 @@ export default function FeaturesPage() {
                 <Presentation className="h-10 w-10 text-[#6b8f2b]" />
               </div>
               <h2 className="text-3xl font-bold text-[#6b8f2b]">
-                Google Slides Integration
+                Google Slides™ Integration
               </h2>
               <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
                 Connect your existing Google Slides presentations seamlessly. No need to recreate your teaching materials—use what you already have and make them interactive.
@@ -56,7 +57,7 @@ export default function FeaturesPage() {
               <ul className="space-y-3 text-[#6b8f2b]/70">
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>Access any presentation from your Google Drive</span>
+                  <span>Access any presentation from your Google Drive™</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
@@ -322,36 +323,7 @@ export default function FeaturesPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#d6c49f]/30 py-8 bg-white mt-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-              <Image 
-                src="https://www.codekiwi.app/codekiwilogo.png" 
-                alt="CodeKiwi Logo" 
-                width={28} 
-                height={28}
-                className="object-contain"
-              />
-            </div>
-            <p className="text-sm text-[#6b8f2b]/70">
-              © 2024 CodeKiwi. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link href="/terms" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
-                Terms
-              </Link>
-              <Link href="/privacy" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
-                Privacy
-              </Link>
-              <Link href="/support" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter className="mt-16" />
     </div>
   );
 }

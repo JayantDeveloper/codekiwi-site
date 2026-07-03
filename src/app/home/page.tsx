@@ -139,7 +139,7 @@ export default async function HomePage({
             </div>
             <h3 className="text-xl font-semibold text-[#6b8f2b] mb-2">No sessions yet</h3>
             <p className="text-[#6b8f2b]/70 mb-6 max-w-md">
-              Get started by launching your first coding session with Google Slides
+              Get started by launching your first coding session with Google Slides™
             </p>
             <Link href="/launch-session">
               <Button className="bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white shadow-lg">

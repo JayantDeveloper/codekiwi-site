@@ -136,7 +136,7 @@ export default async function SettingsPage() {
             <TabsContent value="integrations" className="space-y-6">
               <div className="rounded-xl border border-[#d6c49f]/30 p-6 shadow-sm">
                 <h2 className="mb-1 text-xl font-semibold text-[#6b8f2b]">
-                  Google Slides Add-on
+                  Google Slides™ Add-on
                 </h2>
                 <p className="mb-4 text-sm text-[#6b8f2b]/70">
                   Install the CodeKiwi add-on for Google Slides to mark slides

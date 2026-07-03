@@ -70,7 +70,7 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter className="px-3 border-t-2 border-[#a8d05f]/30">
         <div className="p-4 text-xs text-white/70">
-          <p>© 2024 CodeKiwi</p>
+          <p>© 2025 CodeKiwi</p>
         </div>
       </SidebarFooter>
     </Sidebar>

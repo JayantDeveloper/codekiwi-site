@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import GoogleIcon from "@/components/GoogleIcon";
+import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
 
 export default function SignInPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -221,8 +222,9 @@ export default function SignInPage() {
         </div>
 
         {/* Footer */}
-        <div className="text-center text-xs text-white">
-          <p>© 2024 CodeKiwi. All rights reserved.</p>
+        <div className="text-center text-xs text-[#3a4d18]">
+          <p>© 2025 CodeKiwi. All rights reserved.</p>
+          <p className="mt-1 text-[11px]"><GoogleTrademarkNotice /></p>
         </div>
       </div>
     </div>

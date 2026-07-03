@@ -32,7 +32,7 @@ export function HeroSection() {
             className="mx-auto max-w-[700px] text-lg text-[#a8d05f] md:text-xl leading-relaxed animate-fade-in font-medium"
             style={{ animationDelay: "200ms" }}
           >
-            Sync Google Slides with a live code editor. Monitor student progress
+            Sync Google Slides™ with a live code editor. Monitor student progress
             in real-time and make coding lessons engaging.
           </p>
         </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
 
 export function LandingFooter() {
   return (
@@ -15,8 +16,9 @@ export function LandingFooter() {
             className="object-contain"
           />
         </div>
-        <p className="text-sm text-white/90 font-medium">
-          © 2024 CodeKiwi. All rights reserved.
+        <p className="text-sm text-white/90 font-medium text-center md:text-left">
+          © 2025 CodeKiwi. All rights reserved.<br />
+          <GoogleTrademarkNotice className="text-xs text-white/80 font-normal" />
         </p>
         <div className="flex gap-6">
           <Link

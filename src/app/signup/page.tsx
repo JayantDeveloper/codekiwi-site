@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import GoogleIcon from "@/components/GoogleIcon";
+import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
 
 export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -321,8 +322,9 @@ export default function SignUpPage() {
           </div>
         </div>
 
-        <div className="text-center text-xs text-white">
-          <p>© 2024 CodeKiwi. All rights reserved.</p>
+        <div className="text-center text-xs text-[#3a4d18]">
+          <p>© 2025 CodeKiwi. All rights reserved.</p>
+          <p className="mt-1 text-[11px]"><GoogleTrademarkNotice /></p>
         </div>
       </div>
     </div>

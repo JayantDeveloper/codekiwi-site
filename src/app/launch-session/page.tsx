@@ -84,7 +84,7 @@ export default function LaunchSessionPage() {
                 <div className="text-center">
                   <p className="text-base font-semibold text-[#1a1a1a]">Use Your Own Slides</p>
                   <p className="mt-1 text-sm text-gray-500">
-                    Open your presentation in Google Slides, then go to{" "}
+                    Open your presentation in Google Slides™, then go to{" "}
                     <span className="font-medium text-[#6b8f2b]">Extensions → CodeKiwi</span>{" "}
                     to start a live session.
                   </p>

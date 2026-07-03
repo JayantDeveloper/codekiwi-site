@@ -248,7 +248,7 @@ export async function POST() {
 
     // Header: subtitle label
     requests.push(mkTextBox("ck_sub", sid, HDR_TXT_X, 342900, HDR_TXT_W, 304800));
-    requests.push(ins("ck_sub", "CODEKIWI FOR GOOGLE SLIDES ADD-ON"));
+    requests.push(ins("ck_sub", "CODEKIWI FOR GOOGLE SLIDES™ ADD-ON"));
     requests.push(style("ck_sub", WHITE, 13));
     requests.push(align("ck_sub", "START"));
 

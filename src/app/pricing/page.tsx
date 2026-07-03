@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Pricing — CodeKiwi",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 const features = [
   "Unlimited coding sessions",
-  "Google Slides integration",
+  "Google Slides™ integration",
   "Real-time student monitoring",
   "Live code execution",
   "Session history",
@@ -96,28 +97,7 @@ export default function PricingPage() {
         </p>
       </main>
 
-      <footer className="border-t border-[#d6c49f]/30 py-8 bg-white mt-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-              <Image
-                src="https://www.codekiwi.app/codekiwilogo.png"
-                alt="CodeKiwi Logo"
-                width={28}
-                height={28}
-                className="object-contain"
-              />
-            </div>
-            <p className="text-sm text-[#6b8f2b]/70">© 2024 CodeKiwi. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link href="/terms" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">Terms</Link>
-              <Link href="/privacy" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">Privacy</Link>
-              <Link href="/support" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">Contact</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter className="mt-16" />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
 
 export default function ForgotPasswordPage() {
   return (
@@ -33,8 +34,9 @@ export default function ForgotPasswordPage() {
           </Link>
         </div>
 
-        <div className="text-center text-xs text-white">
-          <p>© 2024 CodeKiwi. All rights reserved.</p>
+        <div className="text-center text-xs text-[#3a4d18]">
+          <p>© 2025 CodeKiwi. All rights reserved.</p>
+          <p className="mt-1 text-[11px]"><GoogleTrademarkNotice /></p>
         </div>
       </div>
     </div>
