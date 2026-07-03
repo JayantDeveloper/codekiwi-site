@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getServerSession } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
+import { AddonInstallBanner } from "@/components/AddonInstallBanner";
 
 export const dynamic = "force-dynamic";
 
@@ -92,6 +93,7 @@ export default async function HomePage({
 
   return (
     <main className="w-full px-4 sm:px-8 md:px-12 py-6 bg-gradient-to-b from-[#a8d05f]/5 to-[#f8faf5]">
+      {sessions.length === 0 && <AddonInstallBanner />}
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-[#6b8f2b]">My Sessions</h2>
 
@@ -139,7 +141,7 @@ export default async function HomePage({
             </div>
             <h3 className="text-xl font-semibold text-[#6b8f2b] mb-2">No sessions yet</h3>
             <p className="text-[#6b8f2b]/70 mb-6 max-w-md">
-              Get started by launching your first coding session with Google Slides™
+              Get started by launching your first coding session with Google Slides
             </p>
             <Link href="/launch-session">
               <Button className="bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white shadow-lg">
