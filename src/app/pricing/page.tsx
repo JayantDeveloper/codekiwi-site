@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Pricing — CodeKiwi",
@@ -22,33 +24,7 @@ const features = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
-      <header className="border-b border-[#d6c49f]/30 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <span className="text-2xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-            <Image
-              src="https://www.codekiwi.app/codekiwilogo.png"
-              alt="CodeKiwi Logo"
-              width={32}
-              height={32}
-              className="object-contain"
-            />
-          </Link>
-          <nav className="flex items-center gap-6">
-            <Link href="/features" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors">
-              Features
-            </Link>
-            <Link href="/docs" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors">
-              Docs
-            </Link>
-            <Link href="/signin">
-              <Button size="sm" className="bg-[#6b8f2b] hover:bg-[#6b8f2b]/90 text-white">
-                Sign In
-              </Button>
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -59,7 +35,7 @@ export default function PricingPage() {
         </div>
 
         <div className="flex justify-center">
-          <div className="relative w-full max-w-sm rounded-2xl border-2 border-[#6b8f2b] bg-white shadow-2xl p-8">
+          <Reveal className="relative w-full max-w-sm rounded-2xl border-2 border-[#6b8f2b] bg-white shadow-2xl p-8">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
               <span className="bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] text-white text-sm font-semibold px-4 py-1 rounded-full shadow">
                 Free Beta
@@ -85,7 +61,7 @@ export default function PricingPage() {
                 Get Started Free
               </Button>
             </Link>
-          </div>
+          </Reveal>
         </div>
 
         <p className="text-center text-sm text-[#6b8f2b]/50 mt-10">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { LandingHeader } from "@/components/home/LandingHeader";
+import { SiteHeader } from "@/components/SiteHeader";
 import { HeroSection } from "@/components/home/HeroSection";
 import { DemoSection } from "@/components/home/DemoSection";
 import { FeaturesSection } from "@/components/home/FeaturesSection";
@@ -42,8 +42,8 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#1a1a1a] via-[#a8d05f]/10 to-[#1a1a1a]">
-      <LandingHeader />
+    <div className="flex min-h-screen flex-col bg-[#161616]">
+      <SiteHeader />
       <main className="flex-1">
         <HeroSection />
         <DemoSection ref={demoRef} isVisible={isVisible.demo} />

@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Presentation, Code2, Users, Zap, Eye, RefreshCw, PencilLine } from "lucide-react";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Features — CodeKiwi",
@@ -13,21 +15,7 @@ export const metadata: Metadata = {
 export default function FeaturesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
-      {/* Header */}
-      <header className="border-b border-[#d6c49f]/30 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <span className="text-2xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-            <Image 
-              src="https://www.codekiwi.app/codekiwilogo.png" 
-              alt="CodeKiwi Logo" 
-              width={32} 
-              height={32}
-              className="object-contain"
-            />
-          </Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Main Content */}
       <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
@@ -42,7 +30,7 @@ export default function FeaturesPage() {
         </div>
 
         {/* Feature Showcase 1 - Google Slides Integration */}
-        <div className="mb-32">
+        <Reveal className="mb-32">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit">
@@ -79,10 +67,10 @@ export default function FeaturesPage() {
               />
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Feature Showcase 2 - Live Code Editor (reversed) */}
-        <div className="mb-32">
+        <Reveal className="mb-32">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
               <Image
@@ -119,10 +107,10 @@ export default function FeaturesPage() {
               </ul>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Feature Showcase 3 - Real-Time Monitoring */}
-        <div className="mb-32">
+        <Reveal className="mb-32">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit">
@@ -159,10 +147,10 @@ export default function FeaturesPage() {
               />
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Feature Showcase 4 - Teacher Edit Student Code (reversed) */}
-        <div className="mb-32">
+        <Reveal className="mb-32">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
               <Image
@@ -199,16 +187,16 @@ export default function FeaturesPage() {
               </ul>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Additional Features Grid */}
-        <div className="mb-20">
+        <Reveal className="mb-20">
           <h2 className="text-3xl font-bold text-[#6b8f2b] mb-12 text-center">
             And Many More Features
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             {/* Feature 4 */}
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit mb-6">
                 <Zap className="h-8 w-8 text-[#6b8f2b]" />
               </div>
@@ -221,7 +209,7 @@ export default function FeaturesPage() {
             </div>
 
             {/* Feature 5 */}
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit mb-6">
                 <Users className="h-8 w-8 text-[#6b8f2b]" />
               </div>
@@ -234,7 +222,7 @@ export default function FeaturesPage() {
             </div>
 
             {/* Feature 6 */}
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit mb-6">
                 <RefreshCw className="h-8 w-8 text-[#6b8f2b]" />
               </div>
@@ -246,10 +234,10 @@ export default function FeaturesPage() {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* How It Works Section */}
-        <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 sm:p-12 shadow-lg mb-20">
+        <Reveal className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 sm:p-12 shadow-lg mb-20">
           <h2 className="text-3xl font-bold text-[#6b8f2b] mb-8 text-center">
             How It Works
           </h2>
@@ -303,10 +291,10 @@ export default function FeaturesPage() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* CTA Section */}
-        <div className="text-center rounded-2xl bg-gradient-to-r from-[#6b8f2b] to-[#7da332] p-12 text-white shadow-xl">
+        <Reveal className="text-center rounded-2xl bg-gradient-to-r from-[#6b8f2b] to-[#7da332] p-12 text-white shadow-xl">
           <h2 className="text-3xl font-bold mb-4">
             Ready to Transform Your Coding Lessons?
           </h2>
@@ -319,7 +307,7 @@ export default function FeaturesPage() {
           >
             Get Started Free
           </Link>
-        </div>
+        </Reveal>
       </main>
 
       {/* Footer */}

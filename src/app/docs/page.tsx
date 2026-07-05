@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Documentation — CodeKiwi",
@@ -12,21 +13,7 @@ export const metadata: Metadata = {
 export default function DocsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
-      {/* Header */}
-      <header className="border-b border-[#d6c49f]/30 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <span className="text-2xl font-bold text-[#6b8f2b]">CodeKiwi</span>
-            <Image
-              src="https://www.codekiwi.app/codekiwilogo.png"
-              alt="CodeKiwi Logo"
-              width={32}
-              height={32}
-              className="object-contain"
-            />
-          </Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Main Content */}
       <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
@@ -112,7 +99,7 @@ export default function DocsPage() {
               <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li className="leading-relaxed">Open your presentation and make sure the <strong>CodeKiwi</strong> sidebar is open</li>
                 <li className="leading-relaxed">Click the slide you want to mark in the slide panel on the left</li>
-                <li className="leading-relaxed">Click <strong>Mark Current Slide</strong> in the <em>Coding Slides</em> section of the sidebar</li>
+                <li className="leading-relaxed">Click <strong>Mark / Unmark Slide</strong> in the <em>Coding Slides</em> section of the sidebar (clicking again removes the marker)</li>
                 <li className="leading-relaxed">The slide number appears instantly as a green chip in the list</li>
               </ol>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-2">
