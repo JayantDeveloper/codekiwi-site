@@ -262,7 +262,7 @@ function QuestionSlide() {
       </div>
       <div className="bg-[#f0f8e0] border-l-4 border-[#6b8f2b] px-3 py-2 rounded-r mt-2 slide-reveal-4">
         <p className="text-[10px] text-[#3a5214] leading-relaxed font-medium">
-          Your editor just opened on the right — code away!
+          Your editor just opened on the right. Code away!
         </p>
       </div>
     </div>
