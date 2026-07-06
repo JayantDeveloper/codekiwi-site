@@ -229,3 +229,30 @@
 .slide-reveal-2 { animation: slide-reveal 0.35s ease-out 1.15s both; }
 .slide-reveal-3 { animation: slide-reveal 0.35s ease-out 1.4s  both; }
 .slide-reveal-4 { animation: slide-reveal 0.35s ease-out 1.7s  both; }
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.animate-gradient-x { animation: gradient-x 5s ease-in-out infinite; }
+
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  33%      { transform: translate(60px, 40px) scale(1.15); opacity: 1; }
+  66%      { transform: translate(-30px, 70px) scale(0.95); opacity: 0.75; }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.85; }
+  40%      { transform: translate(-70px, -50px) scale(1.1); opacity: 1; }
+  70%      { transform: translate(40px, -20px) scale(0.9); opacity: 0.7; }
+}
+@keyframes aurora-3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  50%      { transform: translate(calc(-50% + 50px), calc(-50% - 40px)) scale(1.2); opacity: 1; }
+}
+.animate-aurora-1 { animation: aurora-1 22s ease-in-out infinite; }
+.animate-aurora-2 { animation: aurora-2 26s ease-in-out infinite; }
+.animate-aurora-3 { animation: aurora-3 18s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-x, .animate-aurora-1, .animate-aurora-2, .animate-aurora-3 { animation: none; }
+}

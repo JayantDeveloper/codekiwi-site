@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "CodeKiwi - Interactive Coding Education",
-  description: "Teach Coding with Slides — Live & Interactive. Sync Google Slides™ with a live code editor.",
+  description: "Turn your slides into live coding lessons. Sync Google Slides™ with a live code editor and monitor student progress in real time.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
