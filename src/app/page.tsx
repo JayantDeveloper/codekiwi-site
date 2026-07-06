@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { HeroSection } from "@/components/home/HeroSection";
 import { DemoSection } from "@/components/home/DemoSection";
 import { FeaturesSection } from "@/components/home/FeaturesSection";
-import { ScrollMarquee } from "@/components/home/ScrollMarquee";
+import { ScrollStatement } from "@/components/home/ScrollStatement";
 import { LandingFooter } from "@/components/home/LandingFooter";
 
 const SECTION_KEYS = {
@@ -50,7 +50,7 @@ export default function LandingPage() {
       <main className="flex-1">
         <HeroSection />
         <DemoSection ref={demoRef} isVisible={isVisible.demo} />
-        <ScrollMarquee />
+        <ScrollStatement />
         <FeaturesSection ref={featuresRef} isVisible={isVisible.features} />
       </main>
       <LandingFooter />
