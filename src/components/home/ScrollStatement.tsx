@@ -82,7 +82,10 @@ export function ScrollStatement() {
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.9", "end 0.5"],
+    // Start compiling as soon as the section enters the viewport and finish
+    // while its center is still below the viewport midline, so the text is
+    // fully resolved by the time the section is centered on screen.
+    offset: ["start 0.95", "center 0.65"],
   });
 
   const words = STATEMENT.split(" ");
