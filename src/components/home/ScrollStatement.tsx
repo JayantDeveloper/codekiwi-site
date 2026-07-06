@@ -1,21 +1,26 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  motion,
+  useMotionValueEvent,
   useReducedMotion,
   useScroll,
-  useTransform,
   type MotionValue,
 } from "framer-motion";
 
-// Words rendered in the brand gradient instead of white.
+// Words rendered in the brand gradient once resolved.
 const ACCENT = new Set(["live", "coding", "classroom."]);
 
 const STATEMENT =
   "Every slide becomes a live coding classroom. Students write, run, and learn together in real time.";
 
-function Word({
+const GLYPHS = "{}[]()<>/=+*#;:$&?%!01".split("");
+
+const randomGlyph = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+
+function DecryptWord({
   progress,
   range,
   children,
@@ -26,21 +31,48 @@ function Word({
   children: string;
   accent: boolean;
 }) {
-  const opacity = useTransform(progress, range, [0.12, 1]);
-  const y = useTransform(progress, range, [18, 0]);
+  // SSR renders the real word (SEO + no-JS); it scrambles after hydration.
+  const [display, setDisplay] = useState(children);
+  const [resolved, setResolved] = useState(true);
+
+  const update = (v: number) => {
+    const [start, end] = range;
+    const t = clamp01((v - start) / (end - start));
+    if (t >= 1) {
+      setDisplay(children);
+      setResolved(true);
+      return;
+    }
+    setResolved(false);
+    const chars = children.split("");
+    const resolvedCount = Math.floor(t * chars.length);
+    setDisplay(
+      chars
+        .map((c, i) => (i < resolvedCount ? c : randomGlyph()))
+        .join("")
+    );
+  };
+
+  useMotionValueEvent(progress, "change", update);
+
+  // Initialize from current scroll position after hydration so
+  // below-the-fold words start scrambled.
+  useEffect(() => {
+    update(progress.get());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <span className="relative mr-[0.32em] inline-block overflow-hidden pb-1">
-      <motion.span
-        style={{ opacity, y }}
-        className={`inline-block ${
-          accent
+    <span
+      className={`mr-[0.32em] inline-block whitespace-nowrap transition-colors duration-200 ${
+        resolved
+          ? accent
             ? "bg-gradient-to-r from-[#a8d05f] to-[#7da332] bg-clip-text text-transparent"
             : "text-white"
-        }`}
-      >
-        {children}
-      </motion.span>
+          : "text-[#8fb73a]/60"
+      }`}
+    >
+      {display}
     </span>
   );
 }
@@ -50,7 +82,7 @@ export function ScrollStatement() {
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.9", "end 0.55"],
+    offset: ["start 0.9", "end 0.5"],
   });
 
   const words = STATEMENT.split(" ");
@@ -75,14 +107,14 @@ export function ScrollStatement() {
               const start = i / words.length;
               const end = start + 1 / words.length;
               return (
-                <Word
+                <DecryptWord
                   key={i}
                   progress={scrollYProgress}
                   range={[start, end]}
                   accent={ACCENT.has(word.toLowerCase())}
                 >
                   {word}
-                </Word>
+                </DecryptWord>
               );
             })}
       </p>
