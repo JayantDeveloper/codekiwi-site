@@ -124,7 +124,7 @@ export default async function SettingsPage() {
               coding exercises directly inside your presentation.
             </p>
             <a
-              href="https://workspace.google.com/marketplace"
+              href="https://workspace.google.com/marketplace/app/codekiwi/66127405192"
               target="_blank"
               rel="noopener noreferrer"
             >

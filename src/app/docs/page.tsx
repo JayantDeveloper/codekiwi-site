@@ -158,7 +158,16 @@ export default function DocsPage() {
               </ol>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
                 <p className="text-sm text-[#6b8f2b]/80">
-                  <strong>Add-on not installed?</strong> Go to <strong>Extensions → Add-ons → Get add-ons</strong> and search for <strong>CodeKiwi</strong> in the Google Workspace Marketplace.
+                  <strong>Add-on not installed?</strong> Install CodeKiwi directly from the{" "}
+                  <a
+                    href="https://workspace.google.com/marketplace/app/codekiwi/66127405192"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold underline"
+                  >
+                    Google Workspace Marketplace
+                  </a>
+                  , or in Slides go to <strong>Extensions → Add-ons → Get add-ons</strong> and search for <strong>CodeKiwi</strong>.
                 </p>
               </div>
             </section>
