@@ -11,66 +11,60 @@ import {
 import { Button } from "@/components/ui/button";
 import GoogleIcon from "@/components/GoogleIcon";
 
-// Words 4+ render in the brand gradient.
+// Words 4+ render in the brand gradient once fully typed.
 const WORDS = ["Turn", "Your", "Slides", "into", "Live", "Coding", "Lessons"];
 const GRADIENT_FROM = 4;
+const HEADLINE = WORDS.join(" ");
 
-const GLYPHS = "{}[]()<>/=+*#;:$&?%!01".split("");
-const randomGlyph = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+// Same typewriter pace as the scroll statement.
+const PER_CHAR_MS = 38;
+const TYPE_MS = HEADLINE.length * PER_CHAR_MS;
 
-const WORD_STAGGER_MS = 130;
-const WORD_DURATION_MS = 500;
-
-function useDecryptedHeadline(reduceMotion: boolean | null) {
-  // SSR renders the real headline (SEO); the compile starts after hydration.
-  const [display, setDisplay] = useState<string[]>(WORDS);
-  const [resolved, setResolved] = useState<boolean[]>(WORDS.map(() => true));
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    const start = performance.now();
-    let raf: number;
-
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      let allDone = true;
-      const nextDisplay: string[] = [];
-      const nextResolved: boolean[] = [];
-
-      WORDS.forEach((word, i) => {
-        const t = Math.min(
-          1,
-          Math.max(0, (elapsed - i * WORD_STAGGER_MS) / WORD_DURATION_MS)
-        );
-        if (t >= 1) {
-          nextDisplay.push(word);
-          nextResolved.push(true);
-        } else {
-          allDone = false;
-          const chars = word.split("");
-          const solved = Math.floor(t * chars.length);
-          nextDisplay.push(
-            chars.map((c, j) => (j < solved ? c : randomGlyph())).join("")
-          );
-          nextResolved.push(false);
-        }
-      });
-
-      setDisplay(nextDisplay);
-      setResolved(nextResolved);
-      if (!allDone) raf = requestAnimationFrame(tick);
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [reduceMotion]);
-
-  return { display, resolved };
-}
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+const clampInt = (v: number, max: number) => Math.min(max, Math.max(0, v));
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
-  const { display, resolved } = useDecryptedHeadline(reduceMotion);
+
+  // Character start index of each headline word (single-space joined).
+  const starts: number[] = [];
+  {
+    let idx = 0;
+    for (const w of WORDS) {
+      starts.push(idx);
+      idx += w.length + 1;
+    }
+  }
+  const total = HEADLINE.length;
+
+  // Types in on page load (hero is above the fold). Starts empty.
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (reduceMotion) {
+      setCount(total);
+      return;
+    }
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = clamp01((now - start) / TYPE_MS);
+      setCount(Math.round(t * total));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [reduceMotion, total]);
+
+  // The word currently being typed (first not fully revealed); -1 when complete.
+  let activeWord = -1;
+  if (count < total) {
+    for (let i = 0; i < WORDS.length; i++) {
+      if (count < starts[i] + WORDS[i].length) {
+        activeWord = i;
+        break;
+      }
+    }
+  }
 
   const mouseX = useMotionValue(50);
   const mouseY = useMotionValue(35);
@@ -82,13 +76,6 @@ export function HeroSection() {
     mouseX.set(((e.clientX - rect.left) / rect.width) * 100);
     mouseY.set(((e.clientY - rect.top) / rect.height) * 100);
   };
-
-  const wordClass = (i: number) =>
-    resolved[i]
-      ? i >= GRADIENT_FROM
-        ? "bg-gradient-to-r from-[#a8d05f] via-[#d3ec9c] to-[#6b8f2b] bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]"
-        : "text-white"
-      : "text-[#8fb73a]/60";
 
   return (
     <section
@@ -118,19 +105,36 @@ export function HeroSection() {
 
       <div className="relative z-10 flex flex-col items-center justify-center space-y-8 text-center px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
         <div className="space-y-6 max-w-4xl">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl leading-tight">
-            {WORDS.map((word, i) => (
-              <span key={word}>
-                {i === GRADIENT_FROM && <br className="hidden sm:block" />}
-                <span
-                  className={`inline-block whitespace-nowrap transition-colors duration-200 ${wordClass(i)}`}
-                >
-                  {display[i]}
+          {/* Real heading for SEO + screen readers; the animated version is decorative. */}
+          <h1 className="sr-only">{HEADLINE}</h1>
+          <div
+            aria-hidden="true"
+            className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl leading-tight"
+          >
+            {WORDS.map((word, i) => {
+              const revealed = clampInt(count - starts[i], word.length);
+              const fully = revealed >= word.length;
+              const cls =
+                fully && i >= GRADIENT_FROM
+                  ? "bg-gradient-to-r from-[#a8d05f] via-[#d3ec9c] to-[#6b8f2b] bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]"
+                  : "text-white";
+              return (
+                <span key={word}>
+                  {i === GRADIENT_FROM && <br className="hidden sm:block" />}
+                  <span
+                    className={`inline-block whitespace-nowrap transition-colors duration-200 ${cls}`}
+                  >
+                    <span>{word.slice(0, revealed)}</span>
+                    <span className="opacity-0">{word.slice(revealed)}</span>
+                    {activeWord === i && (
+                      <span className="ck-type-caret text-[#a8d05f]">▌</span>
+                    )}
+                  </span>
+                  {i < WORDS.length - 1 ? " " : ""}
                 </span>
-                {i < WORDS.length - 1 ? " " : ""}
-              </span>
-            ))}
-          </h1>
+              );
+            })}
+          </div>
           <p
             className="mx-auto max-w-[700px] text-lg text-[#a8d05f] md:text-xl leading-relaxed animate-fade-in font-medium"
             style={{ animationDelay: "800ms" }}
@@ -178,6 +182,17 @@ export function HeroSection() {
           </Link>
         </p>
       </div>
+
+      <style jsx>{`
+        .ck-type-caret {
+          animation: ckTypeBlink 1s steps(1, end) infinite;
+        }
+        @keyframes ckTypeBlink {
+          50% {
+            opacity: 0;
+          }
+        }
+      `}</style>
     </section>
   );
 }
