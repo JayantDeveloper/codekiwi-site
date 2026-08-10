@@ -21,7 +21,7 @@ function CodeLine({ n, children }: { n: number; children: React.ReactNode }) {
 /* ── Student view: synced slide + live code editor ──────────────────────── */
 function StudentDemo() {
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-[#a8d05f]/60 bg-[#1a1a1a] shadow-2xl">
+    <div className="flex flex-col overflow-hidden rounded-2xl border-2 border-[#a8d05f]/60 bg-[#1a1a1a] shadow-2xl md:aspect-[16/10]">
       <div className="flex items-center gap-1.5 bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-white/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-white/50" />
@@ -31,7 +31,7 @@ function StudentDemo() {
         </span>
       </div>
 
-      <div className="grid grid-cols-2">
+      <div className="grid min-h-0 flex-1 grid-cols-2">
         {/* slide */}
         <div className="bg-gradient-to-br from-[#1e3a8a] to-[#0f2557] p-4">
           <p className="text-[9px] font-semibold uppercase tracking-wider text-[#a8d05f]">
@@ -147,17 +147,17 @@ function StudentCard({
 
 function TeacherDemo() {
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-[#a8d05f]/60 bg-[#f0f7e6] shadow-2xl">
+    <div className="flex flex-col overflow-hidden rounded-2xl border-2 border-[#a8d05f]/60 bg-[#f0f7e6] shadow-2xl md:aspect-[16/10]">
       <div className="flex items-center justify-between bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] px-4 py-2.5">
         <span className="text-[11px] font-semibold text-white">
           Teacher Dashboard
         </span>
         <div className="flex items-center gap-1.5 text-[10px] font-semibold text-white/90">
           <span className="rounded-full bg-white/20 px-2 py-0.5">Session 4821</span>
-          <span className="rounded-full bg-white/20 px-2 py-0.5">5 students</span>
+          <span className="rounded-full bg-white/20 px-2 py-0.5">6 students</span>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-2.5 p-3.5">
+      <div className="grid min-h-0 flex-1 auto-rows-fr grid-cols-2 gap-2.5 p-3.5">
         <StudentCard
           initials="AP"
           name="Aiden P."
@@ -185,6 +185,20 @@ function TeacherDemo() {
           status="help"
           color="#a78bfa"
           code={'prin("Slow down)'}
+        />
+        <StudentCard
+          initials="EC"
+          name="Eleanor C."
+          status="done"
+          color="#2dd4bf"
+          code={'print("Drive safely.")'}
+        />
+        <StudentCard
+          initials="FK"
+          name="Farah K."
+          status="coding"
+          color="#fbbf24"
+          code={"else:\n  print("}
         />
       </div>
     </div>
