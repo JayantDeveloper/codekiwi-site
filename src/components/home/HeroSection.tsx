@@ -121,14 +121,18 @@ export function HeroSection() {
               return (
                 <span key={word}>
                   {i === GRADIENT_FROM && <br className="hidden sm:block" />}
-                  <span
-                    className={`inline-block whitespace-nowrap transition-colors duration-200 ${cls}`}
-                  >
-                    <span>{word.slice(0, revealed)}</span>
-                    <span className="opacity-0">{word.slice(revealed)}</span>
-                    {activeWord === i && (
-                      <span className="ck-type-caret text-[#a8d05f]">▌</span>
-                    )}
+                  <span className="relative inline-block whitespace-nowrap">
+                    {/* reserves the full word width so nothing reflows as it types */}
+                    <span className="invisible">{word}</span>
+                    {/* visible overlay: caret rides right behind the last typed char */}
+                    <span
+                      className={`absolute left-0 top-0 whitespace-nowrap transition-colors duration-200 ${cls}`}
+                    >
+                      {word.slice(0, revealed)}
+                      {activeWord === i && (
+                        <span className="ck-type-caret text-[#a8d05f]">▌</span>
+                      )}
+                    </span>
                   </span>
                   {i < WORDS.length - 1 ? " " : ""}
                 </span>

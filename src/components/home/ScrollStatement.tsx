@@ -79,21 +79,26 @@ export function ScrollStatement() {
           const revealed = clampInt(count - starts[i], word.length);
           const accent = ACCENT.has(word.toLowerCase());
           const fully = revealed >= word.length;
+          const colorCls =
+            fully && accent
+              ? "bg-gradient-to-r from-[#a8d05f] to-[#7da332] bg-clip-text text-transparent"
+              : "text-white";
           return (
             <span
               key={i}
-              className={`mr-[0.32em] inline-block whitespace-nowrap ${
-                fully && accent
-                  ? "bg-gradient-to-r from-[#a8d05f] to-[#7da332] bg-clip-text text-transparent"
-                  : "text-white"
-              }`}
+              className="relative mr-[0.32em] inline-block whitespace-nowrap"
             >
-              <span>{word.slice(0, revealed)}</span>
-              {/* keeps layout stable so nothing reflows as it types */}
-              <span className="opacity-0">{word.slice(revealed)}</span>
-              {activeWord === i && (
-                <span className="ck-type-caret text-[#a8d05f]">▌</span>
-              )}
+              {/* reserves the full word width so nothing reflows as it types */}
+              <span className="invisible">{word}</span>
+              {/* visible overlay: caret rides right behind the last typed char */}
+              <span
+                className={`absolute left-0 top-0 whitespace-nowrap ${colorCls}`}
+              >
+                {word.slice(0, revealed)}
+                {activeWord === i && (
+                  <span className="ck-type-caret text-[#a8d05f]">▌</span>
+                )}
+              </span>
             </span>
           );
         })}
