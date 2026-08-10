@@ -124,6 +124,8 @@ export default function PrivacyPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li><strong>Vercel:</strong> Hosts the web application</li>
+                <li><strong>Render:</strong> Hosts the backend that coordinates live sessions</li>
+                <li><strong>Fly.io:</strong> Runs student-submitted code in isolated, sandboxed environments; code is sent there only to execute and is not retained</li>
                 <li><strong>PostgreSQL database:</strong> Stores your account and session data</li>
                 <li><strong>Google OAuth:</strong> Handles authentication when you sign in with Google</li>
                 <li><strong>Google Drive™ API:</strong> Accesses slides you explicitly connect to sessions</li>
@@ -168,6 +170,7 @@ export default function PrivacyPage() {
                 <li>Passwords are hashed using industry-standard bcrypt</li>
                 <li>Google OAuth tokens are stored securely and used only for authorized operations</li>
                 <li>Database access is restricted and secured</li>
+                <li>Student-submitted code runs in isolated, sandboxed environments with strict resource limits and no access to CodeKiwi's servers, secrets, or other users' data</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
                 While I take reasonable precautions, no system is 100% secure. Please use a strong password and keep your account credentials safe.
