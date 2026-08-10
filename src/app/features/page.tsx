@@ -102,6 +102,10 @@ export default function FeaturesPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
+                  <span>Sandboxed execution in isolated environments, safe for the classroom</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
                   <span>Support for multiple programming languages</span>
                 </li>
               </ul>
