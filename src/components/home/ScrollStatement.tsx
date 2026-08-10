@@ -9,7 +9,11 @@ const ACCENT = new Set(["live", "coding", "classroom."]);
 const STATEMENT =
   "Every slide becomes a live coding classroom. Students write, run, and learn together in real time.";
 
-const TYPE_MS = 1600;
+// Typewriter pace, per character, so the duration scales with the text length.
+// ~38ms/char reads as a deliberate "being coded in" pace (vs. the old 1600ms
+// total, which was ~16ms/char and felt instant).
+const PER_CHAR_MS = 38;
+const TYPE_MS = STATEMENT.length * PER_CHAR_MS;
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 const clampInt = (v: number, max: number) => Math.min(max, Math.max(0, v));
