@@ -51,9 +51,8 @@ export const DemoSection = React.forwardRef<HTMLElement, Props>(
             <h2 className="text-4xl font-bold tracking-tight text-[#1a1a1a] sm:text-5xl mb-4">
               The Student Experience
             </h2>
-            <p className="text-lg text-[#1a1a1a]/80 max-w-2xl mx-auto font-medium">
-              Slides stay full screen until a coding question appears. Then the
-              editor slides in, live
+            <p className="text-lg text-[#1a1a1a]/80 mx-auto font-medium md:whitespace-nowrap">
+              Slides stay full screen until a coding question appears. Then the editor slides in, live.
             </p>
           </div>
 

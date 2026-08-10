@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 
 // Words rendered in the brand gradient once fully typed.
 const ACCENT = new Set(["live", "coding", "classroom."]);
@@ -9,18 +9,16 @@ const ACCENT = new Set(["live", "coding", "classroom."]);
 const STATEMENT =
   "Every slide becomes a live coding classroom. Students write, run, and learn together in real time.";
 
+const TYPE_MS = 1600;
+
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 const clampInt = (v: number, max: number) => Math.min(max, Math.max(0, v));
 
 export function ScrollStatement() {
   const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    // Type in as the section scrolls through; finish while its center is still
-    // below the midline so it reads complete by the time it's centered.
-    offset: ["start 0.95", "center 0.65"],
-  });
+  // Fires once, the first time the section scrolls into view. Never toggles back.
+  const inView = useInView(ref, { once: true, amount: 0.35 });
 
   const words = STATEMENT.split(" ");
   const total = STATEMENT.length;
@@ -34,18 +32,25 @@ export function ScrollStatement() {
     }
   }
 
-  // SSR renders the full statement (SEO + no-JS); it "types in" on scroll after hydration.
-  const [count, setCount] = useState(total);
-
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    if (reduceMotion) return;
-    setCount(Math.round(clamp01(v) * total));
-  });
+  // Starts empty; types in ONCE when scrolled into view; scrolling back up never erases it.
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!reduceMotion) setCount(Math.round(clamp01(scrollYProgress.get()) * total));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (reduceMotion) {
+      setCount(total);
+      return;
+    }
+    if (!inView) return;
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = clamp01((now - start) / TYPE_MS);
+      setCount(Math.round(t * total));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, reduceMotion, total]);
 
   // The word currently being typed (first not fully revealed); -1 when complete.
   let activeWord = -1;
@@ -60,7 +65,12 @@ export function ScrollStatement() {
 
   return (
     <section ref={ref} className="bg-[#161616] py-24 md:py-32">
-      <p className="mx-auto flex max-w-4xl flex-wrap px-6 text-4xl font-bold leading-tight tracking-tight sm:px-8 md:text-5xl lg:text-6xl">
+      {/* Full text for SEO + screen readers; the animated version below is decorative. */}
+      <span className="sr-only">{STATEMENT}</span>
+      <p
+        aria-hidden="true"
+        className="mx-auto flex max-w-4xl flex-wrap px-6 text-4xl font-bold leading-tight tracking-tight sm:px-8 md:text-5xl lg:text-6xl"
+      >
         {words.map((word, i) => {
           const revealed = clampInt(count - starts[i], word.length);
           const accent = ACCENT.has(word.toLowerCase());
@@ -75,14 +85,10 @@ export function ScrollStatement() {
               }`}
             >
               <span>{word.slice(0, revealed)}</span>
-              {/* keeps layout stable so text doesn't reflow as it types */}
-              <span aria-hidden="true" className="opacity-0">
-                {word.slice(revealed)}
-              </span>
+              {/* keeps layout stable so nothing reflows as it types */}
+              <span className="opacity-0">{word.slice(revealed)}</span>
               {activeWord === i && (
-                <span aria-hidden="true" className="ck-type-caret text-[#a8d05f]">
-                  ▌
-                </span>
+                <span className="ck-type-caret text-[#a8d05f]">▌</span>
               )}
             </span>
           );
