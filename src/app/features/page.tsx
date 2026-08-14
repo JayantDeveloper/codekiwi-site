@@ -124,20 +124,20 @@ export default function FeaturesPage() {
                 Real-Time Monitoring
               </h2>
               <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
-                See exactly what every student is coding in real-time. Identify who needs help instantly and provide personalized guidance during the session.
+                See exactly what every student is coding in real-time, with a live status on each one. Coding questions are auto-graded the moment a student runs them, and anyone who's stuck can raise a hand that flags their card instantly.
               </p>
               <ul className="space-y-3 text-[#6b8f2b]/70">
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>View all students' code as they type</span>
+                  <span>Live status on every student: coding, done, or needs help</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>See who's active, struggling, or ahead</span>
+                  <span>Coding questions auto-graded against your expected answer, with a running score per student</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>Track student progress throughout the session</span>
+                  <span>Students raise a hand the instant they're stuck, so you can walk straight to them</span>
                 </li>
               </ul>
             </div>

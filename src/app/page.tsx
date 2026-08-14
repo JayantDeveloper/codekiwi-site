@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { DemoSection } from "@/components/home/DemoSection";
 import { FeaturesSection } from "@/components/home/FeaturesSection";
 import { ScrollStatement } from "@/components/home/ScrollStatement";
+import { HowItWorks } from "@/components/home/HowItWorks";
 import { LandingFooter } from "@/components/home/LandingFooter";
 
 const SECTION_KEYS = {
@@ -51,6 +52,7 @@ export default function LandingPage() {
         <HeroSection />
         <DemoSection ref={demoRef} isVisible={isVisible.demo} />
         <ScrollStatement />
+        <HowItWorks />
         <FeaturesSection ref={featuresRef} isVisible={isVisible.features} />
       </main>
       <LandingFooter />
