@@ -240,6 +240,17 @@ export default async function HomePage({
                       </Link>
                     )}
                   </div>
+                  {!isActive && s.studentCount > 0 && (
+                    <Link href={`/home/sessions/${s.sessionCode}`} className="mt-2 block">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full border-[#6b8f2b]/30 text-[#6b8f2b] hover:bg-[#a8d05f]/20 bg-white"
+                      >
+                        View Gradebook
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             );
