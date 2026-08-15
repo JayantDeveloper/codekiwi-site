@@ -36,6 +36,7 @@ export default function DocsPage() {
               <a href="#monitoring-students" className="block text-[#6b8f2b] hover:underline text-sm">Monitoring Students (Dashboard)</a>
               <a href="#inspecting-code" className="block text-[#6b8f2b] hover:underline text-sm">Inspecting & Editing Student Code</a>
               <a href="#student-experience" className="block text-[#6b8f2b] hover:underline text-sm">The Student Experience</a>
+              <a href="#gradebook" className="block text-[#6b8f2b] hover:underline text-sm">Reviewing Past Sessions (Gradebook)</a>
               <a href="#best-practices" className="block text-[#6b8f2b] hover:underline text-sm">Best Practices</a>
               <a href="#troubleshooting" className="block text-[#6b8f2b] hover:underline text-sm">Troubleshooting</a>
               <a href="#faq" className="block text-[#6b8f2b] hover:underline text-sm">FAQ</a>
@@ -124,6 +125,24 @@ export default function DocsPage() {
                   <strong>Tip:</strong> Mix regular slides and coding slides freely — the editor only appears on slides marked with <code className="font-mono bg-white/60 px-1 rounded">Code Question:</code>. The marker must be at the very first line of the Speaker Notes and is case-sensitive.
                 </p>
               </div>
+
+              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-8">Auto-grading a coding slide (optional)</h3>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+                You can have CodeKiwi check student runs automatically. In the add-on sidebar's <strong>Auto-grade Answer</strong> section:
+              </p>
+              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+                <li className="leading-relaxed">Click the coding slide, then click <strong>Load Current Slide</strong></li>
+                <li className="leading-relaxed">Type exactly what the program should print into the box</li>
+                <li className="leading-relaxed">Click <strong>Save Answer</strong></li>
+              </ol>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+                Now when a student runs their code on that slide, they instantly see <strong>Correct</strong> or <strong>Not quite</strong>, and the result feeds their score on your dashboard and gradebook. Slides with no expected answer stay ungraded — students can still write and run code freely.
+              </p>
+              <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
+                <p className="text-sm text-[#6b8f2b]/80">
+                  <strong>Tip:</strong> The check compares the program&apos;s output exactly (ignoring only surrounding blank lines), so make your expected answer match precisely — capitalization, punctuation, and spacing all count.
+                </p>
+              </div>
             </section>
 
             {/* Launching a Session */}
@@ -210,12 +229,12 @@ export default function DocsPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li>Student name and color-coded card</li>
-                <li>A status dot indicating their coding state (idle, coding, ran code successfully, or error)</li>
-                <li>A live preview of their most recent code</li>
-                <li>Timestamp of their last update</li>
+                <li>A live status: <strong>Coding</strong>, <strong>Done</strong> (their latest run matched the question&apos;s expected answer), <strong>Needs help</strong> (they raised their hand or got stuck on repeated failed runs), <strong>Error</strong>, or <strong>No code</strong></li>
+                <li>A running score — coding questions answered correctly out of the total</li>
+                <li>A live preview of their most recent code, and the time of their last update</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
-                Cards refresh automatically every few seconds. Click any card to open the full inspect view for that student.
+                Cards refresh automatically every few seconds, and a student who needs help is highlighted so you can spot them at a glance. Use the filter and sort controls to jump to who needs you first. Click any card to open the full inspect view for that student.
               </p>
             </section>
 
@@ -264,10 +283,32 @@ export default function DocsPage() {
                 <li><strong>Left pane:</strong> Your Google Slides synced in real-time as you advance them</li>
                 <li><strong>Right pane (coding slides only):</strong> A syntax-highlighted code editor and an output terminal</li>
                 <li>A <strong>Run</strong> button to execute their code and see the result instantly</li>
+                <li>On auto-graded questions, an instant <strong>Correct</strong> or <strong>Not quite</strong> message after they run</li>
+                <li>An <strong>I&apos;m stuck</strong> button to raise their hand, which flags their card on your dashboard right away</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
-                When you advance to a new slide, the student's editor and terminal reset automatically — each slide starts fresh.
+                Each coding slide keeps its own work, so students can move between questions without losing what they wrote.
               </p>
+            </section>
+
+            {/* Gradebook */}
+            <section id="gradebook">
+              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Reviewing Past Sessions (Gradebook)</h2>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+                When you end a session, its results are saved to your account so you can review them later (this requires a CodeKiwi account). Open <a href="https://www.codekiwi.tech/home" className="text-[#6b8f2b] hover:underline">your dashboard</a>, find the completed session, and click <strong>View Gradebook</strong>.
+              </p>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-2">The gradebook shows:</p>
+              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+                <li>A class summary — number of students, coding questions, and the class average</li>
+                <li>Per-question pass rates, so you can see which question tripped up the class</li>
+                <li>Every student&apos;s score, with their per-question code and output expandable inline</li>
+                <li>A <strong>CSV export</strong> of scores for your own records</li>
+              </ul>
+              <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
+                <p className="text-sm text-[#6b8f2b]/80">
+                  <strong>Privacy:</strong> to remove a session&apos;s stored student work, click <strong>Delete student data</strong> on its gradebook page. See the <a href="https://www.codekiwi.tech/privacy" className="underline">privacy policy</a> for retention details.
+                </p>
+              </div>
             </section>
 
             {/* Best Practices */}
@@ -348,6 +389,15 @@ export default function DocsPage() {
                     <li>Refresh the dashboard page</li>
                   </ul>
                 </div>
+
+                <div>
+                  <h4 className="font-semibold text-[#6b8f2b] mb-2">A student's correct-looking code is marked "Not quite"</h4>
+                  <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
+                    <li>Auto-grading compares the program&apos;s printed output exactly against the expected answer you set</li>
+                    <li>Check for differences in capitalization, punctuation, or extra spaces</li>
+                    <li>Update the expected answer in the sidebar&apos;s <strong>Auto-grade Answer</strong> box, or clear it to make the question ungraded</li>
+                  </ul>
+                </div>
               </div>
 
               <div className="mt-6 rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
@@ -384,7 +434,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Is student code saved after the session?</h4>
-                  <p className="text-[#6b8f2b]/80">Student code lives in the session's in-memory state. Once the session is ended, it is cleared. Students should copy any work they want to keep before the session ends.</p>
+                  <p className="text-[#6b8f2b]/80">Yes. If you have a CodeKiwi account, each student&apos;s code and question scores are saved to that session&apos;s gradebook when it ends, so you can review them later from your dashboard. You can delete a session&apos;s student data anytime from its gradebook page. (Students join anonymously and don&apos;t get a saved copy of their own, so they should still copy anything they personally want to keep.)</p>
                 </div>
 
                 <div>

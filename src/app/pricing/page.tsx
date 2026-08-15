@@ -16,8 +16,10 @@ const features = [
   "Unlimited coding sessions",
   "Google Slides™ integration",
   "Real-time student monitoring",
+  "Auto-graded coding questions",
+  "Live \"needs help\" status board",
   "Live code execution",
-  "Session history",
+  "Saved session gradebook + CSV export",
   "Priority support",
 ];
 
