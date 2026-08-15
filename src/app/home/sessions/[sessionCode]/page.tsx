@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { getServerSession } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { GradebookTable } from "./GradebookTable";
+import { DeleteDataButton } from "./DeleteDataButton";
 
 export const dynamic = "force-dynamic";
 
@@ -69,13 +70,16 @@ export default async function GradebookPage({
         All sessions
       </Link>
 
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-[#1a1a1a]">{record.title}</h1>
-        <p className="mt-1 text-sm text-gray-500">
-          {dateStr}
-          {` · ${students.length} student${students.length === 1 ? "" : "s"}`}
-          {` · #${record.sessionCode}`}
-        </p>
+      <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold text-[#1a1a1a]">{record.title}</h1>
+          <p className="mt-1 text-sm text-gray-500">
+            {dateStr}
+            {` · ${students.length} student${students.length === 1 ? "" : "s"}`}
+            {` · #${record.sessionCode}`}
+          </p>
+        </div>
+        {students.length > 0 && <DeleteDataButton sessionCode={record.sessionCode} />}
       </div>
 
       {students.length === 0 ? (

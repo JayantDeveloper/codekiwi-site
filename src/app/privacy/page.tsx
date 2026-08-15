@@ -93,7 +93,7 @@ export default function PrivacyPage() {
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80">
                 <li>Links to Google Slides presentations you connect</li>
                 <li>Student join data (anonymous unless students provide names)</li>
-                <li>Code written by students during sessions (temporary, stored only during active sessions)</li>
+                <li>Code written by students during sessions. If you have a CodeKiwi account, each student&apos;s code and question scores are saved to your session gradebook when the session ends, so you can review them afterward. You can delete this data at any time from the session&apos;s gradebook page.</li>
               </ul>
             </section>
 
@@ -185,11 +185,11 @@ export default function PrivacyPage() {
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li><strong>Account data:</strong> Retained while your account is active</li>
                 <li><strong>Session data:</strong> Stored as long as you keep the session</li>
-                <li><strong>Student code during sessions:</strong> Temporary - only exists during active sessions and is not permanently stored</li>
+                <li><strong>Student gradebook data:</strong> If you have an account, each student&apos;s code and scores are saved to the session gradebook and retained until you delete them (from the gradebook page) or delete the session. During a live session the same data is also held temporarily in memory to power the teacher dashboard.</li>
                 <li><strong>Server logs:</strong> Retained for up to 90 days for troubleshooting</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
-                You can request deletion of your account and associated data by contacting me at jaymaheshwari2603@gmail.com.
+                You can delete a session&apos;s student data directly from its gradebook page, and you can request deletion of your account and all associated data by contacting me at jaymaheshwari2603@gmail.com.
               </p>
             </section>
 
