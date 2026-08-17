@@ -28,7 +28,7 @@ export const FeaturesSection = React.forwardRef<HTMLElement, Props>(
           <FeatureCard
             icon={<Presentation className="h-8 w-8 text-white" />}
             title="Your slides, made live"
-            description="Keep the deck you already teach from. CodeKiwi drops a code editor right beside it, so you never rebuild a lesson in a separate tool."
+            description="Keep the deck you already teach from. CodeKiwi drops a code editor right beside it. Live-code a demo that every student mirrors in real time, then hand it back so they try it themselves."
           />
           <FeatureCard
             icon={<BadgeCheck className="h-8 w-8 text-white" />}

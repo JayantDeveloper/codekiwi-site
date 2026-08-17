@@ -171,7 +171,7 @@ export default function DocsPage() {
                 <li className="leading-relaxed">Open your Google Slides presentation</li>
                 <li className="leading-relaxed">Go to <strong>Extensions → CodeKiwi → Open CodeKiwi Add-On</strong> to open the sidebar</li>
                 <li className="leading-relaxed">Use the <strong>Coding Slides</strong> panel to mark or unmark slides as coding questions right from the sidebar</li>
-                <li className="leading-relaxed">Select a language (Python or JavaScript) from the <strong>Session Language</strong> toggle</li>
+                <li className="leading-relaxed">Select a language (Python, JavaScript, or Java) from the <strong>Session Language</strong> toggle</li>
                 <li className="leading-relaxed">Click <strong>Start Lesson</strong> — CodeKiwi exports your slides and generates a session</li>
                 <li className="leading-relaxed">A new tab opens with the teacher presentation view</li>
               </ol>
@@ -211,6 +211,7 @@ export default function DocsPage() {
                 <li>Use <strong>Previous / Next</strong> in the bottom bar to advance slides — students sync in real-time</li>
                 <li>Click the <strong>Session: XXXXXX</strong> title above the slides at any time to reopen the lobby (to copy the session code again)</li>
                 <li>The <strong>Dashboard</strong> button opens a live view of all student code</li>
+                <li><strong>Live Demo</strong> opens a code editor beside your slide and mirrors it, read-only, to every student in real time. Type or run and their screens follow — then toggle it off and they get their own editor back. Works on any slide.</li>
                 <li><strong>Lock Editors</strong> disables the student code editor — useful when you want students to focus on your explanation</li>
                 <li><strong>End Session</strong> ends the class for everyone and returns you to your dashboard</li>
               </ul>
@@ -419,7 +420,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">What programming languages are supported?</h4>
-                  <p className="text-[#6b8f2b]/80">Currently Python and JavaScript. The language is set when you start the session via the Add-On; "Choose from Drive" sessions default to Python.</p>
+                  <p className="text-[#6b8f2b]/80">Currently Python, JavaScript, and Java. The language is set when you start the session via the Add-On; "Choose from Drive" sessions default to Python. For Java, student code must declare a <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">public class Main</code>.</p>
                 </div>
 
                 <div>

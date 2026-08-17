@@ -106,7 +106,7 @@ export default function FeaturesPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>Support for multiple programming languages</span>
+                  <span>Python, JavaScript, and Java, with more languages planned</span>
                 </li>
               </ul>
             </div>
@@ -173,16 +173,16 @@ export default function FeaturesPage() {
                 Live Teacher Assistance
               </h2>
               <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
-                Jump directly into any student's editor to fix bugs, leave examples, or guide them through a stuck point—without disrupting the rest of the class.
+                Live-code beside your slide and every student mirrors it in real time, or jump directly into one student's editor to fix a bug—without disrupting the rest of the class.
               </p>
               <ul className="space-y-3 text-[#6b8f2b]/70">
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>Edit any student's code directly from the dashboard</span>
+                  <span>Live Demo: your editor + terminal mirror to every student in real time, so you can teach and demonstrate code without switching screens</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>Changes sync instantly to the student's screen</span>
+                  <span>Edit any student's code directly from the dashboard; changes sync instantly to their screen</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
