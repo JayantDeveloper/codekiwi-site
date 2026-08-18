@@ -14,9 +14,9 @@ const TEACHER_APP = "https://www.codekiwi.app";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ code: string }> }
+  { params }: { params: Promise<{ sessionCode: string }> }
 ) {
-  const { code } = await params;
+  const { sessionCode: code } = await params;
 
   const session = await getServerSession();
   if (!session?.user?.email) {
