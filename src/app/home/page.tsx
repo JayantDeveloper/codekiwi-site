@@ -49,9 +49,9 @@ type SortKey = "date" | "students" | "title";
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: Promise<{ sort?: string }>;
+  searchParams: Promise<{ sort?: string; rejoin?: string }>;
 }) {
-  const { sort: sortParam } = await searchParams;
+  const { sort: sortParam, rejoin } = await searchParams;
   const sort: SortKey = (sortParam as SortKey) || "date";
 
   const session = await getServerSession();
@@ -94,6 +94,11 @@ export default async function HomePage({
   return (
     <main className="w-full px-4 sm:px-8 md:px-12 py-6 bg-gradient-to-b from-[#a8d05f]/5 to-[#f8faf5]">
       {sessions.length === 0 && <AddonInstallBanner />}
+      {rejoin === "notlive" && (
+        <div className="mb-4 rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          That session isn&apos;t live anymore. If it had students, its gradebook is saved below.
+        </div>
+      )}
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-[#6b8f2b]">My Sessions</h2>
 
@@ -220,7 +225,18 @@ export default async function HomePage({
                     ) : (
                       <div />
                     )}
-                    {slidesUrl ? (
+                    {isActive ? (
+                      /* Full navigation (not client Link) so the server route can
+                         redirect into the live teacher view on codekiwi.app. */
+                      <a href={`/api/sessions/${s.sessionCode}/rejoin`}>
+                        <Button
+                          size="sm"
+                          className="bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white"
+                        >
+                          Rejoin
+                        </Button>
+                      </a>
+                    ) : slidesUrl ? (
                       <a href={slidesUrl} target="_blank" rel="noopener noreferrer">
                         <Button
                           size="sm"
