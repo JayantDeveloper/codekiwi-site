@@ -211,14 +211,14 @@ export default function DocsPage() {
                 <li>Use <strong>Previous / Next</strong> in the bottom bar to advance slides — students sync in real-time</li>
                 <li>Click the <strong>Session: XXXXXX</strong> title above the slides at any time to reopen the lobby (to copy the session code again)</li>
                 <li>The <strong>Dashboard</strong> button opens a live view of all student code</li>
-                <li><strong>Live Demo</strong> opens a code editor beside your slide and mirrors it, read-only, to every student in real time. Type or run and their screens follow — then toggle it off and they get their own editor back. Works on any slide.</li>
+                <li>The <strong>Editor</strong> button opens a code editor beside your slide and mirrors it — code and output — read-only to every student in real time. Drag the divider to resize the editor against your slide (and the divider inside it to resize the terminal), run code to show output to the class, then toggle it off and students get their own editor back. Works on any slide.</li>
                 <li><strong>Lock Editors</strong> disables the student code editor — useful when you want students to focus on your explanation</li>
                 <li><strong>End Session</strong> ends the class for everyone and returns you to your dashboard</li>
               </ul>
 
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Speaker Notes Sidebar</h3>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
-                Your slide notes appear in a sidebar on the right — visible only to you, not to students.
+                Your slide notes are visible only to you, not to students. The panel starts collapsed as a slim <strong>Notes</strong> tab on the right to give your slides more room — click it to slide the notes out, and collapse it again anytime.
               </p>
             </section>
 
