@@ -162,15 +162,20 @@ export function HeroSection() {
               Get Started with Google
             </Link>
           </Button>
-          <Link href="/signup">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-[#a8d05f] text-[#a8d05f] hover:bg-[#a8d05f] hover:text-[#1a1a1a] shadow-md hover:shadow-lg hover:scale-[1.03] transition-all duration-300 bg-transparent text-base px-8"
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="border-2 border-[#a8d05f] text-[#a8d05f] hover:bg-[#a8d05f] hover:text-[#1a1a1a] shadow-md hover:shadow-lg hover:scale-[1.03] transition-all duration-300 bg-transparent text-base px-8"
+          >
+            <a
+              href="https://workspace.google.com/marketplace/app/codekiwi/66127405192"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Create Account
-            </Button>
-          </Link>
+              Install the Add-on
+            </a>
+          </Button>
         </div>
 
         <p
