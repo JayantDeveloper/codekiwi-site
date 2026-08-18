@@ -4,6 +4,7 @@ import { getServerSession } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import { AddonInstallBanner } from "@/components/AddonInstallBanner";
+import { SessionCardMenu } from "./SessionCardMenu";
 
 export const dynamic = "force-dynamic";
 
@@ -188,6 +189,14 @@ export default async function HomePage({
                       </svg>
                     </div>
                   )}
+                  {/* Options menu (rename / delete) */}
+                  <div className="absolute top-2 left-2">
+                    <SessionCardMenu
+                      sessionCode={s.sessionCode}
+                      title={s.title}
+                      isActive={isActive}
+                    />
+                  </div>
                   {/* Status badge overlay */}
                   <div className="absolute top-2 right-2">
                     {isActive ? (
