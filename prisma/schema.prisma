@@ -31,6 +31,11 @@ model Session {
   studentCount   Int       @default(0)
   createdAt      DateTime  @default(now())
   endedAt        DateTime?
+  // Slide 1 of the deck, captured from the app backend at registration so the
+  // home grid can show it after the backend's 7-day cleanup and without a
+  // wider Drive scope (drive.file cannot read decks the site did not create).
+  thumbnail      Bytes?
+  thumbnailMime  String?
 
   user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   students SessionStudent[]

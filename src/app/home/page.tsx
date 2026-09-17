@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { AddonInstallBanner } from "@/components/AddonInstallBanner";
 import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 import { SessionCardMenu } from "./SessionCardMenu";
+import { SessionThumb } from "./SessionThumb";
 
 export const dynamic = "force-dynamic";
 
@@ -69,6 +70,7 @@ export default async function HomePage({
     ? await prisma.session.findMany({
         where: { userId: dbUser.id },
         orderBy: { createdAt: "desc" },
+        omit: { thumbnail: true }, // served by /api/sessions/[code]/thumbnail
       })
     : [];
 
@@ -176,24 +178,15 @@ export default async function HomePage({
               >
                 {/* Thumbnail */}
                 <div className="aspect-video relative overflow-hidden bg-[#f1f3f4]">
-                  {s.presentationId && thumbnails[s.presentationId] ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={thumbnails[s.presentationId]}
-                      alt={s.title}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <svg className="h-16 w-16 opacity-30" viewBox="0 0 48 48" fill="none">
-                        <rect x="6" y="6" width="36" height="36" rx="3" fill="#FBBC04" />
-                        <rect x="12" y="13" width="24" height="22" rx="1" fill="white" />
-                        <rect x="16" y="17" width="16" height="2" rx="1" fill="#BDC1C6" />
-                        <rect x="16" y="21" width="16" height="2" rx="1" fill="#BDC1C6" />
-                        <rect x="16" y="25" width="10" height="2" rx="1" fill="#BDC1C6" />
-                      </svg>
-                    </div>
-                  )}
+                  <SessionThumb
+                    alt={s.title}
+                    sources={[
+                      `/api/sessions/${s.sessionCode}/thumbnail`,
+                      ...(s.presentationId && thumbnails[s.presentationId]
+                        ? [thumbnails[s.presentationId]]
+                        : []),
+                    ]}
+                  />
                   {/* Options menu (rename / delete) */}
                   <div className="absolute top-2 left-2">
                     <SessionCardMenu

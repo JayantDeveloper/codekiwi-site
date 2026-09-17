@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { ensureSessionThumbnail } from "@/lib/thumbnails";
 
 export async function POST(req: NextRequest) {
   const secret = process.env.CODEKIWI_BACKEND_SECRET;
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true, registered: false });
   }
 
-  await prisma.session.create({
+  const created = await prisma.session.create({
     data: {
       userId: dbUser.id,
       sessionCode,
@@ -36,6 +37,14 @@ export async function POST(req: NextRequest) {
       presentationId: presentationId ?? null,
     },
   });
+
+  // The add-on registers only after the backend upload succeeded, so slide 1
+  // is already there. Best-effort: a missing thumbnail must not fail registration.
+  try {
+    await ensureSessionThumbnail(created.id, sessionCode);
+  } catch (e) {
+    console.warn("thumbnail capture failed:", sessionCode, (e as Error).message);
+  }
 
   return NextResponse.json({ success: true, registered: true });
 }
