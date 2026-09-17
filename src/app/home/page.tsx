@@ -7,6 +7,7 @@ import { AddonInstallBanner } from "@/components/AddonInstallBanner";
 import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 import { SessionCardMenu } from "./SessionCardMenu";
 import { SessionThumb } from "./SessionThumb";
+import { reconcileOpenSessions } from "@/lib/reconcile";
 
 export const dynamic = "force-dynamic";
 
@@ -66,13 +67,15 @@ export default async function HomePage({
       })
     : null;
 
-  const rawSessions = dbUser
-    ? await prisma.session.findMany({
+  const rawSessions = await reconcileOpenSessions(
+    dbUser
+      ? await prisma.session.findMany({
         where: { userId: dbUser.id },
         orderBy: { createdAt: "desc" },
         omit: { thumbnail: true }, // served by /api/sessions/[code]/thumbnail
       })
-    : [];
+      : []
+  );
 
   const sessions = [...rawSessions].sort((a, b) => {
     if (sort === "students") return b.studentCount - a.studentCount;
