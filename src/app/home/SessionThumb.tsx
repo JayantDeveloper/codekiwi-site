@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Tries each candidate image in order (stored slide 1 → Drive thumbnail),
-// falling through on load errors to the Slides placeholder.
+// falling through on load errors to the Slides placeholder. The server-rendered
+// <img> can fail before React hydrates, so the mount effect re-checks the
+// element's state instead of relying on onError alone.
 export function SessionThumb({ sources, alt }: { sources: string[]; alt: string }) {
   const [idx, setIdx] = useState(0);
+  const ref = useRef<HTMLImageElement>(null);
   const src = sources[idx];
+
+  useEffect(() => {
+    const el = ref.current;
+    if (el && el.complete && el.naturalWidth === 0) setIdx((i) => i + 1);
+  }, [src]);
 
   if (!src) {
     return (
@@ -25,8 +33,11 @@ export function SessionThumb({ sources, alt }: { sources: string[]; alt: string 
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
+      ref={ref}
+      key={src}
       src={src}
-      alt={alt}
+      alt=""
+      title={alt}
       onError={() => setIdx((i) => i + 1)}
       className="absolute inset-0 h-full w-full object-cover transition-transform group-hover:scale-105"
     />
