@@ -5,6 +5,7 @@ import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { loadMeAndSettings, updateProfile, updateSettings } from "./actions";
 import type { Prisma } from "@prisma/client";
+import { MARKETPLACE_LISTING_URL } from "@/lib/marketplace";
 
 function getSchoolFromSettings(
   json: Prisma.JsonValue | null | undefined
@@ -124,7 +125,7 @@ export default async function SettingsPage() {
               coding exercises directly inside your presentation.
             </p>
             <a
-              href="https://workspace.google.com/marketplace/app/codekiwi/66127405192"
+              href={MARKETPLACE_LISTING_URL}
               target="_blank"
               rel="noopener noreferrer"
             >

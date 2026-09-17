@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
+import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 
 export function SiteFooter({ className }: { className?: string }) {
   return (
@@ -24,6 +25,7 @@ export function SiteFooter({ className }: { className?: string }) {
             <br />
             <GoogleTrademarkNotice className="text-xs text-[#6b8f2b]/60" />
           </p>
+          <MarketplaceBadge height={32} />
           <div className="flex gap-6">
             <Link href="/terms" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
               Terms

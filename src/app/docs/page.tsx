@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { MARKETPLACE_LISTING_URL } from "@/lib/marketplace";
 
 export const metadata: Metadata = {
   title: "Documentation — CodeKiwi",
@@ -179,7 +180,7 @@ export default function DocsPage() {
                 <p className="text-sm text-[#6b8f2b]/80">
                   <strong>Add-on not installed?</strong> Install CodeKiwi directly from the{" "}
                   <a
-                    href="https://workspace.google.com/marketplace/app/codekiwi/66127405192"
+                    href={MARKETPLACE_LISTING_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-semibold underline"

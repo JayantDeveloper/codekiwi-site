@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
+import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 
 export function LandingFooter() {
   return (
@@ -18,6 +19,7 @@ export function LandingFooter() {
             />
             <span className="text-xl font-bold text-white">CodeKiwi</span>
           </div>
+          <MarketplaceBadge height={36} />
           <nav className="flex gap-8">
             <Link
               href="/terms#acceptable-use"

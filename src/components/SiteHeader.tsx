@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 
 const NAV_LINKS = [
   { href: "/features", label: "Features", hide: "sm" },
@@ -48,6 +49,7 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <MarketplaceBadge height={28} className="hidden lg:inline-block" />
           <Link href="/signin">
             <Button
               variant="outline"

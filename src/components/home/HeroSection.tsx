@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import GoogleIcon from "@/components/GoogleIcon";
+import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 
 // Words 4+ render in the brand gradient once fully typed.
 const WORDS = ["Turn", "Your", "Slides", "into", "Live", "Coding", "Lessons"];
@@ -149,7 +150,7 @@ export function HeroSection() {
         </div>
 
         <div
-          className="flex flex-col gap-4 sm:flex-row animate-fade-in"
+          className="flex flex-col items-center gap-4 sm:flex-row animate-fade-in"
           style={{ animationDelay: "950ms" }}
         >
           <Button
@@ -162,20 +163,8 @@ export function HeroSection() {
               Get Started with Google
             </Link>
           </Button>
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="border-2 border-[#a8d05f] text-[#a8d05f] hover:bg-[#a8d05f] hover:text-[#1a1a1a] shadow-md hover:shadow-lg hover:scale-[1.03] transition-all duration-300 bg-transparent text-base px-8"
-          >
-            <a
-              href="https://workspace.google.com/marketplace/app/codekiwi/66127405192"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Install the Add-on
-            </a>
-          </Button>
+          {/* Official Marketplace badge: the click target that proves the add-on is live. */}
+          <MarketplaceBadge height={40} className="self-center" />
         </div>
 
         <p

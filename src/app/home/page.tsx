@@ -4,6 +4,7 @@ import { getServerSession } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
 import { AddonInstallBanner } from "@/components/AddonInstallBanner";
+import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 import { SessionCardMenu } from "./SessionCardMenu";
 
 export const dynamic = "force-dynamic";
@@ -100,27 +101,31 @@ export default async function HomePage({
           That session isn&apos;t live anymore. If it had students, its gradebook is saved below.
         </div>
       )}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-2xl font-bold text-[#6b8f2b]">My Sessions</h2>
 
-        {sessions.length > 0 && (
-          <div className="flex items-center gap-1 rounded-lg border border-[#6b8f2b]/20 bg-white p-1 shadow-sm">
-            <span className="px-2 text-xs text-[#6b8f2b]/60 font-medium">Sort:</span>
-            {sortOptions.map(({ key, label }) => (
-              <Link key={key} href={`?sort=${key}`}>
-                <span
-                  className={`cursor-pointer rounded-md px-3 py-1 text-xs font-semibold transition-colors ${
-                    sort === key
-                      ? "bg-[#6b8f2b] text-white"
-                      : "text-[#6b8f2b] hover:bg-[#a8d05f]/20"
-                  }`}
-                >
-                  {label}
-                </span>
-              </Link>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Always visible so a teacher can install (or show a colleague) from any state. */}
+          <MarketplaceBadge height={36} />
+          {sessions.length > 0 && (
+            <div className="flex items-center gap-1 rounded-lg border border-[#6b8f2b]/20 bg-white p-1 shadow-sm">
+              <span className="px-2 text-xs text-[#6b8f2b]/60 font-medium">Sort:</span>
+              {sortOptions.map(({ key, label }) => (
+                <Link key={key} href={`?sort=${key}`}>
+                  <span
+                    className={`cursor-pointer rounded-md px-3 py-1 text-xs font-semibold transition-colors ${
+                      sort === key
+                        ? "bg-[#6b8f2b] text-white"
+                        : "text-[#6b8f2b] hover:bg-[#a8d05f]/20"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

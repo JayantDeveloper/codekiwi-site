@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Puzzle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MARKETPLACE_LISTING_URL } from "@/lib/marketplace";
 
 const DISMISS_KEY = "codekiwi-addon-banner-dismissed";
 
@@ -35,7 +36,7 @@ export function AddonInstallBanner() {
         </p>
       </div>
       <a
-        href="https://workspace.google.com/marketplace/app/codekiwi/66127405192"
+        href={MARKETPLACE_LISTING_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="shrink-0"
