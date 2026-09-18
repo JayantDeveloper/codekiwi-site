@@ -51,6 +51,19 @@ export async function POST(req: NextRequest) {
 
   const roster = students.slice(0, MAX_STUDENTS);
 
+  // A snapshot with no answers at all (e.g. the backend restarted and rebuilt
+  // a bare roster from heartbeats) must never replace a gradebook that has
+  // real answers. Keep what we have and tell the backend it was not applied.
+  const incomingAnswers = roster.reduce((n, s) => n + (Array.isArray(s.answers) ? s.answers.length : 0), 0);
+  if (incomingAnswers === 0) {
+    const existingAnswers = await prisma.sessionAnswer.count({
+      where: { student: { sessionId: session.id } },
+    });
+    if (existingAnswers > 0) {
+      return NextResponse.json({ success: true, saved: false, reason: "empty snapshot would overwrite answers" });
+    }
+  }
+
   // Replace the whole roster atomically so re-sends (end + any autosave) are
   // idempotent rather than duplicating rows.
   await prisma.$transaction(async (tx) => {

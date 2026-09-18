@@ -31,16 +31,23 @@ export function GradebookTable({
     s.answers.find((a) => a.slideIndex === slideIndex);
 
   const exportCsv = () => {
-    const header = ["Student", "Score", ...codingSlides.map((_, i) => `Q${i + 1}`)];
+    const header = ["Student", "Score", "Total", ...codingSlides.map((_, i) => `Q${i + 1}`)];
     const rows = students.map((s) => {
       const cells = codingSlides.map((idx) => {
         const a = answerFor(s, idx);
         if (!a || a.passed === null) return "";
         return a.passed ? "correct" : "incorrect";
       });
-      return [s.name, `${s.score}/${s.total}`, ...cells];
+      // Separate numeric columns: "3/5" in one cell becomes a date in Excel/Sheets.
+      return [s.name, String(s.score), String(s.total), ...cells];
     });
-    const esc = (v: string) => `"${String(v).replace(/"/g, '""')}"`;
+    // Quote everything; neutralise cells a spreadsheet would treat as formulas
+    // (a student can name themselves "=HYPERLINK(...)").
+    const esc = (v: string) => {
+      const str = String(v);
+      const safe = /^[=+\-@\t\r]/.test(str) ? `'${str}` : str;
+      return `"${safe.replace(/"/g, '""')}"`;
+    };
     const csv = [header, ...rows].map((r) => r.map(esc).join(",")).join("\n");
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);

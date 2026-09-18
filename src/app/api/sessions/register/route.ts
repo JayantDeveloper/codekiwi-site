@@ -12,8 +12,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing sessionCode or teacherEmail" }, { status: 400 });
   }
 
-  const dbUser = await prisma.user.findUnique({
-    where: { email: teacherEmail },
+  // The add-on sends the Google account email; match a site account
+  // regardless of how the teacher typed their email at signup.
+  const dbUser = await prisma.user.findFirst({
+    where: { email: { equals: String(teacherEmail).trim(), mode: "insensitive" } },
     select: { id: true },
   });
 
