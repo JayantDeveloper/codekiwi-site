@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { rejectUnlessBackend } from "@/lib/backendSecret";
 
 export async function POST(req: NextRequest) {
-  const secret = process.env.CODEKIWI_BACKEND_SECRET;
-  if (secret && req.headers.get("x-codekiwi-secret") !== secret) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const rejected = rejectUnlessBackend(req);
+  if (rejected) return rejected;
 
   const { sessionCode, studentCount } = await req.json();
   if (!sessionCode) {

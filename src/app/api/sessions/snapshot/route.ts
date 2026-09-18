@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { rejectUnlessBackend } from "@/lib/backendSecret";
 
 // Receives the full student roster + per-question code/grades from the app
 // backend at session end (and, later, periodic autosave) and persists it as a
@@ -28,10 +29,8 @@ const clampText = (v: unknown) =>
   typeof v === "string" ? v.slice(0, MAX_TEXT) : "";
 
 export async function POST(req: NextRequest) {
-  const secret = process.env.CODEKIWI_BACKEND_SECRET;
-  if (secret && req.headers.get("x-codekiwi-secret") !== secret) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const rejected = rejectUnlessBackend(req);
+  if (rejected) return rejected;
 
   const { sessionCode, students } = (await req.json()) as {
     sessionCode?: string;
