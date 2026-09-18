@@ -118,7 +118,7 @@ export default function DocsPage() {
                     Code Question: Write a function that…
                   </div>
                 </li>
-                <li className="leading-relaxed">The text after the colon becomes the question prompt students see</li>
+                <li className="leading-relaxed">The text after the colon is the question prompt, shown to you in the teacher views; put the question itself on the slide so students see it</li>
               </ol>
 
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
@@ -157,14 +157,8 @@ export default function DocsPage() {
               <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-6">
                 <li className="leading-relaxed">Sign in at <a href="https://www.codekiwi.tech/home" className="text-[#6b8f2b] hover:underline">codekiwi.tech/home</a></li>
                 <li className="leading-relaxed">Click <strong>Launch Session</strong></li>
-                <li className="leading-relaxed">
-                  Choose one of two options:
-                  <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
-                    <li><strong>Use Template</strong> — creates a fresh CodeKiwi starter deck in your Google Drive™ and opens it for editing</li>
-                    <li><strong>Choose from Drive</strong> — pick an existing Google Slides presentation; CodeKiwi retrieves the slide thumbnails and launches the session immediately</li>
-                  </ul>
-                </li>
-                <li className="leading-relaxed">You'll be taken directly to the teacher presentation view at <strong>codekiwi.app</strong></li>
+                <li className="leading-relaxed">Click <strong>Use Template</strong> — CodeKiwi creates a starter deck in your Google Drive™ and opens it for editing</li>
+                <li className="leading-relaxed">In that deck, open <strong>Extensions → CodeKiwi</strong> and click <strong>Start Lesson</strong> (see Option 2). The starter deck already has example coding slides marked for you.</li>
               </ol>
 
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Option 2 — From the Google Slides Add-On</h3>
@@ -231,7 +225,7 @@ export default function DocsPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li>Student name and color-coded card</li>
-                <li>A live status: <strong>Coding</strong>, <strong>Done</strong> (their latest run matched the question&apos;s expected answer), <strong>Needs help</strong> (they raised their hand or got stuck on repeated failed runs), <strong>Error</strong>, or <strong>No code</strong></li>
+                <li>A live status: <strong>Coding</strong>, <strong>Done</strong> (their latest run on the current slide matched its expected answer), <strong>Needs help</strong> (they raised their hand or got stuck on repeated failed runs), <strong>Error</strong>, or <strong>No code</strong></li>
                 <li>A running score — coding questions answered correctly out of the total</li>
                 <li>A live preview of their most recent code, and the time of their last update</li>
               </ul>
@@ -421,7 +415,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">What programming languages are supported?</h4>
-                  <p className="text-[#6b8f2b]/80">Currently Python, JavaScript, and Java. The language is set when you start the session via the Add-On; "Choose from Drive" sessions default to Python. For Java, student code must declare a <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">public class Main</code>.</p>
+                  <p className="text-[#6b8f2b]/80">Currently Python, JavaScript, and Java. The language is set when you start the session via the Add-On. For Java, student code must declare a <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">public class Main</code>. Programs cannot read keyboard input (<code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">input()</code> / <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Scanner</code>): write exercises that set their values in code.</p>
                 </div>
 
                 <div>
