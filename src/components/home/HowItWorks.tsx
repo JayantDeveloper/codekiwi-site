@@ -27,7 +27,7 @@ export function HowItWorks() {
             From slides to running code in minutes
           </h2>
           <p className="mx-auto max-w-2xl text-lg font-medium text-[#1a1a1a]/75">
-            No installs, no logins for students, no rebuilding your lesson somewhere else.
+            Here is what it looks like on both sides of the room.
           </p>
         </div>
 
