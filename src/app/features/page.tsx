@@ -8,7 +8,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Features — CodeKiwi",
+  title: "Features | CodeKiwi",
   description: "Discover CodeKiwi's features for interactive coding education",
 };
 
@@ -40,7 +40,7 @@ export default function FeaturesPage() {
                 Google Slides™ Integration
               </h2>
               <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
-                Connect your existing Google Slides presentations seamlessly. No need to recreate your teaching materials—use what you already have and make them interactive.
+                Connect your existing Google Slides presentations seamlessly. No need to recreate your teaching materials. Use what you already have and make them interactive.
               </p>
               <ul className="space-y-3 text-[#6b8f2b]/70">
                 <li className="flex items-start gap-3">
@@ -89,7 +89,7 @@ export default function FeaturesPage() {
                 Live Code Editor
               </h2>
               <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
-                Students code alongside your presentation in a synchronized editor. They see your slides on the left and write code on the right—everything in one view.
+                Students code alongside your presentation in a synchronized editor. They see your slides on the left and write code on the right, all in one view.
               </p>
               <ul className="space-y-3 text-[#6b8f2b]/70">
                 <li className="flex items-start gap-3">
@@ -173,7 +173,7 @@ export default function FeaturesPage() {
                 Live Teacher Assistance
               </h2>
               <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
-                Live-code beside your slide and every student mirrors it in real time, or jump directly into one student's editor to fix a bug—without disrupting the rest of the class.
+                Live-code beside your slide and every student mirrors it in real time, or jump directly into one student's editor to fix a bug without disrupting the rest of the class.
               </p>
               <ul className="space-y-3 text-[#6b8f2b]/70">
                 <li className="flex items-start gap-3">
@@ -208,7 +208,7 @@ export default function FeaturesPage() {
                 Instant Session Launch
               </h3>
               <p className="text-[#6b8f2b]/70 leading-relaxed">
-                Start a session with one click. Share a simple PIN with your students—no accounts, downloads, or complex setup required for them.
+                Start a session with one click. Share a simple PIN with your students. No accounts, downloads, or setup required for them.
               </p>
             </div>
 
