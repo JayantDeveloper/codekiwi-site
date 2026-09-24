@@ -4,15 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
 
 // Words rendered in the brand gradient once fully typed.
-const ACCENT = new Set(["live", "coding", "classroom."]);
+const ACCENT = new Set(["whole", "class", "work."]);
 
 const STATEMENT =
-  "Every slide becomes a live coding classroom. Students write, run, and learn together in real time.";
+  "Keep your slides. Add a code editor. Watch the whole class work.";
 
 // Typewriter pace, per character, so the duration scales with the text length.
-// ~38ms/char reads as a deliberate "being coded in" pace (vs. the old 1600ms
-// total, which was ~16ms/char and felt instant).
-const PER_CHAR_MS = 38;
+// ~58ms/char reads as a deliberate "being coded in" pace. Raised from 38 when
+// the statement got shorter, to keep the original ~3.7s feel.
+const PER_CHAR_MS = 58;
 const TYPE_MS = STATEMENT.length * PER_CHAR_MS;
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
