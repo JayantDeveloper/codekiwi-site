@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { MARKETPLACE_LISTING_URL } from "@/lib/marketplace";
 
 export const metadata: Metadata = {
-  title: "Documentation — CodeKiwi",
+  title: "Documentation | CodeKiwi",
   description: "Learn how to use CodeKiwi for interactive coding education",
 };
 
@@ -51,7 +51,7 @@ export default function DocsPage() {
             <section id="getting-started">
               <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Getting Started</h2>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
-                CodeKiwi turns your Google Slides™ presentations into live, interactive coding lessons. Students see your slides in real-time while writing and running code side-by-side — no accounts or installs required on their end.
+                CodeKiwi turns your Google Slides™ presentations into live, interactive coding lessons. Students see your slides in real-time while writing and running code side-by-side, with no accounts or installs required on their end.
               </p>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
                 As a teacher you'll need:
@@ -123,7 +123,7 @@ export default function DocsPage() {
 
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
                 <p className="text-sm text-[#6b8f2b]/80">
-                  <strong>Tip:</strong> Mix regular slides and coding slides freely — the editor only appears on slides marked with <code className="font-mono bg-white/60 px-1 rounded">Code Question:</code>. The marker must be at the very first line of the Speaker Notes and is case-sensitive.
+                  <strong>Tip:</strong> Mix regular slides and coding slides freely. The editor only appears on slides marked with <code className="font-mono bg-white/60 px-1 rounded">Code Question:</code>. The marker must be at the very first line of the Speaker Notes and is case-sensitive.
                 </p>
               </div>
 
@@ -137,11 +137,11 @@ export default function DocsPage() {
                 <li className="leading-relaxed">Click <strong>Save Answer</strong></li>
               </ol>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
-                Now when a student runs their code on that slide, they instantly see <strong>Correct</strong> or <strong>Not quite</strong>, and the result feeds their score on your dashboard and gradebook. Slides with no expected answer stay ungraded — students can still write and run code freely.
+                Now when a student runs their code on that slide, they instantly see <strong>Correct</strong> or <strong>Not quite</strong>, and the result feeds their score on your dashboard and gradebook. Slides with no expected answer stay ungraded, and students can still write and run code freely.
               </p>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
                 <p className="text-sm text-[#6b8f2b]/80">
-                  <strong>Tip:</strong> The check compares the program&apos;s output exactly (ignoring only surrounding blank lines), so make your expected answer match precisely — capitalization, punctuation, and spacing all count.
+                  <strong>Tip:</strong> The check compares the program&apos;s output exactly (ignoring only surrounding blank lines), so make your expected answer match precisely. Capitalization, punctuation, and spacing all count.
                 </p>
               </div>
             </section>
@@ -157,7 +157,7 @@ export default function DocsPage() {
               <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-6">
                 <li className="leading-relaxed">Sign in at <a href="https://www.codekiwi.tech/home" className="text-[#6b8f2b] hover:underline">codekiwi.tech/home</a></li>
                 <li className="leading-relaxed">Click <strong>Launch Session</strong></li>
-                <li className="leading-relaxed">Click <strong>Use Template</strong> — CodeKiwi creates a starter deck in your Google Drive™ and opens it for editing</li>
+                <li className="leading-relaxed">Click <strong>Use Template</strong>, and CodeKiwi creates a starter deck in your Google Drive™ and opens it for editing</li>
                 <li className="leading-relaxed">In that deck, open <strong>Extensions → CodeKiwi</strong> and click <strong>Start Lesson</strong> (see Option 2). The starter deck already has example coding slides marked for you.</li>
               </ol>
 
@@ -167,7 +167,7 @@ export default function DocsPage() {
                 <li className="leading-relaxed">Go to <strong>Extensions → CodeKiwi → Open CodeKiwi Add-On</strong> to open the sidebar</li>
                 <li className="leading-relaxed">Use the <strong>Coding Slides</strong> panel to mark or unmark slides as coding questions right from the sidebar</li>
                 <li className="leading-relaxed">Select a language (Python, JavaScript, or Java) from the <strong>Session Language</strong> toggle</li>
-                <li className="leading-relaxed">Click <strong>Start Lesson</strong> — CodeKiwi exports your slides and generates a session</li>
+                <li className="leading-relaxed">Click <strong>Start Lesson</strong>, and CodeKiwi exports your slides and generates a session</li>
                 <li className="leading-relaxed">A new tab opens with the teacher presentation view</li>
               </ol>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
@@ -203,17 +203,17 @@ export default function DocsPage() {
 
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">During the Presentation</h3>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
-                <li>Use <strong>Previous / Next</strong> in the bottom bar to advance slides — students sync in real-time</li>
+                <li>Use <strong>Previous / Next</strong> in the bottom bar to advance slides, and students sync in real-time</li>
                 <li>Click the <strong>Session: XXXXXX</strong> title above the slides at any time to reopen the lobby (to copy the session code again)</li>
                 <li>The <strong>Dashboard</strong> button opens a live view of all student code</li>
-                <li>The <strong>Editor</strong> button opens a code editor beside your slide and mirrors it — code and output — read-only to every student in real time. Drag the divider to resize the editor against your slide (and the divider inside it to resize the terminal), run code to show output to the class, then toggle it off and students get their own editor back. Works on any slide.</li>
-                <li><strong>Lock Editors</strong> disables the student code editor — useful when you want students to focus on your explanation</li>
+                <li>The <strong>Editor</strong> button opens a code editor beside your slide and mirrors it (code and output) read-only to every student in real time. Drag the divider to resize the editor against your slide (and the divider inside it to resize the terminal), run code to show output to the class, then toggle it off and students get their own editor back. Works on any slide.</li>
+                <li><strong>Lock Editors</strong> disables the student code editor, useful when you want students to focus on your explanation</li>
                 <li><strong>End Session</strong> ends the class for everyone and returns you to your dashboard</li>
               </ul>
 
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Speaker Notes Sidebar</h3>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
-                Your slide notes are visible only to you, not to students. The panel starts collapsed as a slim <strong>Notes</strong> tab on the right to give your slides more room — click it to slide the notes out, and collapse it again anytime.
+                Your slide notes are visible only to you, not to students. The panel starts collapsed as a slim <strong>Notes</strong> tab on the right to give your slides more room. Click it to slide the notes out, and collapse it again anytime.
               </p>
             </section>
 
@@ -226,7 +226,7 @@ export default function DocsPage() {
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li>Student name and color-coded card</li>
                 <li>A live status: <strong>Coding</strong>, <strong>Done</strong> (their latest run on the current slide matched its expected answer), <strong>Needs help</strong> (they raised their hand or got stuck on repeated failed runs), <strong>Error</strong>, or <strong>No code</strong></li>
-                <li>A running score — coding questions answered correctly out of the total</li>
+                <li>A running score, coding questions answered correctly out of the total</li>
                 <li>A live preview of their most recent code, and the time of their last update</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
@@ -254,7 +254,7 @@ export default function DocsPage() {
               <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li>Click the <strong>pencil icon</strong> in the editor header</li>
                 <li>Make your changes in the editor</li>
-                <li>Click <strong>Save</strong> — the updated code is pushed to the student's editor in real-time</li>
+                <li>Click <strong>Save</strong>, and the updated code is pushed to the student's editor in real-time</li>
                 <li>Click <strong>Cancel</strong> to discard changes and return to read-only view</li>
               </ol>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
@@ -270,7 +270,7 @@ export default function DocsPage() {
               <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-6">
                 <li className="leading-relaxed">Students go to <a href="https://www.codekiwi.app" className="text-[#6b8f2b] hover:underline font-medium">codekiwi.app</a></li>
                 <li className="leading-relaxed">Enter the 6-digit session code and their name</li>
-                <li className="leading-relaxed">They join immediately — no account needed</li>
+                <li className="leading-relaxed">They join immediately, no account needed</li>
               </ol>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
                 Once inside, students see:
@@ -295,7 +295,7 @@ export default function DocsPage() {
               </p>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-2">The gradebook shows:</p>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
-                <li>A class summary — number of students, coding questions, and the class average</li>
+                <li>A class summary, with the number of students, coding questions, and the class average</li>
                 <li>Per-question pass rates, so you can see which question tripped up the class</li>
                 <li>Every student&apos;s score, with their per-question code and output expandable inline</li>
                 <li>A <strong>CSV export</strong> of scores for your own records</li>
@@ -321,11 +321,11 @@ export default function DocsPage() {
 
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">During the Session</h3>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
-                <li>Share the session code early — project it or paste it in your class chat</li>
+                <li>Share the session code early, either project it or paste it in your class chat</li>
                 <li>Use <strong>Lock Editors</strong> while explaining to keep students focused</li>
                 <li>Open the <strong>Dashboard</strong> during coding time to spot students who are stuck</li>
                 <li>Use the <strong>inspect view</strong> to nudge a struggling student's code rather than calling them out publicly</li>
-                <li>Advance slides deliberately — the editor resets on each slide change</li>
+                <li>Advance slides deliberately, since the editor resets on each slide change</li>
               </ul>
 
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Suggested Lesson Structure</h3>
@@ -363,7 +363,7 @@ export default function DocsPage() {
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Slides aren't syncing for students</h4>
                   <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
-                    <li>Advance the slide in the teacher view — the sync message fires on each change</li>
+                    <li>Advance the slide in the teacher view, since the sync message fires on each change</li>
                     <li>Ask the student to refresh their browser tab</li>
                     <li>Verify they're connected to the internet</li>
                   </ul>
@@ -373,7 +373,7 @@ export default function DocsPage() {
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">The code editor isn't showing for students</h4>
                   <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
                     <li>Check that the slide has <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code> at the very first line of its Speaker Notes</li>
-                    <li>The marker is case-sensitive — it must be typed exactly as <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code></li>
+                    <li>The marker is case-sensitive and must be typed exactly as <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code></li>
                     <li>Use the <strong>Coding Slides</strong> panel in the Add-On sidebar to see which slides are currently marked</li>
                   </ul>
                 </div>
@@ -398,7 +398,7 @@ export default function DocsPage() {
 
               <div className="mt-6 rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
                 <p className="text-sm text-[#6b8f2b]/80">
-                  <strong>Still stuck?</strong> Email <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a> — I typically respond within 24 hours.
+                  <strong>Still stuck?</strong> Email <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a>. I typically respond within 24 hours.
                 </p>
               </div>
             </section>
@@ -420,7 +420,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Is CodeKiwi free?</h4>
-                  <p className="text-[#6b8f2b]/80">Yes — CodeKiwi is free to use while in beta. All features are fully accessible at no cost.</p>
+                  <p className="text-[#6b8f2b]/80">Yes. CodeKiwi is free to use while in beta. All features are fully accessible at no cost.</p>
                 </div>
 
                 <div>
@@ -435,7 +435,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Can I edit a student's code during class?</h4>
-                  <p className="text-[#6b8f2b]/80">Yes. In the inspect view, click the pencil icon to edit their code, then Save — the changes are pushed to their editor in real-time.</p>
+                  <p className="text-[#6b8f2b]/80">Yes. In the inspect view, click the pencil icon to edit their code, then Save, and the changes are pushed to their editor in real-time.</p>
                 </div>
 
                 <div>
@@ -445,7 +445,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">What browsers are supported?</h4>
-                  <p className="text-[#6b8f2b]/80">Chrome, Firefox, Safari, and Edge — all modern versions. Chrome is recommended for the best experience.</p>
+                  <p className="text-[#6b8f2b]/80">Chrome, Firefox, Safari, and Edge, in all modern versions. Chrome is recommended for the best experience.</p>
                 </div>
 
                 <div>

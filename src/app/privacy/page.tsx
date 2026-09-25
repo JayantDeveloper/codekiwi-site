@@ -5,7 +5,7 @@ import Image from "next/image";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — CodeKiwi",
+  title: "Privacy Policy | CodeKiwi",
   description: "Privacy Policy for CodeKiwi - Learn how we protect your data",
 };
 
@@ -143,7 +143,7 @@ export default function PrivacyPage() {
                 When you sign in with Google, CodeKiwi requests the following Google API permission:
               </p>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
-                <li><strong>drive.file</strong> — access only to files you explicitly select via the Google Drive Picker, and files CodeKiwi creates on your behalf (session template copies). CodeKiwi cannot read, list, or modify any other files in your Drive.</li>
+                <li><strong>drive.file</strong> gives access only to files you explicitly select via the Google Drive Picker, and files CodeKiwi creates on your behalf (session template copies). CodeKiwi cannot read, list, or modify any other files in your Drive.</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
                 Specifically, CodeKiwi uses this permission to:
