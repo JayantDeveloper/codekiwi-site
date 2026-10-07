@@ -28,8 +28,15 @@ export async function POST(req: Request) {
     });
 
     if (existingUser) {
+      // A password-less account was created by Google sign-in or by the
+      // add-on starting a lesson. Never let an unverified signup claim it
+      // (it can hold students' code); Google sign-in proves the email.
       return NextResponse.json(
-        { error: "User with this email already exists" },
+        {
+          error: existingUser.password
+            ? "User with this email already exists"
+            : "This email already has a CodeKiwi account. Sign in with Google to open it.",
+        },
         { status: 400 }
       );
     }
