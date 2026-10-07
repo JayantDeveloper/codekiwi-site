@@ -34,7 +34,7 @@ export default function PrivacyPage() {
           {/* Title */}
           <div className="mb-8 border-b border-[#d6c49f]/30 pb-6">
             <h1 className="text-4xl font-bold text-[#6b8f2b] mb-2">Privacy Policy</h1>
-            <p className="text-sm text-[#6b8f2b]/60">Last updated: April 30, 2026</p>
+            <p className="text-sm text-[#6b8f2b]/60">Last updated: October 7, 2026</p>
           </div>
 
           {/* Introduction */}
@@ -74,6 +74,9 @@ export default function PrivacyPage() {
                 <li>Hashed password (if you register with email/password)</li>
                 <li>School or institution name (optional)</li>
               </ul>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+                If you start a lesson from the CodeKiwi Google Slides™ add-on without having signed up, CodeKiwi creates an account for you using the email address of the Google account running the add-on, so your session history and gradebooks are saved. This account has no password. You can open it by signing in at codekiwi.tech with that same Google account.
+              </p>
 
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Usage Information</h3>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
@@ -93,7 +96,7 @@ export default function PrivacyPage() {
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80">
                 <li>Links to Google Slides presentations you connect</li>
                 <li>Student join data (anonymous unless students provide names)</li>
-                <li>Code written by students during sessions. If you have a CodeKiwi account, each student&apos;s code and question scores are saved to your session gradebook when the session ends, so you can review them afterward. You can delete this data at any time from the session&apos;s gradebook page.</li>
+                <li>Code written by students during sessions. Each student&apos;s code and question scores are saved to your session gradebook when the session ends, so you can review them afterward. You can delete this data at any time from the session&apos;s gradebook page.</li>
               </ul>
             </section>
 
@@ -185,7 +188,7 @@ export default function PrivacyPage() {
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li><strong>Account data:</strong> Retained while your account is active</li>
                 <li><strong>Session data:</strong> Stored as long as you keep the session</li>
-                <li><strong>Student gradebook data:</strong> If you have an account, each student&apos;s code and scores are saved to the session gradebook and retained until you delete them (from the gradebook page) or delete the session. During a live session the same data is also held temporarily in memory to power the teacher dashboard.</li>
+                <li><strong>Student gradebook data:</strong> Each student&apos;s code and scores are saved to the session gradebook and retained until you delete them (from the gradebook page) or delete the session. During a live session the same data is also held temporarily in memory to power the teacher dashboard.</li>
                 <li><strong>Server logs:</strong> Retained for up to 90 days for troubleshooting</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
