@@ -7,6 +7,7 @@ import { AddonInstallBanner } from "@/components/AddonInstallBanner";
 import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 import { SessionCardMenu } from "./SessionCardMenu";
 import { SessionThumb } from "./SessionThumb";
+import { StarterDecks } from "./StarterDecks";
 import { reconcileOpenSessions } from "@/lib/reconcile";
 
 export const dynamic = "force-dynamic";
@@ -106,6 +107,8 @@ export default async function HomePage({
           That session isn&apos;t live anymore. If it had students, its gradebook is saved below.
         </div>
       )}
+      <StarterDecks />
+
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-2xl font-bold text-[#6b8f2b]">My Sessions</h2>
 

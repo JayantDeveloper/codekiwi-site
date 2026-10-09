@@ -169,9 +169,8 @@ export default function DocsPage() {
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Option 1 — From your Dashboard (web)</h3>
               <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-6">
                 <li className="leading-relaxed">Sign in at <a href="https://www.codekiwi.tech/home" className="text-[#6b8f2b] hover:underline">codekiwi.tech/home</a></li>
-                <li className="leading-relaxed">Click <strong>Launch Session</strong></li>
-                <li className="leading-relaxed">Under <strong>Use a Starter Deck</strong>, pick a language and click <strong>Create deck</strong>. CodeKiwi creates a branded deck of 8 warm-up exercises in your Google Drive™ and opens it for editing</li>
-                <li className="leading-relaxed">In that deck, open <strong>Extensions → CodeKiwi</strong>, choose the same language, and click <strong>Start Lesson</strong> (see Option 2). Every exercise is already marked as a coding question with auto-graded tests, so it&apos;s ready to run as is, or edit it to fit your class.</li>
+                <li className="leading-relaxed">Click <strong>Launch Session</strong>, then <strong>New Lesson</strong>. CodeKiwi creates a fresh presentation in your Google Drive™ with a getting-started slide and opens it. Build your slides, then go live from the add-on (see Option 2)</li>
+                <li className="leading-relaxed">Or, for a ready-made lesson, pick a language under <strong>Starter Decks</strong> on your dashboard and click <strong>Use this deck</strong>. You get 8 warm-up exercises, each already marked as a coding question with auto-graded tests. Open <strong>Extensions → CodeKiwi</strong> in it, choose the same language, and click <strong>Start Lesson</strong>, or edit it to fit your class first.</li>
               </ol>
 
               <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Option 2 — From the Google Slides Add-On</h3>

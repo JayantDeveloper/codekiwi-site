@@ -27,7 +27,7 @@ const entries: Entry[] = [
       "Students can type input into their running program. input(), Scanner, and cin work the way they do in a terminal: the program asks, the student types in the output pane and presses Enter. Run turns into Stop while a program runs.",
       "Auto-grading with test cases. Give a coding question up to 10 tests, each with optional input and the output it should end with. Students see how many tests passed and, for the first one that failed, its input, the expected output, and what their program printed.",
       "JavaScript prompt() and alert() work like they do in the browser, so browser-style lessons run unchanged.",
-      "Starter decks: from codekiwi.tech, pick a language and get a CodeKiwi-styled deck of 8 warm-up exercises (Hello World through FizzBuzz) in your Google Drive, each with auto-graded tests already set up.",
+      "Starter decks: from your codekiwi.tech dashboard, pick a language and get a CodeKiwi-styled deck of 8 warm-up exercises (Hello World through FizzBuzz) in your Google Drive, each with auto-graded tests already set up.",
     ],
     improved: [
       "Grading ignores prompt text before the answer (\"Enter two numbers: 12\" matches 12), and ignores capitalization and extra spaces unless you turn that off for a question.",

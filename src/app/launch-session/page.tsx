@@ -5,64 +5,38 @@ export const dynamic = "force-dynamic";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { FilePlus2, LayoutTemplate, SlidersHorizontal, ExternalLink } from "lucide-react";
-import { STARTER_LANGUAGES, LANGUAGE_LABEL, type StarterLanguage } from "@/lib/starterExercises";
+import { FilePlus2, SlidersHorizontal, ExternalLink } from "lucide-react";
+import { createDeck, type CreatedDeck } from "@/lib/createDeck";
 
 type PageState = "choose" | "ready" | "error";
-type DeckKind = "blank" | "starter";
 
 const cardClass =
-  "flex flex-col items-center gap-4 rounded-2xl border-2 border-[#a8d05f]/50 bg-white p-7 shadow-sm transition-all";
+  "flex flex-col items-center gap-4 rounded-2xl border-2 border-[#a8d05f]/50 bg-white p-8 shadow-sm transition-all";
 const iconWrap = "flex h-14 w-14 items-center justify-center rounded-full bg-[#a8d05f]/20";
-const primaryBtn =
-  "mt-auto w-full rounded-lg bg-[#6b8f2b] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#5a7a23] disabled:opacity-60";
-
-function Spinner() {
-  return <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#a8d05f] border-t-[#6b8f2b]" />;
-}
 
 export default function LaunchSessionPage() {
   const router = useRouter();
   const [pageState, setPageState] = useState<PageState>("choose");
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<DeckKind | null>(null);
-  const [language, setLanguage] = useState<StarterLanguage>("python");
-  const [deck, setDeck] = useState<{ url: string; title: string; opened: boolean } | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [deck, setDeck] = useState<CreatedDeck | null>(null);
 
-  const createDeck = async (kind: DeckKind) => {
-    // Open the tab now, while we still have the click: browsers block
-    // window.open() after an await, which made the old button look dead.
-    const tab = window.open("", "_blank");
-    if (tab) {
-      tab.document.title = "Creating your CodeKiwi deck…";
-      tab.document.body.innerHTML =
-        '<p style="font:16px system-ui,sans-serif;color:#3d4a2a;padding:48px;text-align:center">Creating your CodeKiwi deck in Google Drive…</p>';
-    }
-    setLoading(kind);
+  const createBlank = async () => {
+    setLoading(true);
     try {
-      const res = await fetch("/api/create-presentation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(kind === "blank" ? { kind: "blank" } : { language }),
-      });
-      let data: { presentationUrl?: string; title?: string; error?: string; details?: string } = {};
-      try { data = await res.json(); } catch { /* empty/non-JSON body */ }
-      if (!res.ok || !data.presentationUrl) throw new Error(data.details || data.error || "Failed to create presentation");
-      if (tab && !tab.closed) tab.location.href = data.presentationUrl;
-      setDeck({ url: data.presentationUrl, title: data.title || "Your CodeKiwi deck", opened: !!tab && !tab.closed });
+      setDeck(await createDeck({ kind: "blank" }));
       setPageState("ready");
     } catch (err) {
-      tab?.close();
       setError(err instanceof Error ? err.message : "Failed to create presentation");
       setPageState("error");
     } finally {
-      setLoading(null);
+      setLoading(false);
     }
   };
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#a8d05f]/10 to-white px-4 py-10">
-      <div className="w-full max-w-5xl">
+      <div className="w-full max-w-2xl">
         {/* Header */}
         <div className="flex items-center justify-center gap-3 mb-10">
           <span className="text-3xl font-bold text-[#6b8f2b]">CodeKiwi</span>
@@ -81,57 +55,28 @@ export default function LaunchSessionPage() {
             <h1 className="text-2xl font-bold text-center text-[#1a1a1a] mb-8">
               How do you want to start?
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {/* Blank lesson: one getting-started slide, the teacher builds the rest */}
-              <div className={`${cardClass} hover:border-[#6b8f2b] hover:shadow-md`}>
-                <div className={iconWrap}>
-                  {loading === "blank" ? <Spinner /> : <FilePlus2 className="h-7 w-7 text-[#6b8f2b]" />}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Fresh lesson: one getting-started slide, the teacher builds the rest */}
+              <button
+                type="button"
+                onClick={createBlank}
+                disabled={loading}
+                className={`group ${cardClass} hover:border-[#6b8f2b] hover:shadow-md disabled:opacity-70`}
+              >
+                <div className={`${iconWrap} group-hover:bg-[#a8d05f]/30 transition-colors`}>
+                  {loading ? (
+                    <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#a8d05f] border-t-[#6b8f2b]" />
+                  ) : (
+                    <FilePlus2 className="h-7 w-7 text-[#6b8f2b]" />
+                  )}
                 </div>
                 <div className="text-center">
-                  <p className="text-base font-semibold text-[#1a1a1a]">New Blank Lesson</p>
+                  <p className="text-base font-semibold text-[#1a1a1a]">{loading ? "Creating your lesson…" : "New Lesson"}</p>
                   <p className="mt-1 text-sm text-gray-500">
-                    A fresh CodeKiwi presentation in your Google Drive™ with a getting-started slide. Build your own lesson from there.
+                    A fresh CodeKiwi presentation in your Google Drive™, with a slide on how to open the sidebar and go live
                   </p>
                 </div>
-                <button type="button" onClick={() => createDeck("blank")} disabled={loading !== null} className={primaryBtn}>
-                  {loading === "blank" ? "Creating…" : "Create blank lesson"}
-                </button>
-              </div>
-
-              {/* Starter deck: ready-made exercises with auto-graded tests */}
-              <div className={`${cardClass} hover:border-[#6b8f2b] hover:shadow-md`}>
-                <div className={iconWrap}>
-                  {loading === "starter" ? <Spinner /> : <LayoutTemplate className="h-7 w-7 text-[#6b8f2b]" />}
-                </div>
-                <div className="text-center">
-                  <p className="text-base font-semibold text-[#1a1a1a]">Starter Deck</p>
-                  <p className="mt-1 text-sm text-gray-500">
-                    8 ready-to-run coding exercises with auto-graded tests
-                  </p>
-                </div>
-                <div className="grid w-full grid-cols-2 gap-2" role="radiogroup" aria-label="Deck language">
-                  {STARTER_LANGUAGES.map((l) => (
-                    <button
-                      key={l}
-                      type="button"
-                      role="radio"
-                      aria-checked={language === l}
-                      disabled={loading !== null}
-                      onClick={() => setLanguage(l)}
-                      className={`rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
-                        language === l
-                          ? "border-[#6b8f2b] bg-[#6b8f2b] text-white"
-                          : "border-[#a8d05f]/60 bg-white text-[#6b8f2b] hover:bg-[#a8d05f]/15"
-                      }`}
-                    >
-                      {LANGUAGE_LABEL[l]}
-                    </button>
-                  ))}
-                </div>
-                <button type="button" onClick={() => createDeck("starter")} disabled={loading !== null} className={primaryBtn}>
-                  {loading === "starter" ? "Creating your deck…" : `Create ${LANGUAGE_LABEL[language]} deck`}
-                </button>
-              </div>
+              </button>
 
               {/* Add-on option */}
               <div className={cardClass}>
@@ -150,7 +95,7 @@ export default function LaunchSessionPage() {
             </div>
 
             {loading && (
-              <p className="pt-2 text-center text-sm text-gray-500">This takes a few seconds. Your deck opens in a new tab.</p>
+              <p className="pt-2 text-center text-sm text-gray-500">This takes a few seconds. Your lesson opens in a new tab.</p>
             )}
 
             <div className="pt-4 text-center">
@@ -167,7 +112,7 @@ export default function LaunchSessionPage() {
         {/* Ready state: the link always works, even if the new tab was blocked */}
         {pageState === "ready" && deck && (
           <div className="mx-auto flex max-w-md flex-col items-center gap-4 text-center">
-            <p className="text-xl font-bold text-[#1a1a1a]">Your deck is ready</p>
+            <p className="text-xl font-bold text-[#1a1a1a]">Your lesson is ready</p>
             <p className="text-sm text-gray-500">
               <span className="font-medium text-[#3d4a2a]">{deck.title}</span> is in your Google Drive™.
               {deck.opened ? " It opened in a new tab." : ""} To go live, open{" "}
@@ -181,20 +126,12 @@ export default function LaunchSessionPage() {
             >
               Open in Google Slides™ <ExternalLink className="h-4 w-4" />
             </a>
-            <div className="flex gap-4 pt-2">
-              <button
-                onClick={() => { setDeck(null); setPageState("choose"); }}
-                className="text-sm text-gray-500 hover:text-[#6b8f2b] transition-colors"
-              >
-                Create another
-              </button>
-              <button
-                onClick={() => router.push("/home")}
-                className="text-sm text-gray-500 hover:text-[#6b8f2b] transition-colors"
-              >
-                Back to Dashboard
-              </button>
-            </div>
+            <button
+              onClick={() => router.push("/home")}
+              className="pt-2 text-sm text-gray-500 hover:text-[#6b8f2b] transition-colors"
+            >
+              Back to Dashboard
+            </button>
           </div>
         )}
 
