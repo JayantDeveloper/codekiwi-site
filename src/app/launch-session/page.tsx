@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FileText, SlidersHorizontal } from "lucide-react";
+import { STARTER_LANGUAGES, LANGUAGE_LABEL, type StarterLanguage } from "@/lib/starterExercises";
 
 type PageState = "choose" | "error";
 
@@ -14,11 +15,16 @@ export default function LaunchSessionPage() {
   const [pageState, setPageState] = useState<PageState>("choose");
   const [error, setError] = useState<string | null>(null);
   const [templateLoading, setTemplateLoading] = useState(false);
+  const [language, setLanguage] = useState<StarterLanguage>("python");
 
   const handleTemplateSession = async () => {
     setTemplateLoading(true);
     try {
-      const res = await fetch("/api/create-presentation", { method: "POST" });
+      const res = await fetch("/api/create-presentation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ language }),
+      });
       let data: { presentationUrl?: string; error?: string; details?: string } = {};
       try { data = await res.json(); } catch { /* empty/non-JSON body */ }
       if (!res.ok) throw new Error(data.details || data.error || "Failed to create presentation");
@@ -55,13 +61,9 @@ export default function LaunchSessionPage() {
               How do you want to start?
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Template option */}
-              <button
-                onClick={handleTemplateSession}
-                disabled={templateLoading}
-                className="group relative flex flex-col items-center gap-4 rounded-2xl border-2 border-[#a8d05f]/50 bg-white p-8 text-left shadow-sm hover:border-[#6b8f2b] hover:shadow-md transition-all disabled:opacity-60"
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#a8d05f]/20 group-hover:bg-[#a8d05f]/30 transition-colors">
+              {/* Template option: a branded starter deck with auto-graded exercises */}
+              <div className="flex flex-col items-center gap-4 rounded-2xl border-2 border-[#a8d05f]/50 bg-white p-8 shadow-sm hover:border-[#6b8f2b] hover:shadow-md transition-all">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#a8d05f]/20">
                   {templateLoading ? (
                     <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#a8d05f] border-t-[#6b8f2b]" />
                   ) : (
@@ -69,12 +71,39 @@ export default function LaunchSessionPage() {
                   )}
                 </div>
                 <div className="text-center">
-                  <p className="text-base font-semibold text-[#1a1a1a]">Use Template</p>
+                  <p className="text-base font-semibold text-[#1a1a1a]">Use a Starter Deck</p>
                   <p className="mt-1 text-sm text-gray-500">
-                    Create a fresh copy of the CodeKiwi starter deck
+                    8 ready-to-run coding exercises with auto-graded tests, in your Google Drive™
                   </p>
                 </div>
-              </button>
+                <div className="grid w-full grid-cols-2 gap-2" role="radiogroup" aria-label="Deck language">
+                  {STARTER_LANGUAGES.map((l) => (
+                    <button
+                      key={l}
+                      type="button"
+                      role="radio"
+                      aria-checked={language === l}
+                      disabled={templateLoading}
+                      onClick={() => setLanguage(l)}
+                      className={`rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${
+                        language === l
+                          ? "border-[#6b8f2b] bg-[#6b8f2b] text-white"
+                          : "border-[#a8d05f]/60 bg-white text-[#6b8f2b] hover:bg-[#a8d05f]/15"
+                      }`}
+                    >
+                      {LANGUAGE_LABEL[l]}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={handleTemplateSession}
+                  disabled={templateLoading}
+                  className="w-full rounded-lg bg-[#6b8f2b] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#5a7a23] disabled:opacity-60"
+                >
+                  {templateLoading ? "Creating your deck…" : `Create ${LANGUAGE_LABEL[language]} deck`}
+                </button>
+              </div>
 
               {/* Add-on option */}
               <div className="group flex flex-col items-center gap-4 rounded-2xl border-2 border-[#a8d05f]/50 bg-white p-8 text-left shadow-sm">
