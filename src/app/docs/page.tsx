@@ -123,25 +123,38 @@ export default function DocsPage() {
 
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
                 <p className="text-sm text-[#6b8f2b]/80">
-                  <strong>Tip:</strong> Mix regular slides and coding slides freely. The editor only appears on slides marked with <code className="font-mono bg-white/60 px-1 rounded">Code Question:</code>. The marker must be at the very first line of the Speaker Notes and is case-sensitive.
+                  <strong>Tip:</strong> Mix regular slides and coding slides freely. The editor only appears on slides marked with <code className="font-mono bg-white/60 px-1 rounded">Code Question:</code>. The marker must be the first line of the Speaker Notes.
                 </p>
               </div>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-8">Auto-grading a coding slide (optional)</h3>
+              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-8">Auto-grading with test cases (optional)</h3>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
-                You can have CodeKiwi check student runs automatically. In the add-on sidebar's <strong>Auto-grade Answer</strong> section:
+                You can have CodeKiwi check student code automatically. Each test gives the program some input (optional) and the output it should end with. In the add-on sidebar&apos;s <strong>Auto-grade Tests</strong> section:
               </p>
               <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
-                <li className="leading-relaxed">Click the coding slide, then click <strong>Load Current Slide</strong></li>
-                <li className="leading-relaxed">Type exactly what the program should print into the box</li>
-                <li className="leading-relaxed">Click <strong>Save Answer</strong></li>
+                <li className="leading-relaxed">Click the coding slide, then click <strong>Load Slide</strong></li>
+                <li className="leading-relaxed">For each test, fill in the <strong>Input</strong> (what a student would type, or leave it blank) and the <strong>Expected output</strong></li>
+                <li className="leading-relaxed">Use <strong>+ Add test</strong> for more (up to 10), then click <strong>Save Tests</strong></li>
               </ol>
               <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
-                Now when a student runs their code on that slide, they instantly see <strong>Correct</strong> or <strong>Not quite</strong>, and the result feeds their score on your dashboard and gradebook. Slides with no expected answer stay ungraded, and students can still write and run code freely.
+                When a student runs their code on that slide, CodeKiwi runs it once per test and shows <strong>All tests passed</strong>, or how many passed along with the first failing test&apos;s input, the expected output, and what their program printed. The result feeds their score on your dashboard and gradebook. Slides without tests stay ungraded, and students can still write and run code freely.
               </p>
+              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+                For example, for &quot;read two numbers and print their sum&quot;:
+              </p>
+              <div className="overflow-x-auto mb-4">
+                <table className="text-sm text-[#6b8f2b]/90 border border-[#6b8f2b]/20 rounded">
+                  <thead><tr className="bg-[#a8d05f]/15"><th className="text-left px-3 py-1.5">Test</th><th className="text-left px-3 py-1.5">Input</th><th className="text-left px-3 py-1.5">Expected output</th></tr></thead>
+                  <tbody>
+                    <tr><td className="px-3 py-1.5">1</td><td className="px-3 py-1.5 font-mono">5 7</td><td className="px-3 py-1.5 font-mono">12</td></tr>
+                    <tr><td className="px-3 py-1.5">2</td><td className="px-3 py-1.5 font-mono">-3 3</td><td className="px-3 py-1.5 font-mono">0</td></tr>
+                    <tr><td className="px-3 py-1.5">3</td><td className="px-3 py-1.5 font-mono">100 23</td><td className="px-3 py-1.5 font-mono">123</td></tr>
+                  </tbody>
+                </table>
+              </div>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
                 <p className="text-sm text-[#6b8f2b]/80">
-                  <strong>Tip:</strong> The check compares the program&apos;s output exactly (ignoring only surrounding blank lines), so make your expected answer match precisely. Capitalization, punctuation, and spacing all count.
+                  <strong>How the check works:</strong> the program&apos;s output must <em>end with</em> your expected output. Earlier lines and prompt text such as <code className="font-mono bg-white/60 px-1 rounded">Enter two numbers:</code> are ignored, but other extra text after or around the answer is not. By default capitalization and extra spaces don&apos;t matter; untick <strong>Ignore case and extra spaces</strong> when exact formatting is the point of the question. Using two or more tests with different inputs stops students from passing by printing a hardcoded answer.
                 </p>
               </div>
             </section>
@@ -166,7 +179,7 @@ export default function DocsPage() {
                 <li className="leading-relaxed">Open your Google Slides presentation</li>
                 <li className="leading-relaxed">Go to <strong>Extensions → CodeKiwi → Open CodeKiwi Add-On</strong> to open the sidebar</li>
                 <li className="leading-relaxed">Use the <strong>Coding Slides</strong> panel to mark or unmark slides as coding questions right from the sidebar</li>
-                <li className="leading-relaxed">Select a language (Python, JavaScript, or Java) from the <strong>Session Language</strong> toggle</li>
+                <li className="leading-relaxed">Select a language (Python, JavaScript, Java, or C++) from the <strong>Session Language</strong> toggle</li>
                 <li className="leading-relaxed">Click <strong>Start Lesson</strong>, and CodeKiwi exports your slides and generates a session</li>
                 <li className="leading-relaxed">A new tab opens with the teacher presentation view</li>
               </ol>
@@ -225,7 +238,7 @@ export default function DocsPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li>Student name and color-coded card</li>
-                <li>A live status: <strong>Coding</strong>, <strong>Done</strong> (their latest run on the current slide matched its expected answer), <strong>Needs help</strong> (they raised their hand or got stuck on repeated failed runs), <strong>Error</strong>, or <strong>No code</strong></li>
+                <li>A live status: <strong>Coding</strong>, <strong>Done</strong> (their latest run on the current slide passed all its tests), <strong>Needs help</strong> (they raised their hand or got stuck on repeated failed runs), <strong>Error</strong>, or <strong>No code</strong></li>
                 <li>A running score, coding questions answered correctly out of the total</li>
                 <li>A live preview of their most recent code, and the time of their last update</li>
               </ul>
@@ -278,8 +291,8 @@ export default function DocsPage() {
               <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
                 <li><strong>Left pane:</strong> Your Google Slides synced in real-time as you advance them</li>
                 <li><strong>Right pane (coding slides only):</strong> A syntax-highlighted code editor and an output terminal</li>
-                <li>A <strong>Run</strong> button to execute their code and see the result instantly</li>
-                <li>On auto-graded questions, an instant <strong>Correct</strong> or <strong>Not quite</strong> message after they run</li>
+                <li>A <strong>Run</strong> button to execute their code and see the result instantly. If the program asks for input, they type it straight into the output terminal and press Enter (Run becomes <strong>Stop</strong> while it runs)</li>
+                <li>On auto-graded questions, how many tests passed, with the details of the first one that failed</li>
                 <li>An <strong>I&apos;m stuck</strong> button to raise their hand, which flags their card on your dashboard right away</li>
               </ul>
               <p className="text-[#6b8f2b]/80 leading-relaxed">
@@ -387,11 +400,13 @@ export default function DocsPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-[#6b8f2b] mb-2">A student's correct-looking code is marked "Not quite"</h4>
+                  <h4 className="font-semibold text-[#6b8f2b] mb-2">A student&apos;s correct-looking code fails a test</h4>
                   <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
-                    <li>Auto-grading compares the program&apos;s printed output exactly against the expected answer you set</li>
-                    <li>Check for differences in capitalization, punctuation, or extra spaces</li>
-                    <li>Update the expected answer in the sidebar&apos;s <strong>Auto-grade Answer</strong> box, or clear it to make the question ungraded</li>
+                    <li>The student&apos;s terminal shows the failing test&apos;s input, the expected output, and what the program printed: compare those first</li>
+                    <li>The output must end with the expected text, so extra text after the answer (or words before it that aren&apos;t a prompt ending in <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">:</code> or <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">?</code>) makes it fail</li>
+                    <li>A program that prints the right answer but then crashes, or exits with an error code, fails the test</li>
+                    <li>If <strong>Ignore case and extra spaces</strong> is off, capitalization and spacing must match exactly</li>
+                    <li>Edit the tests in the sidebar&apos;s <strong>Auto-grade Tests</strong> section, or remove them all to make the question ungraded</li>
                   </ul>
                 </div>
               </div>
@@ -415,7 +430,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">What programming languages are supported?</h4>
-                  <p className="text-[#6b8f2b]/80">Currently Python, JavaScript, and Java. The language is set when you start the session via the Add-On. For Java, student code must declare a <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">public class Main</code>. Programs cannot read keyboard input (<code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">input()</code> / <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Scanner</code>): write exercises that set their values in code.</p>
+                  <p className="text-[#6b8f2b]/80">Python, JavaScript, Java, and C++ (C++17). The language is set when you start the session via the Add-On. For Java, student code must declare a <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">public class Main</code>. Programs can read keyboard input (<code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">input()</code>, <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Scanner</code>, <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">cin</code>, and browser-style <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">prompt()</code> in JavaScript): students type into the output terminal while the program runs.</p>
                 </div>
 
                 <div>

@@ -33,6 +33,9 @@ export function SiteFooter({ className }: { className?: string }) {
             <Link href="/privacy" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
               Privacy
             </Link>
+            <Link href="/changelog" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
+              What&apos;s new
+            </Link>
             <Link href="/support" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] hover:underline">
               Contact
             </Link>

@@ -106,7 +106,7 @@ export default function FeaturesPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>Python, JavaScript, and Java, with more languages planned</span>
+                  <span>Python, JavaScript, Java, and C++, and students can type input into their running programs</span>
                 </li>
               </ul>
             </div>
@@ -133,7 +133,7 @@ export default function FeaturesPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
-                  <span>Coding questions auto-graded against your expected answer, with a running score per student</span>
+                  <span>Coding questions auto-graded with test cases (input and expected output), with a running score per student</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>

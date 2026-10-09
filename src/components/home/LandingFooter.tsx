@@ -34,6 +34,12 @@ export function LandingFooter() {
               Privacy
             </Link>
             <Link
+              href="/changelog"
+              className="text-sm font-medium text-white/90 transition-colors hover:text-white hover:underline"
+            >
+              What&apos;s new
+            </Link>
+            <Link
               href="/support"
               className="text-sm font-medium text-white/90 transition-colors hover:text-white hover:underline"
             >

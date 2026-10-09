@@ -33,7 +33,7 @@ export const FeaturesSection = React.forwardRef<HTMLElement, Props>(
           <FeatureCard
             icon={<BadgeCheck className="h-8 w-8 text-white" />}
             title="Auto-graded in the moment"
-            description="Set an expected answer on any slide. Students see if they got it the moment they run, and you get a live score."
+            description="Add test cases to any slide. Students see how many pass the moment they run, and you get a live score."
           />
           <FeatureCard
             icon={<Hand className="h-8 w-8 text-white" />}
