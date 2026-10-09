@@ -265,6 +265,85 @@ function endSlide(language: StarterLanguage): SlideSpec {
   };
 }
 
+// ── blank lesson deck ────────────────────────────────────────────────────────
+
+const STEPS: { title: string; body: string }[] = [
+  {
+    title: "Open the sidebar",
+    body: "In Google Slides™, go to Extensions → CodeKiwi → Open CodeKiwi Add-On.",
+  },
+  {
+    title: "Mark coding slides",
+    body: "Select a slide and click Mark / Unmark Slide. Students get a code editor there, and you can add auto-graded tests.",
+  },
+  {
+    title: "Start the lesson",
+    body: "Pick a language, click Start Lesson, and share the code. Students join at codekiwi.app.",
+  },
+];
+
+/** The one slide of a blank lesson deck: how to turn the deck into a CodeKiwi lesson. */
+function gettingStartedSlide(): SlideSpec {
+  const els: El[] = [
+    { type: "rect", x: 0, y: 0, w: 12, h: 540, fill: COLORS.green },
+    { type: "round", x: 48, y: 36, w: 132, h: 30, fill: COLORS.mint },
+    {
+      type: "text", x: 48, y: 36, w: 132, h: 30, text: "GET STARTED",
+      font: FONTS.heading, weight: 700, size: 10, color: COLORS.green, align: "CENTER", valign: "MIDDLE",
+    },
+    ...mascot(836, 36, 76, COLORS.lime),
+    {
+      type: "text", x: 48, y: 76, w: 760, h: 58, text: "Make this deck a live coding lesson",
+      font: FONTS.heading, weight: 700, size: 30, color: COLORS.ink, valign: "MIDDLE",
+    },
+    {
+      type: "text", x: 48, y: 134, w: 864, h: 40,
+      text: "Build your slides as usual, then take these three steps. Delete this slide anytime.",
+      font: FONTS.body, size: 15, color: COLORS.body, lineSpacing: 120,
+    },
+  ];
+  const CARD_Y = 196, CARD_H = 262, CARD_W = 272, GAP = 24;
+  STEPS.forEach((step, i) => {
+    const x = 48 + i * (CARD_W + GAP);
+    els.push(
+      { type: "round", x, y: CARD_Y, w: CARD_W, h: CARD_H, fill: COLORS.mint },
+      { type: "ellipse", x: x + 24, y: CARD_Y + 24, w: 44, h: 44, fill: COLORS.green },
+      {
+        type: "text", x: x + 24, y: CARD_Y + 24, w: 44, h: 44, text: String(i + 1),
+        font: FONTS.heading, weight: 700, size: 16, color: COLORS.white, align: "CENTER", valign: "MIDDLE",
+      },
+      {
+        type: "text", x: x + 18, y: CARD_Y + 84, w: CARD_W - 36, h: 32, text: step.title,
+        font: FONTS.heading, weight: 700, size: 15, color: COLORS.ink, valign: "MIDDLE",
+      },
+      {
+        type: "text", x: x + 18, y: CARD_Y + 120, w: CARD_W - 36, h: CARD_H - 132, text: step.body,
+        font: FONTS.body, size: 12, color: COLORS.body, lineSpacing: 125,
+      },
+    );
+  });
+  els.push(
+    ...brandFooter(false),
+    {
+      type: "text", x: 420, y: 486, w: 492, h: 30, text: "Help and guides at codekiwi.tech/docs",
+      font: FONTS.body, weight: 500, size: 11, color: COLORS.muted, align: "END", valign: "MIDDLE",
+    },
+  );
+  return {
+    bg: COLORS.cream,
+    elements: els,
+    notes:
+      "Getting-started slide, not a coding question.\n\n" +
+      "To make a slide a coding exercise, select it and click Mark / Unmark Slide in the CodeKiwi sidebar " +
+      '(or type "Code Question:" at the very top of its speaker notes). Students will see a live code editor alongside that slide.',
+  };
+}
+
+/** A blank lesson: just the getting-started slide, for teachers building their own slides. */
+export function buildBlankDeck(): SlideSpec[] {
+  return [gettingStartedSlide()];
+}
+
 export function buildStarterDeck(language: StarterLanguage): SlideSpec[] {
   return [titleSlide(language), ...EXERCISES.map((ex, i) => exerciseSlide(language, ex, i + 1)), endSlide(language)];
 }

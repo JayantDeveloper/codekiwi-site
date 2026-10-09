@@ -154,8 +154,14 @@
     @apply border-border outline-ring/50;
   }
   
+  /* Overscroll (rubber-band) shows the html background: light for the app
+     and content pages, dark only on pages that opt in (the landing page). */
   html {
-    background-color: #1a1a1a;
+    background-color: #f8faf5;
+  }
+
+  html:has(.ck-dark-canvas) {
+    background-color: #161616;
   }
 
   body {

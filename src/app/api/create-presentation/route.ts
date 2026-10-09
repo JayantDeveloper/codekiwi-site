@@ -2,14 +2,15 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "@/auth";
 import { google } from "googleapis";
 import { GaxiosError } from "gaxios";
-import { buildStarterDeck, slideRequests } from "@/lib/starterDeck";
+import { buildBlankDeck, buildStarterDeck, slideRequests } from "@/lib/starterDeck";
 import { STARTER_LANGUAGES, LANGUAGE_LABEL, type StarterLanguage } from "@/lib/starterExercises";
 
 // ── route ─────────────────────────────────────────────────────────────────
-// Creates the CodeKiwi starter deck in the teacher's Drive: a title slide,
-// eight exercise slides (each with auto-graded tests in its speaker notes),
-// and a closing slide, styled for the chosen language. The layout lives in
-// src/lib/starterDeck.ts, shared with the local HTML preview.
+// Creates a CodeKiwi deck in the teacher's Drive. Two kinds:
+//   { kind: "blank" }        one getting-started slide; the teacher adds their own
+//   { language: "python" }   the starter deck: title, eight exercise slides (each
+//                            with auto-graded tests in its notes), closing slide
+// The layout lives in src/lib/starterDeck.ts, shared with the local HTML preview.
 
 export async function POST(req: Request) {
   try {
@@ -25,18 +26,20 @@ export async function POST(req: Request) {
       );
 
     let language: StarterLanguage = "python";
+    let blank = false;
     try {
       const body = await req.json();
+      blank = body?.kind === "blank";
       if (STARTER_LANGUAGES.includes(body?.language)) language = body.language;
     } catch {
-      // no body: default language
+      // no body: starter deck in the default language
     }
 
     const auth = new google.auth.OAuth2();
     auth.setCredentials({ access_token: accessToken });
 
     const drive = google.drive({ version: "v3", auth });
-    const title = `CodeKiwi Starter: ${LANGUAGE_LABEL[language]} Warm-Ups`;
+    const title = blank ? "Untitled CodeKiwi Lesson" : `CodeKiwi Starter: ${LANGUAGE_LABEL[language]} Warm-Ups`;
     const created = await drive.files.create({
       requestBody: { name: title, mimeType: "application/vnd.google-apps.presentation" },
       fields: "id, name",
@@ -46,7 +49,7 @@ export async function POST(req: Request) {
     if (!presentationId) throw new Error("Failed to create presentation — no ID returned");
 
     const slidesApi = google.slides({ version: "v1", auth });
-    const deck = buildStarterDeck(language);
+    const deck = blank ? buildBlankDeck() : buildStarterDeck(language);
 
     // A new presentation has one title slide: remove it and add blank slides.
     const pres = await slidesApi.presentations.get({ presentationId });
@@ -90,7 +93,7 @@ export async function POST(req: Request) {
       presentationId,
       presentationUrl: `https://docs.google.com/presentation/d/${presentationId}/edit`,
       title: created.data.name,
-      language,
+      ...(blank ? {} : { language }),
     });
   } catch (error) {
     const err = error as GaxiosError;

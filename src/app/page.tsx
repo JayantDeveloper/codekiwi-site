@@ -46,7 +46,7 @@ export default function LandingPage() {
 
   return (
     <ReactLenis root>
-    <div className="flex min-h-screen flex-col bg-[#161616]">
+    <div className="ck-dark-canvas flex min-h-screen flex-col bg-[#161616]">
       <SiteHeader />
       <main className="flex-1">
         <HeroSection />
