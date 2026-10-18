@@ -218,7 +218,7 @@ export const DemoSection = React.forwardRef<HTMLElement, Props>(
             <h2 className="mb-4 text-4xl font-bold tracking-tight text-[#1a1a1a] sm:text-5xl">
               One lesson, two live views
             </h2>
-            <p className="mx-auto max-w-2xl text-lg font-medium text-[#1a1a1a]/80">
+            <p className="mx-auto max-w-3xl text-balance text-lg font-medium text-[#1a1a1a]/80">
               Students code right beside your slide. You watch every
               student&apos;s work update in real time.
             </p>
