@@ -86,6 +86,11 @@ export function StarterDecks() {
                     {state.loading ? "Creating…" : "Use this deck"}
                   </button>
                 )}
+                {state.deck && (
+                  <p className="text-xs text-[#6b8f2b]/70">
+                    Signed into more than one Google account? Open the deck in a window signed in to only this one.
+                  </p>
+                )}
                 {state.error && <p className="text-xs text-red-600">{state.error}</p>}
               </div>
             </div>

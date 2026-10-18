@@ -126,6 +126,10 @@ export default function LaunchSessionPage() {
             >
               Open in Google Slides™ <ExternalLink className="h-4 w-4" />
             </a>
+            <p className="text-xs text-gray-400">
+              Signed into more than one Google account? Open the deck in a window signed in to only this one, or
+              CodeKiwi can&apos;t read it.
+            </p>
             <button
               onClick={() => router.push("/home")}
               className="pt-2 text-sm text-gray-500 hover:text-[#6b8f2b] transition-colors"
