@@ -21,6 +21,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 import { KiwiSlice } from "@/components/home/Decor";
 import { KiwiSprite } from "@/components/home/KiwiSprite";
 import GoogleIcon from "@/components/GoogleIcon";
@@ -120,7 +121,11 @@ export function HeroOrchard() {
             </Link>
           </div>
 
-          <p className="mt-6 text-sm text-[#6F7A62]">
+          <div className="mt-6 flex justify-center lg:justify-start">
+            <MarketplaceBadge height={38} />
+          </div>
+
+          <p className="mt-4 text-sm text-[#6F7A62]">
             Already have an account?{" "}
             <Link
               href="/signin"
