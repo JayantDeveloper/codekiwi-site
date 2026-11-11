@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { MARKETPLACE_LISTING_URL } from "@/lib/marketplace";
+import { cn } from "@/lib/utils";
 
 // Official "get it from the Google Workspace Marketplace" badge, served
 // unmodified from /public/gwm-badge.svg (source:
@@ -23,7 +24,10 @@ export function MarketplaceBadge({
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Get CodeKiwi from the Google Workspace Marketplace"
-      className={`inline-block transition-transform duration-300 hover:scale-[1.03]${className ? ` ${className}` : ""}`}
+      className={cn(
+        "inline-block transition-transform duration-300 hover:scale-[1.03]",
+        className
+      )}
       style={{ padding: clearSpace }}
     >
       <Image
