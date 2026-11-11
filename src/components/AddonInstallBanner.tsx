@@ -30,7 +30,7 @@ export function AddonInstallBanner() {
         <p className="font-semibold text-[#3a5214]">
           Teach straight from Google Slides™
         </p>
-        <p className="text-sm text-[#6b8f2b]/80">
+        <p className="text-sm text-[#55604A]">
           Install the CodeKiwi add-on to mark coding slides and launch live
           sessions without leaving your deck.
         </p>
@@ -48,7 +48,7 @@ export function AddonInstallBanner() {
       <button
         onClick={dismiss}
         aria-label="Dismiss"
-        className="absolute right-2 top-2 rounded-full p-1 text-[#6b8f2b]/60 transition-colors hover:bg-[#6b8f2b]/10 hover:text-[#6b8f2b] sm:static sm:ml-1"
+        className="absolute right-2 top-2 rounded-full p-1 text-[#6F7A62] transition-colors hover:bg-[#6b8f2b]/10 hover:text-[#6b8f2b] sm:static sm:ml-1"
       >
         <X className="h-4 w-4" />
       </button>

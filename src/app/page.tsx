@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ReactLenis } from "lenis/react";
 import { SiteHeader } from "@/components/SiteHeader";
-import { HeroSection } from "@/components/home/HeroSection";
+import { HeroOrchard } from "@/components/home/HeroOrchard";
 import { DemoSection } from "@/components/home/DemoSection";
 import { FeaturesSection } from "@/components/home/FeaturesSection";
 import { ScrollStatement } from "@/components/home/ScrollStatement";
@@ -46,10 +46,10 @@ export default function LandingPage() {
 
   return (
     <ReactLenis root>
-    <div className="ck-dark-canvas flex min-h-screen flex-col bg-[#161616]">
-      <SiteHeader />
+    <div className="flex min-h-screen flex-col bg-[#FBF7EC]">
+      <SiteHeader variant="light" />
       <main className="flex-1">
-        <HeroSection />
+        <HeroOrchard />
         <DemoSection ref={demoRef} isVisible={isVisible.demo} />
         <ScrollStatement />
         <HowItWorks />

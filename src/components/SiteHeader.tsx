@@ -12,15 +12,33 @@ const NAV_LINKS = [
   { href: "/docs", label: "Docs", hide: "md" },
 ] as const;
 
-export function SiteHeader() {
+export function SiteHeader({
+  variant = "light",
+}: {
+  /** "light" (default) is the flat cream bar the whole site now uses.
+   *  "brand" is the original green gradient bar, kept for anything that still
+   *  wants it. */
+  variant?: "brand" | "light";
+} = {}) {
   const pathname = usePathname();
+  const light = variant === "light";
 
   return (
-    <header className="w-full bg-gradient-to-r from-[#6b8f2b] via-[#7da332] to-[#8fb73a] sticky top-0 z-50 shadow-lg">
+    <header
+      className={
+        light
+          ? "sticky top-0 z-50 w-full border-b border-[#1E2A14]/10 bg-[#FBF7EC]"
+          : "w-full bg-gradient-to-r from-[#6b8f2b] via-[#7da332] to-[#8fb73a] sticky top-0 z-50 shadow-lg"
+      }
+    >
       <div className="flex h-16 items-center py-4 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto w-full">
         <div className="flex flex-1 items-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <span className="text-2xl font-bold text-white">CodeKiwi</span>
+            <span
+              className={`text-2xl font-bold ${light ? "text-[#1E2A14]" : "text-white"}`}
+            >
+              CodeKiwi
+            </span>
             <Image
               src="https://www.codekiwi.app/codekiwilogo.png"
               alt="CodeKiwi Logo"
@@ -40,9 +58,13 @@ export function SiteHeader() {
                 className={`text-sm font-medium transition-colors ${
                   hide === "md" ? "hidden md:inline" : "hidden sm:inline"
                 } ${
-                  active
-                    ? "text-white underline underline-offset-8 decoration-2"
-                    : "text-white/90 hover:text-white"
+                  light
+                    ? active
+                      ? "text-[#1E2A14] underline underline-offset-8 decoration-2"
+                      : "text-[#55604A] hover:text-[#1E2A14]"
+                    : active
+                      ? "text-white underline underline-offset-8 decoration-2"
+                      : "text-white/90 hover:text-white"
                 }`}
               >
                 {label}
@@ -54,7 +76,11 @@ export function SiteHeader() {
             <Button
               variant="outline"
               size="sm"
-              className="text-white border-white/80 hover:bg-white hover:text-[#6b8f2b] bg-transparent transition-all duration-300"
+              className={
+                light
+                  ? "rounded-full border-[#1E2A14]/25 bg-transparent text-[#1E2A14] transition-all duration-300 hover:bg-[#2F4A1C] hover:text-white"
+                  : "text-white border-white/80 hover:bg-white hover:text-[#6b8f2b] bg-transparent transition-all duration-300"
+              }
             >
               Sign In
             </Button>

@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
+    <div className="min-h-screen bg-[#FBF7EC]">
       {/* Header */}
-      <header className="border-b border-[#d6c49f]/30 bg-white">
+      <header className="border-b border-[#1E2A14]/10 bg-[#FBF7EC]">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="text-2xl font-bold text-[#6b8f2b]">CodeKiwi</span>
@@ -30,23 +30,23 @@ export default function TermsPage() {
 
       {/* Main Content */}
       <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 shadow-lg sm:p-12">
+        <div className="rounded-2xl border border-[#1E2A14]/10 bg-white p-8 shadow-lg sm:p-12">
           {/* Title */}
-          <div className="mb-8 border-b border-[#d6c49f]/30 pb-6">
-            <h1 className="text-4xl font-bold text-[#6b8f2b] mb-2">Terms of Service</h1>
-            <p className="text-sm text-[#6b8f2b]/60">Last updated: October 19, 2024</p>
+          <div className="mb-8 border-b border-[#1E2A14]/10 pb-6">
+            <h1 className="text-4xl font-bold text-[#1E2A14] mb-2">Terms of Service</h1>
+            <p className="text-sm text-[#6F7A62]">Last updated: October 19, 2024</p>
           </div>
 
           {/* Introduction */}
           <div className="mb-10">
-            <p className="text-[#6b8f2b]/80 leading-relaxed">
+            <p className="text-[#55604A] leading-relaxed">
               Welcome to CodeKiwi! These Terms of Service govern your use of the CodeKiwi platform. By accessing or using CodeKiwi, you agree to be bound by these terms. If you don't agree, please don't use the service.
             </p>
           </div>
 
           {/* Table of Contents */}
           <div className="mb-10 rounded-lg bg-[#a8d05f]/10 p-6">
-            <h2 className="text-lg font-semibold text-[#6b8f2b] mb-4">Table of Contents</h2>
+            <h2 className="text-lg font-semibold text-[#1E2A14] mb-4">Table of Contents</h2>
             <nav className="space-y-2">
               <a href="#service-description" className="block text-[#6b8f2b] hover:underline text-sm">1. Service Description</a>
               <a href="#accounts" className="block text-[#6b8f2b] hover:underline text-sm">2. User Accounts</a>
@@ -64,11 +64,11 @@ export default function TermsPage() {
           {/* Content Sections */}
           <div className="space-y-10">
             <section id="service-description">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">1. Service Description</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">1. Service Description</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 CodeKiwi is an educational platform that allows teachers and educators to create interactive coding sessions by connecting Google Slides™ presentations with a live code editor. The service enables:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A]">
                 <li>Creating and launching teaching sessions with Google Slides</li>
                 <li>Providing students with a synchronized view of slides and code editor</li>
                 <li>Real-time monitoring of student progress during coding sessions</li>
@@ -77,40 +77,40 @@ export default function TermsPage() {
             </section>
 
             <section id="accounts">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">2. User Accounts</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">2. User Accounts</h2>
               
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Account Creation</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Account Creation</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 To use CodeKiwi, you must create an account by:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Signing in with Google, or</li>
                 <li>Registering with an email address and password</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Account Responsibility</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Account Responsibility</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 You are responsible for:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Maintaining the confidentiality of your account credentials</li>
                 <li>All activities that occur under your account</li>
                 <li>Notifying me immediately of any unauthorized access</li>
                 <li>Providing accurate and current information</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Educational Use</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Educational Use</h3>
+              <p className="text-[#55604A] leading-relaxed">
                 CodeKiwi is intended for educational purposes. If you're a teacher using CodeKiwi with students under 13, you are responsible for obtaining any necessary parental consent as required by applicable law (such as COPPA in the United States).
               </p>
             </section>
 
             <section id="acceptable-use">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">3. Acceptable Use</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">3. Acceptable Use</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 You agree not to use CodeKiwi to:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Violate any laws or regulations</li>
                 <li>Infringe on others' intellectual property rights</li>
                 <li>Upload malicious code, viruses, or harmful content</li>
@@ -121,161 +121,161 @@ export default function TermsPage() {
                 <li>Use automated tools to access the service without permission</li>
                 <li>Share inappropriate or offensive content with students</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 Violation of these terms may result in suspension or termination of your account.
               </p>
             </section>
 
             <section id="user-content">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">4. Your Content</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">4. Your Content</h2>
               
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Ownership</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Ownership</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 You retain all rights to:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Your Google Slides presentations</li>
                 <li>Content you create in sessions</li>
                 <li>Student work created during sessions</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">License to Operate</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">License to Operate</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 By using CodeKiwi, you grant the platform a limited license to:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Access and display your Google Slides during sessions</li>
                 <li>Store session data necessary to provide the service</li>
                 <li>Transmit student code in real-time during active sessions</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 This license ends when you delete your content or close your account.
               </p>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Responsibility</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Responsibility</h3>
+              <p className="text-[#55604A] leading-relaxed">
                 You are responsible for ensuring you have the right to use and share any content you upload or connect to CodeKiwi, including compliance with copyright and licensing requirements.
               </p>
             </section>
 
             <section id="google-services">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">5. Google Services Integration</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">5. Google Services Integration</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 CodeKiwi integrates with Google services (Google Drive™, Google Slides) to provide its functionality. By using CodeKiwi:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>You authorize CodeKiwi to access your Google Slides and Google Drive as needed for the service</li>
                 <li>You agree to Google's Terms of Service and Privacy Policy</li>
                 <li>You can revoke these permissions at any time through your Google Account settings</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 CodeKiwi is not affiliated with or endorsed by Google LLC. Your use of Google services through CodeKiwi is subject to Google's terms.
               </p>
             </section>
 
             <section id="intellectual-property">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">6. Intellectual Property</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">6. Intellectual Property</h2>
               
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">CodeKiwi Platform</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">CodeKiwi Platform</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 The CodeKiwi platform, including its design, code, features, and branding, is owned by Jay Maheshwari and protected by copyright and other intellectual property laws. You may not:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Copy, modify, or create derivative works of the platform</li>
                 <li>Reverse engineer or attempt to extract source code</li>
                 <li>Remove or alter any copyright notices or branding</li>
                 <li>Use the CodeKiwi name or logo without permission</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Feedback</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Feedback</h3>
+              <p className="text-[#55604A] leading-relaxed">
                 If you provide feedback, suggestions, or ideas about CodeKiwi, you grant me the right to use them without any obligation or compensation to you.
               </p>
             </section>
 
             <section id="disclaimers">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">7. Disclaimers and Limitations</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">7. Disclaimers and Limitations</h2>
               
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Service Availability</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Service Availability</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 CodeKiwi is provided "as is" and "as available." I strive to keep the service running smoothly, but:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>The service may be temporarily unavailable due to maintenance, updates, or technical issues</li>
                 <li>I don't guarantee uninterrupted or error-free operation</li>
                 <li>Features may change or be discontinued</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">No Warranties</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">No Warranties</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 To the extent permitted by law, I make no warranties about:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>The accuracy, reliability, or completeness of the service</li>
                 <li>Whether CodeKiwi will meet your specific needs</li>
                 <li>The results you may obtain from using the service</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Limitation of Liability</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Limitation of Liability</h3>
+              <p className="text-[#55604A] leading-relaxed">
                 To the maximum extent permitted by law, I am not liable for any indirect, incidental, special, or consequential damages arising from your use of CodeKiwi. This includes loss of data, loss of profits, or any other damages, even if I've been advised of the possibility.
               </p>
             </section>
 
             <section id="termination">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">8. Termination</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">8. Termination</h2>
               
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">By You</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">By You</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 You can stop using CodeKiwi at any time. To delete your account and data, contact me at jaymaheshwari2603@gmail.com.
               </p>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">By CodeKiwi</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">By CodeKiwi</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 I may suspend or terminate your account if:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>You violate these Terms of Service</li>
                 <li>You engage in fraudulent or illegal activity</li>
                 <li>Your account has been inactive for an extended period</li>
                 <li>I need to comply with legal requirements</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 I'll try to provide reasonable notice before terminating your account, unless it's necessary to terminate immediately for legal or security reasons.
               </p>
             </section>
 
             <section id="changes">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">9. Changes to Terms</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">9. Changes to Terms</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 I may update these Terms of Service as CodeKiwi evolves. When I do:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>I'll update the "Last updated" date at the top</li>
                 <li>For material changes, I'll try to notify you via email or through the platform</li>
                 <li>Your continued use of CodeKiwi after changes means you accept the new terms</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 If you don't agree with the changes, please stop using the service.
               </p>
             </section>
 
             <section id="contact">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">10. Contact</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">10. Contact</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 If you have questions about these Terms of Service, please contact:
               </p>
               <div className="rounded-lg bg-[#a8d05f]/10 p-6">
-                <p className="text-[#6b8f2b] font-semibold mb-2">Jay Maheshwari</p>
-                <p className="text-[#6b8f2b]/80 mb-1">Email: <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a></p>
-                <p className="text-[#6b8f2b]/80 text-sm mt-3">Creator and maintainer of CodeKiwi</p>
+                <p className="text-[#55604A] font-semibold mb-2">Jay Maheshwari</p>
+                <p className="text-[#55604A] mb-1">Email: <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a></p>
+                <p className="text-[#55604A] text-sm mt-3">Creator and maintainer of CodeKiwi</p>
               </div>
             </section>
 
             {/* Additional Legal Info */}
-            <section className="border-t border-[#d6c49f]/30 pt-8">
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">General Legal Terms</h3>
-              <div className="space-y-4 text-[#6b8f2b]/80 text-sm">
+            <section className="border-t border-[#1E2A14]/10 pt-8">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3">General Legal Terms</h3>
+              <div className="space-y-4 text-[#55604A] text-sm">
                 <p>
                   <strong>Governing Law:</strong> These terms are governed by the laws of the State of Maryland, United States, without regard to conflict of law principles.
                 </p>
@@ -293,10 +293,10 @@ export default function TermsPage() {
           </div>
 
           {/* Back to Home */}
-          <div className="mt-12 pt-8 border-t border-[#d6c49f]/30 text-center">
+          <div className="mt-12 pt-8 border-t border-[#1E2A14]/10 text-center">
             <Link 
               href="/" 
-              className="inline-flex items-center text-[#6b8f2b] hover:text-[#6b8f2b]/80 font-medium hover:underline"
+              className="inline-flex items-center text-[#6b8f2b] hover:text-[#55604A] font-medium hover:underline"
             >
               ← Back to Home
             </Link>

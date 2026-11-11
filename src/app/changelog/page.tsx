@@ -62,8 +62,8 @@ function Group({ label, items }: { label: string; items?: string[] }) {
   if (!items?.length) return null;
   return (
     <div className="mt-4">
-      <h4 className="text-xs font-semibold uppercase tracking-wider text-[#6b8f2b]/60 mb-2">{label}</h4>
-      <ul className="list-disc pl-5 space-y-2 text-[#6b8f2b]/85 leading-relaxed">
+      <h4 className="text-xs font-semibold uppercase tracking-wider text-[#6F7A62] mb-2">{label}</h4>
+      <ul className="list-disc pl-5 space-y-2 text-[#55604A] leading-relaxed">
         {items.map((item) => (
           <li key={item}>{item}</li>
         ))}
@@ -74,8 +74,8 @@ function Group({ label, items }: { label: string; items?: string[] }) {
 
 export default function ChangelogPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
-      <header className="border-b border-[#d6c49f]/30 bg-white">
+    <div className="min-h-screen bg-[#FBF7EC]">
+      <header className="border-b border-[#1E2A14]/10 bg-[#FBF7EC]">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="text-2xl font-bold text-[#6b8f2b]">CodeKiwi</span>
@@ -88,10 +88,10 @@ export default function ChangelogPage() {
             />
           </Link>
           <nav className="flex items-center gap-6">
-            <Link href="/features" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors">
+            <Link href="/features" className="text-sm text-[#55604A] hover:text-[#6b8f2b] transition-colors">
               Features
             </Link>
-            <Link href="/docs" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors">
+            <Link href="/docs" className="text-sm text-[#55604A] hover:text-[#6b8f2b] transition-colors">
               Docs
             </Link>
             <Link href="/signin">
@@ -104,18 +104,18 @@ export default function ChangelogPage() {
       </header>
 
       <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-[#6b8f2b]">What&apos;s new</h1>
-        <p className="mt-2 text-[#6b8f2b]/70">
+        <h1 className="text-3xl font-bold text-[#1E2A14]">What&apos;s new</h1>
+        <p className="mt-2 text-[#55604A]">
           Updates to CodeKiwi. The add-on updates on its own: reload your Slides deck to get the latest version.
         </p>
 
         <div className="mt-10 space-y-10">
           {entries.map((e) => (
             <article key={e.date} id={e.date} className="rounded-xl border border-[#6b8f2b]/15 bg-white p-6 shadow-sm">
-              <time dateTime={e.date} className="text-sm font-medium text-[#6b8f2b]/60">
+              <time dateTime={e.date} className="text-sm font-medium text-[#6F7A62]">
                 {formatDate(e.date)}
               </time>
-              <h2 className="mt-1 text-xl font-semibold text-[#6b8f2b]">{e.title}</h2>
+              <h2 className="mt-1 text-xl font-semibold text-[#1E2A14]">{e.title}</h2>
               <Group label="New" items={e.added} />
               <Group label="Improved" items={e.improved} />
               <Group label="Fixed" items={e.fixed} />
@@ -123,7 +123,7 @@ export default function ChangelogPage() {
           ))}
         </div>
 
-        <p className="mt-10 text-sm text-[#6b8f2b]/70">
+        <p className="mt-10 text-sm text-[#55604A]">
           Something not working, or a feature you&apos;d like? <Link href="/support" className="underline hover:text-[#6b8f2b]">Get in touch</Link>.
         </p>
       </main>

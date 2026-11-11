@@ -2,12 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useMotionValue,
-  useMotionTemplate,
-  useReducedMotion,
-} from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import GoogleIcon from "@/components/GoogleIcon";
 import { MarketplaceBadge } from "@/components/MarketplaceBadge";
@@ -67,43 +62,29 @@ export function HeroSection() {
     }
   }
 
-  const mouseX = useMotionValue(50);
-  const mouseY = useMotionValue(35);
-  const spotlight = useMotionTemplate`radial-gradient(640px circle at ${mouseX}% ${mouseY}%, rgba(168, 208, 95, 0.16), transparent 65%)`;
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (reduceMotion) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(((e.clientX - rect.left) / rect.width) * 100);
-    mouseY.set(((e.clientY - rect.top) / rect.height) * 100);
-  };
-
   return (
-    <section
-      onMouseMove={handleMouseMove}
-      className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-[#0d0d0d] via-[#1a1a1a] to-[#0d0d0d]"
-    >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute inset-0 opacity-[0.12]"
-          style={{
-            backgroundImage: "radial-gradient(circle, #a8d05f 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-            maskImage: "radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent)",
-          }}
-        />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#a8d05f]/30 rounded-full blur-3xl animate-aurora-1" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#6b8f2b]/30 rounded-full blur-3xl animate-aurora-2" />
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-[#8fb73a]/25 rounded-full blur-3xl animate-aurora-3" />
-      </div>
-
-      {!reduceMotion && (
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: spotlight }}
-        />
-      )}
-
+    <section className="relative overflow-hidden py-20 md:py-28 bg-[#0E0E0E]">
+      {/* Structure, not atmosphere. Hairline grid at ~3% white, masked to fade
+          before it reaches any edge, so it reads as graph paper rather than the
+          blurred colour wash it replaced. No blur, no colour, no animation. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.045]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
+          maskImage:
+            "radial-gradient(ellipse 70% 65% at 50% 45%, black 35%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 65% at 50% 45%, black 35%, transparent 100%)",
+        }}
+      />
+      {/* Softens the hard cut into the pale green section below. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-[#0E0E0E]"
+      />
       <div className="relative z-10 flex flex-col items-center justify-center space-y-8 text-center px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
         <div className="space-y-6 max-w-4xl">
           {/* Real heading for SEO + screen readers; the animated version is decorative. */}

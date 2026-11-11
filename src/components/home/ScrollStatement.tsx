@@ -67,7 +67,7 @@ export function ScrollStatement() {
   }
 
   return (
-    <section ref={ref} className="bg-[#161616] py-24 md:py-32">
+    <section ref={ref} className="bg-[#1C2317] py-24 md:py-32">
       {/* Full text for SEO + screen readers; the animated version below is decorative. */}
       <span className="sr-only">{STATEMENT}</span>
       <p
@@ -80,8 +80,8 @@ export function ScrollStatement() {
           const fully = revealed >= word.length;
           const colorCls =
             fully && accent
-              ? "bg-gradient-to-r from-[#a8d05f] to-[#7da332] bg-clip-text text-transparent"
-              : "text-white";
+              ? "text-[#A3CC6B]"
+              : "text-[#F7F3E6]";
           return (
             <span
               key={i}

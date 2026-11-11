@@ -1,4 +1,6 @@
 import React from "react";
+import { Blob, KiwiSlice } from "@/components/home/Decor";
+
 import Link from "next/link";
 import { Presentation, BadgeCheck, Hand, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,21 +14,23 @@ export const FeaturesSection = React.forwardRef<HTMLElement, Props>(
     <section
       id="features-section"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a]"
+      className="relative overflow-hidden py-20 bg-[#E7F2D4]"
     >
-      <div className="px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
+      <Blob className="left-[7%] top-[14%] h-28 w-28 rotate-[45deg]" color="#D7E8B4" />
+      <KiwiSlice className="-right-28 -bottom-24 h-[24rem] w-[24rem] rotate-[-14deg]" rind="#CBDFA4" flesh="#DCEBC2" core="#EDF5DE" seed="#B6CF90" />
+      <div className="relative z-10 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-4">
+          <h2 className="text-4xl font-bold tracking-tight text-[#1E2A14] sm:text-5xl mb-4">
             Why Teachers Choose CodeKiwi
           </h2>
-          <p className="text-lg text-[#a8d05f] max-w-4xl mx-auto font-medium">
+          <p className="text-lg text-[#55604A] max-w-4xl mx-auto font-medium">
             Built for high school CS classrooms. Keep your lesson, add live coding, and see who needs you.
           </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-3">
           <FeatureCard
-            icon={<Presentation className="h-8 w-8 text-white" />}
+            icon={<Presentation className="h-8 w-8 text-white" aria-hidden="true" />}
             title="Your slides, made live"
             description="Live-code a demo that every student mirrors as you type, then hand it back so they can try it themselves."
           />
@@ -46,7 +50,7 @@ export const FeaturesSection = React.forwardRef<HTMLElement, Props>(
           <Button
             asChild
             size="lg"
-            className="group bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white shadow-lg hover:shadow-xl transition-all duration-300 text-base px-8"
+            className="group rounded-full bg-[#2F4A1C] text-white transition-colors duration-200 hover:bg-[#243915] text-base px-8"
           >
             <Link href="/signup">
               Get Started Free
@@ -62,12 +66,12 @@ FeaturesSection.displayName = "FeaturesSection";
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
-    <div className="group flex flex-col items-center space-y-4 rounded-2xl border-2 border-[#a8d05f] bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] p-8 shadow-lg hover:shadow-2xl hover:border-[#6b8f2b] hover:bg-gradient-to-br hover:from-[#2a2a2a] hover:to-[#1a1a1a] transition-all duration-300 hover:-translate-y-2">
-      <div className="rounded-2xl bg-gradient-to-br from-[#6b8f2b] to-[#8fb73a] p-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+    <div className="group flex flex-col items-center space-y-4 rounded-2xl border border-[#1E2A14]/10 bg-white p-8 shadow-[0_18px_40px_-24px_rgba(60,70,40,0.45)] transition-transform duration-300 hover:-translate-y-1">
+      <div className="rounded-2xl bg-[#6b8f2b] p-4 transition-transform duration-300 group-hover:scale-105">
         {icon}
       </div>
-      <h3 className="text-center text-2xl font-bold text-white">{title}</h3>
-      <p className="text-center text-[#a8d05f] leading-relaxed font-medium">{description}</p>
+      <h3 className="text-center text-2xl font-bold text-[#1E2A14]">{title}</h3>
+      <p className="text-center text-[#4C5742] leading-relaxed font-medium">{description}</p>
     </div>
   );
 }

@@ -103,7 +103,7 @@ export default function SignUpPage() {
     setFormData((prev) => ({ ...prev, [field]: value }));
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-white via-[#a8d05f]/40 to-[#a8d05f] p-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#FBF7EC] p-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
@@ -118,13 +118,13 @@ export default function SignUpPage() {
           </Link>
         </div>
 
-        <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 shadow-lg">
+        <div className="rounded-2xl border border-[#1E2A14]/10 bg-white p-8 shadow-lg">
           <div className="space-y-6">
             <div className="text-center">
-              <h1 className="text-2xl font-bold text-[#6b8f2b]">
+              <h1 className="text-2xl font-bold text-[#1E2A14]">
                 Create your CodeKiwi account
               </h1>
-              <p className="mt-2 text-sm text-[#6b8f2b]/70">
+              <p className="mt-2 text-sm text-[#55604A]">
                 Join thousands of teachers making coding interactive.
               </p>
             </div>
@@ -150,7 +150,7 @@ export default function SignUpPage() {
                   <Separator className="w-full bg-[#d6c49f]/30" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-white px-2 text-[#6b8f2b]/70">Or</span>
+                  <span className="bg-white px-2 text-[#55604A]">Or</span>
                 </div>
               </div>
 
@@ -166,7 +166,7 @@ export default function SignUpPage() {
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     required
-                    className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                    className="border-[#1E2A14]/10 focus-visible:ring-[#6b8f2b]"
                   />
                 </div>
 
@@ -181,7 +181,7 @@ export default function SignUpPage() {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     required
-                    className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                    className="border-[#1E2A14]/10 focus-visible:ring-[#6b8f2b]"
                   />
                 </div>
 
@@ -197,7 +197,7 @@ export default function SignUpPage() {
                     onChange={(e) =>
                       handleInputChange("school", e.target.value)
                     }
-                    className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                    className="border-[#1E2A14]/10 focus-visible:ring-[#6b8f2b]"
                   />
                 </div>
 
@@ -216,7 +216,7 @@ export default function SignUpPage() {
                       }
                       required
                       minLength={8}
-                      className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b] pr-10"
+                      className="border-[#1E2A14]/10 focus-visible:ring-[#6b8f2b] pr-10"
                     />
                     <Button
                       type="button"
@@ -226,9 +226,9 @@ export default function SignUpPage() {
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? (
-                        <EyeOff className="h-4 w-4 text-[#6b8f2b]/70" />
+                        <EyeOff className="h-4 w-4 text-[#55604A]" />
                       ) : (
-                        <Eye className="h-4 w-4 text-[#6b8f2b]/70" />
+                        <Eye className="h-4 w-4 text-[#55604A]" />
                       )}
                     </Button>
                   </div>
@@ -248,7 +248,7 @@ export default function SignUpPage() {
                         handleInputChange("confirmPassword", e.target.value)
                       }
                       required
-                      className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b] pr-10"
+                      className="border-[#1E2A14]/10 focus-visible:ring-[#6b8f2b] pr-10"
                     />
                     <Button
                       type="button"
@@ -260,9 +260,9 @@ export default function SignUpPage() {
                       }
                     >
                       {showConfirmPassword ? (
-                        <EyeOff className="h-4 w-4 text-[#6b8f2b]/70" />
+                        <EyeOff className="h-4 w-4 text-[#55604A]" />
                       ) : (
-                        <Eye className="h-4 w-4 text-[#6b8f2b]/70" />
+                        <Eye className="h-4 w-4 text-[#55604A]" />
                       )}
                     </Button>
                   </div>
@@ -277,7 +277,7 @@ export default function SignUpPage() {
                     }
                     className="border-[#6b8f2b] data-[state=checked]:bg-[#6b8f2b] data-[state=checked]:text-white"
                   />
-                  <Label htmlFor="terms" className="text-sm text-[#6b8f2b]/70">
+                  <Label htmlFor="terms" className="text-sm text-[#55604A]">
                     I agree to the{" "}
                     <Link
                       href="/terms#acceptable-use"
@@ -309,11 +309,11 @@ export default function SignUpPage() {
             </div>
 
             <div className="text-center">
-              <p className="text-sm text-[#6b8f2b]/70">
+              <p className="text-sm text-[#55604A]">
                 Already have an account?{" "}
                 <Link
                   href="/signin"
-                  className="font-medium text-[#6b8f2b] hover:text-[#6b8f2b]/80 hover:underline"
+                  className="font-medium text-[#6b8f2b] hover:text-[#55604A] hover:underline"
                 >
                   Sign in
                 </Link>

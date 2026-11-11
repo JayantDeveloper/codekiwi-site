@@ -1,4 +1,6 @@
 import React from "react";
+import { Blob, KiwiSlice } from "@/components/home/Decor";
+
 import { GraduationCap, Presentation } from "lucide-react";
 
 interface Step {
@@ -20,13 +22,15 @@ const TEACHER_STEPS: Step[] = [
 
 export function HowItWorks() {
   return (
-    <section className="py-20 md:py-24 bg-gradient-to-b from-[#daf0c0] via-[#e8f5d8] to-[#daf0c0]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-8 md:px-12">
+    <section className="relative overflow-hidden py-20 md:py-24 bg-[#FBF7EC]">
+      <Blob className="-right-28 -bottom-16 h-[24rem] w-[24rem]" color="#F1E7D4" />
+      <KiwiSlice className="left-[9%] top-[13%] h-28 w-28 rotate-[18deg]" rind="#EADDC6" flesh="#F3EBDB" core="#FAF5EA" seed="#DFD2B8" />
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-8 md:px-12">
         <div className="mb-14 text-center">
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-[#1a1a1a] sm:text-5xl">
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-[#1E2A14] sm:text-5xl">
             From slides to running code in minutes
           </h2>
-          <p className="mx-auto max-w-2xl text-lg font-medium text-[#1a1a1a]/75">
+          <p className="mx-auto max-w-2xl text-lg font-medium text-[#55604A]">
             Here is what it looks like on both sides of the room.
           </p>
         </div>
@@ -62,7 +66,7 @@ function StepColumn({
   steps: Step[];
 }) {
   return (
-    <div className="rounded-3xl border-2 border-[#a8d05f]/60 bg-white/70 p-7 shadow-lg backdrop-blur-sm sm:p-9">
+    <div className="rounded-3xl border border-[#1E2A14]/10 bg-white p-7 shadow-[0_18px_40px_-24px_rgba(60,70,40,0.45)] sm:p-9">
       <div className="mb-6 flex items-center gap-3">
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#6b8f2b] text-white">
           {icon}
@@ -71,17 +75,17 @@ function StepColumn({
           <span className="text-xs font-bold uppercase tracking-wider text-[#6b8f2b]">
             {badge}
           </span>
-          <h3 className="text-xl font-bold text-[#1a1a1a]">{heading}</h3>
+          <h3 className="text-xl font-bold text-[#1E2A14]">{heading}</h3>
         </div>
       </div>
 
       <ol className="space-y-5">
         {steps.map((s) => (
           <li key={s.n} className="flex gap-4">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#6b8f2b] to-[#8fb73a] text-sm font-bold text-white shadow">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#6b8f2b] text-sm font-bold text-white">
               {s.n}
             </span>
-            <p className="pt-1 text-[15px] font-medium leading-relaxed text-[#1a1a1a]/85">
+            <p className="pt-1 text-[15px] font-medium leading-relaxed text-[#4C5742]">
               {s.text}
             </p>
           </li>

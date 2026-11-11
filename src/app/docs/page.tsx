@@ -13,21 +13,21 @@ export const metadata: Metadata = {
 
 export default function DocsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
+    <div className="min-h-screen bg-[#FBF7EC]">
       <SiteHeader />
 
       {/* Main Content */}
       <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 shadow-lg sm:p-12">
+        <div className="rounded-2xl border border-[#1E2A14]/10 bg-white p-8 shadow-lg sm:p-12">
           {/* Title */}
-          <div className="mb-8 border-b border-[#d6c49f]/30 pb-6">
-            <h1 className="text-4xl font-bold text-[#6b8f2b] mb-2">Documentation</h1>
-            <p className="text-sm text-[#6b8f2b]/60">Everything you need to get started with CodeKiwi</p>
+          <div className="mb-8 border-b border-[#1E2A14]/10 pb-6">
+            <h1 className="text-4xl font-bold text-[#1E2A14] mb-2">Documentation</h1>
+            <p className="text-sm text-[#6F7A62]">Everything you need to get started with CodeKiwi</p>
           </div>
 
           {/* Table of Contents */}
           <div className="mb-10 rounded-lg bg-[#a8d05f]/10 p-6">
-            <h2 className="text-lg font-semibold text-[#6b8f2b] mb-4">Contents</h2>
+            <h2 className="text-lg font-semibold text-[#1E2A14] mb-4">Contents</h2>
             <nav className="space-y-2">
               <a href="#getting-started" className="block text-[#6b8f2b] hover:underline text-sm">Getting Started</a>
               <a href="#creating-account" className="block text-[#6b8f2b] hover:underline text-sm">Creating an Account</a>
@@ -49,41 +49,41 @@ export default function DocsPage() {
 
             {/* Getting Started */}
             <section id="getting-started">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Getting Started</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Getting Started</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 CodeKiwi turns your Google Slides™ presentations into live, interactive coding lessons. Students see your slides in real-time while writing and running code side-by-side, with no accounts or installs required on their end.
               </p>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 As a teacher you'll need:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>A Google account (to sign in and access Google Slides)</li>
                 <li>A Google Slides presentation with your lesson content</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 Students only need a modern web browser and the session code you share with them.
               </p>
             </section>
 
             {/* Creating Account */}
             <section id="creating-account">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Creating an Account</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Creating an Account</h2>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Sign Up with Google (Recommended)</h3>
-              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Sign Up with Google (Recommended)</h3>
+              <ol className="list-decimal list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Go to <a href="https://www.codekiwi.tech/signup" className="text-[#6b8f2b] hover:underline">codekiwi.tech/signup</a></li>
                 <li>Click <strong>Sign in with Google</strong></li>
                 <li>Select your Google account and grant the requested permissions</li>
                 <li>You'll land on your dashboard at <a href="https://www.codekiwi.tech/home" className="text-[#6b8f2b] hover:underline">codekiwi.tech/home</a></li>
               </ol>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b] mb-4">
-                <p className="text-sm text-[#6b8f2b]/80">
+                <p className="text-sm text-[#55604A]">
                   <strong>Why Google sign-in?</strong> CodeKiwi uses Google sign-in to access the presentations you select and retrieve slide thumbnails via the Google Slides API. No files are modified.
                 </p>
               </div>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Sign Up with Email</h3>
-              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Sign Up with Email</h3>
+              <ol className="list-decimal list-inside space-y-2 text-[#55604A]">
                 <li>Go to <a href="https://www.codekiwi.tech/signup" className="text-[#6b8f2b] hover:underline">codekiwi.tech/signup</a></li>
                 <li>Fill in your name, email, and password</li>
                 <li>Click <strong>Create Account</strong></li>
@@ -92,24 +92,24 @@ export default function DocsPage() {
 
             {/* Marking Slides */}
             <section id="marking-slides">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Marking Coding Slides</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Marking Coding Slides</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 By default, students see only the slide. To show the live code editor on a specific slide, mark it as a <strong>Code Question</strong>. There are two ways to do this:
               </p>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Option A — Via the Add-On Sidebar (recommended)</h3>
-              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3">Option A — Via the Add-On Sidebar (recommended)</h3>
+              <ol className="list-decimal list-inside space-y-2 text-[#55604A] mb-4">
                 <li className="leading-relaxed">Open your presentation and make sure the <strong>CodeKiwi</strong> sidebar is open</li>
                 <li className="leading-relaxed">Click the slide you want to mark in the slide panel on the left</li>
                 <li className="leading-relaxed">Click <strong>Mark / Unmark Slide</strong> in the <em>Coding Slides</em> section of the sidebar (clicking again removes the marker)</li>
                 <li className="leading-relaxed">The slide number appears instantly as a green chip in the list</li>
               </ol>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-2">
+              <p className="text-[#55604A] leading-relaxed mb-2">
                 The <strong>Coding Slides</strong> panel shows all marked slides as compact numbered chips. To remove a slide's coding marker, click the <strong>×</strong> on its chip.
               </p>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Option B — Via Speaker Notes (manual)</h3>
-              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Option B — Via Speaker Notes (manual)</h3>
+              <ol className="list-decimal list-inside space-y-2 text-[#55604A] mb-4">
                 <li className="leading-relaxed">Open the slide in Google Slides</li>
                 <li className="leading-relaxed">Open <strong>Speaker Notes</strong> (View → Show Speaker Notes)</li>
                 <li className="leading-relaxed">
@@ -122,28 +122,28 @@ export default function DocsPage() {
               </ol>
 
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
-                <p className="text-sm text-[#6b8f2b]/80">
+                <p className="text-sm text-[#55604A]">
                   <strong>Tip:</strong> Mix regular slides and coding slides freely. The editor only appears on slides marked with <code className="font-mono bg-white/60 px-1 rounded">Code Question:</code>. The marker must be the first line of the Speaker Notes.
                 </p>
               </div>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-8">Auto-grading with test cases (optional)</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-8">Auto-grading with test cases (optional)</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 You can have CodeKiwi check student code automatically. Each test gives the program some input (optional) and the output it should end with. In the add-on sidebar&apos;s <strong>Auto-grade Tests</strong> section:
               </p>
-              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ol className="list-decimal list-inside space-y-2 text-[#55604A] mb-4">
                 <li className="leading-relaxed">Click the coding slide, then click <strong>Load Slide</strong></li>
                 <li className="leading-relaxed">For each test, fill in the <strong>Input</strong> (what a student would type, or leave it blank) and the <strong>Expected output</strong></li>
                 <li className="leading-relaxed">Use <strong>+ Add test</strong> for more (up to 10), then click <strong>Save Tests</strong></li>
               </ol>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 When a student runs their code on that slide, CodeKiwi runs it once per test and shows <strong>All tests passed</strong>, or how many passed along with the first failing test&apos;s input, the expected output, and what their program printed. The result feeds their score on your dashboard and gradebook. Slides without tests stay ungraded, and students can still write and run code freely.
               </p>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 For example, for &quot;read two numbers and print their sum&quot;:
               </p>
               <div className="overflow-x-auto mb-4">
-                <table className="text-sm text-[#6b8f2b]/90 border border-[#6b8f2b]/20 rounded">
+                <table className="text-sm text-[#55604A] border border-[#6b8f2b]/20 rounded">
                   <thead><tr className="bg-[#a8d05f]/15"><th className="text-left px-3 py-1.5">Test</th><th className="text-left px-3 py-1.5">Input</th><th className="text-left px-3 py-1.5">Expected output</th></tr></thead>
                   <tbody>
                     <tr><td className="px-3 py-1.5">1</td><td className="px-3 py-1.5 font-mono">5 7</td><td className="px-3 py-1.5 font-mono">12</td></tr>
@@ -153,7 +153,7 @@ export default function DocsPage() {
                 </table>
               </div>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
-                <p className="text-sm text-[#6b8f2b]/80">
+                <p className="text-sm text-[#55604A]">
                   <strong>How the check works:</strong> the program&apos;s output must <em>end with</em> your expected output. Earlier lines and prompt text such as <code className="font-mono bg-white/60 px-1 rounded">Enter two numbers:</code> are ignored, but other extra text after or around the answer is not. By default capitalization and extra spaces don&apos;t matter; untick <strong>Ignore case and extra spaces</strong> when exact formatting is the point of the question. Using two or more tests with different inputs stops students from passing by printing a hardcoded answer.
                 </p>
               </div>
@@ -161,20 +161,20 @@ export default function DocsPage() {
 
             {/* Launching a Session */}
             <section id="launching-session">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Launching a Session</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-6">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Launching a Session</h2>
+              <p className="text-[#55604A] leading-relaxed mb-6">
                 There are two ways to start a CodeKiwi session:
               </p>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Option 1 — From your Dashboard (web)</h3>
-              <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-6">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3">Option 1 — From your Dashboard (web)</h3>
+              <ol className="list-decimal list-inside space-y-3 text-[#55604A] mb-6">
                 <li className="leading-relaxed">Sign in at <a href="https://www.codekiwi.tech/home" className="text-[#6b8f2b] hover:underline">codekiwi.tech/home</a></li>
                 <li className="leading-relaxed">Click <strong>Launch Session</strong>, then <strong>New Lesson</strong>. CodeKiwi creates a fresh presentation in your Google Drive™ with a getting-started slide and opens it. Build your slides, then go live from the add-on (see Option 2)</li>
                 <li className="leading-relaxed">Or, for a ready-made lesson, pick a language under <strong>Starter Decks</strong> on your dashboard and click <strong>Use this deck</strong>. You get 8 warm-up exercises, each already marked as a coding question with auto-graded tests. Open <strong>Extensions → CodeKiwi</strong> in it, choose the same language, and click <strong>Start Lesson</strong>, or edit it to fit your class first.</li>
               </ol>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Option 2 — From the Google Slides Add-On</h3>
-              <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3">Option 2 — From the Google Slides Add-On</h3>
+              <ol className="list-decimal list-inside space-y-3 text-[#55604A] mb-4">
                 <li className="leading-relaxed">Open your Google Slides presentation</li>
                 <li className="leading-relaxed">Go to <strong>Extensions → CodeKiwi → Open CodeKiwi Add-On</strong> to open the sidebar</li>
                 <li className="leading-relaxed">Use the <strong>Coding Slides</strong> panel to mark or unmark slides as coding questions right from the sidebar</li>
@@ -183,7 +183,7 @@ export default function DocsPage() {
                 <li className="leading-relaxed">A new tab opens with the teacher presentation view</li>
               </ol>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
-                <p className="text-sm text-[#6b8f2b]/80">
+                <p className="text-sm text-[#55604A]">
                   <strong>Add-on not installed?</strong> Install CodeKiwi directly from the{" "}
                   <a
                     href={MARKETPLACE_LISTING_URL}
@@ -200,21 +200,21 @@ export default function DocsPage() {
 
             {/* Teacher View */}
             <section id="teacher-view">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Teacher Presentation View</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-6">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Teacher Presentation View</h2>
+              <p className="text-[#55604A] leading-relaxed mb-6">
                 When a session starts, you land on the teacher presentation view at <strong>codekiwi.app</strong>. A lobby modal appears over your slides.
               </p>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">The Lobby</h3>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3">The Lobby</h3>
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Shows the 6-digit <strong>session code</strong> students use to join at <a href="https://www.codekiwi.app" className="text-[#6b8f2b] hover:underline">codekiwi.app</a></li>
                 <li>Displays a live count of connected students</li>
                 <li><strong>Give Students a Link</strong> copies a direct join URL to your clipboard</li>
                 <li>Click <strong>Start Class</strong> to dismiss the lobby and begin presenting</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">During the Presentation</h3>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">During the Presentation</h3>
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Use <strong>Previous / Next</strong> in the bottom bar to advance slides, and students sync in real-time</li>
                 <li>Click the <strong>Session: XXXXXX</strong> title above the slides at any time to reopen the lobby (to copy the session code again)</li>
                 <li>The <strong>Dashboard</strong> button opens a live view of all student code</li>
@@ -223,54 +223,54 @@ export default function DocsPage() {
                 <li><strong>End Session</strong> ends the class for everyone and returns you to your dashboard</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Speaker Notes Sidebar</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Speaker Notes Sidebar</h3>
+              <p className="text-[#55604A] leading-relaxed">
                 Your slide notes are visible only to you, not to students. The panel starts collapsed as a slim <strong>Notes</strong> tab on the right to give your slides more room. Click it to slide the notes out, and collapse it again anytime.
               </p>
             </section>
 
             {/* Monitoring Students */}
             <section id="monitoring-students">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Monitoring Students (Dashboard)</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Monitoring Students (Dashboard)</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 Click <strong>Dashboard</strong> from the presentation view to open the live student dashboard. Each student appears as a card showing:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Student name and color-coded card</li>
                 <li>A live status: <strong>Coding</strong>, <strong>Done</strong> (their latest run on the current slide passed all its tests), <strong>Needs help</strong> (they raised their hand or got stuck on repeated failed runs), <strong>Error</strong>, or <strong>No code</strong></li>
                 <li>A running score, coding questions answered correctly out of the total</li>
                 <li>A live preview of their most recent code, and the time of their last update</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 Cards refresh automatically every few seconds, and a student who needs help is highlighted so you can spot them at a glance. Use the filter and sort controls to jump to who needs you first. Click any card to open the full inspect view for that student.
               </p>
             </section>
 
             {/* Inspecting Code */}
             <section id="inspecting-code">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Inspecting & Editing Student Code</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Inspecting & Editing Student Code</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 Click a student card in the dashboard (or navigate directly to a student) to open the inspect view. You'll see their full code and terminal output in real-time.
               </p>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3">Navigating Between Students</h3>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3">Navigating Between Students</h3>
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Use the <strong>← / →</strong> arrows to jump between students in order</li>
                 <li>Use the dropdown to jump to any student directly</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Editing Student Code</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Editing Student Code</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 You can edit a student's code directly from the inspect view to provide assistance:
               </p>
-              <ol className="list-decimal list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ol className="list-decimal list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Click the <strong>pencil icon</strong> in the editor header</li>
                 <li>Make your changes in the editor</li>
                 <li>Click <strong>Save</strong>, and the updated code is pushed to the student's editor in real-time</li>
                 <li>Click <strong>Cancel</strong> to discard changes and return to read-only view</li>
               </ol>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
-                <p className="text-sm text-[#6b8f2b]/80">
+                <p className="text-sm text-[#55604A]">
                   <strong>Note:</strong> While you're editing, the inspect view pauses its live refresh so your edits aren't overwritten by the student's code.
                 </p>
               </div>
@@ -278,42 +278,42 @@ export default function DocsPage() {
 
             {/* Student Experience */}
             <section id="student-experience">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">The Student Experience</h2>
-              <ol className="list-decimal list-inside space-y-3 text-[#6b8f2b]/80 mb-6">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">The Student Experience</h2>
+              <ol className="list-decimal list-inside space-y-3 text-[#55604A] mb-6">
                 <li className="leading-relaxed">Students go to <a href="https://www.codekiwi.app" className="text-[#6b8f2b] hover:underline font-medium">codekiwi.app</a></li>
                 <li className="leading-relaxed">Enter the 6-digit session code and their name</li>
                 <li className="leading-relaxed">They join immediately, no account needed</li>
               </ol>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 Once inside, students see:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li><strong>Left pane:</strong> Your Google Slides synced in real-time as you advance them</li>
                 <li><strong>Right pane (coding slides only):</strong> A syntax-highlighted code editor and an output terminal</li>
                 <li>A <strong>Run</strong> button to execute their code and see the result instantly. If the program asks for input, they type it straight into the output terminal and press Enter (Run becomes <strong>Stop</strong> while it runs)</li>
                 <li>On auto-graded questions, how many tests passed, with the details of the first one that failed</li>
                 <li>An <strong>I&apos;m stuck</strong> button to raise their hand, which flags their card on your dashboard right away</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 Each coding slide keeps its own work, so students can move between questions without losing what they wrote.
               </p>
             </section>
 
             {/* Gradebook */}
             <section id="gradebook">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Reviewing Past Sessions (Gradebook)</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Reviewing Past Sessions (Gradebook)</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 When you end a session, its results are saved to your account so you can review them later (this requires a CodeKiwi account). Open <a href="https://www.codekiwi.tech/home" className="text-[#6b8f2b] hover:underline">your dashboard</a>, find the completed session, and click <strong>View Gradebook</strong>.
               </p>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-2">The gradebook shows:</p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <p className="text-[#55604A] leading-relaxed mb-2">The gradebook shows:</p>
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>A class summary, with the number of students, coding questions, and the class average</li>
                 <li>Per-question pass rates, so you can see which question tripped up the class</li>
                 <li>Every student&apos;s score, with their per-question code and output expandable inline</li>
                 <li>A <strong>CSV export</strong> of scores for your own records</li>
               </ul>
               <div className="rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
-                <p className="text-sm text-[#6b8f2b]/80">
+                <p className="text-sm text-[#55604A]">
                   <strong>Privacy:</strong> to remove a session&apos;s stored student work, click <strong>Delete student data</strong> on its gradebook page. See the <a href="https://www.codekiwi.tech/privacy" className="underline">privacy policy</a> for retention details.
                 </p>
               </div>
@@ -321,18 +321,18 @@ export default function DocsPage() {
 
             {/* Best Practices */}
             <section id="best-practices">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Best Practices</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Best Practices</h2>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Preparing Your Slides</h3>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Preparing Your Slides</h3>
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Keep each coding slide focused on one concept or task</li>
                 <li>Write a clear <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code> prompt in the Speaker Notes so students know exactly what to write</li>
                 <li>Use regular slides for explanation, coding slides for practice</li>
                 <li>Test your slides by running the session yourself before class</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">During the Session</h3>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">During the Session</h3>
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Share the session code early, either project it or paste it in your class chat</li>
                 <li>Use <strong>Lock Editors</strong> while explaining to keep students focused</li>
                 <li>Open the <strong>Dashboard</strong> during coding time to spot students who are stuck</li>
@@ -340,8 +340,8 @@ export default function DocsPage() {
                 <li>Advance slides deliberately, since the editor resets on each slide change</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Suggested Lesson Structure</h3>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Suggested Lesson Structure</h3>
+              <ul className="list-disc list-inside space-y-2 text-[#55604A]">
                 <li><strong>Intro (5–10 min):</strong> Regular slides explaining the concept</li>
                 <li><strong>Demo (10–15 min):</strong> Walk through examples; lock editors so students watch</li>
                 <li><strong>Practice (20–30 min):</strong> Coding slides; monitor the dashboard; assist as needed</li>
@@ -351,12 +351,12 @@ export default function DocsPage() {
 
             {/* Troubleshooting */}
             <section id="troubleshooting">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Troubleshooting</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Troubleshooting</h2>
 
               <div className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">"Google Drive permission denied" when selecting a presentation</h4>
-                  <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
+                  <ul className="list-disc list-inside space-y-1 text-[#55604A] ml-4">
                     <li>Sign out of codekiwi.tech, then sign back in with Google</li>
                     <li>When prompted, approve the Google Slides permissions</li>
                     <li>Try selecting the presentation again</li>
@@ -365,7 +365,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Students can't access the session</h4>
-                  <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
+                  <ul className="list-disc list-inside space-y-1 text-[#55604A] ml-4">
                     <li>Confirm the session is active (the lobby or presentation view should be open)</li>
                     <li>Double-check that students are entering the correct 6-digit code at <strong>codekiwi.app</strong></li>
                     <li>Make sure the session hasn't been ended via the End Session button</li>
@@ -374,7 +374,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Slides aren't syncing for students</h4>
-                  <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
+                  <ul className="list-disc list-inside space-y-1 text-[#55604A] ml-4">
                     <li>Advance the slide in the teacher view, since the sync message fires on each change</li>
                     <li>Ask the student to refresh their browser tab</li>
                     <li>Verify they're connected to the internet</li>
@@ -383,7 +383,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">The code editor isn't showing for students</h4>
-                  <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
+                  <ul className="list-disc list-inside space-y-1 text-[#55604A] ml-4">
                     <li>Check that the slide has <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code> at the very first line of its Speaker Notes</li>
                     <li>The marker is case-sensitive and must be typed exactly as <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Code Question:</code></li>
                     <li>Use the <strong>Coding Slides</strong> panel in the Add-On sidebar to see which slides are currently marked</li>
@@ -392,7 +392,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Dashboard shows "no students"</h4>
-                  <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
+                  <ul className="list-disc list-inside space-y-1 text-[#55604A] ml-4">
                     <li>Make sure students have fully joined (entered code + name)</li>
                     <li>Refresh the dashboard page</li>
                   </ul>
@@ -400,7 +400,7 @@ export default function DocsPage() {
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">A student&apos;s correct-looking code fails a test</h4>
-                  <ul className="list-disc list-inside space-y-1 text-[#6b8f2b]/80 ml-4">
+                  <ul className="list-disc list-inside space-y-1 text-[#55604A] ml-4">
                     <li>The student&apos;s terminal shows the failing test&apos;s input, the expected output, and what the program printed: compare those first</li>
                     <li>The output must end with the expected text, so extra text after the answer (or words before it that aren&apos;t a prompt ending in <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">:</code> or <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">?</code>) makes it fail</li>
                     <li>A program that prints the right answer but then crashes, or exits with an error code, fails the test</li>
@@ -411,7 +411,7 @@ export default function DocsPage() {
               </div>
 
               <div className="mt-6 rounded-lg bg-[#a8d05f]/10 p-4 border-l-4 border-[#6b8f2b]">
-                <p className="text-sm text-[#6b8f2b]/80">
+                <p className="text-sm text-[#55604A]">
                   <strong>Still stuck?</strong> Email <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a>. I typically respond within 24 hours.
                 </p>
               </div>
@@ -419,67 +419,67 @@ export default function DocsPage() {
 
             {/* FAQ */}
             <section id="faq">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">Frequently Asked Questions</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">Frequently Asked Questions</h2>
 
               <div className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Do students need to create an account?</h4>
-                  <p className="text-[#6b8f2b]/80">No. Students visit codekiwi.app, enter the session code and a name, and they're in. No sign-up, no download.</p>
+                  <p className="text-[#55604A]">No. Students visit codekiwi.app, enter the session code and a name, and they're in. No sign-up, no download.</p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">What programming languages are supported?</h4>
-                  <p className="text-[#6b8f2b]/80">Python, JavaScript, Java, and C++ (C++17). The language is set when you start the session via the Add-On. For Java, student code must declare a <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">public class Main</code>. Programs can read keyboard input (<code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">input()</code>, <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Scanner</code>, <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">cin</code>, and browser-style <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">prompt()</code> in JavaScript): students type into the output terminal while the program runs.</p>
+                  <p className="text-[#55604A]">Python, JavaScript, Java, and C++ (C++17). The language is set when you start the session via the Add-On. For Java, student code must declare a <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">public class Main</code>. Programs can read keyboard input (<code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">input()</code>, <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">Scanner</code>, <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">cin</code>, and browser-style <code className="font-mono bg-[#f1f3f4] px-1 rounded text-sm">prompt()</code> in JavaScript): students type into the output terminal while the program runs.</p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Is CodeKiwi free?</h4>
-                  <p className="text-[#6b8f2b]/80">Yes. CodeKiwi is free to use while in beta. All features are fully accessible at no cost.</p>
+                  <p className="text-[#55604A]">Yes. CodeKiwi is free to use while in beta. All features are fully accessible at no cost.</p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Can I reuse a presentation for multiple sessions?</h4>
-                  <p className="text-[#6b8f2b]/80">Yes. Every session generates a new 6-digit code. Just launch a new session from the dashboard or the Add-On sidebar using the same presentation.</p>
+                  <p className="text-[#55604A]">Yes. Every session generates a new 6-digit code. Just launch a new session from the dashboard or the Add-On sidebar using the same presentation.</p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Is student code saved after the session?</h4>
-                  <p className="text-[#6b8f2b]/80">Yes. If you have a CodeKiwi account, each student&apos;s code and question scores are saved to that session&apos;s gradebook when it ends, so you can review them later from your dashboard. You can delete a session&apos;s student data anytime from its gradebook page. (Students join anonymously and don&apos;t get a saved copy of their own, so they should still copy anything they personally want to keep.)</p>
+                  <p className="text-[#55604A]">Yes. If you have a CodeKiwi account, each student&apos;s code and question scores are saved to that session&apos;s gradebook when it ends, so you can review them later from your dashboard. You can delete a session&apos;s student data anytime from its gradebook page. (Students join anonymously and don&apos;t get a saved copy of their own, so they should still copy anything they personally want to keep.)</p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Can I edit a student's code during class?</h4>
-                  <p className="text-[#6b8f2b]/80">Yes. In the inspect view, click the pencil icon to edit their code, then Save, and the changes are pushed to their editor in real-time.</p>
+                  <p className="text-[#55604A]">Yes. In the inspect view, click the pencil icon to edit their code, then Save, and the changes are pushed to their editor in real-time.</p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">How many students can join a session?</h4>
-                  <p className="text-[#6b8f2b]/80">There's no hard limit. For the best experience we recommend up to 50 students per session.</p>
+                  <p className="text-[#55604A]">There's no hard limit. For the best experience we recommend up to 50 students per session.</p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">What browsers are supported?</h4>
-                  <p className="text-[#6b8f2b]/80">Chrome, Firefox, Safari, and Edge, in all modern versions. Chrome is recommended for the best experience.</p>
+                  <p className="text-[#55604A]">Chrome, Firefox, Safari, and Edge, in all modern versions. Chrome is recommended for the best experience.</p>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[#6b8f2b] mb-2">Does CodeKiwi work for remote teaching?</h4>
-                  <p className="text-[#6b8f2b]/80">Absolutely. Students only need internet access. Share your screen for the visual context and share the session code via chat or video conferencing.</p>
+                  <p className="text-[#55604A]">Absolutely. Students only need internet access. Share your screen for the visual context and share the session code via chat or video conferencing.</p>
                 </div>
               </div>
             </section>
           </div>
 
           {/* Contact Section */}
-          <div className="mt-12 pt-8 border-t border-[#d6c49f]/30">
-            <h3 className="text-xl font-bold text-[#6b8f2b] mb-3">Need More Help?</h3>
-            <p className="text-[#6b8f2b]/80 mb-4">
+          <div className="mt-12 pt-8 border-t border-[#1E2A14]/10">
+            <h3 className="text-xl font-bold text-[#1E2A14] mb-3">Need More Help?</h3>
+            <p className="text-[#55604A] mb-4">
               Can't find what you're looking for? Have a question or feedback?
             </p>
             <div className="rounded-lg bg-[#a8d05f]/10 p-6">
-              <p className="text-[#6b8f2b] font-semibold mb-2">Get in Touch</p>
-              <p className="text-[#6b8f2b]/80 mb-1">Email: <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a></p>
-              <p className="text-[#6b8f2b]/80 text-sm mt-3">I typically respond within 24 hours.</p>
+              <p className="text-[#55604A] font-semibold mb-2">Get in Touch</p>
+              <p className="text-[#55604A] mb-1">Email: <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a></p>
+              <p className="text-[#55604A] text-sm mt-3">I typically respond within 24 hours.</p>
             </div>
           </div>
 
@@ -487,7 +487,7 @@ export default function DocsPage() {
           <div className="mt-8 text-center">
             <Link
               href="/"
-              className="inline-flex items-center text-[#6b8f2b] hover:text-[#6b8f2b]/80 font-medium hover:underline"
+              className="inline-flex items-center text-[#6b8f2b] hover:text-[#55604A] font-medium hover:underline"
             >
               ← Back to Home
             </Link>

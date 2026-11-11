@@ -30,8 +30,8 @@ const commonFixes = [
 
 export default function SupportPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
-      <header className="border-b border-[#d6c49f]/30 bg-white">
+    <div className="min-h-screen bg-[#FBF7EC]">
+      <header className="border-b border-[#1E2A14]/10 bg-[#FBF7EC]">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="text-2xl font-bold text-[#6b8f2b]">CodeKiwi</span>
@@ -44,10 +44,10 @@ export default function SupportPage() {
             />
           </Link>
           <nav className="flex items-center gap-6">
-            <Link href="/features" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors">
+            <Link href="/features" className="text-sm text-[#55604A] hover:text-[#6b8f2b] transition-colors">
               Features
             </Link>
-            <Link href="/docs" className="text-sm text-[#6b8f2b]/70 hover:text-[#6b8f2b] transition-colors">
+            <Link href="/docs" className="text-sm text-[#55604A] hover:text-[#6b8f2b] transition-colors">
               Docs
             </Link>
             <Link href="/signin">
@@ -61,8 +61,8 @@ export default function SupportPage() {
 
       <main className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-[#6b8f2b] mb-4">Support</h1>
-          <p className="text-xl text-[#6b8f2b]/70">
+          <h1 className="text-5xl font-bold text-[#1E2A14] mb-4">Support</h1>
+          <p className="text-xl text-[#55604A]">
             Need help? We&apos;re here for you.
           </p>
         </div>
@@ -73,8 +73,8 @@ export default function SupportPage() {
             <Mail className="w-7 h-7 text-[#6b8f2b]" />
           </div>
           <div className="text-center sm:text-left">
-            <h2 className="text-xl font-semibold text-[#6b8f2b] mb-1">Email us</h2>
-            <p className="text-[#6b8f2b]/60 mb-3">
+            <h2 className="text-xl font-semibold text-[#1E2A14] mb-1">Email us</h2>
+            <p className="text-[#6F7A62] mb-3">
               We typically respond within 24 hours.
             </p>
             <a
@@ -92,8 +92,8 @@ export default function SupportPage() {
             <BookOpen className="w-7 h-7 text-[#6b8f2b]" />
           </div>
           <div className="text-center sm:text-left flex-1">
-            <h2 className="text-xl font-semibold text-[#6b8f2b] mb-1">Browse the docs</h2>
-            <p className="text-[#6b8f2b]/60 mb-3">
+            <h2 className="text-xl font-semibold text-[#1E2A14] mb-1">Browse the docs</h2>
+            <p className="text-[#6F7A62] mb-3">
               Step-by-step guides for setting up sessions, using the add-on, and monitoring students.
             </p>
             <Link href="/docs">
@@ -105,7 +105,7 @@ export default function SupportPage() {
         </div>
 
         {/* Common fixes */}
-        <h2 className="text-2xl font-bold text-[#6b8f2b] mb-6">Common fixes</h2>
+        <h2 className="text-2xl font-bold text-[#1E2A14] mb-6">Common fixes</h2>
         <div className="space-y-4">
           {commonFixes.map(({ icon: Icon, title, description }) => (
             <div
@@ -116,8 +116,8 @@ export default function SupportPage() {
                 <Icon className="w-5 h-5 text-[#6b8f2b]" />
               </div>
               <div>
-                <h3 className="font-semibold text-[#6b8f2b] mb-1">{title}</h3>
-                <p className="text-sm text-[#6b8f2b]/60">{description}</p>
+                <h3 className="font-semibold text-[#1E2A14] mb-1">{title}</h3>
+                <p className="text-sm text-[#6F7A62]">{description}</p>
               </div>
             </div>
           ))}

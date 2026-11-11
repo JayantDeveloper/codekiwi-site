@@ -14,17 +14,17 @@ export const metadata: Metadata = {
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
+    <div className="min-h-screen bg-[#FBF7EC]">
       <SiteHeader />
 
       {/* Main Content */}
       <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-20">
-          <h1 className="text-5xl font-bold text-[#6b8f2b] mb-4">
+          <h1 className="text-5xl font-bold text-[#1E2A14] mb-4">
             Powerful Features for Interactive Coding Education
           </h1>
-          <p className="text-xl text-[#6b8f2b]/70 max-w-3xl mx-auto">
+          <p className="text-xl text-[#55604A] max-w-3xl mx-auto">
             Everything you need to create engaging, live coding sessions with your students
           </p>
         </div>
@@ -36,13 +36,13 @@ export default function FeaturesPage() {
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit">
                 <Presentation className="h-10 w-10 text-[#6b8f2b]" />
               </div>
-              <h2 className="text-3xl font-bold text-[#6b8f2b]">
+              <h2 className="text-3xl font-bold text-[#1E2A14]">
                 Google Slides™ Integration
               </h2>
-              <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
+              <p className="text-[#55604A] leading-relaxed text-lg">
                 Connect your existing Google Slides presentations seamlessly. No need to recreate your teaching materials. Use what you already have and make them interactive.
               </p>
-              <ul className="space-y-3 text-[#6b8f2b]/70">
+              <ul className="space-y-3 text-[#55604A]">
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
                   <span>Access any presentation from your Google Drive™</span>
@@ -57,7 +57,7 @@ export default function FeaturesPage() {
                 </li>
               </ul>
             </div>
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
+            <div className="rounded-2xl border-2 border-[#1E2A14]/10 bg-white p-3 shadow-xl overflow-hidden">
               <Image
                 src="/gallery/slides-integration.png"
                 alt="CodeKiwi Google Slides integration"
@@ -72,7 +72,7 @@ export default function FeaturesPage() {
         {/* Feature Showcase 2 - Live Code Editor (reversed) */}
         <Reveal className="mb-32">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
+            <div className="order-2 md:order-1 rounded-2xl border-2 border-[#1E2A14]/10 bg-white p-3 shadow-xl overflow-hidden">
               <Image
                 src="/gallery/student-view.png"
                 alt="CodeKiwi student split-screen view with slides and code editor"
@@ -85,13 +85,13 @@ export default function FeaturesPage() {
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit">
                 <Code2 className="h-10 w-10 text-[#6b8f2b]" />
               </div>
-              <h2 className="text-3xl font-bold text-[#6b8f2b]">
+              <h2 className="text-3xl font-bold text-[#1E2A14]">
                 Live Code Editor
               </h2>
-              <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
+              <p className="text-[#55604A] leading-relaxed text-lg">
                 Students code alongside your presentation in a synchronized editor. They see your slides on the left and write code on the right, all in one view.
               </p>
-              <ul className="space-y-3 text-[#6b8f2b]/70">
+              <ul className="space-y-3 text-[#55604A]">
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
                   <span>Split-screen interface: slides + code editor</span>
@@ -120,13 +120,13 @@ export default function FeaturesPage() {
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit">
                 <Eye className="h-10 w-10 text-[#6b8f2b]" />
               </div>
-              <h2 className="text-3xl font-bold text-[#6b8f2b]">
+              <h2 className="text-3xl font-bold text-[#1E2A14]">
                 Real-Time Monitoring
               </h2>
-              <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
+              <p className="text-[#55604A] leading-relaxed text-lg">
                 See exactly what every student is coding in real-time, with a live status on each one. Coding questions are auto-graded the moment a student runs them, and anyone who's stuck can raise a hand that flags their card instantly.
               </p>
-              <ul className="space-y-3 text-[#6b8f2b]/70">
+              <ul className="space-y-3 text-[#55604A]">
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
                   <span>Live status on every student: coding, done, or needs help</span>
@@ -141,7 +141,7 @@ export default function FeaturesPage() {
                 </li>
               </ul>
             </div>
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
+            <div className="rounded-2xl border-2 border-[#1E2A14]/10 bg-white p-3 shadow-xl overflow-hidden">
               <Image
                 src="/gallery/teacher-dashboard.png"
                 alt="CodeKiwi teacher dashboard showing real-time student code monitoring"
@@ -156,7 +156,7 @@ export default function FeaturesPage() {
         {/* Feature Showcase 4 - Teacher Edit Student Code (reversed) */}
         <Reveal className="mb-32">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-3 shadow-xl overflow-hidden">
+            <div className="order-2 md:order-1 rounded-2xl border-2 border-[#1E2A14]/10 bg-white p-3 shadow-xl overflow-hidden">
               <Image
                 src="/app-gallery/06-teacher-inspect-student.png"
                 alt="CodeKiwi teacher editing a student's code directly"
@@ -169,13 +169,13 @@ export default function FeaturesPage() {
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit">
                 <PencilLine className="h-10 w-10 text-[#6b8f2b]" />
               </div>
-              <h2 className="text-3xl font-bold text-[#6b8f2b]">
+              <h2 className="text-3xl font-bold text-[#1E2A14]">
                 Live Teacher Assistance
               </h2>
-              <p className="text-[#6b8f2b]/70 leading-relaxed text-lg">
+              <p className="text-[#55604A] leading-relaxed text-lg">
                 Live-code beside your slide and every student mirrors it in real time, or jump directly into one student's editor to fix a bug without disrupting the rest of the class.
               </p>
-              <ul className="space-y-3 text-[#6b8f2b]/70">
+              <ul className="space-y-3 text-[#55604A]">
                 <li className="flex items-start gap-3">
                   <span className="text-[#a8d05f] mt-1 text-lg">✓</span>
                   <span>Live Demo: your editor + terminal mirror to every student in real time, so you can teach and demonstrate code without switching screens</span>
@@ -195,45 +195,45 @@ export default function FeaturesPage() {
 
         {/* Additional Features Grid */}
         <Reveal className="mb-20">
-          <h2 className="text-3xl font-bold text-[#6b8f2b] mb-12 text-center">
+          <h2 className="text-3xl font-bold text-[#1E2A14] mb-12 text-center">
             And Many More Features
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             {/* Feature 4 */}
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="rounded-2xl border-2 border-[#1E2A14]/10 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit mb-6">
                 <Zap className="h-8 w-8 text-[#6b8f2b]" />
               </div>
-              <h3 className="text-2xl font-bold text-[#6b8f2b] mb-3">
+              <h3 className="text-2xl font-bold text-[#1E2A14] mb-3">
                 Instant Session Launch
               </h3>
-              <p className="text-[#6b8f2b]/70 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 Start a session with one click. Share a simple PIN with your students. No accounts, downloads, or setup required for them.
               </p>
             </div>
 
             {/* Feature 5 */}
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="rounded-2xl border-2 border-[#1E2A14]/10 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit mb-6">
                 <Users className="h-8 w-8 text-[#6b8f2b]" />
               </div>
-              <h3 className="text-2xl font-bold text-[#6b8f2b] mb-3">
+              <h3 className="text-2xl font-bold text-[#1E2A14] mb-3">
                 Multiple Sessions
               </h3>
-              <p className="text-[#6b8f2b]/70 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 Manage multiple classes and sessions simultaneously. Keep your different courses organized and switch between them effortlessly.
               </p>
             </div>
 
             {/* Feature 6 */}
-            <div className="rounded-2xl border-2 border-[#d6c49f]/30 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="rounded-2xl border-2 border-[#1E2A14]/10 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="rounded-2xl bg-gradient-to-br from-[#a8d05f]/20 to-[#6b8f2b]/10 p-4 w-fit mb-6">
                 <RefreshCw className="h-8 w-8 text-[#6b8f2b]" />
               </div>
-              <h3 className="text-2xl font-bold text-[#6b8f2b] mb-3">
+              <h3 className="text-2xl font-bold text-[#1E2A14] mb-3">
                 Sync Your Slides
               </h3>
-              <p className="text-[#6b8f2b]/70 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 Update your Google Slides anytime and the changes sync automatically. Your presentations stay current without recreating sessions.
               </p>
             </div>
@@ -241,8 +241,8 @@ export default function FeaturesPage() {
         </Reveal>
 
         {/* How It Works Section */}
-        <Reveal className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 sm:p-12 shadow-lg mb-20">
-          <h2 className="text-3xl font-bold text-[#6b8f2b] mb-8 text-center">
+        <Reveal className="rounded-2xl border border-[#1E2A14]/10 bg-white p-8 sm:p-12 shadow-lg mb-20">
+          <h2 className="text-3xl font-bold text-[#1E2A14] mb-8 text-center">
             How It Works
           </h2>
           
@@ -252,8 +252,8 @@ export default function FeaturesPage() {
                 1
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#6b8f2b] mb-2">Create Your Presentation</h3>
-                <p className="text-[#6b8f2b]/70">
+                <h3 className="text-xl font-bold text-[#1E2A14] mb-2">Create Your Presentation</h3>
+                <p className="text-[#55604A]">
                   Design your lesson in Google Slides just like you normally would. Add your coding examples, explanations, and exercises.
                 </p>
               </div>
@@ -264,8 +264,8 @@ export default function FeaturesPage() {
                 2
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#6b8f2b] mb-2">Connect to CodeKiwi</h3>
-                <p className="text-[#6b8f2b]/70">
+                <h3 className="text-xl font-bold text-[#1E2A14] mb-2">Connect to CodeKiwi</h3>
+                <p className="text-[#55604A]">
                   Sign in with Google and connect your slides. CodeKiwi creates a new interactive session linked to your presentation.
                 </p>
               </div>
@@ -276,8 +276,8 @@ export default function FeaturesPage() {
                 3
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#6b8f2b] mb-2">Share PIN with Students</h3>
-                <p className="text-[#6b8f2b]/70">
+                <h3 className="text-xl font-bold text-[#1E2A14] mb-2">Share PIN with Students</h3>
+                <p className="text-[#55604A]">
                   Launch your session to get a PIN code. Students visit codekiwi.app, enter the PIN, and instantly see your slides with a code editor.
                 </p>
               </div>
@@ -288,8 +288,8 @@ export default function FeaturesPage() {
                 4
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#6b8f2b] mb-2">Teach Live</h3>
-                <p className="text-[#6b8f2b]/70">
+                <h3 className="text-xl font-bold text-[#1E2A14] mb-2">Teach Live</h3>
+                <p className="text-[#55604A]">
                   Present your slides while students follow along and code. Monitor their progress in real-time and provide instant feedback.
                 </p>
               </div>
@@ -298,7 +298,7 @@ export default function FeaturesPage() {
         </Reveal>
 
         {/* CTA Section */}
-        <Reveal className="text-center rounded-2xl bg-gradient-to-r from-[#6b8f2b] to-[#7da332] p-12 text-white shadow-xl">
+        <Reveal className="text-center rounded-2xl bg-[#2F4A1C] p-12 text-white shadow-xl">
           <h2 className="text-3xl font-bold mb-4">
             Ready to Transform Your Coding Lessons?
           </h2>

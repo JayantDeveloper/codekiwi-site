@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
+    <div className="min-h-screen bg-[#FBF7EC]">
       {/* Header */}
-      <header className="border-b border-[#d6c49f]/30 bg-white">
+      <header className="border-b border-[#1E2A14]/10 bg-[#FBF7EC]">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="text-2xl font-bold text-[#6b8f2b]">CodeKiwi</span>
@@ -30,23 +30,23 @@ export default function PrivacyPage() {
 
       {/* Main Content */}
       <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 shadow-lg sm:p-12">
+        <div className="rounded-2xl border border-[#1E2A14]/10 bg-white p-8 shadow-lg sm:p-12">
           {/* Title */}
-          <div className="mb-8 border-b border-[#d6c49f]/30 pb-6">
-            <h1 className="text-4xl font-bold text-[#6b8f2b] mb-2">Privacy Policy</h1>
-            <p className="text-sm text-[#6b8f2b]/60">Last updated: October 7, 2026</p>
+          <div className="mb-8 border-b border-[#1E2A14]/10 pb-6">
+            <h1 className="text-4xl font-bold text-[#1E2A14] mb-2">Privacy Policy</h1>
+            <p className="text-sm text-[#6F7A62]">Last updated: October 7, 2026</p>
           </div>
 
           {/* Introduction */}
           <div className="mb-10">
-            <p className="text-[#6b8f2b]/80 leading-relaxed">
+            <p className="text-[#55604A] leading-relaxed">
               At CodeKiwi, I am committed to protecting your privacy. This Privacy Policy explains how CodeKiwi collects, uses, and safeguards your data when you use the platform to create interactive coding sessions with Google Slides™.
             </p>
           </div>
 
           {/* Table of Contents */}
           <div className="mb-10 rounded-lg bg-[#a8d05f]/10 p-6">
-            <h2 className="text-lg font-semibold text-[#6b8f2b] mb-4">Table of Contents</h2>
+            <h2 className="text-lg font-semibold text-[#1E2A14] mb-4">Table of Contents</h2>
             <nav className="space-y-2">
               <a href="#data-collection" className="block text-[#6b8f2b] hover:underline text-sm">1. Information We Collect</a>
               <a href="#data-usage" className="block text-[#6b8f2b] hover:underline text-sm">2. How We Use Your Information</a>
@@ -63,37 +63,37 @@ export default function PrivacyPage() {
           {/* Content Sections */}
           <div className="space-y-10">
             <section id="data-collection">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">1. Information We Collect</h2>
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">1. Information We Collect</h2>
               
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Account Information</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Account Information</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 When you create a CodeKiwi account, we collect:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Name and email address (via Google Sign-In or direct registration)</li>
                 <li>Hashed password (if you register with email/password)</li>
                 <li>School or institution name (optional)</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 If you start a lesson from the CodeKiwi Google Slides™ add-on without having signed up, CodeKiwi creates an account for you using the email address of the Google account running the add-on, so your session history and gradebooks are saved. This account has no password. You can open it by signing in at codekiwi.tech with that same Google account.
               </p>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Usage Information</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Usage Information</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 We automatically collect basic usage information:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Sessions you create and launch</li>
                 <li>Pages you visit within CodeKiwi</li>
                 <li>Device and browser information</li>
                 <li>IP address and access times (stored in logs)</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Session Data</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Session Data</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 When you use CodeKiwi for teaching sessions:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A]">
                 <li>Links to Google Slides presentations you connect</li>
                 <li>Student join data (anonymous unless students provide names)</li>
                 <li>Code written by students during sessions. Each student&apos;s code and question scores are saved to your session gradebook when the session ends, so you can review them afterward. You can delete this data at any time from the session&apos;s gradebook page.</li>
@@ -101,11 +101,11 @@ export default function PrivacyPage() {
             </section>
 
             <section id="data-usage">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">2. How We Use Your Information</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">2. How We Use Your Information</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 I use the information collected to:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A]">
                 <li>Provide the core service: create and manage interactive coding sessions</li>
                 <li>Authenticate users and maintain account security</li>
                 <li>Connect to your Google Slides presentations</li>
@@ -116,16 +116,16 @@ export default function PrivacyPage() {
             </section>
 
             <section id="data-sharing">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">3. Information Sharing</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">3. Information Sharing</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 <strong>I do not sell your personal information.</strong> Your data is shared only in these specific cases:
               </p>
               
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Service Providers</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Service Providers</h3>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 CodeKiwi uses the following third-party services:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li><strong>Vercel:</strong> Hosts the web application</li>
                 <li><strong>Render:</strong> Hosts the backend that coordinates live sessions</li>
                 <li><strong>Fly.io:</strong> Runs student-submitted code in isolated, sandboxed environments; code is sent there only to execute and is not retained</li>
@@ -134,110 +134,110 @@ export default function PrivacyPage() {
                 <li><strong>Google Drive™ API:</strong> Accesses slides you explicitly connect to sessions</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-[#6b8f2b] mb-3 mt-6">Legal Requirements</h3>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <h3 className="text-lg font-semibold text-[#1E2A14] mb-3 mt-6">Legal Requirements</h3>
+              <p className="text-[#55604A] leading-relaxed">
                 I may disclose information if required by law, such as in response to a valid court order or to protect the rights and safety of users.
               </p>
             </section>
 
             <section id="google-services">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">4. Google Services Integration</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">4. Google Services Integration</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 When you sign in with Google, CodeKiwi requests the following Google API permission:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li><strong>drive.file</strong> gives access only to files you explicitly select via the Google Drive Picker, and files CodeKiwi creates on your behalf (session template copies). CodeKiwi cannot read, list, or modify any other files in your Drive.</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 Specifically, CodeKiwi uses this permission to:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>Retrieve slide thumbnails from the presentation you select for use in your coding session</li>
                 <li>Create a copy of the CodeKiwi starter template in your Drive when you start a new session from scratch</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 You can revoke this permission at any time via <a href="https://myaccount.google.com/permissions" className="text-[#6b8f2b] hover:underline" target="_blank" rel="noopener noreferrer">Google Account Permissions</a>.
               </p>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 CodeKiwi's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" className="text-[#6b8f2b] hover:underline" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.
               </p>
             </section>
 
             <section id="security">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">5. Data Security</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">5. Data Security</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 CodeKiwi implements security measures to protect your information:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li>All data transmitted between your browser and CodeKiwi is encrypted using HTTPS/TLS</li>
                 <li>Passwords are hashed using industry-standard bcrypt</li>
                 <li>Google OAuth tokens are stored securely and used only for authorized operations</li>
                 <li>Database access is restricted and secured</li>
                 <li>Student-submitted code runs in isolated, sandboxed environments with strict resource limits and no access to CodeKiwi's servers, secrets, or other users' data</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 While I take reasonable precautions, no system is 100% secure. Please use a strong password and keep your account credentials safe.
               </p>
             </section>
 
             <section id="retention">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">6. Data Retention</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">6. Data Retention</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 CodeKiwi retains your data as follows:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li><strong>Account data:</strong> Retained while your account is active</li>
                 <li><strong>Session data:</strong> Stored as long as you keep the session</li>
                 <li><strong>Student gradebook data:</strong> Each student&apos;s code and scores are saved to the session gradebook and retained until you delete them (from the gradebook page) or delete the session. During a live session the same data is also held temporarily in memory to power the teacher dashboard.</li>
                 <li><strong>Server logs:</strong> Retained for up to 90 days for troubleshooting</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 You can delete a session&apos;s student data directly from its gradebook page, and you can request deletion of your account and all associated data by contacting me at jaymaheshwari2603@gmail.com.
               </p>
             </section>
 
             <section id="rights">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">7. Your Rights</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">7. Your Rights</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 You have the right to:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-[#6b8f2b]/80 mb-4">
+              <ul className="list-disc list-inside space-y-2 text-[#55604A] mb-4">
                 <li><strong>Access:</strong> Request a copy of your data</li>
                 <li><strong>Correction:</strong> Update incorrect information in your account settings</li>
                 <li><strong>Deletion:</strong> Request deletion of your account and data</li>
                 <li><strong>Export:</strong> Request an export of your data</li>
                 <li><strong>Revoke permissions:</strong> Disconnect Google access at any time through your Google Account settings</li>
               </ul>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <p className="text-[#55604A] leading-relaxed">
                 To exercise these rights, contact me at jaymaheshwari2603@gmail.com.
               </p>
             </section>
 
             <section id="changes">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">8. Changes to This Policy</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">8. Changes to This Policy</h2>
+              <p className="text-[#55604A] leading-relaxed">
                 I may update this Privacy Policy as CodeKiwi evolves. Any changes will be posted on this page with an updated "Last updated" date. Continued use of CodeKiwi after changes indicates your acceptance of the updated policy.
               </p>
             </section>
 
             <section id="contact">
-              <h2 className="text-2xl font-bold text-[#6b8f2b] mb-4">9. Contact</h2>
-              <p className="text-[#6b8f2b]/80 leading-relaxed mb-4">
+              <h2 className="text-2xl font-bold text-[#1E2A14] mb-4">9. Contact</h2>
+              <p className="text-[#55604A] leading-relaxed mb-4">
                 If you have questions or concerns about this Privacy Policy or how your data is handled, please contact:
               </p>
               <div className="rounded-lg bg-[#a8d05f]/10 p-6">
-                <p className="text-[#6b8f2b] font-semibold mb-2">Jay Maheshwari</p>
-                <p className="text-[#6b8f2b]/80 mb-1">Email: <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a></p>
-                <p className="text-[#6b8f2b]/80 text-sm mt-3">Creator and maintainer of CodeKiwi</p>
+                <p className="text-[#55604A] font-semibold mb-2">Jay Maheshwari</p>
+                <p className="text-[#55604A] mb-1">Email: <a href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">jaymaheshwari2603@gmail.com</a></p>
+                <p className="text-[#55604A] text-sm mt-3">Creator and maintainer of CodeKiwi</p>
               </div>
             </section>
           </div>
 
           {/* Back to Home */}
-          <div className="mt-12 pt-8 border-t border-[#d6c49f]/30 text-center">
+          <div className="mt-12 pt-8 border-t border-[#1E2A14]/10 text-center">
             <Link 
               href="/" 
-              className="inline-flex items-center text-[#6b8f2b] hover:text-[#6b8f2b]/80 font-medium hover:underline"
+              className="inline-flex items-center text-[#6b8f2b] hover:text-[#55604A] font-medium hover:underline"
             >
               ← Back to Home
             </Link>

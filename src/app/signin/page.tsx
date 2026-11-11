@@ -62,7 +62,7 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-white via-[#a8d05f]/40 to-[#a8d05f] p-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#FBF7EC] p-4">
       <div className="w-full max-w-md space-y-8">
         {/* Logo */}
         <div className="text-center">
@@ -79,13 +79,13 @@ export default function SignInPage() {
         </div>
 
         {/* Card */}
-        <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 shadow-lg">
+        <div className="rounded-2xl border border-[#1E2A14]/10 bg-white p-8 shadow-lg">
           <div className="space-y-6">
             <div className="text-center">
-              <h1 className="text-2xl font-bold text-[#6b8f2b]">
+              <h1 className="text-2xl font-bold text-[#1E2A14]">
                 Sign in to CodeKiwi
               </h1>
-              <p className="mt-2 text-sm text-[#6b8f2b]/70">
+              <p className="mt-2 text-sm text-[#55604A]">
                 Welcome back! Please sign in to your account.
               </p>
             </div>
@@ -112,7 +112,7 @@ export default function SignInPage() {
                     <Separator className="w-full bg-[#d6c49f]/30" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-white px-2 text-[#6b8f2b]/70">Or</span>
+                    <span className="bg-white px-2 text-[#55604A]">Or</span>
                   </div>
                 </div>
 
@@ -137,7 +137,7 @@ export default function SignInPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b]"
+                    className="border-[#1E2A14]/10 focus-visible:ring-[#6b8f2b]"
                   />
                 </div>
 
@@ -153,7 +153,7 @@ export default function SignInPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      className="border-[#d6c49f]/30 focus-visible:ring-[#6b8f2b] pr-10"
+                      className="border-[#1E2A14]/10 focus-visible:ring-[#6b8f2b] pr-10"
                     />
                     <Button
                       type="button"
@@ -163,9 +163,9 @@ export default function SignInPage() {
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? (
-                        <EyeOff className="h-4 w-4 text-[#6b8f2b]/70" />
+                        <EyeOff className="h-4 w-4 text-[#55604A]" />
                       ) : (
-                        <Eye className="h-4 w-4 text-[#6b8f2b]/70" />
+                        <Eye className="h-4 w-4 text-[#55604A]" />
                       )}
                     </Button>
                   </div>
@@ -174,7 +174,7 @@ export default function SignInPage() {
                 <div className="flex items-center justify-between">
                   <Link
                     href="/forgot-password"
-                    className="text-sm text-[#6b8f2b] hover:text-[#6b8f2b]/80 hover:underline"
+                    className="text-sm text-[#6b8f2b] hover:text-[#55604A] hover:underline"
                   >
                     Forgot password?
                   </Link>
@@ -199,7 +199,7 @@ export default function SignInPage() {
                       setShowEmailForm(false);
                       setError("");
                     }}
-                    className="text-sm text-[#6b8f2b] hover:text-[#6b8f2b]/80"
+                    className="text-sm text-[#6b8f2b] hover:text-[#55604A]"
                   >
                     ← Back to sign-in options
                   </Button>
@@ -208,11 +208,11 @@ export default function SignInPage() {
             )}
 
             <div className="text-center">
-              <p className="text-sm text-[#6b8f2b]/70">
+              <p className="text-sm text-[#55604A]">
                 Don&apos;t have an account?{" "}
                 <Link
                   href="/signup"
-                  className="font-medium text-[#6b8f2b] hover:text-[#6b8f2b]/80 hover:underline"
+                  className="font-medium text-[#6b8f2b] hover:text-[#55604A] hover:underline"
                 >
                   Sign up
                 </Link>

@@ -25,13 +25,13 @@ const features = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f8faf5]">
+    <div className="min-h-screen bg-[#FBF7EC]">
       <SiteHeader />
 
       <main className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-[#6b8f2b] mb-4">Simple Pricing</h1>
-          <p className="text-xl text-[#6b8f2b]/70 max-w-2xl mx-auto">
+          <h1 className="text-5xl font-bold text-[#1E2A14] mb-4">Simple Pricing</h1>
+          <p className="text-xl text-[#55604A] max-w-2xl mx-auto">
             CodeKiwi is free during our beta. No credit card required.
           </p>
         </div>
@@ -39,19 +39,19 @@ export default function PricingPage() {
         <div className="flex justify-center">
           <Reveal className="relative w-full max-w-sm rounded-2xl border-2 border-[#6b8f2b] bg-white shadow-2xl p-8">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              <span className="bg-gradient-to-r from-[#6b8f2b] to-[#8fb73a] text-white text-sm font-semibold px-4 py-1 rounded-full shadow">
+              <span className="bg-[#2F4A1C] text-white text-sm font-semibold px-4 py-1 rounded-full shadow">
                 Free Beta
               </span>
             </div>
 
             <div className="text-center mb-8">
-              <p className="text-5xl font-bold text-[#6b8f2b]">$0</p>
-              <p className="text-[#6b8f2b]/60 mt-1">during beta · no card needed</p>
+              <p className="text-5xl font-bold text-[#55604A]">$0</p>
+              <p className="text-[#6F7A62] mt-1">during beta · no card needed</p>
             </div>
 
             <ul className="space-y-3 mb-8">
               {features.map((f) => (
-                <li key={f} className="flex items-center gap-3 text-[#6b8f2b]/80">
+                <li key={f} className="flex items-center gap-3 text-[#55604A]">
                   <Check className="h-5 w-5 text-[#6b8f2b] flex-shrink-0" />
                   <span>{f}</span>
                 </li>
@@ -59,14 +59,14 @@ export default function PricingPage() {
             </ul>
 
             <Link href="/signup">
-              <Button className="w-full bg-gradient-to-r from-[#6b8f2b] to-[#7da332] hover:from-[#5a7a23] hover:to-[#6b8f2b] text-white text-base py-5">
+              <Button className="w-full bg-[#2F4A1C] hover:bg-[#243915] text-white text-base py-5">
                 Get Started Free
               </Button>
             </Link>
           </Reveal>
         </div>
 
-        <p className="text-center text-sm text-[#6b8f2b]/50 mt-10">
+        <p className="text-center text-sm text-[#6F7A62] mt-10">
           Paid plans with advanced analytics and team management coming soon.{" "}
           <Link href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">
             Contact us

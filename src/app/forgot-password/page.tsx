@@ -7,7 +7,7 @@ import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
 
 export default function ForgotPasswordPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-white via-[#a8d05f]/40 to-[#a8d05f] p-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#FBF7EC] p-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
@@ -22,9 +22,9 @@ export default function ForgotPasswordPage() {
           </Link>
         </div>
 
-        <div className="rounded-2xl border border-[#d6c49f]/30 bg-white p-8 shadow-lg text-center space-y-4">
-          <h1 className="text-2xl font-bold text-[#6b8f2b]">Reset Password</h1>
-          <p className="text-[#6b8f2b]/70 text-sm">
+        <div className="rounded-2xl border border-[#1E2A14]/10 bg-white p-8 shadow-lg text-center space-y-4">
+          <h1 className="text-2xl font-bold text-[#1E2A14]">Reset Password</h1>
+          <p className="text-[#55604A] text-sm">
             Password reset by email is coming soon. In the meantime, sign in with Google to access your account.
           </p>
           <Link href="/signin">
