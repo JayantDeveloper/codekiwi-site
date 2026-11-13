@@ -9,6 +9,7 @@ import { FeaturesSection } from "@/components/home/FeaturesSection";
 import { ScrollStatement } from "@/components/home/ScrollStatement";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { LandingFooter } from "@/components/home/LandingFooter";
+import { DemoCta } from "@/components/DemoCta";
 
 const SECTION_KEYS = {
   "demo-section": "demo",
@@ -54,6 +55,7 @@ export default function LandingPage() {
         <ScrollStatement />
         <HowItWorks />
         <FeaturesSection ref={featuresRef} isVisible={isVisible.features} />
+        <DemoCta />
       </main>
       <LandingFooter />
     </div>

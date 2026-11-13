@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/SiteFooter";
+import { DemoCta } from "@/components/DemoCta";
 
 export const metadata: Metadata = {
   title: "What's New — CodeKiwi",
@@ -124,9 +125,11 @@ export default function ChangelogPage() {
         </div>
 
         <p className="mt-10 text-sm text-[#55604A]">
-          Something not working, or a feature you&apos;d like? <Link href="/support" className="underline hover:text-[#6b8f2b]">Get in touch</Link>.
+          Something not working, or a feature you&apos;d like? <Link href="/support" className="underline hover:text-[#6b8f2b]">Get in touch</Link>, or <Link href="/demo" className="font-semibold underline hover:text-[#2F4A1C]">book a demo</Link>.
         </p>
       </main>
+
+      <DemoCta className="mt-16" />
 
       <SiteFooter />
     </div>

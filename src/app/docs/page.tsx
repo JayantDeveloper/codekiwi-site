@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { SiteFooter } from "@/components/SiteFooter";
+import { DemoCta } from "@/components/DemoCta";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MARKETPLACE_LISTING_URL } from "@/lib/marketplace";
 
@@ -494,6 +495,11 @@ export default function DocsPage() {
           </div>
         </div>
       </main>
+
+      <DemoCta
+        title="Would it be faster to just watch it work?"
+        body="The docs cover everything, but fifteen minutes on your own slides usually answers more than reading does."
+      />
 
       {/* Footer */}
       <SiteFooter />

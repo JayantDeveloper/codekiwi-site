@@ -305,12 +305,20 @@ export default function FeaturesPage() {
           <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
             Join CodeKiwi today and start creating interactive coding sessions that engage your students.
           </p>
-          <Link
-            href="/signup"
-            className="inline-block bg-white text-[#6b8f2b] font-semibold px-8 py-3 rounded-lg hover:bg-white/90 transition-colors shadow-lg"
-          >
-            Get Started Free
-          </Link>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="/demo"
+              className="inline-block bg-white text-[#2F4A1C] font-semibold px-8 py-3 rounded-lg hover:bg-white/90 transition-colors shadow-lg"
+            >
+              Book a demo
+            </Link>
+            <Link
+              href="/signup"
+              className="inline-block border border-white/50 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              Get Started Free
+            </Link>
+          </div>
         </Reveal>
       </main>
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/SiteFooter";
+import { DemoCta } from "@/components/DemoCta";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal } from "@/components/Reveal";
 
@@ -68,14 +69,20 @@ export default function PricingPage() {
 
         <p className="text-center text-sm text-[#6F7A62] mt-10">
           Paid plans with advanced analytics and team management coming soon.{" "}
-          <Link href="mailto:jaymaheshwari2603@gmail.com" className="text-[#6b8f2b] hover:underline">
-            Contact us
+          <Link href="/demo" className="text-[#2F4A1C] font-semibold hover:underline">
+            Ask for early access
           </Link>{" "}
-          for early access.
+          and we will keep you posted.
         </p>
       </main>
 
-      <SiteFooter className="mt-16" />
+      <DemoCta
+        className="mt-16"
+        title="Not sure which plan fits your class?"
+        body="Tell us what you teach and how many students. We will show you what a period looks like and which plan covers it."
+      />
+
+      <SiteFooter />
     </div>
   );
 }
