@@ -497,8 +497,8 @@ export default function DocsPage() {
       </main>
 
       <DemoCta
-        title="Would it be faster to just watch it work?"
-        body="The docs cover everything, but fifteen minutes on your own slides usually answers more than reading does."
+        title="Using it with a real class?"
+        body="Tell me which class and I will keep an eye on your sessions, and fix whatever you hit before it bites the next teacher."
       />
 
       {/* Footer */}

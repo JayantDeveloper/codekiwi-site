@@ -4,11 +4,11 @@ import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
 import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 
 const LINKS = [
-  { href: "/demo", label: "Book a demo" },
+  { href: "/demo", label: "Contact" },
   { href: "/terms", label: "Terms" },
   { href: "/privacy", label: "Privacy" },
   { href: "/changelog", label: "What's new" },
-  { href: "/support", label: "Contact" },
+  { href: "/support", label: "Help" },
 ] as const;
 
 /**

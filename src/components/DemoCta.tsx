@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 /**
- * Closing "book a demo" band, shared by every page that ends without one.
+ * Closing call to action, shared by every page that ends without one.
  *
  * It exists as one component rather than five hand-rolled sections so the
  * wording, spacing and colour stay in step. Only the title and body vary, so
@@ -13,8 +13,8 @@ import { ArrowRight } from "lucide-react";
  * closing beat disappears. The band has to contrast with what follows it.
  */
 export function DemoCta({
-  title = "Want to see it on your own slides?",
-  body = "Fifteen minutes, no setup on your end. We walk through exactly how a class period would run.",
+  title = "Try it with your next lesson",
+  body = "CodeKiwi is free, installs in about a minute, and works on Chromebooks. Mark a slide in a deck you already teach from.",
   className,
 }: {
   title?: string;
@@ -37,17 +37,17 @@ export function DemoCta({
 
         <div className="flex flex-col items-center gap-3 sm:flex-row">
           <Link
-            href="/demo"
+            href="/signup"
             className="group inline-flex items-center gap-2 rounded-full bg-[#2F4A1C] px-8 py-3.5 text-base font-semibold text-white transition-colors duration-200 hover:bg-[#243915]"
           >
-            Book a demo
+            Get started free
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
           <Link
-            href="/signup"
+            href="/demo"
             className="rounded-full px-8 py-3.5 text-base font-semibold text-[#2F4A1C] transition-colors duration-200 hover:text-[#1E2A14]"
           >
-            Or start free
+            Or contact us
           </Link>
         </div>
       </div>

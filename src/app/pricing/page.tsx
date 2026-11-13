@@ -70,7 +70,7 @@ export default function PricingPage() {
         <p className="text-center text-sm text-[#6F7A62] mt-10">
           Paid plans with advanced analytics and team management coming soon.{" "}
           <Link href="/demo" className="text-[#2F4A1C] font-semibold hover:underline">
-            Ask for early access
+            Contact us
           </Link>{" "}
           and we will keep you posted.
         </p>
@@ -78,8 +78,8 @@ export default function PricingPage() {
 
       <DemoCta
         className="mt-16"
-        title="Not sure which plan fits your class?"
-        body="Tell us what you teach and how many students. We will show you what a period looks like and which plan covers it."
+        title="Free while it proves itself"
+        body="Every teacher using CodeKiwi today is on the free plan, and it stays free while it proves itself."
       />
 
       <SiteFooter />

@@ -310,7 +310,7 @@ export default function FeaturesPage() {
               href="/demo"
               className="inline-block bg-white text-[#2F4A1C] font-semibold px-8 py-3 rounded-lg hover:bg-white/90 transition-colors shadow-lg"
             >
-              Book a demo
+              Contact us
             </Link>
             <Link
               href="/signup"

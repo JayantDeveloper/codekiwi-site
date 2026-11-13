@@ -83,7 +83,7 @@ export function SiteHeader({
                   : "rounded-full bg-white text-[#2F4A1C] transition-colors duration-300 hover:bg-[#E7F2D4]"
               }
             >
-              Book a demo
+              Contact
             </Button>
           </Link>
           <Link href="/signin">

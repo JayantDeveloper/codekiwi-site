@@ -125,7 +125,7 @@ export default function ChangelogPage() {
         </div>
 
         <p className="mt-10 text-sm text-[#55604A]">
-          Something not working, or a feature you&apos;d like? <Link href="/support" className="underline hover:text-[#6b8f2b]">Get in touch</Link>, or <Link href="/demo" className="font-semibold underline hover:text-[#2F4A1C]">book a demo</Link>.
+          Something not working, or a feature you&apos;d like? <Link href="/support" className="underline hover:text-[#6b8f2b]">Get in touch</Link>, or <Link href="/demo" className="font-semibold underline hover:text-[#2F4A1C]">join the pilot</Link>.
         </p>
       </main>
 

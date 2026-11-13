@@ -25,7 +25,7 @@ export function LandingFooter() {
               href="/demo"
               className="text-sm font-medium text-[#D8DCCC] transition-colors hover:text-white hover:underline"
             >
-              Book a demo
+              Help
             </Link>
             <Link
               href="/terms#acceptable-use"

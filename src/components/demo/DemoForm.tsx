@@ -10,6 +10,7 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { MARKETPLACE_LISTING_URL } from "@/lib/marketplace";
 import { Check, Loader2 } from "lucide-react";
 
 const ROLES = [
@@ -79,15 +80,18 @@ export function DemoForm() {
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#2F4A1C]">
           <Check className="h-6 w-6 text-white" strokeWidth={3} />
         </div>
-        <h2 className="text-2xl font-bold text-[#1E2A14]">You are on the list</h2>
+        <h2 className="text-2xl font-bold text-[#1E2A14]">Got it, thank you</h2>
         <p className="mx-auto mt-3 max-w-md text-[#55604A]">
-          Thanks for reaching out. Jayant will get back to you personally, usually
-          within a day. If it is urgent, email{" "}
+          I read every one of these myself and will reply personally, usually
+          within a day. Nothing to schedule in the meantime. If you want to start
+          now, CodeKiwi is already free on the{" "}
           <a
-            href="mailto:team@codekiwi.tech"
+            href={MARKETPLACE_LISTING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-semibold text-[#2F4A1C] underline underline-offset-4"
           >
-            team@codekiwi.tech
+            Marketplace
           </a>
           .
         </p>
@@ -159,7 +163,8 @@ export function DemoForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="message" className={label}>
-          What would you like to see? <span className="font-normal text-[#8A9480]">(optional)</span>
+          What do you teach, or what do you want to ask?{" "}
+          <span className="font-normal text-[#8A9480]">(optional)</span>
         </label>
         <textarea
           id="message"
@@ -167,7 +172,7 @@ export function DemoForm() {
           rows={4}
           maxLength={2000}
           className={`${field} resize-y`}
-          placeholder="I teach AP CSP and grade about 90 programs a week."
+          placeholder="I teach AP CSP to about 90 students on Chromebooks."
         />
       </div>
 
@@ -183,12 +188,16 @@ export function DemoForm() {
         className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2F4A1C] px-8 py-3.5 text-base font-semibold text-white transition-colors duration-200 hover:bg-[#243915] disabled:opacity-70"
       >
         {status === "sending" && <Loader2 className="h-4 w-4 animate-spin" />}
-        {status === "sending" ? "Sending" : "Request a demo"}
+        {status === "sending" ? "Sending" : "Send it over"}
       </button>
 
       <p className="text-sm text-[#6F7A62]">
-        No spam and no sales calls. CodeKiwi is free for teachers while it proves
-        itself.
+        Questions, bug reports, feature requests, or wanting to try it with a
+        class. All of it reaches me and I read every one myself.
+      </p>
+      <p className="text-sm text-[#8A9480]">
+        No spam and no sales calls. CodeKiwi is free for teachers while it
+        proves itself, and you can stop whenever you like.
       </p>
     </form>
   );

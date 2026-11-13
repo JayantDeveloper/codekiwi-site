@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 /**
- * "Book a demo" submissions from /demo.
+ * Pilot sign-ups from /demo.
  *
  * The row is written BEFORE we try to email. A lead scanned from the booth QR
  * code at a live event must never be lost because SMTP was slow, throttled or

@@ -75,16 +75,16 @@ export default function SupportPage() {
           </div>
           <div className="text-center sm:text-left">
             <h2 className="text-xl font-semibold text-[#1E2A14] mb-1">
-              Walk through it with us
+              Running it with a class?
             </h2>
             <p className="text-[#55604A] mb-3">
-              Fifteen minutes on your own slides. Faster than an email thread.
+              Pilot teachers get their bug reports fixed first, usually within days.
             </p>
             <Link
               href="/demo"
               className="inline-block rounded-full bg-[#2F4A1C] px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#243915]"
             >
-              Book a demo
+              Contact us
             </Link>
           </div>
         </div>
