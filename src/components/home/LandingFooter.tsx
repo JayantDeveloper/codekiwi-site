@@ -20,7 +20,13 @@ export function LandingFooter() {
             <span className="text-xl font-bold text-[#F7F3E6]">CodeKiwi</span>
           </div>
           <MarketplaceBadge height={36} />
-          <nav className="flex gap-8">
+          <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+            <Link
+              href="/demo"
+              className="text-sm font-medium text-[#D8DCCC] transition-colors hover:text-white hover:underline"
+            >
+              Book a demo
+            </Link>
             <Link
               href="/terms#acceptable-use"
               className="text-sm font-medium text-[#D8DCCC] transition-colors hover:text-white hover:underline"

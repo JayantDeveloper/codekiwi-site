@@ -72,6 +72,20 @@ export function SiteHeader({
             );
           })}
           <MarketplaceBadge height={28} className="hidden lg:inline-block" />
+          {/* Kept visible at every width: this is the booth QR code's
+              destination and the site's only lead capture. */}
+          <Link href="/demo">
+            <Button
+              size="sm"
+              className={
+                light
+                  ? "rounded-full bg-[#2F4A1C] text-white transition-colors duration-300 hover:bg-[#243915]"
+                  : "rounded-full bg-white text-[#2F4A1C] transition-colors duration-300 hover:bg-[#E7F2D4]"
+              }
+            >
+              Book a demo
+            </Button>
+          </Link>
           <Link href="/signin">
             <Button
               variant="outline"

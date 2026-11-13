@@ -114,10 +114,10 @@ export function HeroOrchard() {
               </Link>
             </Button>
             <Link
-              href="/features"
+              href="/demo"
               className="rounded-full border border-[#1E2A14]/20 bg-white/70 px-8 py-3 text-base font-semibold text-[#1E2A14] transition-colors duration-200 hover:bg-white"
             >
-              See how it works
+              Book a demo
             </Link>
           </div>
 
@@ -126,6 +126,13 @@ export function HeroOrchard() {
           </div>
 
           <p className="mt-4 text-sm text-[#6F7A62]">
+            <Link
+              href="/features"
+              className="font-semibold text-[#2F4A1C] underline-offset-4 hover:underline"
+            >
+              See how it works
+            </Link>
+            <span className="px-2 text-[#B5BFA6]">·</span>
             Already have an account?{" "}
             <Link
               href="/signin"

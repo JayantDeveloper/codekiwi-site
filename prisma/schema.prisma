@@ -82,3 +82,18 @@ model Settings {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+// A "book a demo" request from the public site. Written before we attempt to
+// email, so a lead scanned from the booth QR code survives an SMTP failure.
+model DemoRequest {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  school    String?
+  role      String?
+  message   String?
+  source    String?  // ?src= on /demo, e.g. "dingman" for booth scans
+  notified  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

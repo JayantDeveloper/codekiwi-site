@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, BookOpen, RefreshCw, FileSliders, ShieldCheck } from "lucide-react";
+import { Mail, BookOpen, RefreshCw, FileSliders, ShieldCheck, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -65,6 +65,28 @@ export default function SupportPage() {
           <p className="text-xl text-[#55604A]">
             Need help? We&apos;re here for you.
           </p>
+        </div>
+
+        {/* Demo card. Sits above the email fallback because a walkthrough
+            answers most "how does this work" questions faster than a thread. */}
+        <div className="rounded-2xl border-2 border-[#2F4A1C]/25 bg-[#E7F2D4] shadow-sm p-8 mb-6 flex flex-col sm:flex-row items-center gap-6">
+          <div className="flex-shrink-0 w-14 h-14 rounded-full bg-[#2F4A1C]/10 flex items-center justify-center">
+            <Presentation className="w-7 h-7 text-[#2F4A1C]" />
+          </div>
+          <div className="text-center sm:text-left">
+            <h2 className="text-xl font-semibold text-[#1E2A14] mb-1">
+              Walk through it with us
+            </h2>
+            <p className="text-[#55604A] mb-3">
+              Fifteen minutes on your own slides. Faster than an email thread.
+            </p>
+            <Link
+              href="/demo"
+              className="inline-block rounded-full bg-[#2F4A1C] px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#243915]"
+            >
+              Book a demo
+            </Link>
+          </div>
         </div>
 
         {/* Contact card */}

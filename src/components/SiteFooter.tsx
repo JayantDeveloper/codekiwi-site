@@ -4,6 +4,7 @@ import { GoogleTrademarkNotice } from "@/components/GoogleTrademarkNotice";
 import { MarketplaceBadge } from "@/components/MarketplaceBadge";
 
 const LINKS = [
+  { href: "/demo", label: "Book a demo" },
   { href: "/terms", label: "Terms" },
   { href: "/privacy", label: "Privacy" },
   { href: "/changelog", label: "What's new" },
