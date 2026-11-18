@@ -91,14 +91,18 @@ function StudentDemo() {
 
         {/* editor + terminal */}
         <div className="flex flex-col border-l border-white/10">
-          <div className="flex items-center justify-between border-b border-white/10 px-3 py-2">
-            <span className="text-[10px] font-semibold text-white/50">
+          <div className="flex items-center justify-between gap-3 border-b border-white/10 px-3 py-2">
+            <span className="shrink-0 text-[10px] font-semibold text-white/50">
               main.py
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="flex items-center gap-1 rounded-md border border-white/20 px-1.5 py-0.5 text-[9.5px] font-semibold text-white/70">
+              <span
+                aria-label="Raise hand"
+                className="flex items-center gap-1 rounded-md border border-white/20 px-1.5 py-0.5 text-[9.5px] font-semibold text-white/70"
+              >
                 <HandIcon className="h-2.5 w-2.5" />
-                Raise hand
+                {/* Icon-only on phones so the pill doesn't crowd main.py */}
+                <span className="hidden sm:inline">Raise hand</span>
               </span>
               <span className={`flex items-center gap-1 rounded-md bg-[#6b8f2b] px-2 py-0.5 text-[10px] font-bold text-white ${on && !ran && !reduce ? "ck-pulse" : ""}`}>
                 ▸ Run
