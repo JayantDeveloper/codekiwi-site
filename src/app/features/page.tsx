@@ -316,7 +316,7 @@ export default function FeaturesPage() {
               href="/signup"
               className="inline-block border border-white/50 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
             >
-              Get Started Free
+              Get started free
             </Link>
           </div>
         </Reveal>

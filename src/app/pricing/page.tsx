@@ -61,7 +61,7 @@ export default function PricingPage() {
 
             <Link href="/signup">
               <Button className="w-full bg-[#2F4A1C] hover:bg-[#243915] text-white text-base py-5">
-                Get Started Free
+                Get started free
               </Button>
             </Link>
           </Reveal>

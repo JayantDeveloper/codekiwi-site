@@ -55,7 +55,7 @@ export default function LandingPage() {
         <ScrollStatement />
         <HowItWorks />
         <FeaturesSection ref={featuresRef} isVisible={isVisible.features} />
-        <DemoCta />
+        <DemoCta tone="cream" />
       </main>
       <LandingFooter />
     </div>

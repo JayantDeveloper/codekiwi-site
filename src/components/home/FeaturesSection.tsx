@@ -1,9 +1,7 @@
 import React from "react";
 import { Blob, KiwiSlice } from "@/components/home/Decor";
 
-import Link from "next/link";
-import { Presentation, BadgeCheck, Hand, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Presentation, BadgeCheck, Hand } from "lucide-react";
 
 interface Props {
   isVisible: boolean;
@@ -17,7 +15,7 @@ export const FeaturesSection = React.forwardRef<HTMLElement, Props>(
       className="relative overflow-hidden py-20 bg-[#E7F2D4]"
     >
       <Blob className="left-[7%] top-[14%] h-28 w-28 rotate-[45deg]" color="#D7E8B4" />
-      <KiwiSlice className="-right-28 -bottom-24 h-[24rem] w-[24rem] rotate-[-14deg]" rind="#CBDFA4" flesh="#DCEBC2" core="#EDF5DE" seed="#B6CF90" />
+      <KiwiSlice className="-right-40 top-[30%] h-[24rem] w-[24rem] rotate-[-14deg]" rind="#CBDFA4" flesh="#DCEBC2" core="#EDF5DE" seed="#B6CF90" />
       <div className="relative z-10 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold tracking-tight text-[#1E2A14] sm:text-5xl mb-4">
@@ -46,18 +44,6 @@ export const FeaturesSection = React.forwardRef<HTMLElement, Props>(
           />
         </div>
 
-        <div className="flex justify-center pt-8">
-          <Button
-            asChild
-            size="lg"
-            className="group rounded-full bg-[#2F4A1C] text-white transition-colors duration-200 hover:bg-[#243915] text-base px-8"
-          >
-            <Link href="/signup">
-              Get Started Free
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </div>
       </div>
     </section>
   )

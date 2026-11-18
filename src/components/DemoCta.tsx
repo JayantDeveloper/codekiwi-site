@@ -16,14 +16,18 @@ export function DemoCta({
   title = "Try it with your next lesson",
   body = "CodeKiwi is free, installs in about a minute, and works on Chromebooks. Mark a slide in a deck you already teach from.",
   className,
+  tone = "green",
 }: {
   title?: string;
   body?: string;
   className?: string;
+  /** "cream" for pages where the section above is already pale green (the
+   *  homepage features band), so the closing beat still reads as its own band. */
+  tone?: "green" | "cream";
 }) {
   return (
     <section
-      className={`w-full bg-[#E7F2D4]${className ? ` ${className}` : ""}`}
+      className={`w-full ${tone === "cream" ? "bg-[#FBF7EC]" : "bg-[#E7F2D4]"}${className ? ` ${className}` : ""}`}
     >
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-4 py-14 text-center sm:px-8 md:py-16">
         <div className="min-w-0">
