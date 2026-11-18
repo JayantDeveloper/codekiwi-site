@@ -137,7 +137,7 @@ export function HeroOrchard() {
         </div>
 
         {/* right: the mascot, as a real 8-frame sprite. See KiwiSprite. */}
-        <div className="flex justify-center lg:justify-end">
+        <div className="flex justify-center lg:justify-end lg:pr-8">
           <KiwiSprite className="w-[300px] sm:w-[360px] lg:w-[420px]" />
         </div>
       </motion.div>
